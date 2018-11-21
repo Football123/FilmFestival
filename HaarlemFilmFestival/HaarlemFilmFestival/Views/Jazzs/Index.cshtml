@@ -1,0 +1,45 @@
+﻿@model IEnumerable<HaarlemFilmFestival.Models.Jazz>
+
+@{
+    ViewBag.Title = "Jazz";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Rang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rangprijs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Band)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rangprijs)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Band)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.JazzId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.JazzId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.JazzId })
+        </td>
+    </tr>
+}
+
+</table>
