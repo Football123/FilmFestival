@@ -148,10 +148,72 @@
     <Compile Include="Migrations\201811212043502_Jazz-update.Designer.cs">
       <DependentUpon>201811212043502_Jazz-update.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811221143020_Jazz1.cs" />
+    <Compile Include="Migrations\201811221143020_Jazz1.Designer.cs">
+      <DependentUpon>201811221143020_Jazz1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811221155155_Jazz-update2.cs" />
+    <Compile Include="Migrations\201811221155155_Jazz-update2.Designer.cs">
+      <DependentUpon>201811221155155_Jazz-update2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811221201146_Food.cs" />
+    <Compile Include="Migrations\201811221201146_Food.Designer.cs">
+      <DependentUpon>201811221201146_Food.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811221208428_Food2.cs" />
+    <Compile Include="Migrations\201811221208428_Food2.Designer.cs">
+      <DependentUpon>201811221208428_Food2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811221211578_Food3.cs" />
+    <Compile Include="Migrations\201811221211578_Food3.Designer.cs">
+      <DependentUpon>201811221211578_Food3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811221218068_Dance.cs" />
+    <Compile Include="Migrations\201811221218068_Dance.Designer.cs">
+      <DependentUpon>201811221218068_Dance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811221220071_Dance2.cs" />
+    <Compile Include="Migrations\201811221220071_Dance2.Designer.cs">
+      <DependentUpon>201811221220071_Dance2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811221231190_Location.cs" />
+    <Compile Include="Migrations\201811221231190_Location.Designer.cs">
+      <DependentUpon>201811221231190_Location.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811221235096_Location2.cs" />
+    <Compile Include="Migrations\201811221235096_Location2.Designer.cs">
+      <DependentUpon>201811221235096_Location2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811221242345_Orderregel.cs" />
+    <Compile Include="Migrations\201811221242345_Orderregel.Designer.cs">
+      <DependentUpon>201811221242345_Orderregel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811221244559_Orderregel2.cs" />
+    <Compile Include="Migrations\201811221244559_Orderregel2.Designer.cs">
+      <DependentUpon>201811221244559_Orderregel2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811221253284_Order.cs" />
+    <Compile Include="Migrations\201811221253284_Order.Designer.cs">
+      <DependentUpon>201811221253284_Order.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811221301129_Klant.cs" />
+    <Compile Include="Migrations\201811221301129_Klant.Designer.cs">
+      <DependentUpon>201811221301129_Klant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811221307207_Order2.cs" />
+    <Compile Include="Migrations\201811221307207_Order2.Designer.cs">
+      <DependentUpon>201811221307207_Order2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Dance.cs" />
     <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\Food.cs" />
     <Compile Include="Models\HaarlemFilmFestivalContext.cs" />
     <Compile Include="Models\Jazz.cs" />
+    <Compile Include="Models\Klant.cs" />
+    <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Orderregel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\EventRepository.cs" />
     <Compile Include="Repositories\IEventRepository.cs" />
@@ -226,6 +288,48 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811212043502_Jazz-update.resx">
       <DependentUpon>201811212043502_Jazz-update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811221143020_Jazz1.resx">
+      <DependentUpon>201811221143020_Jazz1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811221155155_Jazz-update2.resx">
+      <DependentUpon>201811221155155_Jazz-update2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811221201146_Food.resx">
+      <DependentUpon>201811221201146_Food.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811221208428_Food2.resx">
+      <DependentUpon>201811221208428_Food2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811221211578_Food3.resx">
+      <DependentUpon>201811221211578_Food3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811221218068_Dance.resx">
+      <DependentUpon>201811221218068_Dance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811221220071_Dance2.resx">
+      <DependentUpon>201811221220071_Dance2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811221231190_Location.resx">
+      <DependentUpon>201811221231190_Location.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811221235096_Location2.resx">
+      <DependentUpon>201811221235096_Location2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811221242345_Orderregel.resx">
+      <DependentUpon>201811221242345_Orderregel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811221244559_Orderregel2.resx">
+      <DependentUpon>201811221244559_Orderregel2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811221253284_Order.resx">
+      <DependentUpon>201811221253284_Order.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811221301129_Klant.resx">
+      <DependentUpon>201811221301129_Klant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811221307207_Order2.resx">
+      <DependentUpon>201811221307207_Order2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

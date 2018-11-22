@@ -22,5 +22,12 @@ namespace HaarlemFilmFestival.Models
         public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Event> Events { get; set; }
 
         public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Jazz> Jazzs { get; set; }
+
+        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Food> Foods { get; set; }
+        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Dance> Dances { get; set; }
+        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Location> Locations { get; set; }
+        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Orderregel> Orderregels { get; set; }
+        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Order> Orders { get; set; }
+        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Klant> Customers { get; set; }
     }
 }
