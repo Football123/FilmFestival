@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -130,7 +131,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DanceController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
-    <Compile Include="Controllers\FoodController.cs" />
+    <Compile Include="Controllers\FoodsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JazzsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -216,7 +217,9 @@
     <Compile Include="Models\Orderregel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\EventRepository.cs" />
+    <Compile Include="Repositories\FoodRepository.cs" />
     <Compile Include="Repositories\IEventRepository.cs" />
+    <Compile Include="Repositories\IFoodRepository.cs" />
     <Compile Include="Repositories\IJazzRepository.cs" />
     <Compile Include="Repositories\JazzRepository.cs" />
   </ItemGroup>
@@ -256,7 +259,6 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Dance\Index.cshtml" />
-    <Content Include="Views\Food\Index.cshtml" />
     <Content Include="Views\Events\Create.cshtml" />
     <Content Include="Views\Events\Delete.cshtml" />
     <Content Include="Views\Events\Details.cshtml" />
@@ -267,6 +269,11 @@
     <Content Include="Views\Jazzs\Details.cshtml" />
     <Content Include="Views\Jazzs\Edit.cshtml" />
     <Content Include="Views\Jazzs\Index.cshtml" />
+    <Content Include="Views\Foods\Create.cshtml" />
+    <Content Include="Views\Foods\Delete.cshtml" />
+    <Content Include="Views\Foods\Details.cshtml" />
+    <Content Include="Views\Foods\Edit.cshtml" />
+    <Content Include="Views\Foods\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
