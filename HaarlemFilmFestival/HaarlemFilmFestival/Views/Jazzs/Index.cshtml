@@ -26,9 +26,6 @@
 
 <h1>Tickets</h1>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -56,9 +53,8 @@
                 @Html.DisplayFor(modelItem => item.Band)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.JazzId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.JazzId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.JazzId })
+                @Html.ActionLink("Add to cart", "Index", "Tickets")
+                @*"Add to cart", "Index", "Tickets", new { id = item.JazzId }*@
             </td>
         </tr>
     }
@@ -66,3 +62,21 @@
 </table>
 
 <h1>Line-up</h1>
+
+@foreach (var item in Model)
+{
+<div class="row">
+    <div class="col-md-4">
+        <h2>@Html.DisplayFor(modelItem => item.Band)</h2>    
+        <p>The Gumbo Kings are a Dutch supergroup that combines the groove of New Orleans Funk with the grittiness of Delta Blues and the melodies of Memphis Soul.</p>      
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.DisplayFor(modelItem => item.Band)</h2>
+        <p>Gare du Nord has grown into a dazzling live band with the originally Italian singer Dorona Alberti as the shining center. Dorona is not only one of the best singers in the Netherlands; with her sexy live act she knows how to move everyone in the audience.</p>
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.DisplayFor(modelItem => item.Band)</h2>
+        <p>He has performed throughout the US and worldwide and forged a clear identity as a composer, arranger, and bandleader to match his powerful saxophonic voice.&nbsp; His latest release, Beloved, is his second album for the Truth Revolution Recording Collective.&nbsp; In the company of his working band Allen calls upon the musical language of McLean, Lester Young, Charlie Parker, Sonny Rollins, John Coltrane and others.</p>
+    </div>
+</div>
+}
