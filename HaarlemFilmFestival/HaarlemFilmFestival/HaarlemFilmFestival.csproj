@@ -211,6 +211,7 @@
     <Compile Include="Models\Food.cs" />
     <Compile Include="Models\HaarlemFilmFestivalContext.cs" />
     <Compile Include="Models\Jazz.cs" />
+    <Compile Include="Models\JazzProgram.cs" />
     <Compile Include="Models\Klant.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\Order.cs" />
