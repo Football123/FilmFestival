@@ -3,80 +3,77 @@
 @{
     ViewBag.Title = "Jazz";
 }
-
-<h1>Visit Haarlem Jazz</h1>
-
-<p>
-    Haarlem Jazz is an important music event for the City of Haarlem.
-    During the Haarlem festival, we want to recreate part of this festival by inviting some of the bands that previously performed there to play at the Patronaat.
-    On Sunday, some of the bands will taketo the big stage at the Grote Markt to perform for all visitors for free!
-</p>
-
-<p class="jazz1">See the artists and times below!</p>
-
-<div class="jazz">
+<div class="jumbotron">
+    <h1>Visit Haarlem Jazz</h1>
     <p>
-        Haarlem Jazz is one of the big jazz stages in The Netherlands! Various famous artists will be playing.
-        All kinds of famous artists will be playing. Gare du Nord, Soul Six , Lilith Merlot and many more. If you want some standard dabbler tracks, you should definitely listen to Gare du Nord.
-        But if you want a more special act, don’t forget Han Bennink! Haarlem Jazz will show Haarlem what they got!
-        And last but not least, Sunday is free for all visitors! Come and visit the Grote Markt for free, and enjoy with other people.
-        So what holds you back? Pick a ticket and add it to your shopping cart.
+        Haarlem Jazz is an important music event for the City of Haarlem.
+        During the Haarlem festival, we want to recreate part of this festival by inviting some of the bands that previously performed there to play at the Patronaat.
+        On Sunday, some of the bands will taketo the big stage at the Grote Markt to perform for all visitors for free!
     </p>
+    <p class="jazz1">See the artists and times below!</p>
+    <div class="jazz">
+        <p>
+            Haarlem Jazz is one of the big jazz stages in The Netherlands! Various famous artists will be playing.
+            All kinds of famous artists will be playing. Gare du Nord, Soul Six , Lilith Merlot and many more. If you want some standard dabbler tracks, you should definitely listen to Gare du Nord.
+            But if you want a more special act, don’t forget Han Bennink! Haarlem Jazz will show Haarlem what they got!
+            And last but not least, Sunday is free for all visitors! Come and visit the Grote Markt for free, and enjoy with other people.
+            So what holds you back? Pick a ticket and add it to your shopping cart.
+        </p>
+    </div>
 </div>
+    <h1>Tickets</h1>
 
-<h1>Tickets</h1>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Rang)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rangprijs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Band)
+            </th>
+            <th></th>
+        </tr>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Rang)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Rangprijs)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Band)
-        </th>
-        <th></th>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rangprijs)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Band)
+                </td>
+                <td>
+                    @Html.ActionLink("Add to cart", "Index", "Tickets")
+                    @*"Add to cart", "Index", "Tickets", new { id = item.JazzId }*@
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <h1>Line-up</h1>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rang)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rangprijs)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Band)
-            </td>
-            <td>
-                @Html.ActionLink("Add to cart", "Index", "Tickets")
-                @*"Add to cart", "Index", "Tickets", new { id = item.JazzId }*@
-            </td>
-        </tr>
+        <div class="row">
+            <div class="col-md-4">
+                <h2>@Html.DisplayFor(modelItem => item.Band)</h2>
+                <p>The Gumbo Kings are a Dutch supergroup that combines the groove of New Orleans Funk with the grittiness of Delta Blues and the melodies of Memphis Soul.</p>
+            </div>
+            <div class="col-md-4">
+                <h2>@Html.DisplayFor(modelItem => item.Band)</h2>
+                <p>Gare du Nord has grown into a dazzling live band with the originally Italian singer Dorona Alberti as the shining center. Dorona is not only one of the best singers in the Netherlands; with her sexy live act she knows how to move everyone in the audience.</p>
+            </div>
+            <div class="col-md-4">
+                <h2>@Html.DisplayFor(modelItem => item.Band)</h2>
+                <p>He has performed throughout the US and worldwide and forged a clear identity as a composer, arranger, and bandleader to match his powerful saxophonic voice.&nbsp; His latest release, Beloved, is his second album for the Truth Revolution Recording Collective.&nbsp; In the company of his working band Allen calls upon the musical language of McLean, Lester Young, Charlie Parker, Sonny Rollins, John Coltrane and others.</p>
+            </div>
+        </div>
     }
-
-</table>
-
-<h1>Line-up</h1>
-
-@foreach (var item in Model)
-{
-<div class="row">
-    <div class="col-md-4">
-        <h2>@Html.DisplayFor(modelItem => item.Band)</h2>    
-        <p>The Gumbo Kings are a Dutch supergroup that combines the groove of New Orleans Funk with the grittiness of Delta Blues and the melodies of Memphis Soul.</p>      
-    </div>
-    <div class="col-md-4">
-        <h2>@Html.DisplayFor(modelItem => item.Band)</h2>
-        <p>Gare du Nord has grown into a dazzling live band with the originally Italian singer Dorona Alberti as the shining center. Dorona is not only one of the best singers in the Netherlands; with her sexy live act she knows how to move everyone in the audience.</p>
-    </div>
-    <div class="col-md-4">
-        <h2>@Html.DisplayFor(modelItem => item.Band)</h2>
-        <p>He has performed throughout the US and worldwide and forged a clear identity as a composer, arranger, and bandleader to match his powerful saxophonic voice.&nbsp; His latest release, Beloved, is his second album for the Truth Revolution Recording Collective.&nbsp; In the company of his working band Allen calls upon the musical language of McLean, Lester Young, Charlie Parker, Sonny Rollins, John Coltrane and others.</p>
-    </div>
-</div>
-}
