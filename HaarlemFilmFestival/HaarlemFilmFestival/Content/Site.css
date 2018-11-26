@@ -26,12 +26,60 @@ textarea {
 /* Home-pagina - Navigatie-balk */
 .navbar-inverse { background-color: white; }
 .navbar-inverse a { background-color: #FFF; }
-.navbar-inverse .navbar-nav > li > a { color: black; }
+.navbar-inverse .navbar-nav > li > a { 
+    color: black;
+    font-size: 20px;
+}
 .navbar-inverse .navbar-brand,
-.navbar-inverse .navbar-brand:hover { color: black; }
+.navbar-inverse .navbar-brand:hover { 
+    color: black;
+}
+
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus{
     color: black;
+}
+
+.navbar-inverse .navbar-nav{
+    margin-left: 30px;
+    margin-top: 50px;
+}
+
+.navbar-inverse .navbar-brand{
+    margin-left: 30px;
+}
+
+.navbar > .container .navbar-brand{
+    margin-left: 30px;
+}
+
+.container{
+    margin-top: 45px;
+}
+
+/* Content */
+.container .jumbotron{
+    margin-top: 45px;
+}
+.home1{
+    background-color: cornflowerblue;
+    margin-left: 350px;
+    padding-left: 80px;
+    width: 250px;
+    height: 60px;
+}
+
+.home2{
+    text-align: center;
+    font-size: 14px;
+}
+
+.row{
+    margin-left: 50px;
+}
+
+.col-md-6{
+    border-color: black;
 }
 
 /* Jazz-pagina */
