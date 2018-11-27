@@ -233,6 +233,10 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\bg.png" />
+    <Content Include="Content\Images\u1055-verkleindvoorwebsite.png" />
+    <Content Include="Content\Images\u1063.png" />
+    <Content Include="Content\Images\u1070-verkleindvoorwebsite.png" />
+    <Content Include="Content\Images\u1082-verkleindvoorwebsite.png" />
     <Content Include="Content\Images\u29.png" />
     <Content Include="Content\Images\u4-verkleindvoorwebsite.png" />
     <Content Include="Content\Images\u41-verkleindvoorwebsite.png" />

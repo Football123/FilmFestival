@@ -1,6 +1,8 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    background-image: url("~/Content/Images/bg.png");
+    margin: 0;
+    /*padding-top: 50px;
+    padding-bottom: 20px;*/
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -90,6 +92,9 @@ h1{
     text-align: center;
 }
 .jazz1{
+    text-align: center;
+}
+.jazzimage{
     text-align: center;
 }
 
