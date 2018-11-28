@@ -27,12 +27,6 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Rang)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Rangprijs)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Band)
             </th>
             <th></th>
@@ -41,12 +35,6 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Rang)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Rangprijs)
-                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Band)
                 </td>
