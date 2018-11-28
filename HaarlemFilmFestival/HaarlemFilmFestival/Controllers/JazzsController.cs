@@ -18,6 +18,10 @@ namespace HaarlemFilmFestival.Controllers
         // GET: Jazzs
         public ActionResult Index()
         {
+            //Data van Events en Locatie ophalen
+
+            //Data van Events, Jazz en Locatie meegeven aan View
+
             IEnumerable<Jazz> allJazzs = jazzRepository.GetAllJazz();
             return View(allJazzs);
         }
