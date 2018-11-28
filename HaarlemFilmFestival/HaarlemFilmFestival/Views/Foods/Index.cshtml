@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<HaarlemFilmFestival.Models.Food>
-
 @{
     ViewBag.Title = "Food";
 }
@@ -9,76 +8,111 @@
         Although Haarlem had not all particular well known culinary tradition there are lots of restaurants that are worth your while. Some of them created a special Haarlem festival menu at a reduced price. It is a great way to enjoy the posibilities of Haarlem.
     </p>
 </div>
-    <p class="food1">
-        See the restaurants below for locations, prices and the type of food the restaurant serves. A reservation is mandatory.
-    </p>
-
-    <div class="row">
-        <div class="col-md-4">
-            <p>
-                Scroll down to the restaurant section, look at the various restaurants and choose the one that appeals to you the most.
-                For Frensch, you should check out Ratatouille! But if you want to try out some Dutch food, Restaurant ML, Restaurant Fris, Grand Cafe Brinkman and Urban Frenchy Bistro are a good idea!
-                Pick a restaurant and add it to you chart!
-            </p>
-        </div>
-        <div class="col-md-4">
-            <p><img src="@Url.Content("~/Content/Images/u568aangepast.png")" /></p>
-        </div>
-        <div class="col-md-4">
-            <p><img src="@Url.Content("~/Content/Images/u567aangepast.png")" /></p>
-        </div>
+<p class="food1">
+    See the restaurants below for locations, prices and the type of food the restaurant serves. A reservation is mandatory.
+</p>
+<div class="row">
+    <div class="col-md-4">
+        <p>
+            Scroll down to the restaurant section, look at the various restaurants and choose the one that appeals to you the most.
+            For Frensch, you should check out Ratatouille! But if you want to try out some Dutch food, Restaurant ML, Restaurant Fris, Grand Cafe Brinkman and Urban Frenchy Bistro are a good idea!
+            Pick a restaurant and add it to you chart!
+        </p>
     </div>
-    
+    <div class="col-md-4">
+        <p><img src="@Url.Content("~/Content/Images/u568aangepast.png")" /></p>
+    </div>
+    <div class="col-md-4">
+        <p><img src="@Url.Content("~/Content/Images/u567aangepast.png")" /></p>
+    </div>
+</div>
+
 <h1>Tickets</h1>
-
-    <table class="table">
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Restaurant)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prijs_Adult)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prijs_Child)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            <p><strong>Order a ticket</strong></p>
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Restaurant)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Prijs_Adult)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Prijs_Child)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Type)
-            </th>
-
-            <th>
-                <p><strong>Order a ticket</strong></p>
-            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Restaurant)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prijs_Adult)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prijs_Child)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.ActionLink("Add to cart", "Index", "Tickets")
+            </td>
         </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Restaurant)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Prijs_Adult)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Prijs_Child)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Type)
-                </td>
-                <td>
-                    @Html.ActionLink("Add to cart", "Index", "Tickets")
-                </td>
-            </tr>
-        }
-
-    </table>
-
-    <p>* Reservation is mandatory.  A reservation fee of €10,- per person wil be charged when a reservation is made on the Haarlem Festival site. This fee will be deducted from the final check on visiting the restaurant.</p>
-    <p>** When ordering a ticket there will be an option to inform the restaurant for special requests regarding the food or service (allergies, wheelchair etc.)</p>
-
-    <br />
-
-    <h1>Restaurants</h1>
-
-
+    }
+</table>
+<p>* Reservation is mandatory.  A reservation fee of €10,- per person wil be charged when a reservation is made on the Haarlem Festival site. This fee will be deducted from the final check on visiting the restaurant.</p>
+<p>** When ordering a ticket there will be an option to inform the restaurant for special requests regarding the food or service (allergies, wheelchair etc.)</p>
+<br />
+<h1>Restaurants</h1>
+@foreach (var item in Model)
+{
+<div class="row">
+    <div class="col-md-4">
+        <h2>@Html.DisplayFor(modelItem => item.Restaurant)</h2>
+        <p>"Exceptional food, magical wine matches, with a friendly team in a cosy room."</p>
+        <img src="@Url.Content("~/Content/Images/u553aangepast.png")" />
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.DisplayFor(modelItem => item.Restaurant)</h2>
+        <p>"Great atmosphere and excellent service, just a shame about the food."</p>
+        <img src="@Url.Content("~/Content/Images/u455aangepast.png")" />
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.DisplayFor(modelItem => item.Restaurant)</h2>
+        <p>"Lovely food and perfect service."</p>
+        <img src="@Url.Content("~/Content/Images/u472aangepast.png")" />
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.DisplayFor(modelItem => item.Restaurant)</h2>
+        <p>"Super tasty high end food"</p>
+        <img src="@Url.Content("~/Content/Images/u488aangepast.png")" />
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.DisplayFor(modelItem => item.Restaurant)</h2>
+        <p>"Perfect restaurant to eat something spectacular in a wonderful atmosphere."</p>
+        <img src="@Url.Content("~/Content/Images/u503aangepast.png")" />
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.DisplayFor(modelItem => item.Restaurant)</h2>
+        <p>"Very nice staff and tasty starter mozzarella with tomatoes"</p>
+        <img src="@Url.Content("~/Content/Images/u518aangepast.png")" />
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.DisplayFor(modelItem => item.Restaurant)</h2>
+        <p>"Service is nice, we ordered the steak the quality is good"</p>
+        <img src="@Url.Content("~/Content/Images/u533aangepast.png")" />
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.DisplayFor(modelItem => item.Restaurant)</h2>
+        <p>"Good, French inspired food in a modern, if a bit dark, setting."</p>
+        <img src="@Url.Content("~/Content/Images/u548aangepast.png")" />
+    </div>
+</div>
+}
