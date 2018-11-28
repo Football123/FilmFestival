@@ -6,15 +6,11 @@ using System.Web;
 
 namespace HaarlemFilmFestival.Models
 {
-    public class Location
+    public class Stops
     {
         [Key]
-        public int LocatieId { get; set; }
+        public int StopsId { get; set; }
         public string Naam { get; set; }
-        public string Adres { get; set; }
-        public string Postcode { get; set; }
-        public int Telefoonnummer { get; set; }
-        public int Capaciteit { get; set; }
         public string Omschrijving { get; set; }
     }
 }

@@ -9,7 +9,8 @@ namespace HaarlemFilmFestival.Models
     {
         public int OrderregelId { get; set; }
         public int Regelaantal { get; set; }
-        public int Prijs { get; set; }
+        public string Tickettype { get; set; }
+        public string Opmerkingen { get; set; }
         public int EventId { get; set; }
     }
 }

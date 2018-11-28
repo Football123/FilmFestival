@@ -5,12 +5,10 @@ using System.Web;
 
 namespace HaarlemFilmFestival.Models
 {
-    public class Jazz
+    public class Jazz : Event
     {
         public int JazzId { get; set; }
-        public string Rang { get; set; }
-        public int Rangprijs { get; set; }
         public string Band { get; set; }
-        public int EventId { get; set; }
+        public new string Omschrijving { get; set; }
     }
 }

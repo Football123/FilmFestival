@@ -12,9 +12,6 @@ namespace HaarlemFilmFestival.Models
         public DateTime Ordertijd { get; set; }
         public Boolean Betaald { get; set; }
         public int Code { get; set; }
-        public int Aantal { get; set; }
-        public int Totaalprijs { get; set; }
         public int KlantId { get; set; }
-        public int OrderregelId { get; set; }
     }
 }
