@@ -7,15 +7,19 @@ namespace HaarlemFilmFestival.Models
 {
     public class Event
     {
-        public int EventId { get; set; }
-        public DateTime Begintijd { get; set; }
-        public DateTime Eindtijd { get; set; }
-        public int Prijs { get; set; }
-        public int Korting { get; set;}
-        public int Capaciteit { get; set;}
-        public string Omschrijving { get; set; }
+        public int Id { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime EindTime { get; set; }
+        public double Price { get; set; }
+        public double? Discount { get; set;}
+        public int? Capacity { get; set;}
+        public string Description { get; set; }
 
-        // Link naar Locatie
-        public int LocatieId { get; set; }
+        // Koppeling naar Locatie
+        public int LocationId { get; set; }
+        public virtual Location Location { get; set; }
+
+        // Koppeling naar Orderregel
+        public virtual ICollection<OrderRecord> OrderRecords { get; set; }
     }
 }

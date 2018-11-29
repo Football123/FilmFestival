@@ -5,9 +5,10 @@ using System.Web;
 
 namespace HaarlemFilmFestival.Models
 {
-    public class Jazz : Event
+    public enum Language
     {
-        public string Band { get; set; }
-        public string JazzDescription { get; set; }
+        English = 1,
+        Dutch,
+        Chinese       
     }
 }

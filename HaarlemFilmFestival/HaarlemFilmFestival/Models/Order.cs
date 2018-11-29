@@ -7,11 +7,17 @@ namespace HaarlemFilmFestival.Models
 {
     public class Order
     {
-        public int OrderId { get; set; }
-        public string Betaalmethode { get; set; }
-        public DateTime Ordertijd { get; set; }
-        public Boolean Betaald { get; set; }
+        public int Id { get; set; }
+        public string PaymentMethod { get; set; }
+        public DateTime OrderTime { get; set; }
+        public Boolean Paid { get; set; }
         public int Code { get; set; }
-        public int KlantId { get; set; }
+
+        // Koppeling naar Klant
+        public virtual Customer Customer { get; set; }
+        public int CustomerId { get; set; }
+
+        // Koppeling naar Orderregels
+        public ICollection<OrderRecord> OrderRecords { get; set; }
     }
 }

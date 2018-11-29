@@ -20,16 +20,28 @@ namespace HaarlemFilmFestival.Models
         }
 
         public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Event> Events { get; set; }
-
         public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Jazz> Jazzs { get; set; }
-
         public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Food> Foods { get; set; }
         public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Dance> Dances { get; set; }
-        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Location> Locations { get; set; }
-        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Orderregel> Orderregels { get; set; }
+        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.OrderRecord> OrderRecords { get; set; }
         public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Order> Orders { get; set; }
-        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Klant> Customers { get; set; }
-        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Stops> Stops { get; set; }
-        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.KoppelOrder> Koppelorders { get; set; }
+        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Customer> Customers { get; set; }
+        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.HistoricStop> HistoricStops { get; set; }
+        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Artist> Artists { get; set; }
+        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Cuisine> Cuisines { get; set; }
+        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Historic> Historics { get; set; }
+        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Location> Locations { get; set; }
+        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Restaurant> Restaurants { get; set; }
+        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Session> Sessions { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Event>().HasMany(e => e.OrderRecords)
+                 .WithRequired(eb => eb.Event)
+                 .HasForeignKey(eb => eb.EventId);
+            modelBuilder.Entity<Order>().HasMany(b => b.OrderRecords)
+                .WithRequired(eb => eb.Order)
+                .HasForeignKey(eb => eb.OrderId);
+        }
     }
 }

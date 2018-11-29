@@ -5,13 +5,9 @@ using System.Web;
 
 namespace HaarlemFilmFestival.Models
 {
-    public class Food
+    public class Food : Event
     {
-        public int FoodId { get; set; }
-        public string Restaurant { get; set; }
-        public int Prijs_Adult { get; set; }
-        public int Prijs_Child { get; set; }
-        public string Type { get; set; }
-        public int EventId { get; set; }
+        public string RestaurantId { get; set; }
+        public virtual Restaurant Restaurant { get; set; }
     }
 }
