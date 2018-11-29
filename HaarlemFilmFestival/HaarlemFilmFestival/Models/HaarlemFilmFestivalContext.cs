@@ -32,7 +32,7 @@ namespace HaarlemFilmFestival.Models
         public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Historic> Historics { get; set; }
         public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Location> Locations { get; set; }
         public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Restaurant> Restaurants { get; set; }
-        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Session> Sessions { get; set; }
+        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Theme> Themes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

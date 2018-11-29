@@ -11,6 +11,6 @@ namespace HaarlemFilmFestival.Models
         public string Name { get; set; }
 
         // Koppeling naar Session
-        public virtual ICollection<Session> Session { get; set; }
+        public virtual ICollection<Theme> Themes { get; set; }
     }
 }

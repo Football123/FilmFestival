@@ -9,15 +9,15 @@ namespace HaarlemFilmFestival.Models
 {
     public class Dance : Event
     {
-        public int SessionId { get; set; }
+        public int ThemeId { get; set; }
         public int ArtistId { get; set; }
 
         //navigation properties
-        public virtual Session Session { get; set; }
+        public virtual Theme Theme { get; set; }
         public virtual Artist Artist { get; set; }
 
         // Koppeling naar Session
-        public virtual ICollection<Session> Sessions { get; set; }
+        public virtual ICollection<Theme> Themes { get; set; }
         
     }
 }
