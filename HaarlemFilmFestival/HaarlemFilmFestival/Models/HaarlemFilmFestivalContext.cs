@@ -38,10 +38,10 @@ namespace HaarlemFilmFestival.Models
         {
             modelBuilder.Entity<Event>().HasMany(e => e.OrderRecords)
                  .WithRequired(eb => eb.Event)
-                 .HasForeignKey(eb => eb.EventId);
+                 .HasForeignKey(eb => eb.Event_Id);
             modelBuilder.Entity<Order>().HasMany(b => b.OrderRecords)
                 .WithRequired(eb => eb.Order)
-                .HasForeignKey(eb => eb.OrderId);
+                .HasForeignKey(eb => eb.Order_Id);
         }
     }
 }

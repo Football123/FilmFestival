@@ -16,7 +16,7 @@ namespace HaarlemFilmFestival.Models
         public string Description { get; set; }
 
         // Koppeling naar Locatie
-        public int LocationId { get; set; }
+        public int Location_Id { get; set; }
         public virtual Location Location { get; set; }
 
         // Koppeling naar Orderregel
