@@ -39,7 +39,7 @@
                     @Html.DisplayFor(modelItem => item.Band)
                 </td>
                 <td>
-                    @Html.ActionLink("Add to cart", "Index", "Tickets")
+                    @Html.ActionLink("Add to cart", "Index", "Tickets", new { id = item.Id })
                     @*"Add to cart", "Index", "Tickets", new { id = item.JazzId }*@
                 </td>
             </tr>

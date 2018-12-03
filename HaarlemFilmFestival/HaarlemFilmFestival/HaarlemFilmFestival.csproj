@@ -177,6 +177,7 @@
     <Compile Include="Repositories\Interfaces\IEventRepository.cs" />
     <Compile Include="Repositories\Interfaces\IFoodRepository.cs" />
     <Compile Include="Repositories\Interfaces\IJazzRepository.cs" />
+    <Compile Include="Repositories\Interfaces\ITicketRepository.cs" />
     <Compile Include="Repositories\JazzRepository.cs" />
     <Compile Include="Models\ViewModels\JazzViewModel.cs" />
   </ItemGroup>
