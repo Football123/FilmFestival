@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace HaarlemFilmFestival.Controllers
 {
-    public class TicketsController : Controller
+    public class OrderController : Controller
     {
         // GET: Tickets
         public ActionResult Index()
