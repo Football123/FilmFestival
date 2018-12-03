@@ -21,9 +21,5 @@ namespace HaarlemFilmFestival.Models
         // Koppeling naar Order
         public virtual Order Order { get; set; }
         public virtual Event Event { get; set; }
-        
-
-
-
     }
 }

@@ -9,6 +9,7 @@ namespace HaarlemFilmFestival.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string ArtistDescription { get; set; }
 
         // Koppeling naar Session
         public virtual ICollection<Theme> Themes { get; set; }
