@@ -1,4 +1,8 @@
-﻿body {
+﻿.bg {
+    background-image:url(/Content/Images/bg.png)
+}
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -106,3 +110,6 @@ h1{
 h1 {
     text-align: center;
 }
+
+/* Dance-pagina*/
+

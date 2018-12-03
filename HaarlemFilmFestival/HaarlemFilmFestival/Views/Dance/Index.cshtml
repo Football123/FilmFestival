@@ -2,6 +2,99 @@
 @{
     ViewBag.Title = "Dance";
 }
-<div class="jumbotron">
-    <h2>Dance</h2>
+    <div class="jumbotron">
+        <h1>Visit Haarlem Dance</h1>
+        <p>
+            The Netherlands is the precursor of the Dance music. The Netherlands has many popular DJ’s like Martin Garrix, Tiësto and Hardwell. These popular Dj’s all play at the Haarlem Dance festival. There are three different days all with their own dance set. Every hour is unique, every day is unique, every second is unique. So check out our information page and see if your favorite Dj will be playing.
+        </p>
+    </div>
+
+
+<h1>Tickets</h1>
+   
+
+<h1>Line-up</h1>
+
+
+<div class="clearfix">
+    <div class="box">
+        <p>
+            Haarlem dance invites you to be part of an experience that Haarlem has never seen before.
+            The top DJ's from the Netherlands, which in fact are the top DJ's from the world, are playing all over the city.
+            </p>
+        <p>
+            There will be some bigger shows as some smaller parties.
+            The parties are held in special venues; for example in the 'Caprera openluchttheater', 'Lichtfabriek' and the 'Jopenkerk'.
+            You don't want to miss them , there has never been a dance party in these venue's.
+            If you want to see them all you could also buy one of our special all-access tickets.
+           
+        </p>
+    </div> 
+    <div class="box2"><img src="@Url.Content("~/Content/Images/u53-verkleindvoorwebsite.png")" /></div> 
 </div>
+
+<div class="clearfix">
+    <div class="box2">
+        <p>
+            Haarlem festival is excited to announce that the jubilee from Tiësto will be held in the 'Lichtfabriek'.
+            There are also some special guests invited so your evening won't get boring.
+            This special party is limited to +- 1500 people.
+        </p>
+        <p>
+            Have you ever heard from back-to-back mixes?
+            Now you did! Back-to-back mixes are upcoming and done by many DJ's already. 
+            Back-to-back mixes are simply said that DJ's play together so that there own music is remixed by an other DJ. 
+            There just are a few special back-to-back mixes around the city, so check them quickly! Want to see them all? Check our all-access tickets!
+
+        </p>
+    </div>
+    <div class="box"><img src="@Url.Content("~/Content/Images/u41-verkleindvoorwebsite.png")" /></div>
+</div>
+
+
+<div class="w3-container">
+    <h2>Slideshow Indicators</h2>
+    <p>An example of using buttons to indicate how many slides there are in the slideshow, and which slide the user is currently viewing.</p>
+</div>
+
+<div class="w3-content w3-display-container" style="max-width:800px">
+    <img class="mySlides" src="~/Content/Images/u4-verkleindvoorwebsite.png" style="width:100%">
+    <img class="mySlides" src="~/Content/Images/u4-verkleindvoorwebsite.png" style="width:100%">
+    <img class="mySlides" src="~/Content/Images/u4-verkleindvoorwebsite.png" style="width:100%">
+    <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
+        <div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>
+        <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
+        <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
+        <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
+        <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
+    </div>
+</div>
+
+<script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function currentDiv(n) {
+  showDivs(slideIndex = n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+     dots[i].className = dots[i].className.replace(" w3-white", "");
+  }
+  x[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " w3-white";
+}
+</script>
