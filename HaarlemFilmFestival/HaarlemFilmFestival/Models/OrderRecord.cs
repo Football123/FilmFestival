@@ -10,9 +10,9 @@ namespace HaarlemFilmFestival.Models
     public class OrderRecord
     {
         [Key, Column(Order = 0)]
-        public int OrderId { get; set; }
+        public int Order_Id { get; set; }
         [Key, Column(Order = 1)]
-        public int EventId { get; set; }
+        public int Event_Id { get; set; }
 
         public int RecordAmount { get; set; }
         public string TicketType { get; set; }

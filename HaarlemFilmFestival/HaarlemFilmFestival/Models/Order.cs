@@ -15,7 +15,7 @@ namespace HaarlemFilmFestival.Models
 
         // Koppeling naar Klant
         public virtual Customer Customer { get; set; }
-        public int CustomerId { get; set; }
+        public int Customer_Id { get; set; }
 
         // Koppeling naar Orderregels
         public ICollection<OrderRecord> OrderRecords { get; set; }

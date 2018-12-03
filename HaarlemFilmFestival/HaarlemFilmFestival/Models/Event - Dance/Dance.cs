@@ -10,8 +10,8 @@ namespace HaarlemFilmFestival.Models
     [Table("Dance")]
     public class Dance : Event
     {
-        public int ThemeId { get; set; }
-        public int ArtistId { get; set; }
+        public int Theme_Id { get; set; }
+        public int Artist_Id { get; set; }
 
         //navigation properties
         public virtual Theme Theme { get; set; }
