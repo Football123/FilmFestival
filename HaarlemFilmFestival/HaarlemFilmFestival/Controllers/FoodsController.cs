@@ -112,6 +112,24 @@ namespace HaarlemFilmFestival.Controllers
             foodRepository.DeleteFood((int)id);
             return RedirectToAction("Index");
         }
-                
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult RegisterOrder(Food foodOrder)
+        {
+            Food food = new Food();
+            food.StartTime = foodOrder.StartTime;
+            food.Price = foodOrder.Price;
+           // food.RecordAmount = foodOrder.RecordAmount;
+            food.Discount = foodOrder.Discount;
+            food.Description = foodOrder.Description;
+
+            foodRepository.AddFood(food);
+        }
+
+
     }
 }
