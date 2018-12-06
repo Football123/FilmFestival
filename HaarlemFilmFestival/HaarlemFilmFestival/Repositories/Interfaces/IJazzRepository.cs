@@ -8,7 +8,8 @@ namespace HaarlemFilmFestival.Repositories
 {
     interface IJazzRepository
     {
-        IEnumerable<Jazz> GetAllJazz();
+        IEnumerable<Event> GetAllJazz();
+        IEnumerable<Jazz> GetJazzs();
         Jazz GetJazz(int jazzId);
         void AddJazz(Jazz jazz);
         void UpdateJazz(Jazz jazz);

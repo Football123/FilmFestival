@@ -22,7 +22,7 @@ namespace HaarlemFilmFestival.Controllers
 
             //Data van Events, Jazz en Locatie meegeven aan View
 
-            IEnumerable<Jazz> allJazzs = jazzRepository.GetAllJazz();
+            IEnumerable<Event> allJazzs = jazzRepository.GetAllJazz();
             return View(allJazzs);
         }
 
@@ -33,7 +33,7 @@ namespace HaarlemFilmFestival.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Jazz jazz = jazzRepository.GetJazz((int)id);
+            Jazz jazz = jazzRepository.GetJazz((int) id);
             if (jazz == null)
             {
                 return HttpNotFound();

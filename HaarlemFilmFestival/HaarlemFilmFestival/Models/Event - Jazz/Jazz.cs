@@ -6,7 +6,6 @@ using System.Web;
 
 namespace HaarlemFilmFestival.Models
 {
-    [Table("Jazz")]
     public class Jazz : Event
     {
         public Artist Band { get; set; }

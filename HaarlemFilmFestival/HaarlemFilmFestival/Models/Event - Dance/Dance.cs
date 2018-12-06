@@ -7,7 +7,6 @@ using System.Web;
 
 namespace HaarlemFilmFestival.Models
 {
-    [Table("Dance")]
     public class Dance : Event
     {
         public int Theme_Id { get; set; }

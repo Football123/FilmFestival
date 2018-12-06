@@ -1,7 +1,41 @@
-﻿
+﻿@model IEnumerable<HaarlemFilmFestival.Models.Jazz>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Tickets";
 }
+<div class="jumbotron">
+    <h1>TICKETS</h1>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Band)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartTime) - @Html.DisplayNameFor(model => model.EndTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
 
-<h2>Index</h2>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Band)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartTime) - @Html.DisplayFor(modelItem => item.EndTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Index", "Order", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
 

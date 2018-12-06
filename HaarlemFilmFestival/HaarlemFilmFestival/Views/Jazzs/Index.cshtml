@@ -27,7 +27,13 @@
     <table class="table">
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.StartTime) - @Html.DisplayNameFor(model => model.EndTime)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Band)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
             </th>
             <th></th>
         </tr>
@@ -36,10 +42,16 @@
         {
             <tr>
                 <td>
+                    @Html.DisplayFor(modelItem => item.StartTime) - @Html.DisplayFor(modelItem => item.EndTime)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.Band)
                 </td>
                 <td>
-                    @Html.ActionLink("Add to cart", "Index", "Tickets", new { id = item.Id })
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.ActionLink("Add to cart", "Index", "Order", new { id = item.Id })
                     @*"Add to cart", "Index", "Tickets", new { id = item.JazzId }*@
                 </td>
             </tr>
@@ -54,18 +66,8 @@
         <div class="row">
             <div class="col-md-4">
                 <h2>@Html.DisplayFor(modelItem => item.Band)</h2>
-                <p>The Gumbo Kings are a Dutch supergroup that combines the groove of New Orleans Funk with the grittiness of Delta Blues and the melodies of Memphis Soul.</p>
+                <p>@Html.DisplayFor(modelItem => item.Description)</p>
                 <img src="@Url.Content("~/Content/Images/u1063.png")" />
-            </div>
-            <div class="col-md-4">
-                <h2>@Html.DisplayFor(modelItem => item.Band)</h2>
-                <p>Gare du Nord has grown into a dazzling live band with the originally Italian singer Dorona Alberti as the shining center. Dorona is not only one of the best singers in the Netherlands; with her sexy live act she knows how to move everyone in the audience.</p>
-                <img src="@Url.Content("~/Content/Images/u1055-verkleindvoorwebsite.png")" />
-            </div>
-            <div class="col-md-4">
-                <h2>@Html.DisplayFor(modelItem => item.Band)</h2>
-                <p>He has performed throughout the US and worldwide and forged a clear identity as a composer, arranger, and bandleader to match his powerful saxophonic voice.&nbsp; His latest release, Beloved, is his second album for the Truth Revolution Recording Collective.&nbsp; In the company of his working band Allen calls upon the musical language of McLean, Lester Young, Charlie Parker, Sonny Rollins, John Coltrane and others.</p>
-                <img src="@Url.Content("~/Content/Images/u1070-verkleindvoorwebsite.png")" />
             </div>
         </div>
     }
