@@ -132,6 +132,7 @@
     <Compile Include="Controllers\DanceController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\FoodsController.cs" />
+    <Compile Include="Controllers\HistoricsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JazzsController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -175,6 +176,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\EventRepository.cs" />
     <Compile Include="Repositories\FoodRepository.cs" />
+    <Compile Include="Repositories\HistoricRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IHistoricRepository.cs" />
     <Compile Include="Repositories\Interfaces\IEventRepository.cs" />
     <Compile Include="Repositories\Interfaces\IFoodRepository.cs" />
     <Compile Include="Repositories\Interfaces\IJazzRepository.cs" />
@@ -258,6 +261,11 @@
     <Content Include="Views\Foods\Edit.cshtml" />
     <Content Include="Views\Foods\Index.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Historics\Create.cshtml" />
+    <Content Include="Views\Historics\Delete.cshtml" />
+    <Content Include="Views\Historics\Details.cshtml" />
+    <Content Include="Views\Historics\Edit.cshtml" />
+    <Content Include="Views\Historics\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
