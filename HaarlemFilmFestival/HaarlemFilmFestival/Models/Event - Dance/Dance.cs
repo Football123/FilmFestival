@@ -7,8 +7,10 @@ using System.Web;
 
 namespace HaarlemFilmFestival.Models
 {
+    [Table("Dances")]
     public class Dance : Event
     {
+        
         public int Theme_Id { get; set; }
         public int Artist_Id { get; set; }
 

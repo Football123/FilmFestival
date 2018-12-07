@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace HaarlemFilmFestival.Models
 {
+    [Table("Events")]
     public class Event
     {
         public int Id { get; set; }
@@ -16,6 +18,7 @@ namespace HaarlemFilmFestival.Models
         public string Description { get; set; }
 
         // Koppeling naar Locatie
+        [ForeignKey("Location_Id")]
         public int Location_Id { get; set; }
         public virtual Location Location { get; set; }
 

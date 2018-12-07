@@ -139,28 +139,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811291418156_AlmostFinal.cs" />
-    <Compile Include="Migrations\201811291418156_AlmostFinal.Designer.cs">
-      <DependentUpon>201811291418156_AlmostFinal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811291423021_AlmostFinal2.cs" />
-    <Compile Include="Migrations\201811291423021_AlmostFinal2.Designer.cs">
-      <DependentUpon>201811291423021_AlmostFinal2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811291426135_AlmostFinal3.cs" />
-    <Compile Include="Migrations\201811291426135_AlmostFinal3.Designer.cs">
-      <DependentUpon>201811291426135_AlmostFinal3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811291505419_AlmostFinal4.cs" />
-    <Compile Include="Migrations\201811291505419_AlmostFinal4.Designer.cs">
-      <DependentUpon>201811291505419_AlmostFinal4.cs</DependentUpon>
+    <Compile Include="Migrations\201812070956510_NewFinal.cs" />
+    <Compile Include="Migrations\201812070956510_NewFinal.Designer.cs">
+      <DependentUpon>201812070956510_NewFinal.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Artist.cs" />
     <Compile Include="Models\Event - Dance\Dance.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Event - Food\Food.cs" />
-    <Compile Include="Models\FoodRegisterOrder.cs" />
+    <Compile Include="Models\ViewModels\FoodRegisterOrder.cs" />
     <Compile Include="Models\HaarlemFilmFestivalContext.cs" />
     <Compile Include="Models\Event - Historic\Historic.cs" />
     <Compile Include="Models\Event - Jazz\Jazz.cs" />
@@ -276,17 +264,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201811291418156_AlmostFinal.resx">
-      <DependentUpon>201811291418156_AlmostFinal.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811291423021_AlmostFinal2.resx">
-      <DependentUpon>201811291423021_AlmostFinal2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811291426135_AlmostFinal3.resx">
-      <DependentUpon>201811291426135_AlmostFinal3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811291505419_AlmostFinal4.resx">
-      <DependentUpon>201811291505419_AlmostFinal4.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812070956510_NewFinal.resx">
+      <DependentUpon>201812070956510_NewFinal.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

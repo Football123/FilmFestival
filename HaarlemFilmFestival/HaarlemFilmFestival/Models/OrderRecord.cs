@@ -7,6 +7,7 @@ using System.Web;
 
 namespace HaarlemFilmFestival.Models
 {
+    [Table("OrderRecords")]
     public class OrderRecord
     {
         [Key, Column(Order = 0)]

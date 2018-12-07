@@ -6,6 +6,7 @@ using System.Web;
 
 namespace HaarlemFilmFestival.Models
 {
+    [Table("Historics")]
     public class Historic : Event
     {
         public Language Languages { get; set; } 
