@@ -72,11 +72,10 @@ namespace HaarlemFilmFestival.Migrations
                         Capacity = c.Int(),
                         Description = c.String(),
                         Location_Id = c.Int(nullable: false),
-                        Location_Id1 = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Locations", t => t.Location_Id1)
-                .Index(t => t.Location_Id1);
+                .ForeignKey("dbo.Locations", t => t.Location_Id)
+                .Index(t => t.Location_Id);
             
             CreateTable(
                 "dbo.Locations",
@@ -118,25 +117,23 @@ namespace HaarlemFilmFestival.Migrations
                         Paid = c.Boolean(nullable: false),
                         Code = c.Int(nullable: false),
                         Customer_Id = c.Int(nullable: false),
-                        Customer_Id1 = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Customers", t => t.Customer_Id1)
-                .Index(t => t.Customer_Id1);
+                .ForeignKey("dbo.Customers", t => t.Customer_Id)
+                .Index(t => t.Customer_Id);
             
             CreateTable(
-                "dbo.HistoriStops",
+                "dbo.HistoricStops",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
                         StopDescription = c.String(),
                         Location_Id = c.Int(nullable: false),
-                        Location_Id1 = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Locations", t => t.Location_Id1)
-                .Index(t => t.Location_Id1);
+                .ForeignKey("dbo.Locations", t => t.Location_Id)
+                .Index(t => t.Location_Id);
             
             CreateTable(
                 "dbo.ThemeArtists",
@@ -169,10 +166,8 @@ namespace HaarlemFilmFestival.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false),
-                        Artist_Id = c.Int(),
-                        Theme_Id = c.Int(),
-                        Theme_Id1 = c.Int(nullable: false),
-                        Artist_Id1 = c.Int(nullable: false),
+                        Artist_Id = c.Int(nullable: false),
+                        Theme_Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Events", t => t.Id)
@@ -188,7 +183,6 @@ namespace HaarlemFilmFestival.Migrations
                     {
                         Id = c.Int(nullable: false),
                         Restaurant_Id = c.Int(),
-                        Restaurant_Id1 = c.String(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Events", t => t.Id)
@@ -222,60 +216,57 @@ namespace HaarlemFilmFestival.Migrations
             
         }
         
-        public override void Down()
-        {
-            DropForeignKey("dbo.Jazzs", "Band_Id", "dbo.Artists");
-            DropForeignKey("dbo.Jazzs", "Id", "dbo.Events");
-            DropForeignKey("dbo.Historics", "Id", "dbo.Events");
-            DropForeignKey("dbo.Foods", "Restaurant_Id", "dbo.Restaurants");
-            DropForeignKey("dbo.Foods", "Id", "dbo.Events");
-            DropForeignKey("dbo.Dances", "Theme_Id", "dbo.Themes");
-            DropForeignKey("dbo.Dances", "Artist_Id", "dbo.Artists");
-            DropForeignKey("dbo.Dances", "Id", "dbo.Events");
-            DropForeignKey("dbo.HistoriStops", "Location_Id1", "dbo.Locations");
-            DropForeignKey("dbo.Themes", "Dance_Id", "dbo.Dances");
-            DropForeignKey("dbo.OrderRecords", "Order_Id", "dbo.Orders");
-            DropForeignKey("dbo.Orders", "Customer_Id1", "dbo.Customers");
-            DropForeignKey("dbo.OrderRecords", "Event_Id", "dbo.Events");
-            DropForeignKey("dbo.Events", "Location_Id1", "dbo.Locations");
-            DropForeignKey("dbo.RestaurantCuisines", "Cuisine_Id", "dbo.Cuisines");
-            DropForeignKey("dbo.RestaurantCuisines", "Restaurant_Id", "dbo.Restaurants");
-            DropForeignKey("dbo.ThemeArtists", "Artist_Id", "dbo.Artists");
-            DropForeignKey("dbo.ThemeArtists", "Theme_Id", "dbo.Themes");
-            DropIndex("dbo.Jazzs", new[] { "Band_Id" });
-            DropIndex("dbo.Jazzs", new[] { "Id" });
-            DropIndex("dbo.Historics", new[] { "Id" });
-            DropIndex("dbo.Foods", new[] { "Restaurant_Id" });
-            DropIndex("dbo.Foods", new[] { "Id" });
-            DropIndex("dbo.Dances", new[] { "Theme_Id" });
-            DropIndex("dbo.Dances", new[] { "Artist_Id" });
-            DropIndex("dbo.Dances", new[] { "Id" });
-            DropIndex("dbo.RestaurantCuisines", new[] { "Cuisine_Id" });
-            DropIndex("dbo.RestaurantCuisines", new[] { "Restaurant_Id" });
-            DropIndex("dbo.ThemeArtists", new[] { "Artist_Id" });
-            DropIndex("dbo.ThemeArtists", new[] { "Theme_Id" });
-            DropIndex("dbo.HistoriStops", new[] { "Location_Id1" });
-            DropIndex("dbo.Orders", new[] { "Customer_Id1" });
-            DropIndex("dbo.OrderRecords", new[] { "Event_Id" });
-            DropIndex("dbo.OrderRecords", new[] { "Order_Id" });
-            DropIndex("dbo.Events", new[] { "Location_Id1" });
-            DropIndex("dbo.Themes", new[] { "Dance_Id" });
-            DropTable("dbo.Jazzs");
-            DropTable("dbo.Historics");
-            DropTable("dbo.Foods");
-            DropTable("dbo.Dances");
-            DropTable("dbo.RestaurantCuisines");
-            DropTable("dbo.ThemeArtists");
-            DropTable("dbo.HistoriStops");
-            DropTable("dbo.Orders");
-            DropTable("dbo.OrderRecords");
-            DropTable("dbo.Locations");
-            DropTable("dbo.Events");
-            DropTable("dbo.Customers");
-            DropTable("dbo.Restaurants");
-            DropTable("dbo.Cuisines");
-            DropTable("dbo.Themes");
-            DropTable("dbo.Artists");
-        }
+        //public override void Down()
+        //{
+        //    DropForeignKey("dbo.Jazzs", "Band_Id", "dbo.Artists");
+        //    DropForeignKey("dbo.Jazzs", "Id", "dbo.Events");
+        //    DropForeignKey("dbo.Historics", "Id", "dbo.Events");
+        //    DropForeignKey("dbo.Foods", "Restaurant_Id", "dbo.Restaurants");
+        //    DropForeignKey("dbo.Foods", "Id", "dbo.Events");
+        //    DropForeignKey("dbo.Dances", "Theme_Id", "dbo.Themes");
+        //    DropForeignKey("dbo.Dances", "Artist_Id", "dbo.Artists");
+        //    DropForeignKey("dbo.Dances", "Id", "dbo.Events");
+        //    DropForeignKey("dbo.HistoriStops", "Location_Id", "dbo.Locations");
+        //    DropForeignKey("dbo.Themes", "Dance_Id", "dbo.Dances");
+        //    DropForeignKey("dbo.OrderRecords", "Order_Id", "dbo.Orders");
+        //    DropForeignKey("dbo.Orders", "Customer_Id", "dbo.Customers");
+        //    DropForeignKey("dbo.OrderRecords", "Event_Id", "dbo.Events");
+        //    DropForeignKey("dbo.Events", "Location_Id", "dbo.Locations");
+        //    DropForeignKey("dbo.RestaurantCuisines", "Cuisine_Id", "dbo.Cuisines");
+        //    DropForeignKey("dbo.RestaurantCuisines", "Restaurant_Id", "dbo.Restaurants");
+        //    DropForeignKey("dbo.ThemeArtists", "Artist_Id", "dbo.Artists");
+        //    DropForeignKey("dbo.ThemeArtists", "Theme_Id", "dbo.Themes");
+        //    DropIndex("dbo.Jazzs", new[] { "Band_Id" });
+        //    DropIndex("dbo.Jazzs", new[] { "Id" });
+        //    DropIndex("dbo.Historics", new[] { "Id" });
+        //    DropIndex("dbo.Foods", new[] { "Restaurant_Id" });
+        //    DropIndex("dbo.Foods", new[] { "Id" });
+        //    DropIndex("dbo.Dances", new[] { "Theme_Id" });
+        //    DropIndex("dbo.Dances", new[] { "Artist_Id" });
+        //    DropIndex("dbo.Dances", new[] { "Id" });
+        //    DropIndex("dbo.RestaurantCuisines", new[] { "Cuisine_Id" });
+        //    DropIndex("dbo.RestaurantCuisines", new[] { "Restaurant_Id" });
+        //    DropIndex("dbo.ThemeArtists", new[] { "Artist_Id" });
+        //    DropIndex("dbo.ThemeArtists", new[] { "Theme_Id" });
+        //    DropIndex("dbo.OrderRecords", new[] { "Event_Id" });
+        //    DropIndex("dbo.OrderRecords", new[] { "Order_Id" });
+        //    DropIndex("dbo.Themes", new[] { "Dance_Id" });
+        //    DropTable("dbo.Jazzs");
+        //    DropTable("dbo.Historics");
+        //    DropTable("dbo.Foods");
+        //    DropTable("dbo.Dances");
+        //    DropTable("dbo.RestaurantCuisines");
+        //    DropTable("dbo.ThemeArtists");
+        //    DropTable("dbo.HistoriStops");
+        //    DropTable("dbo.Orders");
+        //    DropTable("dbo.OrderRecords");
+        //    DropTable("dbo.Locations");
+        //    DropTable("dbo.Events");
+        //    DropTable("dbo.Customers");
+        //    DropTable("dbo.Restaurants");
+        //    DropTable("dbo.Cuisines");
+        //    DropTable("dbo.Themes");
+        //    DropTable("dbo.Artists");
+        //}
     }
 }

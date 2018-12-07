@@ -7,7 +7,7 @@ using System.Web;
 
 namespace HaarlemFilmFestival.Models
 {
-    [Table("HistoriStops")]
+    [Table("HistoricStops")]
     public class HistoricStop
     {
         [Key]
@@ -16,7 +16,9 @@ namespace HaarlemFilmFestival.Models
         public string StopDescription { get; set; }
 
         // Koppeling naar Locatie
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Location_Id { get; set; }
+        [ForeignKey("Location_Id")]
         public virtual Location Location { get; set; }
     }
 }

@@ -18,8 +18,10 @@ namespace HaarlemFilmFestival.Models
         public string Description { get; set; }
 
         // Koppeling naar Locatie
-        [ForeignKey("Location_Id")]
+       
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Location_Id { get; set; }
+        [ForeignKey("Location_Id")]
         public virtual Location Location { get; set; }
 
         // Koppeling naar Orderregel
