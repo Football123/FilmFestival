@@ -20,6 +20,8 @@ namespace HaarlemFilmFestival.Models
 
         public HaarlemFilmFestivalContext() : base("name=HaarlemFilmFestivalContext")
         {
+            this.Configuration.LazyLoadingEnabled = true;
+            this.Configuration.ProxyCreationEnabled = true;
         }
 
         public static HaarlemFilmFestivalContext getInstance()
@@ -30,21 +32,21 @@ namespace HaarlemFilmFestival.Models
             }
             return uniqueInstance;
         }
-
-        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Event> Events { get; set; }
-        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Jazz> Jazzs { get; set; }
-        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Food> Foods { get; set; }
-        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Dance> Dances { get; set; }
-        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.OrderRecord> OrderRecords { get; set; }
-        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Order> Orders { get; set; }
-        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Customer> Customers { get; set; }
-        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.HistoricStop> HistoricStops { get; set; }
-        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Artist> Artists { get; set; }
-        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Cuisine> Cuisines { get; set; }
-        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Historic> Historics { get; set; }
-        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Location> Locations { get; set; }
-        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Restaurant> Restaurants { get; set; }
-        public System.Data.Entity.DbSet<HaarlemFilmFestival.Models.Theme> Themes { get; set; }
+        
+        public DbSet<Event> Events { get; set; }
+        public DbSet<Food> Foods { get; set; }
+        public DbSet<Restaurant> Restaurants { get; set; }
+        public DbSet<Cuisine> Cuisines { get; set; }
+        public DbSet<Location> Locations { get; set; }
+        public DbSet<Historic> Historics { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<HistoricStop> HistoricStops { get; set; }
+        public DbSet<OrderRecord> OrderRecords { get; set; }
+        public DbSet<Jazz> Jazzs { get; set; }
+        public DbSet<Artist> Artists { get; set; }
+        public DbSet<Theme> Themes { get; set; }
+        public DbSet<Dance> Dances { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

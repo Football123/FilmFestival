@@ -143,6 +143,10 @@
     <Compile Include="Migrations\201812070956510_NewFinal.Designer.cs">
       <DependentUpon>201812070956510_NewFinal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812071100166_trytowork.cs" />
+    <Compile Include="Migrations\201812071100166_trytowork.Designer.cs">
+      <DependentUpon>201812071100166_trytowork.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Artist.cs" />
     <Compile Include="Models\Event - Dance\Dance.cs" />
@@ -266,6 +270,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201812070956510_NewFinal.resx">
       <DependentUpon>201812070956510_NewFinal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812071100166_trytowork.resx">
+      <DependentUpon>201812071100166_trytowork.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
