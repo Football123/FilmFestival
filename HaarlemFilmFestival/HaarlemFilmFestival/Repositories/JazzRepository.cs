@@ -29,15 +29,12 @@ namespace HaarlemFilmFestival.Repositories
             IEnumerable<Jazz> Jazzs = GetJazzs();
             foreach (Jazz jazz in Jazzs)
             {
-                Event jazzevent = db.Events.Find(jazz.Id);
+                Event jazzevent = db.Events.Where(je => je.Id == jazz.Id).Include("Location").FirstOrDefault();
                 JazzEvents.Add(jazzevent);
             }
             return JazzEvents;
-
-            //IEnumerable<Jazz> jazzs = db.Events.Where(jazzs => jazzs.Id == jazzId).SingleOrDefault();
-            //return jazzs;
         }
-
+        
         public Jazz GetJazz(int jazzId)
         {
             Jazz jazz = db.Jazzs.Find(jazzId);
@@ -47,7 +44,7 @@ namespace HaarlemFilmFestival.Repositories
         public IEnumerable<Jazz> GetJazzs()
         {
             IEnumerable<Jazz> jazzs = db.Jazzs;
-            return jazzs;      
+            return jazzs;
         }
 
         public void UpdateJazz(Jazz jazz)

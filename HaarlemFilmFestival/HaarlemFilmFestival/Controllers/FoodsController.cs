@@ -128,6 +128,7 @@ namespace HaarlemFilmFestival.Controllers
             food.Description = foodOrder.Description;
 
             foodRepository.AddFood(food);
+            return View();
         }
 
 
