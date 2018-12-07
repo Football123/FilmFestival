@@ -139,6 +139,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812070956510_NewFinal.cs" />
+    <Compile Include="Migrations\201812070956510_NewFinal.Designer.cs">
+      <DependentUpon>201812070956510_NewFinal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812071100166_trytowork.cs" />
+    <Compile Include="Migrations\201812071100166_trytowork.Designer.cs">
+      <DependentUpon>201812071100166_trytowork.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Artist.cs" />
     <Compile Include="Models\Event - Dance\Dance.cs" />
@@ -258,6 +266,14 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201812070956510_NewFinal.resx">
+      <DependentUpon>201812070956510_NewFinal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812071100166_trytowork.resx">
+      <DependentUpon>201812071100166_trytowork.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
