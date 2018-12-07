@@ -9,7 +9,8 @@ namespace HaarlemFilmFestival.Repositories
 {
     interface IFoodRepository
     {
-        IEnumerable<Food> GetAllFood();
+        IEnumerable<Event> GetAllFood();
+        IEnumerable<Food> GetFoods();
         Food GetFood(int foodId);
         void AddFood(Food food);
         void UpdateFood(Food food);

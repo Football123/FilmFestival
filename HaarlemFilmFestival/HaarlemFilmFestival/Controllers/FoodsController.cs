@@ -18,7 +18,7 @@ namespace HaarlemFilmFestival.Controllers
         // GET: Foods
         public ActionResult Index()
         {
-            IEnumerable<Food> allFoods = foodRepository.GetAllFood();
+            IEnumerable<Event> allFoods = foodRepository.GetAllFood();
             return View(allFoods);
         }
 

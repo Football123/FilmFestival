@@ -148,7 +148,7 @@
     <Compile Include="Models\Event - Dance\Dance.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Event - Food\Food.cs" />
-    <Compile Include="Models\ViewModels\FoodRegisterOrder.cs" />
+    <Compile Include="Models\ViewModels\FoodViewModel.cs" />
     <Compile Include="Models\HaarlemFilmFestivalContext.cs" />
     <Compile Include="Models\Event - Historic\Historic.cs" />
     <Compile Include="Models\Event - Jazz\Jazz.cs" />

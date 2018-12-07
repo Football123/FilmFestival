@@ -34,13 +34,13 @@
             @Html.DisplayNameFor(model => model.Restaurant)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Prijs_Adult)
+            @Html.DisplayNameFor(model => model.Price)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Prijs_Child)
+            @Html.DisplayNameFor(model => model.Discount)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Type)
+           
         </th>
         <th>
             <p><strong>Order a ticket</strong></p>
@@ -53,13 +53,13 @@
                 @Html.DisplayFor(modelItem => item.Restaurant)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Prijs_Adult)
+                @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Prijs_Child)
+                @Html.DisplayFor(modelItem => item.Discount)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Type)
+                
             </td>
             <td>
                 @Html.ActionLink("Add to cart", "Index", "Tickets")
