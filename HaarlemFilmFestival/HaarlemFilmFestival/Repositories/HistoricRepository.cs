@@ -11,27 +11,20 @@ namespace HaarlemFilmFestival.Repositories
     {
         private HaarlemFilmFestivalContext database = HaarlemFilmFestivalContext.getInstance();
 
-        public IEnumerable<Event> GetHistoricEvents()
-        {
-            List<Event> historicEvents = new List<Event>();
-            IEnumerable<Historic> historics = GetHistorics();
-            foreach (Historic historic in historics)
-            {
-                Event historicEvent = database.Events.Where(he => he.Id == historic.Id).Include("Location").FirstOrDefault();
-                historicEvents.Add(historicEvent);
-            }
-            return historicEvents;
-        }
-
-        public IEnumerable<Historic> GetHistorics()
+        public IEnumerable<Historic> GetHistoricEvents()
         {
             IEnumerable<Historic> historics = database.Historics;
             return historics;
         }
-
+        
         public IEnumerable<OrderRecord> GetOrderedEvents()
         {
-            throw new NotImplementedException();
+            IEnumerable<OrderRecord> ordered = database.OrderRecords.ToList();
+            foreach (OrderRecord order in ordered)
+            {
+                Console.WriteLine(order.Event.Id);
+            }
+            return ordered;
         }
 
         public IEnumerable<HistoricStop> GetStops()

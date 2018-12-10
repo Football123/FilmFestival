@@ -14,7 +14,7 @@ namespace HaarlemFilmFestival.Models
         public HistoricViewModel()
         {
             this.Stops = historicrepository.GetStops();
-            this.Historics = historicrepository.GetHistorics();
+            this.Historics = historicrepository.GetHistoricEvents();
             this.eventsLeft = AvailbleEvents();
             this.historicsLeft = getHistoricsLeft();
             this.days = getDays();
@@ -44,13 +44,9 @@ namespace HaarlemFilmFestival.Models
             {
                 int Count = 0;
                 foreach (OrderRecord orderrecord in ordered)
-                {
                     Count = Count + orderrecord.RecordAmount;
-                }
                 if (Count < Event.Capacity)
-                {
                     Events.Add(Event);
-                }
             }
             return Events;
         }
@@ -61,9 +57,7 @@ namespace HaarlemFilmFestival.Models
             foreach (Historic historic in historicsLeft)
             {
                 if (!languages.Contains(historic.Languages))
-                {
                     languages.Add(historic.Languages);
-                }
             }
             return languages;
         }
@@ -75,9 +69,7 @@ namespace HaarlemFilmFestival.Models
             foreach (Event Event in eventsLeft)
             {
                 if (!time.Any(d => d.Hour == Event.StartTime.Hour))
-                {
                     time.Add(Event.StartTime);
-                }
 
             }
             return time;
@@ -89,9 +81,7 @@ namespace HaarlemFilmFestival.Models
             foreach (Event Event in eventsLeft)
             {
                 if (!date.Any(d => d.Day == Event.StartTime.Day))
-                {
                     date.Add(Event.StartTime);
-                }
             }
             return date;
         }
