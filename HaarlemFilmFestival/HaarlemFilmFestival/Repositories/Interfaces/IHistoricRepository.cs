@@ -11,7 +11,7 @@ namespace HaarlemFilmFestival.Repositories
     interface IHistoricRepository
     {
         IEnumerable<HistoricStop> GetStops();
-        IEnumerable<Historic> GetHistorics();
+        IEnumerable<Historic> GetHistoricEvents();
         IEnumerable<OrderRecord> GetOrderedEvents();
     }
 }

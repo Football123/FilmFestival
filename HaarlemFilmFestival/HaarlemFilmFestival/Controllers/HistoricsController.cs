@@ -13,12 +13,12 @@ namespace HaarlemFilmFestival.Controllers
 {
     public class HistoricsController : Controller
     {
+        private HistoricViewModel viewmodel = new HistoricViewModel();
         private IHistoricRepository historicrepository = new HistoricRepository();
         
         public ActionResult Index()
         {
-            //return View(db.Events.ToList());
-            return View();
+            return View(viewmodel);
         }
 
         [HttpPost]
