@@ -178,6 +178,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Dance.css" />
+    <Content Include="Content\Historic.css" />
     <Content Include="Content\Images\bg.png" />
     <Content Include="Content\Images\u1055-verkleindvoorwebsite.png" />
     <Content Include="Content\Images\u1063.png" />
@@ -254,6 +255,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\HistoricStops\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
