@@ -3,14 +3,24 @@
 }
 
 body {
+    
+    background-image: url(/Content/Images/bg.png);
+    background-color: deeppink;
+    background-size: cover;
+    background-attachment: fixed;
     padding-top: 50px;
     padding-bottom: 20px;
+    margin: 20px;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+}
+
+.container body-content {
+    width: 970px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -84,6 +94,9 @@ textarea {
 
 .col-md-6{
     border-color: black;
+}
+.col-md-6 .Foods {
+    background-color : "cornflowerblue";
 }
 
 /* Jazz-pagina */

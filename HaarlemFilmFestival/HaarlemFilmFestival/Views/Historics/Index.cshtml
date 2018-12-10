@@ -1,83 +1,22 @@
-﻿@model IEnumerable<HaarlemFilmFestival.Models.Historic>
-
+﻿@model IEnumerable<HaarlemFilmFestival.Models.HistoricViewModel>
 @{
-    Layout = null;
+    ViewBag.Title = "Historic";
 }
 
-<!DOCTYPE html>
+<link href="@Url.Content("~/Content/Historic.css")" rel="stylesheet" type="text/css" />
+<div class="jumbotron">
+    <h1 class="historic-title">Visit Haarlem Historic</h1>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.StartTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EndTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Discount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Capacity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Location_Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Languages)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Discount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Capacity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location_Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Languages)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-            </td>
-        </tr>
-    }
-    
-    </table>
-</body>
-</html>
+    <div class="HistoricInfo">
+        Haarlem Historic will be offered as a
+        guided tour through Haarlem, visiting historic and important places in its history. <br />
+        Duration of this walking tour will be approx. 2,5 hours (with a 15 -minutebreak with refreshments).
+        Tours will be held on Thursday, Friday and Saturday.  There will be several departures a day.
+        The tour starts near of the ‘Churchof St.Bavo’,‘Grote Markt’ in the centre of Haarlem. A giant flag marked
+        ‘Haarlem Historic’ will mark the exact starting location.
+    </div>
+</div>
+
+<h1 class="paragraph-title">Tickets</h1>
+
+<h1 class="paragraph-title">Locations</h1>

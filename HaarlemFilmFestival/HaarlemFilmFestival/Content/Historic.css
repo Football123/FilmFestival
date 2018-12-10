@@ -1,0 +1,28 @@
+﻿body {
+}
+
+.container{
+    margin-top: 100px;
+}
+
+.container .jumbotron{
+    margin-top: 45px;
+}
+
+h1 .historic-title{
+    margin-top: 100px;
+    font-family: 'Bahnschrift SemiLight', 'Bahnschrift Regular', 'Bahnschrift';
+    font-weight: 350;
+    font-style: normal;
+    font-size: 48px;
+    text-align: left;
+    text-align: center;
+}
+
+.HistoricInfo {
+    font-family: 'Bahnschrift SemiLight', 'Bahnschrift';
+    font-weight: 350;
+    font-style: normal;
+    font-size: 20px;
+    text-align: center;
+}

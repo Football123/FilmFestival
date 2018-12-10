@@ -20,6 +20,7 @@ namespace HaarlemFilmFestival.Models
 
         public HaarlemFilmFestivalContext() : base("name=HaarlemFilmFestivalContext")
         {
+            Database.SetInitializer<HaarlemFilmFestivalContext>(null);
             this.Configuration.LazyLoadingEnabled = true;
             this.Configuration.ProxyCreationEnabled = true;
         }

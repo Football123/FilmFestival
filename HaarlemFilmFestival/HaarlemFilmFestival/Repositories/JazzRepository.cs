@@ -25,14 +25,14 @@ namespace HaarlemFilmFestival.Repositories
 
         public IEnumerable<Event> GetAllJazz()
         {
-            List<Event> JazzEvents = new List<Event>();
+          //  List<Event> JazzEvents = new List<Event>();
             IEnumerable<Jazz> Jazzs = GetJazzs();
-            foreach (Jazz jazz in Jazzs)
-            {
-                Event jazzevent = db.Events.Where(je => je.Id == jazz.Id).Include("Location").FirstOrDefault();
-                JazzEvents.Add(jazzevent);
-            }
-            return JazzEvents;
+          //  foreach (Jazz jazz in Jazzs)
+          //  {
+          //      Event jazzevent = db.Events.Where(je => je.Id == jazz.Id).Include("Location").FirstOrDefault();
+          //      JazzEvents.Add(jazzevent);
+          //  }
+            return Jazzs;
         }
         
         public Jazz GetJazz(int jazzId)
