@@ -8,22 +8,19 @@ using System.Web;
 using System.Web.Mvc;
 using HaarlemFilmFestival.Models;
 using HaarlemFilmFestival.Repositories;
+using HaarlemFilmFestival.ViewModels;
 
 namespace HaarlemFilmFestival.Controllers
 {
     public class JazzsController : Controller
     {
+        private JazzViewModel viewmodel = new JazzViewModel();
         private IJazzRepository jazzRepository = new JazzRepository();
 
         // GET: Jazzs
         public ActionResult Index()
         {
-            //Data van Events en Locatie ophalen
-
-            //Data van Events, Jazz en Locatie meegeven aan View
-
-            IEnumerable<Event> allJazzs = jazzRepository.GetAllJazz();
-            return View(allJazzs);
+            return View(viewmodel);
         }
 
         // GET: Jazzs/Details/5

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<HaarlemFilmFestival.Models.Jazz>
+﻿@model IEnumerable<HaarlemFilmFestival.ViewModels.JazzViewModel>
 
 @{
     ViewBag.Title = "Jazz";
@@ -30,13 +30,13 @@
                 @Html.DisplayNameFor(model => model.StartTime) - @Html.DisplayNameFor(model => model.EndTime)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.Name)*@
+                @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                @Html.DisplayNameFor(model => model.LocationDescription)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Band)
+                @Html.DisplayNameFor(model => model.NameOfBand)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Price)
@@ -51,19 +51,19 @@
                     @Html.DisplayFor(modelItem => item.StartTime) - @Html.DisplayFor(modelItem => item.EndTime)
                 </td>
                 <td>
-                    @*@Html.DisplayFor(modelItem => item.Name)*@
+                    @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Description)
+                    @Html.DisplayFor(modelItem => item.LocationDescription)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Band)
+                    @Html.DisplayFor(modelItem => item.NameOfBand)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 <td>
-                    @Html.ActionLink("Add to cart", "Index", "Order", new { id = item.Id })
+                    @Html.ActionLink("Add to cart", "Index", "Order")
                     @*"Add to cart", "Index", "Tickets", new { id = item.JazzId }*@
                 </td>
             </tr>
@@ -77,8 +77,8 @@
     {
         <div class="row">
             <div class="col-md-4">
-                <h2>@Html.DisplayFor(modelItem => item.Band)</h2>
-                <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                <h2>@Html.DisplayFor(modelItem => item.NameOfBand)</h2>
+                <p>@Html.DisplayFor(modelItem => item.ArtistDescription)</p>
                 <img src="@Url.Content("~/Content/Images/u1063.png")" />
             </div>
         </div>
