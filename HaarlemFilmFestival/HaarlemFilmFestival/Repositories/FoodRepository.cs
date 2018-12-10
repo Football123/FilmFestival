@@ -10,10 +10,17 @@ namespace HaarlemFilmFestival.Repositories
     public class FoodRepository : IFoodRepository
     {
         private HaarlemFilmFestivalContext db = new HaarlemFilmFestivalContext();
+        
         public void AddFood(Food food)
         {
             db.Foods.Add(food);
             db.SaveChanges();
+        }
+
+        public IEnumerable<Restaurant> GetRestaurants()
+        {
+            IEnumerable<Restaurant> Restaurants = db.Restaurants;
+            return Restaurants;
         }
 
         public void DeleteFood(int foodId)
@@ -24,15 +31,9 @@ namespace HaarlemFilmFestival.Repositories
         }
 
         public IEnumerable<Event> GetAllFood()
-        {
-            List<Event> FoodEvents = new List<Event>();
-            IEnumerable<Food> Foods = GetFoods();
-            foreach(Food food in Foods)
-            {
-                Event foodevent = db.Events.Where(fe => fe.Id == food.Id).Include("Location").FirstOrDefault();
-                FoodEvents.Add(foodevent);
-            }
-            return FoodEvents;
+        {           
+            IEnumerable<Food> Foods = GetFoods();           
+            return Foods;
         }
 
         public Food GetFood(int foodId)

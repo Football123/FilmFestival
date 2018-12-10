@@ -1,4 +1,6 @@
-﻿@model IEnumerable<HaarlemFilmFestival.Models.Food>
+﻿@using HaarlemFilmFestival.Models;
+@using HaarlemFilmFestival.ViewModels;
+    @model FoodViewModel
 @{
     ViewBag.Title = "Food";
 }
@@ -31,7 +33,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Restaurant)
+            @Html.DisplayNameFor(model => model.Restaurants)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Price)
@@ -46,7 +48,7 @@
             <p><strong>Order a ticket</strong></p>
         </th>
     </tr>
-    @foreach (var item in Model)
+    @foreach (var item in Model.Foods)
     {
         <tr>
             <td>
@@ -57,10 +59,7 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Discount)
-            </td>
-            <td>
-                
-            </td>
+            </td>            
             <td>
                 @Html.ActionLink("Add to cart", "Index", "Tickets")
             </td>
@@ -71,48 +70,9 @@
 <p>** When ordering a ticket there will be an option to inform the restaurant for special requests regarding the food or service (allergies, wheelchair etc.)</p>
 <br />
 <h1>Restaurants</h1>
-@foreach (var item in Model)
+@foreach (var item in Model.Restaurants)
 {
-<div class="row">
-    <div class="col-md-4">
-        <h2>@Html.DisplayFor(modelItem => item.Restaurant)</h2>
-        <p>"Exceptional food, magical wine matches, with a friendly team in a cosy room."</p>
-        <img src="@Url.Content("~/Content/Images/u553aangepast.png")" />
-    </div>
-    <div class="col-md-4">
-        <h2>@Html.DisplayFor(modelItem => item.Restaurant)</h2>
-        <p>"Great atmosphere and excellent service, just a shame about the food."</p>
-        <img src="@Url.Content("~/Content/Images/u455aangepast.png")" />
-    </div>
-    <div class="col-md-4">
-        <h2>@Html.DisplayFor(modelItem => item.Restaurant)</h2>
-        <p>"Lovely food and perfect service."</p>
-        <img src="@Url.Content("~/Content/Images/u472aangepast.png")" />
-    </div>
-    <div class="col-md-4">
-        <h2>@Html.DisplayFor(modelItem => item.Restaurant)</h2>
-        <p>"Super tasty high end food"</p>
-        <img src="@Url.Content("~/Content/Images/u488aangepast.png")" />
-    </div>
-    <div class="col-md-4">
-        <h2>@Html.DisplayFor(modelItem => item.Restaurant)</h2>
-        <p>"Perfect restaurant to eat something spectacular in a wonderful atmosphere."</p>
-        <img src="@Url.Content("~/Content/Images/u503aangepast.png")" />
-    </div>
-    <div class="col-md-4">
-        <h2>@Html.DisplayFor(modelItem => item.Restaurant)</h2>
-        <p>"Very nice staff and tasty starter mozzarella with tomatoes"</p>
-        <img src="@Url.Content("~/Content/Images/u518aangepast.png")" />
-    </div>
-    <div class="col-md-4">
-        <h2>@Html.DisplayFor(modelItem => item.Restaurant)</h2>
-        <p>"Service is nice, we ordered the steak the quality is good"</p>
-        <img src="@Url.Content("~/Content/Images/u533aangepast.png")" />
-    </div>
-    <div class="col-md-4">
-        <h2>@Html.DisplayFor(modelItem => item.Restaurant)</h2>
-        <p>"Good, French inspired food in a modern, if a bit dark, setting."</p>
-        <img src="@Url.Content("~/Content/Images/u548aangepast.png")" />
-    </div>
-</div>
+    <h2>@Html.DisplayNameFor(modelitem => item.RestaurantName)</h2>
+   // <p>@Html.DisplayTextFor(modelitem => item.Cuisines</p>
+}
 }
