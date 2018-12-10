@@ -11,7 +11,6 @@ namespace HaarlemFilmFestival.Controllers
     {
         public ActionResult Index()
         {
-
             return View();
         }
 
