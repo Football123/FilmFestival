@@ -182,6 +182,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Dance.css" />
+    <Content Include="Content\Historic.css" />
     <Content Include="Content\Images\bg.png" />
     <Content Include="Content\Images\u1055-verkleindvoorwebsite.png" />
     <Content Include="Content\Images\u1063.png" />
