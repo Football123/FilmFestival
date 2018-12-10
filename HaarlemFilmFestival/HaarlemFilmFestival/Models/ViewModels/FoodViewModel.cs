@@ -6,7 +6,7 @@ using System.Web;
 
 namespace HaarlemFilmFestival.Models
 {
-    public class FoodRegisterOrder
+    public class FoodViewModel
     {
         [Required] public Event Event { get; set; }
         [Required] public DateTime StartTime { get; set; }

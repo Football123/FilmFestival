@@ -23,16 +23,28 @@ namespace HaarlemFilmFestival.Repositories
             db.SaveChanges();
         }
 
-        public IEnumerable<Food> GetAllFood()
+        public IEnumerable<Event> GetAllFood()
         {
-            IEnumerable<Food> foods = db.Foods;
-            return foods;
+            List<Event> FoodEvents = new List<Event>();
+            IEnumerable<Food> Foods = GetFoods();
+            foreach(Food food in Foods)
+            {
+                Event foodevent = db.Events.Where(fe => fe.Id == food.Id).Include("Location").FirstOrDefault();
+                FoodEvents.Add(foodevent);
+            }
+            return FoodEvents;
         }
 
         public Food GetFood(int foodId)
         {
             Food food = db.Foods.Find(foodId);
             return food;
+        }
+
+        public IEnumerable<Food> GetFoods()
+        {
+            IEnumerable<Food> foods = db.Foods;
+            return foods;
         }
 
         public void UpdateFood(Food food)

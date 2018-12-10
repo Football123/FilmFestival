@@ -139,10 +139,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201812070956510_NewFinal.cs" />
-    <Compile Include="Migrations\201812070956510_NewFinal.Designer.cs">
-      <DependentUpon>201812070956510_NewFinal.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201812071100166_trytowork.cs" />
     <Compile Include="Migrations\201812071100166_trytowork.Designer.cs">
       <DependentUpon>201812071100166_trytowork.cs</DependentUpon>
@@ -152,7 +148,7 @@
     <Compile Include="Models\Event - Dance\Dance.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Event - Food\Food.cs" />
-    <Compile Include="Models\ViewModels\FoodRegisterOrder.cs" />
+    <Compile Include="Models\ViewModels\FoodViewModel.cs" />
     <Compile Include="Models\HaarlemFilmFestivalContext.cs" />
     <Compile Include="Models\Event - Historic\Historic.cs" />
     <Compile Include="Models\Event - Jazz\Jazz.cs" />
@@ -269,9 +265,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201812070956510_NewFinal.resx">
-      <DependentUpon>201812070956510_NewFinal.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812071100166_trytowork.resx">
       <DependentUpon>201812071100166_trytowork.cs</DependentUpon>
     </EmbeddedResource>
