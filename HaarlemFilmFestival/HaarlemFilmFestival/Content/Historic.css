@@ -1,8 +1,8 @@
 ﻿body {
+    margin: 50px;
 }
 
 .container {
-    margin-top: 100px;
 }
 
     .container .jumbotron {
@@ -32,4 +32,18 @@ h1 .historic-title {
     font-weight: 700;
     font-style: normal;
     font-size: 48px;
+}
+
+ol .list-stops {
+    border-style: solid;
+    border-color: rgba(68, 217, 201, 1);
+    align-content: center;
+}
+
+ol li .historic-stop-list {
+    font-family: 'Bahnschrift SemiLight', 'Bahnschrift';
+    font-weight: 350;
+    font-style: normal;
+    font-size: 24px;
+    text-align: center;
 }

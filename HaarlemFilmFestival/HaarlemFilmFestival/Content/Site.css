@@ -3,7 +3,6 @@
 }
 
 body {
-    
     background-image: url(/Content/Images/bg.png);
     background-color: deeppink;
     background-size: cover;
@@ -68,7 +67,9 @@ textarea {
 }
 
 .container{
-    margin-top: 45px;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 /* Content */

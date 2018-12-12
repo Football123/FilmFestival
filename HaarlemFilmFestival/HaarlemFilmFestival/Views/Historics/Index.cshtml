@@ -18,30 +18,30 @@
         The tour starts near of the ‘Churchof St.Bavo’,‘Grote Markt’ in the centre of Haarlem. A giant flag marked
         ‘Haarlem Historic’ will mark the exact starting location.
     </div>
-</div>
 
-<h1 class="paragraph-title">Tickets</h1>
 
-<h1 class="paragraph-title">Locations</h1>
+    <h1 class="paragraph-title">Tickets</h1>
 
-@{ 
-    foreach (HistoricStop stop in Model.Stops)
-    {
-        <div class="historic-stop-list">
-            <ol>@stop.Name</ol>
-        </div>
-    }
-}
+    <h1 class="paragraph-title">Locations</h1>
 
-@{
-    foreach (HistoricStop stop in Model.Stops)
-    {
-        <div class="historic-stop" id="@stop.Name">
-            <h3 class="stop-title">@stop.Id @stop.Name</h3>
-            <img src=~/Content/Images/HistoricStops/"@stop.Name".jpg alt="Stop image" />
-            <div class="info">
-                <p class="desc">@stop.StopDescription</p>
+    <ol class="list-stops">
+        @{
+            foreach (HistoricStop stop in Model.Stops)
+            {
+                <li class="historic-stop-list">@stop.Name</li>
+            }
+        }
+    </ol>
+    @{
+        foreach (HistoricStop stop in Model.Stops)
+        {
+            <div class="historic-stop" id="@stop.Name">
+                <h3 class="stop-title">@stop.Id @stop.Name</h3>
+                <img src=~/Content/Images/HistoricStops/"@stop.Name".jpg alt="Stop image" />
+                <div class="info">
+                    <p class="desc">@stop.StopDescription</p>
+                </div>
             </div>
-        </div>
+        }
     }
-}
+</div>
