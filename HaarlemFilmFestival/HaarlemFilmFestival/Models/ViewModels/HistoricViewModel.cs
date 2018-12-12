@@ -4,10 +4,11 @@ using System.Linq;
 using System.Web;
 using HaarlemFilmFestival.Repositories;
 using HaarlemFilmFestival.Controllers;
+using HaarlemFilmFestival.ViewModels;
 
 namespace HaarlemFilmFestival.Models
 {
-    public class HistoricViewModel
+    public class HistoricViewModel : EventViewModel
     {
         private IHistoricRepository historicrepository = new HistoricRepository();
 
@@ -15,10 +16,10 @@ namespace HaarlemFilmFestival.Models
         {
             this.Stops = historicrepository.GetStops();
             this.Historics = historicrepository.GetHistoricEvents();
-            this.eventsLeft = AvailbleEvents();
+            this.eventsLeft = AvailibleEvents();
             this.historicsLeft = getHistoricsLeft();
-            this.days = getDays();
-            this.time = getTime();
+            this.days = getDays(eventsLeft);
+            this.times = getTime(eventsLeft);
             this.languages = getlanguages();
         }
 
@@ -36,7 +37,7 @@ namespace HaarlemFilmFestival.Models
             return left;
         }
 
-        private IEnumerable<Event> AvailbleEvents()
+        private IEnumerable<Event> AvailibleEvents()
         {
             IEnumerable<OrderRecord> ordered = historicrepository.GetOrderedEvents();
             List<Event> Events = new List<Event>();
@@ -62,35 +63,9 @@ namespace HaarlemFilmFestival.Models
             return languages;
         }
 
-        private IEnumerable<DateTime> getTime()
-        {
-            List<DateTime> time = new List<DateTime>();
 
-            foreach (Event Event in eventsLeft)
-            {
-                if (!time.Any(d => d.Hour == Event.StartTime.Hour))
-                    time.Add(Event.StartTime);
-
-            }
-            return time;
-        }
-
-        private IEnumerable<DateTime> getDays()
-        {
-            List<DateTime> date = new List<DateTime>();
-            foreach (Event Event in eventsLeft)
-            {
-                if (!date.Any(d => d.Day == Event.StartTime.Day))
-                    date.Add(Event.StartTime);
-            }
-            return date;
-        }
-
-        public IEnumerable<HistoricStop> Stops { get; set; }
-        public IEnumerable<Historic> Historics { get; set; }
-        public IEnumerable<DateTime> days { get; set; }
-        public IEnumerable<DateTime> time { get; set; }
         public IEnumerable<Language> languages { get; set; }
+        public IEnumerable<HistoricStop> Stops { get; set; }
         public IEnumerable<Event> eventsLeft { get; set; }
         public IEnumerable<Historic> historicsLeft { get; set; }
 

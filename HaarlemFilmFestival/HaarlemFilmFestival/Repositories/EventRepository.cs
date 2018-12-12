@@ -10,6 +10,17 @@ namespace HaarlemFilmFestival.Repositories
     public class EventRepository : IEventRepository
     {
         private HaarlemFilmFestivalContext db = new HaarlemFilmFestivalContext();
+
+        public IEnumerable<OrderRecord> GetOrderedEvents()
+        {
+            IEnumerable<OrderRecord> ordered = db.OrderRecords.ToList();
+            foreach (OrderRecord order in ordered)
+            {
+                Console.WriteLine(order.Event.Id);
+            }
+            return ordered;
+        }
+
         public void AddEvent(Event @event)
         {
             db.Events.Add(@event);
