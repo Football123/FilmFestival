@@ -39,7 +39,9 @@ textarea {
 /* Home-pagina - Navigatie-balk */
 .navbar-inverse { 
     background-color: white; 
-    margin: 10px 134px -58px 75px;
+        margin-top: -95px;
+    margin-left: 105px;
+    margin-right: 104px;
 }
 .navbar-inverse a { background-color: #FFF; }
 .navbar-inverse .navbar-nav > li > a { 

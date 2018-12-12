@@ -30,6 +30,9 @@ h1 .historic-title {
     font-size: 48px;
 }
 
+ol {
+    align-content: center;
+}
 ol .list-stops {
     border-style: solid;
     border-color: rgba(68, 217, 201, 1);
