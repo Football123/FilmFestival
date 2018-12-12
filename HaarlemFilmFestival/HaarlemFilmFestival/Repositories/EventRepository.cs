@@ -11,6 +11,12 @@ namespace HaarlemFilmFestival.Repositories
     {
         private HaarlemFilmFestivalContext db = new HaarlemFilmFestivalContext();
 
+        public IEnumerable<Location> GetLocations()
+        {
+            IEnumerable<Location> Locations = db.Locations;
+            return Locations;
+        }
+
         public IEnumerable<OrderRecord> GetOrderedEvents()
         {
             IEnumerable<OrderRecord> ordered = db.OrderRecords.ToList();
@@ -19,19 +25,6 @@ namespace HaarlemFilmFestival.Repositories
                 Console.WriteLine(order.Event.Id);
             }
             return ordered;
-        }
-
-        public void AddEvent(Event @event)
-        {
-            db.Events.Add(@event);
-            db.SaveChanges();
-        }
-
-        public void DeleteEvent(int eventId)
-        {
-            Event @event = db.Events.Find(eventId);
-            db.Events.Remove(@event);
-            db.SaveChanges();
         }
 
         public IEnumerable<Event> GetAllEvents()
@@ -44,12 +37,6 @@ namespace HaarlemFilmFestival.Repositories
         {
             Event @event = db.Events.Find(eventId);
             return @event;
-        }
-
-        public void UpdateEvent(Event @event)
-        {
-            db.Entry(@event).State = EntityState.Modified;
-            db.SaveChanges();
         }
     }
 }

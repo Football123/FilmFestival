@@ -12,7 +12,7 @@ namespace HaarlemFilmFestival.Models
     {
         private IEventRepository eventrepository = new EventRepository();
 
-        public IEnumerable<DateTime> getTime(IEnumerable<Event> eventsLeft)
+        public IEnumerable<DateTime> getStartTime(IEnumerable<Event> eventsLeft)
         {
             List<DateTime> times = new List<DateTime>();
 
@@ -23,7 +23,19 @@ namespace HaarlemFilmFestival.Models
             }
             return times;
         }
-        
+
+        public IEnumerable<DateTime> getEndTime(IEnumerable<Event> eventsLeft)
+        {
+            List<DateTime> times = new List<DateTime>();
+
+            foreach (Event Event in eventsLeft)
+            {
+                if (!times.Any(d => d.Hour == Event.EndTime?.Hour))
+                    times.Add(Event.EndTime.Value);
+            }
+            return times;
+        }
+
         public IEnumerable<DateTime> getDays(IEnumerable<Event> eventsLeft)
         {
             List<DateTime> date = new List<DateTime>();

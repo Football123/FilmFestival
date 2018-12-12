@@ -19,7 +19,7 @@ namespace HaarlemFilmFestival.Models
             this.eventsLeft = AvailibleEvents();
             this.historicsLeft = getHistoricsLeft();
             this.days = getDays(eventsLeft);
-            this.times = getTime(eventsLeft);
+            this.times = getStartTime(eventsLeft);
             this.languages = getlanguages();
         }
 
@@ -68,9 +68,7 @@ namespace HaarlemFilmFestival.Models
         public IEnumerable<HistoricStop> Stops { get; set; }
         public IEnumerable<Event> eventsLeft { get; set; }
         public IEnumerable<Historic> historicsLeft { get; set; }
-
-
-
+        
         public IEnumerable<Historic> Historics { get; set; }
 
     }

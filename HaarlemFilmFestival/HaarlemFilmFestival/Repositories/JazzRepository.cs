@@ -4,12 +4,15 @@ using System.Linq;
 using System.Web;
 using HaarlemFilmFestival.Models;
 using System.Data.Entity;
+using HaarlemFilmFestival.Repositories;
 
 namespace HaarlemFilmFestival.Repositories
 {
     public class JazzRepository : IJazzRepository
     {
         private HaarlemFilmFestivalContext db = new HaarlemFilmFestivalContext();
+        private IEventRepository eventrepository = new EventRepository();
+
         public void AddJazz(Jazz jazz)
         {
             db.Jazzs.Add(jazz);
@@ -28,10 +31,19 @@ namespace HaarlemFilmFestival.Repositories
             IEnumerable<Jazz> Jazzs = db.Jazzs;
             return Jazzs;
         }
-        public IEnumerable<Location> GetLocation()
+        public IEnumerable<Location> GetJazzLocation()
         {
-            IEnumerable<Location> Locations = db.Locations;
-            return Locations;
+            List<Location> jazzlocations = new List<Location>();
+            IEnumerable<Location> locations = eventrepository.GetLocations();
+            foreach (Location location in locations)
+            {
+                foreach(Jazz jazzevent in db.Jazzs)
+                {
+                    if (jazzevent.Location_Id == location.Id)
+                        jazzlocations.Add(location);
+                }
+            }
+            return jazzlocations;            
         }
 
         public Jazz GetJazz(int jazzId)

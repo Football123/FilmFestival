@@ -7,32 +7,51 @@ using System.Web;
 
 namespace HaarlemFilmFestival.ViewModels
 {
-    public class JazzViewModel
+    public class JazzViewModel : EventViewModel
     {
         private IJazzRepository jazzRepository = new JazzRepository();
+
         public JazzViewModel()
         {
+            this.eventsLeft = AvailibleEvents();
+            this.JazzLeft = getJazzsLeft();
             this.Jazzs = jazzRepository.GetJazz();
-            this.StartTime = jazzRepository.GetJazz();
-            this.EndTime = jazzRepository.GetJazz();
-            this.Locations = GetLocations();
-            this.Price = jazzRepository.GetJazz();
+            this.JazzLocations = jazzRepository.GetJazzLocation();
             this.Artists = jazzRepository.GetArtist();
+            this.StartTime = getStartTime(eventsLeft);
+            this.EndTime = getEndTime(eventsLeft);
         }
-        private IEnumerable<Location> GetLocations()
+
+        private IEnumerable<Jazz> getJazzsLeft()
         {
-            IEnumerable<Location> locations = jazzRepository.GetLocation();
-            List<Location> list = new List<Location>();
-            foreach (Location location in locations)
+            List<Jazz> left = new List<Jazz>();
+            foreach (Jazz jazz in Jazzs)
             {
-                foreach (Jazz jazz in this.Jazzs)
+                foreach (Event Event in eventsLeft)
                 {
-                    if (location.Id.Equals(jazz.Location_Id))
-                        list.Add(location);
+                    if (jazz.Id.Equals(Event.Id))
+                        left.Add(jazz);
                 }
             }
-            return list;
+            return left;
         }
+
+        private IEnumerable<Event> AvailibleEvents()
+        {
+            IEnumerable<OrderRecord> ordered = jazzRepository.GetOrderedEvents();
+            List<Event> Events = new List<Event>();
+            foreach (Event Event in this.Jazzs)
+            {
+                int Count = 0;
+                foreach (OrderRecord orderrecord in ordered)
+                    Count = Count + orderrecord.RecordAmount;
+                if (Count < Event.Capacity)
+                    Events.Add(Event);
+            }
+            return Events;
+        }
+
+
         private IEnumerable<Artist> GetArtists()
         {
             IEnumerable<Artist> artists = jazzRepository.GetArtist();
@@ -41,21 +60,19 @@ namespace HaarlemFilmFestival.ViewModels
             {
                 foreach (Jazz jazz in Jazzs)
                 {
-                    if (artist.Id.Equals(jazz.Band))
+                    if (jazz.Band.Id == artist.Id)
                         list.Add(artist);
                 }
             }
             return list;
         }
+
+        public IEnumerable<Location> JazzLocations { get; set; }
         public IEnumerable<Artist> Artists { get; set; }
-        public IEnumerable<Location> Locations { get; set; }
         public IEnumerable<Jazz> Jazzs { get; set; }
-        public IEnumerable<Event> StartTime { get; set; }
-        public IEnumerable<Event> EndTime { get; set; }
-        public IEnumerable<Location> Name { get; set; }
-        public IEnumerable<Location> LocationDescription { get; set; }
-        public IEnumerable<Event> Price { get; set; }
-        public IEnumerable<Artist> NameOfBand { get; set; }
-        public IEnumerable<Artist> ArtistDescription { get; set; }
+        public IEnumerable<DateTime> StartTime { get; set; }
+        public IEnumerable<DateTime> EndTime { get; set; }
+        public IEnumerable<Jazz> JazzLeft { get; set; }
+        public IEnumerable<Event> eventsLeft { get; set; }
     }
 }
