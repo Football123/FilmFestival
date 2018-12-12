@@ -13,6 +13,7 @@ namespace HaarlemFilmFestival.Controllers
 {
     public class FoodsController : Controller
     {
+        private FoodViewModel viewmodel = new FoodViewModel();
         private IFoodRepository foodRepository = new FoodRepository();
 
         // GET: Foods

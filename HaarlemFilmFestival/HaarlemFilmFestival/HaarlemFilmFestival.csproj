@@ -139,9 +139,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201812071100166_trytowork.cs" />
-    <Compile Include="Migrations\201812071100166_trytowork.Designer.cs">
-      <DependentUpon>201812071100166_trytowork.cs</DependentUpon>
+    <Compile Include="Migrations\201812121226466_restaurant.cs" />
+    <Compile Include="Migrations\201812121226466_restaurant.Designer.cs">
+      <DependentUpon>201812121226466_restaurant.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Artist.cs" />
@@ -275,8 +275,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201812071100166_trytowork.resx">
-      <DependentUpon>201812071100166_trytowork.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812121226466_restaurant.resx">
+      <DependentUpon>201812121226466_restaurant.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -12,6 +12,7 @@ namespace HaarlemFilmFestival.Models
         public int Id { get; set; }
         public string RestaurantName { get; set; }
         public int Stars { get; set; }
+        public string WebsiteLink { get; set; }
 
         // Koppeling Keuken
         public ICollection<Cuisine> Cuisines { get; set; }
