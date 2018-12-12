@@ -69,5 +69,9 @@ namespace HaarlemFilmFestival.Models
         public IEnumerable<Event> eventsLeft { get; set; }
         public IEnumerable<Historic> historicsLeft { get; set; }
 
+
+
+        public IEnumerable<Historic> Historics { get; set; }
+
     }
 }

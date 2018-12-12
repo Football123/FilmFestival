@@ -37,10 +37,5 @@ namespace HaarlemFilmFestival.Models
 
         public IEnumerable<DateTime> days { get; set; }
         public IEnumerable<DateTime> times { get; set; }
-
-        public IEnumerable<Historic> Historics { get; set; }
-        public IEnumerable<Food> Foods { get; set; }
-        public IEnumerable<Dance> Dances { get; set; }
-        public IEnumerable<Jazz> Jazzs { get; set; }
     }
 }
