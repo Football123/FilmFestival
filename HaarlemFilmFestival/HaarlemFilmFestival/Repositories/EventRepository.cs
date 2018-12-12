@@ -9,7 +9,7 @@ namespace HaarlemFilmFestival.Repositories
 {
     public class EventRepository : IEventRepository
     {
-        private HaarlemFilmFestivalContext db = new HaarlemFilmFestivalContext();
+        public HaarlemFilmFestivalContext db = new HaarlemFilmFestivalContext();
 
         public IEnumerable<Location> GetLocations()
         {

@@ -12,6 +12,6 @@ namespace HaarlemFilmFestival.Repositories
         IEnumerable<OrderRecord> GetOrderedEvents();
         IEnumerable<Event> GetAllEvents();
         Event GetEvent(int eventId);
-        
+
     }
 }

@@ -13,6 +13,11 @@ namespace HaarlemFilmFestival.Repositories
         private HaarlemFilmFestivalContext db = new HaarlemFilmFestivalContext();
         private IEventRepository eventrepository = new EventRepository();
 
+        public IEnumerable<OrderRecord> GetOrderedEvents()
+        {
+            return eventrepository.GetOrderedEvents();
+        }
+
         public void AddJazz(Jazz jazz)
         {
             db.Jazzs.Add(jazz);
@@ -37,13 +42,13 @@ namespace HaarlemFilmFestival.Repositories
             IEnumerable<Location> locations = eventrepository.GetLocations();
             foreach (Location location in locations)
             {
-                foreach(Jazz jazzevent in db.Jazzs)
+                foreach (Jazz jazzevent in db.Jazzs)
                 {
                     if (jazzevent.Location_Id == location.Id)
                         jazzlocations.Add(location);
                 }
             }
-            return jazzlocations;            
+            return jazzlocations;
         }
 
         public Jazz GetJazz(int jazzId)
@@ -51,7 +56,7 @@ namespace HaarlemFilmFestival.Repositories
             Jazz jazz = db.Jazzs.Find(jazzId);
             return jazz;
         }
-        
+
         public void UpdateJazz(Jazz jazz)
         {
             db.Entry(jazz).State = EntityState.Modified;

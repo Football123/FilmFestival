@@ -36,7 +36,7 @@ namespace HaarlemFilmFestival.ViewModels
             return left;
         }
 
-        private IEnumerable<Event> AvailibleEvents()
+        protected IEnumerable<Event> AvailibleEvents()
         {
             IEnumerable<OrderRecord> ordered = jazzRepository.GetOrderedEvents();
             List<Event> Events = new List<Event>();
