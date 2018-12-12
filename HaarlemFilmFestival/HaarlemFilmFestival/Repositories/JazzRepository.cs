@@ -28,7 +28,12 @@ namespace HaarlemFilmFestival.Repositories
             IEnumerable<Jazz> Jazzs = db.Jazzs;
             return Jazzs;
         }
-        
+        public IEnumerable<Location> GetLocation()
+        {
+            IEnumerable<Location> Locations = db.Locations;
+            return Locations;
+        }
+
         public Jazz GetJazz(int jazzId)
         {
             Jazz jazz = db.Jazzs.Find(jazzId);
@@ -39,6 +44,12 @@ namespace HaarlemFilmFestival.Repositories
         {
             db.Entry(jazz).State = EntityState.Modified;
             db.SaveChanges();
+        }
+
+        public IEnumerable<Artist> GetArtist()
+        {
+            IEnumerable<Artist> Artists = db.Artists;
+            return Artists;
         }
     }
 }

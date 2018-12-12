@@ -17,33 +17,35 @@ namespace HaarlemFilmFestival.ViewModels
             this.EndTime = jazzRepository.GetJazz();
             this.Locations = GetLocations();
             this.Price = jazzRepository.GetJazz();
-            this.Artists = GetArtists();
+            this.Artists = jazzRepository.GetArtist();
         }
         private IEnumerable<Location> GetLocations()
         {
-            List<Location> locations = new List<Location>();
-            foreach (Location location in Locations)
+            IEnumerable<Location> locations = jazzRepository.GetLocation();
+            List<Location> list = new List<Location>();
+            foreach (Location location in locations)
             {
-                foreach (Jazz jazz in Jazzs)
+                foreach (Jazz jazz in this.Jazzs)
                 {
                     if (location.Id.Equals(jazz.Location_Id))
-                        locations.Add(location);
+                        list.Add(location);
                 }
             }
-            return locations;
+            return list;
         }
         private IEnumerable<Artist> GetArtists()
         {
-            List<Artist> artists = new List<Artist>();
-            foreach (Artist artist in Artists)
+            IEnumerable<Artist> artists = jazzRepository.GetArtist();
+            List<Artist> list = new List<Artist>();
+            foreach (Artist artist in artists)
             {
                 foreach (Jazz jazz in Jazzs)
                 {
                     if (artist.Id.Equals(jazz.Band))
-                        artists.Add(artist);
+                        list.Add(artist);
                 }
             }
-            return artists;
+            return list;
         }
         public IEnumerable<Artist> Artists { get; set; }
         public IEnumerable<Location> Locations { get; set; }
