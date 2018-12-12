@@ -13,7 +13,7 @@ namespace HaarlemFilmFestival.ViewModels
 
         public JazzViewModel()
         {
-            this.eventsLeft = AvailibleEvents();
+            this.eventsLeft = AvailableEvents();
             this.JazzLeft = getJazzsLeft();
             this.Jazzs = jazzRepository.GetJazz();
             this.JazzLocations = jazzRepository.GetJazzLocation();
@@ -36,7 +36,7 @@ namespace HaarlemFilmFestival.ViewModels
             return left;
         }
 
-        protected IEnumerable<Event> AvailibleEvents()
+        protected IEnumerable<Event> AvailableEvents()
         {
             IEnumerable<OrderRecord> ordered = jazzRepository.GetOrderedEvents();
             List<Event> Events = new List<Event>();

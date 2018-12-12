@@ -33,13 +33,13 @@
                 @Html.DisplayNameFor(model => model.JazzLocations.ToString())
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LocationDescription)
+                @Html.DisplayNameFor(model => model.JazzLocations)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NameOfBand)
+                @Html.DisplayNameFor(model => model.Artists)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Price)
+                @Html.DisplayNameFor(model => model.Jazzs)
             </th>
             <th></th>
         </tr>
@@ -51,16 +51,16 @@
                     @Html.DisplayFor(modelItem => item.StartTime) - @Html.DisplayFor(modelItem => item.EndTime)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.DisplayFor(modelItem => item.JazzLocations)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.LocationDescription)
+                    @Html.DisplayFor(modelItem => item.JazzLocations)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.NameOfBand)
+                    @Html.DisplayFor(modelItem => item.Artists)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Price)
+                    @Html.DisplayFor(modelItem => item.Jazzs)
                 </td>
                 <td>
                     @Html.ActionLink("Add to cart", "Index", "Order")
@@ -77,8 +77,7 @@
     {
         <div class="row">
             <div class="col-md-4">
-                <h2>@Html.DisplayFor(modelItem => item.NameOfBand)</h2>
-                <p>@Html.DisplayFor(modelItem => item.ArtistDescription)</p>
+                <h2>@Html.DisplayFor(modelItem => item.Artists)</h2>
                 <img src="@Url.Content("~/Content/Images/u1063.png")" />
             </div>
         </div>
