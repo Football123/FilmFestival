@@ -15,22 +15,23 @@ namespace HaarlemFilmFestival.Models
             this.eventsLeft = AvailibleEvents();
             this.Foods = foodrepository.GetFoods();
             this.Restaurants = foodrepository.GetRestaurants();
-            this.Locations = GetLocations();
+            this.FoodLocations = foodrepository.GetFoodLocation();
             this.Cuisines = GetCuisine();
+            this.FoodLeft = getFoodsLeft();
         }
 
-        private IEnumerable<Location> GetLocations()
+        private IEnumerable<Food> getFoodsLeft()
         {
-            List<Location> locations = new List<Location>();
-            foreach (Location location in Locations)
+            List<Food> left = new List<Food>();
+            foreach (Food food in Foods)
             {
-                foreach (Food food in Foods)
+                foreach (Event Event in eventsLeft)
                 {
-                    if (location.Id.Equals(food.Location_Id))
-                        locations.Add(location); 
+                    if (food.Id.Equals(Event.Id))
+                        left.Add(food);
                 }
             }
-            return locations;
+            return left;
         }
 
         private IEnumerable<Event> AvailibleEvents()
@@ -63,7 +64,7 @@ namespace HaarlemFilmFestival.Models
             return cuisines;
         }
 
-        public IEnumerable<Location> Locations { get; set; }
+        public IEnumerable<Location> FoodLocations { get; set; }
         public IEnumerable<Restaurant> Restaurants { get; set; }
         public IEnumerable<Food> Foods { get; set; }
         public IEnumerable<Location> Name { get; set; }
@@ -73,6 +74,7 @@ namespace HaarlemFilmFestival.Models
         public IEnumerable<Cuisine> Cuisines { get; set; }
         public IEnumerable<Cuisine> CuisineDescription { get; set; }
         public IEnumerable<Event> eventsLeft { get; set; }
+        public IEnumerable<Food> FoodLeft { get; set; }
     }
 
 

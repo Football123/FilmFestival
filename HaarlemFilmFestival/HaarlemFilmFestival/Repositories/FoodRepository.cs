@@ -78,7 +78,7 @@ namespace HaarlemFilmFestival.Repositories
 
         public IEnumerable<OrderRecord> GetOrderedEvents()
         {
-            throw new NotImplementedException();
+            return eventrepository.GetOrderedEvents();
         }
     }
 }
