@@ -9,6 +9,8 @@ namespace HaarlemFilmFestival.Repositories
     interface IJazzRepository
     {
         IEnumerable<Jazz> GetJazz();
+        IEnumerable<Location> GetLocation();
+        IEnumerable<Artist> GetArtist();
         Jazz GetJazz(int jazzId);
         void AddJazz(Jazz jazz);
         void UpdateJazz(Jazz jazz);
