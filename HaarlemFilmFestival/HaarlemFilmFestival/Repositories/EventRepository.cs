@@ -19,7 +19,7 @@ namespace HaarlemFilmFestival.Repositories
 
         public IEnumerable<OrderRecord> GetOrderedEvents()
         {
-            IEnumerable<OrderRecord> ordered = db.OrderRecords.ToList();
+            IEnumerable<OrderRecord> ordered = db.OrderRecords;
             foreach (OrderRecord order in ordered)
             {
                 Console.WriteLine(order.Event.Id);

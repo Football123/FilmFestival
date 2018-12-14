@@ -1,7 +1,11 @@
-﻿@model IEnumerable<HaarlemFilmFestival.ViewModels.JazzViewModel>
+﻿@using HaarlemFilmFestival.ViewModels;
+@using HaarlemFilmFestival.Models;
+@model JazzViewModel
 
 @{
     ViewBag.Title = "Jazz";
+    IEnumerable<Jazz> Events = Model.JazzLeft;
+    IEnumerable<Artist> bands = Model.Artists;
 }
 <div class="jumbotron">
     <h1>Visit Haarlem Jazz</h1>
@@ -25,60 +29,55 @@
     <h1>Tickets</h1>
 
     <table class="table">
+            
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.StartTime) - @Html.DisplayNameFor(model => model.EndTime)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.JazzLocations.ToString())
+                @Html.DisplayNameFor(model => model.JazzLocations)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.JazzLocations)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Artists)
-            </th>
+            </th>*@
             <th>
-                @Html.DisplayNameFor(model => model.Jazzs)
+                @Html.DisplayNameFor(model => model.Events)
             </th>
             <th></th>
         </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StartTime) - @Html.DisplayFor(modelItem => item.EndTime)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.JazzLocations)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.JazzLocations)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Artists)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Jazzs)
-                </td>
-                <td>
-                    @Html.ActionLink("Add to cart", "Index", "Order")
-                    @*"Add to cart", "Index", "Tickets", new { id = item.JazzId }*@
-                </td>
-            </tr>
-        }
-
+@foreach (Jazz j in Events)
+{
+        <tr>
+            <td>
+        @j.StartTime.ToString("H:mm") - @j.EndTime.ToString() 
+            </td>
+            <td>
+        @j.Location.Name
+            </td>
+             <td>
+        @j.Location.LocationDescription
+             </td>
+        @*<td>@j.Band.Name</td>*@
+             <td>
+        @j.Price
+             </td>
+             <td></td>   
+        </tr>
+}
     </table>
 
     <h1>Line-up</h1>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.Artists)
     {
         <div class="row">
             <div class="col-md-4">
-                <h2>@Html.DisplayFor(modelItem => item.Artists)</h2>
-                <img src="@Url.Content("~/Content/Images/u1063.png")" />
+                <h2>@Html.DisplayFor(modelItem => item.Name)</h2>
+                <h2>@Html.DisplayFor(modelItem => item.ArtistDescription)</h2>
+                @*<img src="@Url.Content("~/Content/Images/u1063.png")" />*@
             </div>
         </div>
     }

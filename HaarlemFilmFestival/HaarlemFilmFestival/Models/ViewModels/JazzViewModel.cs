@@ -10,22 +10,24 @@ namespace HaarlemFilmFestival.ViewModels
     public class JazzViewModel : EventViewModel
     {
         private IJazzRepository jazzRepository = new JazzRepository();
+        private IEventRepository eventRepository = new EventRepository();
 
         public JazzViewModel()
         {
             this.eventsLeft = AvailableEvents();
             this.JazzLeft = getJazzsLeft();
-            this.Jazzs = jazzRepository.GetJazz();
             this.JazzLocations = jazzRepository.GetJazzLocation();
             this.Artists = jazzRepository.GetArtist();
             this.StartTime = getStartTime(eventsLeft);
             this.EndTime = getEndTime(eventsLeft);
+            this.Events = eventRepository.GetAllEvents();
         }
 
         private IEnumerable<Jazz> getJazzsLeft()
         {
+            AllJazz = jazzRepository.GetJazz();
             List<Jazz> left = new List<Jazz>();
-            foreach (Jazz jazz in Jazzs)
+            foreach (Jazz jazz in AllJazz)
             {
                 foreach (Event Event in eventsLeft)
                 {
@@ -38,9 +40,10 @@ namespace HaarlemFilmFestival.ViewModels
 
         protected IEnumerable<Event> AvailableEvents()
         {
+            AllJazz = jazzRepository.GetJazz();
             IEnumerable<OrderRecord> ordered = jazzRepository.GetOrderedEvents();
             List<Event> Events = new List<Event>();
-            foreach (Event Event in this.Jazzs)
+            foreach (Event Event in AllJazz)
             {
                 int Count = 0;
                 foreach (OrderRecord orderrecord in ordered)
@@ -54,11 +57,12 @@ namespace HaarlemFilmFestival.ViewModels
 
         private IEnumerable<Artist> GetArtists()
         {
+            AllJazz = jazzRepository.GetJazz();
             IEnumerable<Artist> artists = jazzRepository.GetArtist();
             List<Artist> list = new List<Artist>();
             foreach (Artist artist in artists)
             {
-                foreach (Jazz jazz in Jazzs)
+                foreach (Jazz jazz in AllJazz)
                 {
                     if (jazz.Band.Id == artist.Id)
                         list.Add(artist);
@@ -74,5 +78,7 @@ namespace HaarlemFilmFestival.ViewModels
         public IEnumerable<DateTime> EndTime { get; set; }
         public IEnumerable<Jazz> JazzLeft { get; set; }
         public IEnumerable<Event> eventsLeft { get; set; }
+        public IEnumerable<Event> Events { get; set; }
+        public IEnumerable<Event> AllJazz { get; set; }
     }
 }
