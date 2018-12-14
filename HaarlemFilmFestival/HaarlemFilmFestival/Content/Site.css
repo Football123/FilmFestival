@@ -1,8 +1,9 @@
 ﻿.bg {
-    background-image:url(/Content/Images/bg.png)
+    background-image: url(/Content/Images/bg.png);
 }
 
 body {
+    width: 85%;
     background-image: url(/Content/Images/bg.png);
     background-color: deeppink;
     background-size: cover;
@@ -19,7 +20,7 @@ body {
 }
 
 .container body-content {
-    width: 970px;
+    width: 80%;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -37,51 +38,58 @@ textarea {
 }
 
 /* Home-pagina - Navigatie-balk */
-.navbar-inverse { 
-    background-color: white; 
-        margin-top: -95px;
-    margin-left: 105px;
-    margin-right: 104px;
-}
-.navbar-inverse a { background-color: #FFF; }
-.navbar-inverse .navbar-nav > li > a { 
-    color: black;
-    font-size: 20px;
-}
-.navbar-inverse .navbar-brand,
-.navbar-inverse .navbar-brand:hover { 
-    color: black;
+.navbar-inverse {
+    background-color: white;
+    margin-top: 1%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
-.navbar-inverse .navbar-nav > li > a:hover,
-.navbar-inverse .navbar-nav > li > a:focus{
-    color: black;
-}
+    .navbar-inverse a {
+        background-color: #FFF;
+    }
 
-.navbar-inverse .navbar-nav{
+    .navbar-inverse .navbar-nav > li > a {
+        color: black;
+        font-size: 20px;
+    }
+
+    .navbar-inverse .navbar-brand,
+    .navbar-inverse .navbar-brand:hover {
+        color: black;
+    }
+
+    .navbar-inverse .navbar-nav > li > a:hover,
+    .navbar-inverse .navbar-nav > li > a:focus {
+        color: black;
+    }
+
+    .navbar-inverse .navbar-nav {
+        margin-left: 30px;
+        margin-top: 50px;
+    }
+
+    .navbar-inverse .navbar-brand {
+        margin-left: 30px;
+    }
+
+.navbar > .container .navbar-brand {
     margin-left: 30px;
-    margin-top: 50px;
 }
 
-.navbar-inverse .navbar-brand{
-    margin-left: 30px;
-}
-
-.navbar > .container .navbar-brand{
-    margin-left: 30px;
-}
-
-.container{
+.container {
     margin-top: 7px;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 8.6%;
+    margin-right: -6.1%;
 }
 
-/* Content */
-.container .jumbotron{
-    margin-top: 45px;
-}
-.home1{
+    /* Content */
+    .container .jumbotron {
+        width: 80%;
+        margin-top: 45px;
+    }
+
+.home1 {
     background-color: cornflowerblue;
     margin-left: 350px;
     padding-left: 80px;
@@ -89,33 +97,37 @@ textarea {
     height: 60px;
 }
 
-.home2{
+.home2 {
     text-align: center;
     font-size: 14px;
 }
 
-.row{
+.row {
     margin-left: 50px;
 }
 
-.col-md-6{
+.col-md-6 {
     border-color: black;
 }
-.col-md-6 .Foods {
-    background-color : "cornflowerblue";
-}
+
+    .col-md-6 .Foods {
+        background-color: "cornflowerblue";
+    }
 
 /* Jazz-pagina */
-.jazz{
+.jazz {
     background-color: cornflowerblue;
 }
-h1{
+
+h1 {
     text-align: center;
 }
-.jazz1{
+
+.jazz1 {
     text-align: center;
 }
-.jazzimage{
+
+.jazzimage {
     text-align: center;
 }
 
@@ -123,9 +135,11 @@ h1{
 .food {
     background-color: white;
 }
+
 .food1 {
     text-align: center;
 }
+
 h1 {
     text-align: center;
 }

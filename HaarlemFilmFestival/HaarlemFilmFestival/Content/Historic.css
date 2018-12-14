@@ -5,7 +5,7 @@
         margin-top: 5px;
     }
 
-h1 .historic-title {
+.jumbotron h1 .historic-title {
     margin-top: 100px;
     font-family: 'Bahnschrift SemiLight', 'Bahnschrift Regular', 'Bahnschrift';
     font-weight: 350;
@@ -17,10 +17,14 @@ h1 .historic-title {
 
 .HistoricInfo {
     font-family: 'Bahnschrift SemiLight', 'Bahnschrift';
-    font-weight: 350;
+    width: 60%;
+    font-weight: 300;
     font-style: normal;
     font-size: 20px;
     text-align: center;
+    padding-left: 15%;
+    padding-right: 15%;
+    line-height: 1.6;
 }
 
 .paragraph-title {
@@ -30,8 +34,12 @@ h1 .historic-title {
     font-size: 48px;
 }
 
-ol {
+.ol {
+    width-left: 40%;
+    margin-top: 0;
+    margin-bottom: 10px;
     align-content: center;
+
 }
 ol .list-stops {
     border-style: solid;
