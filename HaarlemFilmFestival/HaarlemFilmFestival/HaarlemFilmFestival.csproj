@@ -250,10 +250,6 @@
     <Content Include="Views\Events\Details.cshtml" />
     <Content Include="Views\Events\Edit.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
-    <Content Include="Views\Jazzs\Create.cshtml" />
-    <Content Include="Views\Jazzs\Delete.cshtml" />
-    <Content Include="Views\Jazzs\Details.cshtml" />
-    <Content Include="Views\Jazzs\Edit.cshtml" />
     <Content Include="Views\Jazzs\Index.cshtml" />
     <Content Include="Views\Foods\Create.cshtml" />
     <Content Include="Views\Foods\Delete.cshtml" />
