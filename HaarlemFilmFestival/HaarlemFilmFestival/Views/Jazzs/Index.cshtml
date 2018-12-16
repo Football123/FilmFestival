@@ -41,8 +41,8 @@
                 Hall
             </th>
             @*<th>
-                    @Html.DisplayNameFor(model => model.Artists)
-                </th>*@
+                Band
+            </th>*@
             <th>
                 Price
             </th>
@@ -54,7 +54,7 @@
         {
             <tr>
                 <td>
-                    @j.StartTime.ToString("H:mm") - @j.EndTime.ToString()
+                    @j.StartTime.ToString() - @j.EndTime.ToString()
                 </td>
                 <td>
                     @j.Location.Name
@@ -62,7 +62,9 @@
                 <td>
                     @j.Location.LocationDescription
                 </td>
-                @*<td>@j.Band.Name</td>*@
+                @*<td>
+                    @j.Band.Name
+                </td>*@
                 <td>
                     @j.Price
                 </td>
@@ -79,7 +81,7 @@
     @foreach (var item in Model.Artists)
     {
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6" style="border-color: black;">
                 <h2>@Html.DisplayFor(modelItem => item.Name)</h2>
                 <h2>@Html.DisplayFor(modelItem => item.ArtistDescription)</h2>
                 @*<img src="@Url.Content("~/Content/Images/u1063.png")" />*@
