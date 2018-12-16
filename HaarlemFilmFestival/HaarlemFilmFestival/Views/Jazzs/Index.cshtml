@@ -15,58 +15,63 @@
         On Sunday, some of the bands will taketo the big stage at the Grote Markt to perform for all visitors for free!
     </p>
     <p class="jazz1">See the artists and times below!</p>
-        <div class="jazz">
-            <p>
-                Haarlem Jazz is one of the big jazz stages in The Netherlands! Various famous artists will be playing.
-                All kinds of famous artists will be playing. Gare du Nord, Soul Six , Lilith Merlot and many more. If you want some standard dabbler tracks, you should definitely listen to Gare du Nord.
-                But if you want a more special act, don’t forget Han Bennink! Haarlem Jazz will show Haarlem what they got!
-                And last but not least, Sunday is free for all visitors! Come and visit the Grote Markt for free, and enjoy with other people.
-                So what holds you back? Pick a ticket and add it to your shopping cart.
-                <div class="jazzimage"><img src="@Url.Content("~/Content/Images/u1082-verkleindvoorwebsite.png")" /></div>
-            </p>
-        </div>
+    <div class="jazz">
+        <p>
+            Haarlem Jazz is one of the big jazz stages in The Netherlands! Various famous artists will be playing.
+            All kinds of famous artists will be playing. Gare du Nord, Soul Six , Lilith Merlot and many more. If you want some standard dabbler tracks, you should definitely listen to Gare du Nord.
+            But if you want a more special act, don’t forget Han Bennink! Haarlem Jazz will show Haarlem what they got!
+            And last but not least, Sunday is free for all visitors! Come and visit the Grote Markt for free, and enjoy with other people.
+            So what holds you back? Pick a ticket and add it to your shopping cart.
+            <div class="jazzimage"><img src="@Url.Content("~/Content/Images/u1082-verkleindvoorwebsite.png")" /></div>
+        </p>
     </div>
+
     <h1>Tickets</h1>
 
     <table class="table">
-            
+
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.StartTime) - @Html.DisplayNameFor(model => model.EndTime)
+                Time
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.JazzLocations)
+                Location
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.JazzLocations)
+                Hall
             </th>
             @*<th>
-                @Html.DisplayNameFor(model => model.Artists)
-            </th>*@
+                    @Html.DisplayNameFor(model => model.Artists)
+                </th>*@
             <th>
-                @Html.DisplayNameFor(model => model.Events)
+                Price
             </th>
-            <th></th>
+            <th>
+                Add to cart
+            </th>
         </tr>
-@foreach (Jazz j in Events)
-{
-        <tr>
-            <td>
-        @j.StartTime.ToString("H:mm") - @j.EndTime.ToString() 
-            </td>
-            <td>
-        @j.Location.Name
-            </td>
-             <td>
-        @j.Location.LocationDescription
-             </td>
-        @*<td>@j.Band.Name</td>*@
-             <td>
-        @j.Price
-             </td>
-             <td></td>   
-        </tr>
-}
+        @foreach (Jazz j in Events)
+        {
+            <tr>
+                <td>
+                    @j.StartTime.ToString("H:mm") - @j.EndTime.ToString()
+                </td>
+                <td>
+                    @j.Location.Name
+                </td>
+                <td>
+                    @j.Location.LocationDescription
+                </td>
+                @*<td>@j.Band.Name</td>*@
+                <td>
+                    @j.Price
+                </td>
+                <td>
+                    @Html.ActionLink("Add to cart", "Index", "Order")
+                </td>
+            </tr>
+        }
+
     </table>
 
     <h1>Line-up</h1>
@@ -81,3 +86,4 @@
             </div>
         </div>
     }
+</div>

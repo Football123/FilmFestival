@@ -85,7 +85,7 @@ textarea {
 
     /* Content */
     .container .jumbotron {
-        width: 80%;
+        width: 105%;
         margin-top: 45px;
     }
 
@@ -111,7 +111,7 @@ textarea {
 }
 
     .col-md-6 .Foods {
-        background-color: "cornflowerblue";
+        background-color: cornflowerblue;
     }
 
 /* Jazz-pagina */
