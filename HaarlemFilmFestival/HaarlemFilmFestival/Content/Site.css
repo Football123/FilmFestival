@@ -2,15 +2,19 @@
     background-image: url(/Content/Images/bg.png);
 }
 
+.h1 {
+    width-top: 50px;
+}
+
 body {
-    width: 85%;
+    width: 83.3%;
     background-image: url(/Content/Images/bg.png);
     background-color: deeppink;
     background-size: cover;
     background-attachment: fixed;
     padding-top: 50px;
     padding-bottom: 20px;
-    margin: 20px;
+    margin: 7.4px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -113,36 +117,3 @@ textarea {
     .col-md-6 .Foods {
         background-color: cornflowerblue;
     }
-
-/* Jazz-pagina */
-.jazz {
-    background-color: cornflowerblue;
-}
-
-h1 {
-    text-align: center;
-}
-
-.jazz1 {
-    text-align: center;
-}
-
-.jazzimage {
-    text-align: center;
-}
-
-/* Food-pagina */
-.food {
-    background-color: white;
-}
-
-.food1 {
-    text-align: center;
-}
-
-h1 {
-    text-align: center;
-}
-
-/* Dance-pagina*/
-

@@ -179,6 +179,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Dance.css" />
+    <Content Include="Content\Food.css" />
     <Content Include="Content\Historic.css" />
     <Content Include="Content\Images\bg.png" />
     <Content Include="Content\Images\HistoricStops\Amsterdamse Poort.jpg" />
@@ -210,6 +211,7 @@
     <Content Include="Content\Images\u567aangepast.png" />
     <Content Include="Content\Images\u568aangepast.png" />
     <Content Include="Content\Images\u60-verkleindvoorwebsite.png" />
+    <Content Include="Content\Jazz.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
