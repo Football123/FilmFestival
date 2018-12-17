@@ -39,8 +39,9 @@ namespace HaarlemFilmFestival.Models
 
         private IEnumerable<Event> AvailableEvents()
         {
+            IEnumerable<OrderRecord> ordered;
             AllFood = foodrepository.GetFoods();
-            IEnumerable<OrderRecord> ordered = foodrepository.GetOrderedEvents();
+            ordered = foodrepository.GetOrderedEvents();
             List<Event> Events = new List<Event>();
             foreach (Event Event in AllFood)
             {
@@ -71,12 +72,7 @@ namespace HaarlemFilmFestival.Models
         public IEnumerable<Location> FoodLocations { get; set; }
         public IEnumerable<Restaurant> Restaurants { get; set; }
         public IEnumerable<Food> Foods { get; set; }
-        public IEnumerable<Location> Name { get; set; }
-        public IEnumerable<Location> LocationDescription { get; set; }
-        public IEnumerable<Restaurant> RestaurantName { get; set; }
-        public IEnumerable<Restaurant> Stars { get; set; }
         public IEnumerable<Cuisine> Cuisines { get; set; }
-        public IEnumerable<Cuisine> CuisineDescription { get; set; }
         public IEnumerable<Event> eventsLeft { get; set; }
         public IEnumerable<Food> FoodLeft { get; set; }
         public IEnumerable<Event> AllFood { get; set; }
