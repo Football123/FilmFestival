@@ -10,9 +10,9 @@ namespace HaarlemFilmFestival.Models
 {
     public class HistoricViewModel : EventViewModel
     {
-      //  private IHistoricRepository historicrepository = new HistoricRepository();
+        private IHistoricRepository historicrepository = new HistoricRepository();
 
-        public HistoricViewModel(HistoricRepository historicrepository)
+        public HistoricViewModel()
         {
             this.Stops = historicrepository.GetStops();
             this.Historics = historicrepository.GetHistoricEvents();

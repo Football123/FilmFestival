@@ -8,7 +8,7 @@ using HaarlemFilmFestival.Controllers;
 
 namespace HaarlemFilmFestival.Repositories
 {
-   public interface IHistoricRepository
+   interface IHistoricRepository
     {
         IEnumerable<HistoricStop> GetStops();
         IEnumerable<Historic> GetHistoricEvents();
