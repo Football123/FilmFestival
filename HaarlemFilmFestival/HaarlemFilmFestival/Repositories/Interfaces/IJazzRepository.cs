@@ -12,7 +12,7 @@ namespace HaarlemFilmFestival.Repositories
         IEnumerable<OrderRecord> GetOrderedEvents();
         IEnumerable<Jazz> GetJazz();
         IEnumerable<Location> GetJazzLocation();
-        IEnumerable<Artist> GetArtist();
+        IEnumerable<Artist> GetArtists(IEnumerable<Jazz> Jazzevents);
         Jazz GetJazz(int jazzId);
     }
 }

@@ -39,7 +39,7 @@ namespace HaarlemFilmFestival.Models
 
         private IEnumerable<Event> AvailibleEvents()
         {
-            IEnumerable<OrderRecord> ordered = new List<OrderRecord>();
+            IEnumerable<OrderRecord> ordered;
             ordered = historicrepository.GetOrderedEvents();
             List<Event> Events = new List<Event>();
             foreach (Event Event in this.Historics)

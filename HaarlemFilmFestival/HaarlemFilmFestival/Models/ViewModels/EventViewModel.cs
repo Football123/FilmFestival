@@ -47,6 +47,22 @@ namespace HaarlemFilmFestival.Models
             return date;
         }
 
+        //private IEnumerable<Event> AvailibleEvents()
+        //{
+        //    AllFood = foodrepository.GetFoods();
+        //    IEnumerable<OrderRecord> ordered = foodrepository.GetOrderedEvents();
+        //    List<Event> Events = new List<Event>();
+        //    foreach (Event Event in AllFood)
+        //    {
+        //        int Count = 0;
+        //        foreach (OrderRecord orderrecord in ordered)
+        //            Count = Count + orderrecord.RecordAmount;
+        //        if (Count < Event.Capacity)
+        //            Events.Add(Event);
+        //    }
+        //    return Events;
+        //}
+
         public IEnumerable<DateTime> days { get; set; }
         public IEnumerable<DateTime> times { get; set; }
     }
