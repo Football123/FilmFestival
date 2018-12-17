@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using HaarlemFilmFestival.Models;
 using System.Data.Entity;
-using HaarlemFilmFestival.Repositories;
+using HaarlemFilmFestival.Repositories.Interfaces;
 
 namespace HaarlemFilmFestival.Repositories
 {
-    public class JazzRepository : IJazzRepository
+    public class DanceRepository : IDanceRepository
     {
         private HaarlemFilmFestivalContext db = new HaarlemFilmFestivalContext();
         private IEventRepository eventRepository = new EventRepository();
@@ -18,40 +18,40 @@ namespace HaarlemFilmFestival.Repositories
             return eventRepository.GetOrderedEvents();
         }
 
-        public IEnumerable<Jazz> GetJazz()
+        public IEnumerable<Dance> GetDance()
         {
-            IEnumerable<Jazz> Jazzs = db.Jazzs;
-            //IEnumerable<Jazz> Jazzs = db.Jazzs.Include("Artists");
-            return Jazzs;
+            IEnumerable<Dance> Dances = db.Dances;
+            return Dances;
         }
-        public IEnumerable<Location> GetJazzLocation()
+        public IEnumerable<Location> GetDanceLocation()
         {
-            List<Location> jazzlocations = new List<Location>();
+            List<Location> dancelocations = new List<Location>();
             IEnumerable<Location> locations = eventRepository.GetLocations();
             foreach (Location location in locations)
             {
-                foreach (Jazz jazzevent in db.Jazzs)
+                foreach (Dance danceevent in db.Dances)
                 {
-                    if (jazzevent.Location_Id == location.Id)
-                        jazzlocations.Add(location);
+                    if (danceevent.Location_Id == location.Id)
+                        dancelocations.Add(location);
                 }
             }
-            return jazzlocations;
+            return dancelocations;
         }
 
-        public Jazz GetJazz(int jazzId)
+        public Dance GetDance(int danceId)
         {
-            Jazz jazz = db.Jazzs.Find(jazzId);
-            return jazz;
+            Dance dance = db.Dances.Find(danceId);
+            return dance;
         }
 
         public IEnumerable<Artist> GetArtist()
         {
-            //List<Jazz> jazzs = new List<Jazz>();
-            //jazzs = GetJazz();
-            //IEnumerable<Jazz> jazzs = db.Jazzs;
+            
             IEnumerable<Artist> artists = db.Artists;
             return artists;
         }
+
+
     }
+
 }

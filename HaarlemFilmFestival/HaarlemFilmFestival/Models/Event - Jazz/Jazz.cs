@@ -9,6 +9,7 @@ namespace HaarlemFilmFestival.Models
     [Table("Jazzs")]
     public class Jazz : Event
     {
-        public Artist Band { get; set; }
+        public virtual Artist Band { get; set; }
+        
     }
 }
