@@ -7,9 +7,11 @@ using HaarlemFilmFestival.Repositories;
 
 namespace HaarlemFilmFestival.Models
 {
-    public class FoodViewModel
+    public class FoodViewModel : EventViewModel
     {
         private IFoodRepository foodrepository = new FoodRepository();
+        private IEventRepository eventRepository = new EventRepository();
+
         public FoodViewModel()
         {
             this.eventsLeft = AvailibleEvents();

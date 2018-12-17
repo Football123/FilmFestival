@@ -3,6 +3,8 @@
     @model FoodViewModel
 @{
     ViewBag.Title = "Food";
+    IEnumerable<Food> Events = Model.FoodLeft;
+    IEnumerable<Cuisine> KeukenTypes = Model.Cuisines;
 }
 <div class="jumbotron">
     <h1>Visit Haarlem Restaurants</h1>
@@ -33,46 +35,55 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.RestaurantName)
+            Restaurant
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.RestaurantName)
+            Price adults
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Stars)
+            Price children
+        </th>            
+        <th>
+            Type
         </th>
         <th>
-           
-        </th>
-        <th>
-            <p><strong>Order a ticket</strong></p>
+            Order a ticket
         </th>
     </tr>
-    @foreach (var item in Model.Foods)
+    @foreach (Food f in Events)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Restaurant)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Discount)
-            </td>            
-            <td>
-                @Html.ActionLink("Add to cart", "Index", "Tickets")
-            </td>
-        </tr>
+    <tr>
+        <td>
+            @f.Restaurant
+        </td>
+        <td>
+            @f.Price
+        </td>
+        <td>
+            @f.Discount
+        </td>
+        <td>
+            @f.Restaurant.Cuisines
+        </td>
+        <td>
+            @Html.ActionLink("Add to cart", "Index", "Order")
+        </td>
+    </tr>
     }
 </table>
 <p>* Reservation is mandatory.  A reservation fee of €10,- per person wil be charged when a reservation is made on the Haarlem Festival site. This fee will be deducted from the final check on visiting the restaurant.</p>
 <p>** When ordering a ticket there will be an option to inform the restaurant for special requests regarding the food or service (allergies, wheelchair etc.)</p>
 <br />
 <h1>Restaurants</h1>
-@foreach (var item in Model.Restaurants)
+@foreach (var item in Model.Foods)
 {
-    <h2>@Html.DisplayNameFor(modelitem => item.RestaurantName)</h2>
-   // <p>@Html.DisplayTextFor(modelitem => item.Cuisines</p>
-}
+    <div class="row">
+        <div class="col-md-4">
+            <h2>@Html.DisplayFor(modelItem => item.Restaurant.RestaurantName)</h2>
+            <h2>@Html.DisplayFor(modelItem => item.Restaurant.Stars) stars</h2>
+            <h2>@Html.DisplayFor(modelItem => item.Location.Address) </h2>
+            <h2>@Html.DisplayFor(modelItem => item.Restaurant.WebsiteLink)</h2>
+            @*<img src="@Url.Content("~/Content/Images/u1063.png")" />*@
+        </div>
+        </div>
 }
