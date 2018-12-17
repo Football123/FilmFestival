@@ -16,8 +16,6 @@ namespace HaarlemFilmFestival.Repositories
         IEnumerable<Food> GetFoods();
         IEnumerable<Restaurant> GetRestaurants();
         Food GetFood(int foodId);
-        void AddFood(Food food);
-        void UpdateFood(Food food);
-        void DeleteFood(int foodId);
+       
     }
 }
