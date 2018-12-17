@@ -1,12 +1,11 @@
 ﻿body {
 }
 
-h1 .historic-title {
+h1 {
     font-family: 'Bahnschrift SemiLight', 'Bahnschrift Regular', 'Bahnschrift';
-    font-weight: 350;
+    font-weight: 300;
     font-style: normal;
     font-size: 48px;
-    text-align: left;
     text-align: center;
 }
 
@@ -22,20 +21,82 @@ h1 .historic-title {
     line-height: 1.6;
 }
 
-.paragraph-title {
+h2 {
     font-family: 'Arial Vet', 'Arial Standaard', 'Arial';
-    font-weight: 700;
+    font-weight: 300;
     font-style: normal;
     font-size: 48px;
+    text-align: center;
 }
+
+/* #region FancyLineNextToText*/
+/* #region FancyOpmaakTickets */
+.fancy span {
+    display: inline-block;
+    position: relative;
+}
+
+    .fancy span:before,
+    .fancy span:after {
+        content: "";
+        position: absolute;
+        height: 6px;
+        border-bottom: 1px solid #b9b9ff;
+        top: 22px;
+        width: 200px;
+    }
+
+    .fancy span:before {
+        right: 100%;
+        margin-right: 15px;
+    }
+
+    .fancy span:after {
+        left: 100%;
+        margin-left: 15px;
+    }
+/* #endregion */
+
+/* #region FancyOpmaakLocations */
+.amp {
+    margin: 0 0 0.25em 0;
+    align-content: center;
+    text-align: center;
+}
+
+    .amp span {
+        width: 199px;
+    }
+
+        .amp span:before,
+        .amp span:after {
+            content: "";
+            position: absolute;
+            height: 6px;
+            border-bottom: 1px solid #b9b9ff;
+            top: 22px;
+            width: 178px;
+        }
+
+        .amp span:before {
+            right: 100%;
+            margin-right: 15px;
+        }
+
+        .amp span:after {
+            left: 100%;
+            margin-left: 15px;
+        }
+/* #endregion */
+/* #endregion */
 
 .ol {
     width-left: 40%;
     margin-top: 0;
     margin-bottom: 10px;
     align-content: center;
-
 }
+
 ol .list-stops {
     border-style: solid;
     border-color: rgba(68, 217, 201, 1);

@@ -45,36 +45,46 @@ textarea {
     background-color: white;
     margin-top: 1%;
     margin-left: 10%;
-    margin-right: 10%;
+    margin-right: 10.0%;
+    margin-bottom: -10%;
+    border-color: white;
 }
 
-    .navbar-inverse a {
-        background-color: #FFF;
-    }
+.navbar-collapse :before,
+.navbar-collapse :after {
+    height: 6px;
+    border-bottom: 2px solid #b9b9ff;
+    top: 22px;
+    width: 609px;
+}
 
-    .navbar-inverse .navbar-nav > li > a {
-        color: black;
-        font-size: 20px;
-    }
+.navbar-inverse a {
+    background-color: #FFF;
+}
 
-    .navbar-inverse .navbar-brand,
-    .navbar-inverse .navbar-brand:hover {
-        color: black;
-    }
+.navbar-inverse .navbar-nav > li > a {
+    color: black;
+    font-size: 20px;
+}
 
-    .navbar-inverse .navbar-nav > li > a:hover,
-    .navbar-inverse .navbar-nav > li > a:focus {
-        color: black;
-    }
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-brand:hover {
+    color: lightblue;
+}
 
-    .navbar-inverse .navbar-nav {
-        margin-left: 30px;
-        margin-top: 50px;
-    }
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus {
+    color: lightblue;
+}
 
-    .navbar-inverse .navbar-brand {
-        margin-left: 30px;
-    }
+.navbar-inverse .navbar-nav {
+    margin-left: 30px;
+    margin-top: 50px;
+}
+
+.navbar-inverse .navbar-brand {
+    margin-left: 30px;
+}
 
 .navbar > .container .navbar-brand {
     margin-left: 30px;
