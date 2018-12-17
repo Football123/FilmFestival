@@ -83,11 +83,11 @@ textarea {
     margin-right: -6.1%;
 }
 
-    /* Content */
-    .container .jumbotron {
+/* Content */
+.container .jumbotron {
         width: 105%;
         margin-top: 45px;
-    }
+}
 
 .home1 {
     background-color: cornflowerblue;
@@ -110,7 +110,7 @@ textarea {
     border-color: black;
 }
 
-    .col-md-6 .Foods {
+.col-md-6 .Foods {
         background-color: cornflowerblue;
     }
 

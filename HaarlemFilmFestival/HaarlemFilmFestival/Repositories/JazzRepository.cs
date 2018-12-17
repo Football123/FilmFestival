@@ -67,9 +67,9 @@ namespace HaarlemFilmFestival.Repositories
         {
             //List<Artist> artists = new List<Artist>();
             IEnumerable<Artist> artists = db.Artists;
-            //foreach(Artist artist in artists)
+            //foreach (Artist artist in artists)
             //{
-            //    foreach(Jazz jazzevent in db.Jazzs)
+            //    foreach (Jazz jazzevent in db.Jazzs)
             //    {
             //        if (jazzevent.Band.Id == artist.Id)
             //            artists.Add(artist);
