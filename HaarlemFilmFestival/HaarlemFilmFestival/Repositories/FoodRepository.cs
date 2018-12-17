@@ -10,26 +10,13 @@ namespace HaarlemFilmFestival.Repositories
     public class FoodRepository : IFoodRepository
     {
         private HaarlemFilmFestivalContext db = new HaarlemFilmFestivalContext();
-        private IEventRepository eventrepository = new EventRepository();
-
-        public void AddFood(Food food)
-        {
-            db.Foods.Add(food);
-            db.SaveChanges();
-        }
+        private IEventRepository eventrepository = new EventRepository();        
 
         public IEnumerable<Restaurant> GetRestaurants()
         {
             IEnumerable<Restaurant> Restaurants = db.Restaurants;
             return Restaurants;
-        }
-
-        public void DeleteFood(int foodId)
-        {
-            Food food = db.Foods.Find(foodId);
-            db.Foods.Remove(food);
-            db.SaveChanges();
-        }
+        }       
 
         public IEnumerable<Event> GetAllFood()
         {           
@@ -47,13 +34,7 @@ namespace HaarlemFilmFestival.Repositories
         {
             IEnumerable<Food> foods = db.Foods;
             return foods;
-        }
-
-        public void UpdateFood(Food food)
-        {
-            db.Entry(food).State = EntityState.Modified;
-            db.SaveChanges();
-        }
+        }       
 
         public IEnumerable<Cuisine> GetCuisines()
         {
