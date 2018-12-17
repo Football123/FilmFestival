@@ -14,7 +14,7 @@ namespace HaarlemFilmFestival.Models
 
         public FoodViewModel()
         {
-            this.eventsLeft = AvailibleEvents();
+            this.eventsLeft = AvailableEvents();
             this.Foods = foodrepository.GetFoods();
             this.Restaurants = foodrepository.GetRestaurants();
             this.FoodLocations = foodrepository.GetFoodLocation();
@@ -37,7 +37,7 @@ namespace HaarlemFilmFestival.Models
             return left;
         }
 
-        private IEnumerable<Event> AvailibleEvents()
+        private IEnumerable<Event> AvailableEvents()
         {
             AllFood = foodrepository.GetFoods();
             IEnumerable<OrderRecord> ordered = foodrepository.GetOrderedEvents();

@@ -13,9 +13,9 @@ namespace HaarlemFilmFestival.Controllers
 {
     public class HistoricsController : Controller
     {
-        private HistoricViewModel viewmodel = new HistoricViewModel();
-        private IHistoricRepository historicrepository = new HistoricRepository();
-        
+        public IHistoricRepository historicrepository = new HistoricRepository();
+        public HistoricViewModel viewmodel = new HistoricViewModel(historicrepository);
+
         public ActionResult Index()
         {
             return View(viewmodel);

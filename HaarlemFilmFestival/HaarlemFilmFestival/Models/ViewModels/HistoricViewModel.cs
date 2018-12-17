@@ -10,13 +10,13 @@ namespace HaarlemFilmFestival.Models
 {
     public class HistoricViewModel : EventViewModel
     {
-        private IHistoricRepository historicrepository = new HistoricRepository();
+      //  private IHistoricRepository historicrepository = new HistoricRepository();
 
-        public HistoricViewModel()
+        public HistoricViewModel(HistoricRepository historicrepository)
         {
             this.Stops = historicrepository.GetStops();
             this.Historics = historicrepository.GetHistoricEvents();
-            this.eventsLeft = AvailibleEvents();
+            this.eventsLeft = AvailableEvents();
             this.historicsLeft = getHistoricsLeft();
             this.days = getDays(eventsLeft);
             this.times = getStartTime(eventsLeft);
@@ -37,7 +37,7 @@ namespace HaarlemFilmFestival.Models
             return left;
         }
 
-        private IEnumerable<Event> AvailibleEvents()
+        private IEnumerable<Event> AvailableEvents()
         {
             IEnumerable<OrderRecord> ordered;
             ordered = historicrepository.GetOrderedEvents();
@@ -69,7 +69,6 @@ namespace HaarlemFilmFestival.Models
         public IEnumerable<HistoricStop> Stops { get; set; }
         public IEnumerable<Event> eventsLeft { get; set; }
         public IEnumerable<Historic> historicsLeft { get; set; }
-        
         public IEnumerable<Historic> Historics { get; set; }
 
     }
