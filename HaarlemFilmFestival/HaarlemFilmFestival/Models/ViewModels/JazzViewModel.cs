@@ -14,10 +14,11 @@ namespace HaarlemFilmFestival.ViewModels
 
         public JazzViewModel()
         {
+            AllJazz = jazzRepository.GetJazz();
             this.eventsLeft = AvailableEvents();
             this.JazzLeft = getJazzsLeft();
             this.JazzLocations = jazzRepository.GetJazzLocation();
-            this.Artists = jazzRepository.GetArtist();
+            this.Artists = jazzRepository.GetArtists(AllJazz);
             this.StartTime = getStartTime(eventsLeft);
             this.EndTime = getEndTime(eventsLeft);
             this.Events = eventRepository.GetAllEvents();
@@ -40,8 +41,9 @@ namespace HaarlemFilmFestival.ViewModels
 
         protected IEnumerable<Event> AvailableEvents()
         {
+            IEnumerable<OrderRecord> ordered;
             AllJazz = jazzRepository.GetJazz();
-            IEnumerable<OrderRecord> ordered = jazzRepository.GetOrderedEvents();
+           ordered = jazzRepository.GetOrderedEvents();
             List<Event> Events = new List<Event>();
             foreach (Event Event in AllJazz)
             {
@@ -53,24 +55,7 @@ namespace HaarlemFilmFestival.ViewModels
             }
             return Events;
         }
-
-
-        private IEnumerable<Artist> GetArtists()
-        {
-            AllJazz = jazzRepository.GetJazz();
-            IEnumerable<Artist> artists = jazzRepository.GetArtist();
-            List<Artist> list = new List<Artist>();
-            foreach (Artist artist in artists)
-            {
-                foreach (Jazz jazz in AllJazz)
-                {
-                    if (jazz.Band.Id == artist.Id)
-                        list.Add(artist);
-                }
-            }
-            return list;
-        }
-
+        
         public IEnumerable<Location> JazzLocations { get; set; }
         public IEnumerable<Artist> Artists { get; set; }
         public IEnumerable<Jazz> Jazzs { get; set; }
@@ -79,6 +64,6 @@ namespace HaarlemFilmFestival.ViewModels
         public IEnumerable<Jazz> JazzLeft { get; set; }
         public IEnumerable<Event> eventsLeft { get; set; }
         public IEnumerable<Event> Events { get; set; }
-        public IEnumerable<Event> AllJazz { get; set; }
+        public IEnumerable<Jazz> AllJazz { get; set; }
     }
 }
