@@ -45,13 +45,5 @@ namespace HaarlemFilmFestival.Repositories
             return jazz;
         }
 
-        public IEnumerable<Artist> GetArtist()
-        {
-            //List<Jazz> jazzs = new List<Jazz>();
-            //jazzs = GetJazz();
-            //IEnumerable<Jazz> jazzs = db.Jazzs;
-            IEnumerable<Artist> artists = db.Artists;
-            return artists;
-        }
     }
 }
