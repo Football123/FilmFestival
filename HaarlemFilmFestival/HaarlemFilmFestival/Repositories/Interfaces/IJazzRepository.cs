@@ -14,8 +14,5 @@ namespace HaarlemFilmFestival.Repositories
         IEnumerable<Location> GetJazzLocation();
         IEnumerable<Artist> GetArtist();
         Jazz GetJazz(int jazzId);
-        void AddJazz(Jazz jazz);
-        void UpdateJazz(Jazz jazz);
-        void DeleteJazz(int jazzId);
     }
 }

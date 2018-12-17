@@ -18,19 +18,6 @@ namespace HaarlemFilmFestival.Repositories
             return eventRepository.GetOrderedEvents();
         }
 
-        public void AddJazz(Jazz jazz)
-        {
-            db.Jazzs.Add(jazz);
-            db.SaveChanges();
-        }
-
-        public void DeleteJazz(int jazzId)
-        {
-            Jazz jazz = db.Jazzs.Find(jazzId);
-            db.Jazzs.Remove(jazz);
-            db.SaveChanges();
-        }
-
         public IEnumerable<Jazz> GetJazz()
         {
             IEnumerable<Jazz> Jazzs = db.Jazzs;
@@ -55,12 +42,6 @@ namespace HaarlemFilmFestival.Repositories
         {
             Jazz jazz = db.Jazzs.Find(jazzId);
             return jazz;
-        }
-
-        public void UpdateJazz(Jazz jazz)
-        {
-            db.Entry(jazz).State = EntityState.Modified;
-            db.SaveChanges();
         }
 
         public IEnumerable<Artist> GetArtist()
