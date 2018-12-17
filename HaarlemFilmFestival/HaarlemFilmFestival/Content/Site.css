@@ -2,10 +2,7 @@
     background-image: url(/Content/Images/bg.png);
 }
 
-.h1 {
-    width-top: 50px;
-}
-
+/* #region Body */
 body {
     width: 83.3%;
     background-image: url(/Content/Images/bg.png);
@@ -26,6 +23,7 @@ body {
 .container body-content {
     width: 80%;
 }
+/* #endregion */
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
@@ -42,6 +40,7 @@ textarea {
 }
 
 /* Home-pagina - Navigatie-balk */
+/* #region Navigatie */
 .navbar-inverse {
     background-color: white;
     margin-top: 1%;
@@ -80,18 +79,21 @@ textarea {
 .navbar > .container .navbar-brand {
     margin-left: 30px;
 }
+/* #endregion */
 
+/* #region Content */
 .container {
     margin-top: 7px;
     margin-left: 8.6%;
     margin-right: -6.1%;
 }
 
-/* Content */
-.container .jumbotron {
+    /* Content */
+    .container .jumbotron {
         width: 105%;
         margin-top: 45px;
-}
+        align-content: center;
+    }
 
 .home1 {
     background-color: cornflowerblue;
@@ -114,6 +116,7 @@ textarea {
     border-color: black;
 }
 
-.col-md-6 .Foods {
+    .col-md-6 .Foods {
         background-color: cornflowerblue;
     }
+/* #endregion */
