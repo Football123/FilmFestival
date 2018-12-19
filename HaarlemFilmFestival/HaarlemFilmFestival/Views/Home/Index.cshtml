@@ -20,35 +20,47 @@
     <h1>The Events</h1>
     <br>
     <div class="home-buttons">
-        <div class="home-button-dance">
-            <h2>DANCE</h2>
-            <img class="home-buttons-img" src="@Url.Content("~/Content/Images/u41-verkleindvoorwebsite.png")" />
-            <p class="home2">Date: July 27-29</p>
-            <p class="home3">With Haarlem dance you have the most unique dance parties in Haarlem.</p>
-            <p><a class="btn btn-default" href="@Url.Action("Index", "Dance")">Learn more &raquo;</a></p>
+        <div class="home-button">
+            <div class="home-button-dance">
+                <a href="~/Dance/Index">
+                    <h2>DANCE</h2>
+                    <img src="@Url.Content("~/Content/Images/u41-verkleindvoorwebsite.png")" />
+                    <p class="home2">Date: July 27-29</p> <br />
+                    <p class="home3">With Haarlem dance you have the most unique dance parties in Haarlem.</p>
+                </a>
+            </div>
         </div>
-        <div class="home-button-food">
-            <h2>FOOD</h2>
-            <img class="home-buttons-img" src="@Url.Content("~/Content/Images/u47-verkleindvoorwebsite.png")" />
-            <p class="home2">Date: July 26-29</p>
-            <p class="home3">Eat in the best restaurants in Haarlem.</p>
-            <p><a class="btn btn-default" href="@Url.Action("Index", "Foods")">Learn more &raquo;</a></p>
+        <div class="home-button">
+            <div class="home-button-food">
+                <a href="~/Foods/Index">
+                    <h2>FOOD</h2>
+                    <img src="@Url.Content("~/Content/Images/u47-verkleindvoorwebsite.png")" />
+                    <p class="home2">Date: July 26-29</p><br />
+                    <p class="home3">Eat in the best restaurants in Haarlem.</p>
+                </a>
+            </div>
         </div>
         <br>
-        <div class="home-button-historic">
-            <a href="@Url.Action("Index", "Historic")">
-                <h2>HISTORIC</h2>
-                <img class="home-buttons-img" src="@Url.Content("~/Content/Images/home-historic.png")" />
-                <p class="home2">Date: July 26-29</p>
-                <p class="home3">Explore old parts from Haarlem with a professional tour guide</p>
-            </a>
+        <div class="home-button">
+            <div class="home-button-historic">
+                <a href="~/Historics/Index">
+                    <h2>HISTORIC</h2>
+                    <img src="@Url.Content("~/Content/Images/home-historic.png")" />
+                    <p class="home2">Date: July 26-29</p>
+                    <br /> 
+                    <p class="home3">Explore old parts from Haarlem with a professional tour guide</p>
+                </a>
+            </div>
         </div>
-        <div class="home-button-jazz">
-            <h2>JAZZ</h2>
-            <img class="home-buttons-img" src="@Url.Content("~/Content/Images/u53-verkleindvoorwebsite.png")" />
-            <p class="home2">Date: July 26-29</p>
-            <p class="home3">Listen to the nicest Jazz music at the Haarlem jazz events.</p>
-            <p><a class="btn btn-default" href="@Url.Action("Index", "Jazzs")">Learn more &raquo;</a></p>
+        <div class="home-button">
+            <div class="home-button-jazz">
+                <a href="~/Jazzs/Index">
+                    <h2>JAZZ</h2>
+                    <img src="@Url.Content("~/Content/Images/u53-verkleindvoorwebsite.png")" />
+                    <p class="home2">Date: July 26-29</p><br />
+                    <p class="home3">Listen to the nicest Jazz music at the Haarlem jazz events.</p>
+                </a>
+            </div>
         </div>
     </div>
 </div>

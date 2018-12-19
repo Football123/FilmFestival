@@ -148,84 +148,88 @@ img .logo {
     background: inherit;
 }
 
-    .home-buttons .home-buttons-img {
+    .home-buttons img {
         margin: auto;
+        width: 428px;
     }
 
+    .home-buttons a,
     .home-buttons h2 {
         font-family: 'Bahnschrift SemiLight', 'Bahnschrift';
         font-weight: 350;
         font-style: normal;
         text-decoration: underline;
+        color: black;
         margin-left: 25px;
-        padding-top: 8px;
+        margin-top: 0px;
     }
 
-    .home-buttons .home2 {
-        font-size: 24px;
-        text-align: left;
+    .home-buttons a,
+    .home-button p {
         position: absolute;
-        width: 168px;
-        height: 29px;
+        width: 410px;
         font-family: 'Bahnschrift Light', 'Bahnschrift';
         font-weight: 300;
         font-style: normal;
+        text-decoration: none;
     }
 
-.home3 {
-        font-size: 24px;
-        text-align: center;
-        margin-left: 10px;
-        margin-top: 30px;
-        margin-right: 10px;
-        position: absolute;
-        font-family: 'Bahnschrift Light', 'Bahnschrift';
-        font-weight: 300;
-        font-style: normal;
+        .home-buttons a,
+        .home-button p.home2 {
+            font-size: 24px;
+            text-align: center;
+            height: 29px;
+        }
+
+        .home-buttons a,
+        .home-button p.home3 {
+            font-size: 20px;
+            text-align: center;
+            margin-left: 10px;
+            margin-top: 30px;
+            margin-right: 10px;
+        }
+
+/* de schaduwrand om de eventbutton */
+.home-buttons .home-button .home-button-dance,
+.home-buttons .home-button .home-button-food,
+.home-buttons .home-button .home-button-historic,
+.home-button-jazz  {
+    height: 500px;
+    -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
+    -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
+    width: 480px;
+    position: relative;
+}
+
+    .home-buttons .home-button .home-button-dance {
+       
+        background-color: rgba(241, 216, 14, 1);
     }
 
-.home-button-dance {
-    width: 480px;
-    background-color: rgba(241, 216, 14, 1);
-    -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
-    -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
-}
+    .home-buttons .home-button .home-button-food {
+        left: 486px;
+        top: -500px;
+        background-color: rgba(195, 227, 149, 1);
+    }
 
-.home-button-food {
-    left: 486px;
-    top: -397px;
-    width: 480px;
-    position: relative;
-    background-color: rgba(195, 227, 149, 1);
-    -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
-    -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
-}
+    .home-buttons .home-button .home-button-historic {
+        top: -437px;
+        background-color: rgba(86, 216, 206, 1);
+    }
 
-.home-button-historic {
-    top: -437px;
-    width: 480px;
-    position: relative;
-    background-color: rgba(86, 216, 206, 1);
-    -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
-    -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
-}
-
-.home-button-historic :hover {
+.home-button-historic a :hover,
+.home-button-dance a :hover,
+.home-button-food :hover,
+.home-button-jazz ::after hover {
     background-color: rgba(255, 204, 102, 1);
 }
 
 .home-button-jazz {
-    top: -835px;
-    width: 480px;
-    position: relative;
+    top: -937px;
     left: 488px;
     background-color: rgba(138, 209, 131, 1);
-    -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
-    -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
 }
 /* #endregion */
 /* #endregion */
