@@ -14,11 +14,11 @@ namespace HaarlemFilmFestival.Models
 
         public FoodViewModel()
         {
-            this.eventsLeft = AvailableEvents();
+            //this.eventsLeft = AvailableEvents();
             this.Foods = foodrepository.GetFoods();
             this.Restaurants = foodrepository.GetRestaurants();
             this.FoodLocations = foodrepository.GetFoodLocation();
-            this.Cuisines = GetCuisine();
+            this.Cuisines = foodrepository.GetCuisines();
             this.FoodLeft = getFoodsLeft();
         }
 
@@ -37,37 +37,22 @@ namespace HaarlemFilmFestival.Models
             return left;
         }
 
-        private IEnumerable<Event> AvailableEvents()
-        {
-            IEnumerable<OrderRecord> ordered;
-            AllFood = foodrepository.GetFoods();
-            ordered = foodrepository.GetOrderedEvents();
-            List<Event> Events = new List<Event>();
-            foreach (Event Event in AllFood)
-            {
-                int Count = 0;
-                foreach (OrderRecord orderrecord in ordered)
-                    Count = Count + orderrecord.RecordAmount;
-                if (Count < Event.Capacity)
-                    Events.Add(Event);
-            }
-            return Events;
-        }
-
-        private IEnumerable<Cuisine> GetCuisine()
-        {
-            IEnumerable<Cuisine> cuisines = foodrepository.GetCuisines();
-            List<Cuisine> list = new List<Cuisine>();
-            foreach (Cuisine cuisine in cuisines)
-            {
-                foreach (Food food in Foods)
-                {
-                    if (cuisine.Id.Equals(food.Restaurant))
-                        list.Add(cuisine);
-                }
-            }
-            return cuisines;
-        }
+        //private IEnumerable<Event> AvailableEvents()
+        //{
+        //    IEnumerable<OrderRecord> ordered;
+        //    AllFood = foodrepository.GetFoods();
+        //    ordered = foodrepository.GetOrderedEvents();
+        //    List<Event> Events = new List<Event>();
+        //    foreach (Event Event in AllFood)
+        //    {
+        //        int Count = 0;
+        //        foreach (OrderRecord orderrecord in ordered)
+        //            Count = Count + orderrecord.RecordAmount;
+        //        if (Count < Event.Capacity)
+        //            Events.Add(Event);
+        //    }
+        //    return Events;
+        //}       
 
         public IEnumerable<Location> FoodLocations { get; set; }
         public IEnumerable<Restaurant> Restaurants { get; set; }
@@ -75,7 +60,7 @@ namespace HaarlemFilmFestival.Models
         public IEnumerable<Cuisine> Cuisines { get; set; }
         public IEnumerable<Event> eventsLeft { get; set; }
         public IEnumerable<Food> FoodLeft { get; set; }
-        public IEnumerable<Event> AllFood { get; set; }
+        public IEnumerable<Food> AllFood { get; set; }
     }
 
 

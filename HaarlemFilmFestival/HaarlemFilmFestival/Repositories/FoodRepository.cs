@@ -36,15 +36,9 @@ namespace HaarlemFilmFestival.Repositories
             return foods;
         }       
 
-        public IEnumerable<Cuisine> GetCuisines(IEnumerable<Food> Foodevents)
+        public IEnumerable<Cuisine> GetCuisines()
         {
-            List<Cuisine> cuisines = new List<Cuisine>();
-            Food f;
-            foreach (Food e in Foodevents)
-            {
-               // f = db.Cuisines.Where(l => l.Id == e.Restaurant.Id).SingleOrDefault();
-                //cuisines.Add(f);
-            }           
+            IEnumerable<Cuisine> cuisines = db.Cuisines.Distinct();      
             return cuisines;
         }
 
