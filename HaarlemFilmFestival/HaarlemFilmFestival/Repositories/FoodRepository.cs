@@ -42,7 +42,8 @@ namespace HaarlemFilmFestival.Repositories
             Food f;
             foreach (Food e in Foodevents)
             {
-                
+               // f = db.Cuisines.Where(l => l.Id == e.Restaurant.Id).SingleOrDefault();
+                //cuisines.Add(f);
             }           
             return cuisines;
         }
