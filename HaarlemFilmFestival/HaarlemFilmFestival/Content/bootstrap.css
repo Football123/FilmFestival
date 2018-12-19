@@ -861,6 +861,39 @@ pre {
     padding-left: 15px;
 }
 
+.home-buttons {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.home-button-dance {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 45%;
+}
+.home-button-food {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 45%;
+}
+.home-button-historic {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 45%;
+}
+.home-button-jazz {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 45%;
+}
+
 .col-xs-1,
 .col-xs-2,
 .col-xs-3,

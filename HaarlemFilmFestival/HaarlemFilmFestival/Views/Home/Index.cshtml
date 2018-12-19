@@ -2,7 +2,7 @@
     ViewBag.Title = "Home Page";
 }
 
-    <div class="jumbotron">
+<div class="jumbotron">
     <h1>Welcome to Haarlem festival •</h1>
     <h1>July 26-29, 2019</h1>
     <br>
@@ -15,32 +15,40 @@
         Enjoy dance parties from popular Dj's like Afrojack, Hardwell and Martin Garrix.
         You could also attend one of the nicest jazz performances.
     </p>
-    <img src="@Url.Content("~/Content/Images/u60-verkleindvoorwebsite.png")" />
+    <img class="homeimages" src="@Url.Content("~/Content/Images/u60-verkleindvoorwebsite.png")" />
 
     <h1>The Events</h1>
     <br>
-    <div class="row">
-        <div class="col-md-6" style="background-color: greenyellow;">
-            <h2>JAZZ</h2>
-            <img src="@Url.Content("~/Content/Images/u53-verkleindvoorwebsite.png")" />
-            <p class="home2">Date: July 26-29</p>
-            <p class="home2">Listen to the nicest Jazz music at the Haarlem jazz events.</p>
-            <p><a class="btn btn-default" href="@Url.Action("Index", "Jazzs")">Learn more &raquo;</a></p>
-        </div>
-        <div class="col-md-6" style="background-color: yellowgreen;">
+    <div class="home-buttons">
+        <div class="home-button-dance">
             <h2>DANCE</h2>
-            <img src="@Url.Content("~/Content/Images/u41-verkleindvoorwebsite.png")" />
+            <img class="home-buttons-img" src="@Url.Content("~/Content/Images/u41-verkleindvoorwebsite.png")" />
             <p class="home2">Date: July 27-29</p>
-            <p class="home2">With Haarlem dance you have the most unique dance parties in Haarlem.</p>
+            <p class="home3">With Haarlem dance you have the most unique dance parties in Haarlem.</p>
             <p><a class="btn btn-default" href="@Url.Action("Index", "Dance")">Learn more &raquo;</a></p>
         </div>
-        <br>
-        <div class="col-md-6" style="background-color: cornflowerblue;">
+        <div class="home-button-food">
             <h2>FOOD</h2>
-            <img src="@Url.Content("~/Content/Images/u47-verkleindvoorwebsite.png")" />
+            <img class="home-buttons-img" src="@Url.Content("~/Content/Images/u47-verkleindvoorwebsite.png")" />
             <p class="home2">Date: July 26-29</p>
-            <p class="home2">Eat in the best restaurants in Haarlem.</p>
+            <p class="home3">Eat in the best restaurants in Haarlem.</p>
             <p><a class="btn btn-default" href="@Url.Action("Index", "Foods")">Learn more &raquo;</a></p>
+        </div>
+        <br>
+        <div class="home-button-historic">
+            <a href="@Url.Action("Index", "Historic")">
+                <h2>HISTORIC</h2>
+                <img class="home-buttons-img" src="@Url.Content("~/Content/Images/home-historic.png")" />
+                <p class="home2">Date: July 26-29</p>
+                <p class="home3">Explore old parts from Haarlem with a professional tour guide</p>
+            </a>
+        </div>
+        <div class="home-button-jazz">
+            <h2>JAZZ</h2>
+            <img class="home-buttons-img" src="@Url.Content("~/Content/Images/u53-verkleindvoorwebsite.png")" />
+            <p class="home2">Date: July 26-29</p>
+            <p class="home3">Listen to the nicest Jazz music at the Haarlem jazz events.</p>
+            <p><a class="btn btn-default" href="@Url.Action("Index", "Jazzs")">Learn more &raquo;</a></p>
         </div>
     </div>
 </div>
