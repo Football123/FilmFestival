@@ -9,7 +9,7 @@ namespace HaarlemFilmFestival.Models
     [Table("Foods")]
     public class Food : Event
     {
-        public string Restaurant_Id { get; set; }
+       // public string Restaurant_Id { get; set; }
         public virtual Restaurant Restaurant { get; set; }
     }
 }

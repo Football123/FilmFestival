@@ -58,14 +58,13 @@ namespace HaarlemFilmFestival.ViewModels
         private IEnumerable<Artist> GetArtists()
         {
             AllDance = danceRepository.GetDance();
-            IEnumerable<Artist> artists = danceRepository.GetArtist();
+           IEnumerable<Artist> artists = danceRepository.GetArtist();
             List<Artist> list = new List<Artist>();
-            foreach (Artist artist in artists)
+           foreach (Artist artist in artists)
             {
-                foreach (Dance dance in Events)
+                foreach (Dance dance in AllDance)
                 {
-                    if (dance.Artist_Id == artist.Id)
-                        list.Add(artist);
+                   
                 }
             }
             return list;

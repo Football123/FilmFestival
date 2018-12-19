@@ -9,7 +9,7 @@ namespace HaarlemFilmFestival.Repositories
 {
     public class FoodRepository : IFoodRepository
     {
-        private HaarlemFilmFestivalContext db = new HaarlemFilmFestivalContext();
+        private HaarlemFilmFestivalContext db = HaarlemFilmFestivalContext.getInstance();
         private IEventRepository eventrepository = new EventRepository();        
 
         public IEnumerable<Restaurant> GetRestaurants()
