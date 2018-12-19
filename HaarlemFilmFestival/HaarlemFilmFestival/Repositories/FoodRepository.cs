@@ -61,10 +61,5 @@ namespace HaarlemFilmFestival.Repositories
         {
             return eventrepository.GetOrderedEvents();
         }
-
-        public IEnumerable<Cuisine> GetCuisines()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
