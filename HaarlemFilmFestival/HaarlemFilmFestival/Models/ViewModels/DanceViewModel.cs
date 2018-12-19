@@ -15,7 +15,7 @@ namespace HaarlemFilmFestival.ViewModels
         public DanceViewModel()
         {
             this.eventsLeft = AvailableEvents();
-            //this.DanceLeft = getDancesLeft();
+            this.DanceLeft = getDancesLeft();
             this.DanceLocations = danceRepository.GetDanceLocation();
             this.Artists = danceRepository.GetArtist();
             this.StartTime = getStartTime(eventsLeft);
@@ -23,20 +23,20 @@ namespace HaarlemFilmFestival.ViewModels
             this.Events = eventRepository.GetAllEvents();
         }
 
-        //private IEnumerable<Dance> getDancesLeft()
-        //{
-        //    AllDance = danceRepository.GetDance();
-        //    List<Dance> left = new List<Dance>();
-        //    foreach (Dance dance in AllDance)
-        //    {
-        //        foreach (Event Event in eventsLeft)
-        //        {
-        //            if (dance.Id.Equals(Event.Id))
-        //                left.Add(dance);
-        //        }
-        //    }
-        //    return left;
-        //}
+        private IEnumerable<Dance> getDancesLeft()
+        {
+            AllDance = danceRepository.GetDance();
+            List<Dance> left = new List<Dance>();
+            foreach (Dance dance in AllDance)
+            {
+                foreach (Event Event in eventsLeft)
+                {
+                    if (dance.Id.Equals(Event.Id))
+                        left.Add(dance);
+                }
+            }
+            return left;
+        }
 
         protected IEnumerable<Event> AvailableEvents()
         {
@@ -58,13 +58,11 @@ namespace HaarlemFilmFestival.ViewModels
         private IEnumerable<Artist> GetArtists()
         {
             AllDance = danceRepository.GetDance();
-           IEnumerable<Artist> artists = danceRepository.GetArtist();
             List<Artist> list = new List<Artist>();
-           foreach (Artist artist in artists)
             {
                 foreach (Dance dance in AllDance)
                 {
-                   
+                    list.Add(dance.Artist);
                 }
             }
             return list;
