@@ -9,6 +9,15 @@ namespace HaarlemFilmFestival.ViewModels
 {
     public class JazzViewModel : EventViewModel
     {
+        public IEnumerable<Location> JazzLocations { get; set; }
+        public IEnumerable<Artist> Artists { get; set; }
+        public IEnumerable<Jazz> Jazzs { get; set; }
+        public IEnumerable<DateTime> StartTime { get; set; }
+        public IEnumerable<DateTime> EndTime { get; set; }
+        public IEnumerable<Jazz> JazzLeft { get; set; }
+        public IEnumerable<Event> eventsLeft { get; set; }
+        public IEnumerable<Event> Events { get; set; }
+        public IEnumerable<Jazz> AllJazz { get; set; }
         private IJazzRepository jazzRepository = new JazzRepository();
         private IEventRepository eventRepository = new EventRepository();
 
@@ -54,16 +63,6 @@ namespace HaarlemFilmFestival.ViewModels
                     Events.Add(Event);
             }
             return Events;
-        }
-        
-        public IEnumerable<Location> JazzLocations { get; set; }
-        public IEnumerable<Artist> Artists { get; set; }
-        public IEnumerable<Jazz> Jazzs { get; set; }
-        public IEnumerable<DateTime> StartTime { get; set; }
-        public IEnumerable<DateTime> EndTime { get; set; }
-        public IEnumerable<Jazz> JazzLeft { get; set; }
-        public IEnumerable<Event> eventsLeft { get; set; }
-        public IEnumerable<Event> Events { get; set; }
-        public IEnumerable<Jazz> AllJazz { get; set; }
+        }     
     }
 }
