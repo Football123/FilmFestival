@@ -30,6 +30,14 @@ h2 {
     line-height: 1.6;
 }
 
+.historic-table {
+    border: 1px solid;
+}
+.historic-table img {
+    width: 22px;
+    height: 22px;
+}
+
 /* #region FancyLineNextToText*/
 /* #region FancyOpmaakTickets */
 .fancy span {

@@ -13,7 +13,9 @@ namespace HaarlemFilmFestival.Models
         public HistoricViewModel()
         {
         }
-
+        
+        public IEnumerable<Historic> historicPerDay { get; set; }
+        public IEnumerable<TimeSpan> StartTimes { get; set; }
         public IEnumerable<Language> languages { get; set; }
         public IEnumerable<HistoricStop> Stops { get; set; }
         public IEnumerable<Event> eventsLeft { get; set; }

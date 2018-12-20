@@ -8,10 +8,13 @@ using HaarlemFilmFestival.Controllers;
 
 namespace HaarlemFilmFestival.Repositories
 {
-   interface IHistoricRepository
+    interface IHistoricRepository
     {
+        IEnumerable<Historic> GetHistoricPerDay(DateTime day);
         IEnumerable<HistoricStop> GetStops();
-        IEnumerable<Historic> GetHistoricEvents();
         IEnumerable<OrderRecord> GetOrderedEvents();
+        IEnumerable<Historic> GetHistoricEvents();
+        IEnumerable<TimeSpan> GetStartTimes();
+
     }
 }

@@ -22,26 +22,26 @@
 
     <h2 class="subtitle fancy"><span> Tickets </span></h2>
     <table class="historic-table">
-
-        @foreach (Historic j in Model.historicsLeft)
+        <tr>
+            @{ foreach (DateTime day in Model.days)
+                {
+                <th><button id="@day.DayOfWeek.ToString()">Show tickets for <br />@day.DayOfWeek.ToString()</button></th>
+                <th><button id="2">Show tickets for <br />Friday July 27</button></th>
+                <th><button id="3">Show tickets for <br />Saturday July 28</button></th>
+                <th><button id="4">Show tickets for <br />Sunday July 29</button></th>
+                }
+            }
+        </tr>
+        <tr>
+            <th>Time</th>
+            <th>Price</th>
+            <th>English tour</th>
+            <th>Dutch tour</th>
+            <th>Chinese tour</th>
+        </tr>
+        @foreach (Historic e in Model.historicPerDay)
         {
-            <tr>
-                <td>
-                    @j.StartTime.ToString() - @j.EndTime.ToString()
-                </td>
-                <td>
-                    @j.Location.Name
-                </td>
-                <td>
-                    @j.Location.LocationDescription
-                </td>
-                <td>
-                    @j.Price
-                </td>
-                <td>
-                    @Html.ActionLink("Add to cart", "Index", "Order")
-                </td>
-            </tr>
+            @Html.Partial("_HistoricPartialView", e)
         }
     </table>
 

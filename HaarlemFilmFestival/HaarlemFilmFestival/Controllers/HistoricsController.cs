@@ -28,8 +28,16 @@ namespace HaarlemFilmFestival.Controllers
             return View();
         }
 
+        public ActionResult GetPerDay(DateTime day)
+        {
+            IEnumerable<Historic> newevents = GetHistoricPerDay(day);
+            viewmodel.historicPerDay = newevents;
+            return View(viewmodel);
+        }
+
         public HistoricViewModel FillViewModel()
         {
+            viewmodel.StartTimes = historicrepository.GetStartTimes();
             viewmodel.Historics = historicrepository.GetHistoricEvents();
             viewmodel.languages = GetLanguages();
             viewmodel.Stops = historicrepository.GetStops();
@@ -38,6 +46,12 @@ namespace HaarlemFilmFestival.Controllers
             viewmodel.days = viewmodel.getDays(viewmodel.eventsLeft);
             viewmodel.times = viewmodel.getStartTime(viewmodel.eventsLeft);
             return viewmodel;
+        }
+
+        public IEnumerable<Historic> GetHistoricPerDay(DateTime day)
+        {
+            IEnumerable<Historic> events = historicrepository.GetHistoricPerDay(day);
+            return events;
         }
 
         public IEnumerable<Historic> getHistoricsLeft()
