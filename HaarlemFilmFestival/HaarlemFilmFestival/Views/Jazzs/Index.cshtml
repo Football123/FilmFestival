@@ -7,86 +7,66 @@
     IEnumerable<Jazz> Events = Model.JazzLeft;
     IEnumerable<Artist> bands = Model.Artists;
 }
-<link href="@Url.Content("~/Content/Jazz.css")" , rel="stylesheet" type="text/css" />
-<div class="jumbotron">
-    <h1>Visit Haarlem Jazz</h1>
-    <p>
-        Haarlem Jazz is an important music event for the City of Haarlem.
-        During the Haarlem festival, we want to recreate part of this festival by inviting some of the bands that previously performed there to play at the Patronaat.
-        On Sunday, some of the bands will taketo the big stage at the Grote Markt to perform for all visitors for free!
-    </p>
-    <p class="jazz1">See the artists and times below!</p>
-    <div class="jazz">
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="@Url.Content("~/Content/Jazz.css")" , rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('#btnClick').click(function(data) {
+                $.post("@Url.Action("ShowPartialView", "Jazzs")", function(data) {
+                    if (data) {
+                        $('#divTest').append(data);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="jumbotron">
+        <h1>Visit Haarlem Jazz</h1>
         <p>
-            Haarlem Jazz is one of the big jazz stages in The Netherlands! Various famous artists will be playing.
-            All kinds of famous artists will be playing. Gare du Nord, Soul Six , Lilith Merlot and many more. If you want some standard dabbler tracks, you should definitely listen to Gare du Nord.
-            But if you want a more special act, don’t forget Han Bennink! Haarlem Jazz will show Haarlem what they got!
-            And last but not least, Sunday is free for all visitors! Come and visit the Grote Markt for free, and enjoy with other people.
-            So what holds you back? Pick a ticket and add it to your shopping cart.
-            <div class="jazzimage"><img src="@Url.Content("~/Content/Images/u1082-verkleindvoorwebsite.png")" /></div>
+            Haarlem Jazz is an important music event for the City of Haarlem.
+            During the Haarlem festival, we want to recreate part of this festival by inviting some of the bands that previously performed there to play at the Patronaat.
+            On Sunday, some of the bands will taketo the big stage at the Grote Markt to perform for all visitors for free!
         </p>
-    </div>
-
-    <h1>Tickets</h1>
-
-    <table class="table">
-
-        <tr>
-            <th>
-                Time
-            </th>
-            <th>
-                Location
-            </th>
-            <th>
-                Hall
-            </th>
-            <th>
-                Band
-            </th>
-            <th>
-                Price
-            </th>
-            <th>
-                Add to cart
-            </th>
-        </tr>
-        @foreach (Jazz j in Events)
-        {
-            <tr>
-                <td>
-                    @j.StartTime.ToString() - @j.EndTime.ToString()
-                </td>
-                <td>
-                    @j.Location.Name
-                </td>
-                <td>
-                    @j.Location.LocationDescription
-                </td>
-                <td>
-                    @j.Band.Name
-                </td>
-                <td>
-                    @j.Price
-                </td>
-                <td>
-                    @Html.ActionLink("Add to cart", "Index", "Order")
-                </td>
-            </tr>
-        }
-
-    </table>
-
-    <h1>Line-up</h1>
-
-    @foreach (var item in Model.Artists)
-    {
-        <div class="row">
-            <div class="col-md-6" style="border-color: black;">
-                <h2>@Html.DisplayFor(modelItem => item.Name)</h2>
-                <h2>@Html.DisplayFor(modelItem => item.ArtistDescription)</h2>
-                @*<img src="@Url.Content("~/Content/Images/u1063.png")" />*@
-            </div>
+        <p class="jazz1">See the artists and times below!</p>
+        <div class="jazz">
+            <p>
+                Haarlem Jazz is one of the big jazz stages in The Netherlands! Various famous artists will be playing.
+                All kinds of famous artists will be playing. Gare du Nord, Soul Six , Lilith Merlot and many more. If you want some standard dabbler tracks, you should definitely listen to Gare du Nord.
+                But if you want a more special act, don’t forget Han Bennink! Haarlem Jazz will show Haarlem what they got!
+                And last but not least, Sunday is free for all visitors! Come and visit the Grote Markt for free, and enjoy with other people.
+                So what holds you back? Pick a ticket and add it to your shopping cart.
+                <div class="jazzimage"><img src="@Url.Content("~/Content/Images/u1082-verkleindvoorwebsite.png")" /></div>
+            </p>
         </div>
-    }
-</div>
+
+        <h1>Tickets</h1>
+        <input type="button" value="Show All Tickets" id="btnClick" />
+        <input type="button" value="Show Tickets for 26 July" id="btnClick26" />
+        <input type="button" value="Show Tickets for 27 July" id="btnClick27" />
+        <input type="button" value="Show Tickets for 28 July" id="btnClick28" />
+        <input type="button" value="Show Tickets for 29 July" id="btnClick29" />
+        <div id="divTest">
+            @*@Html.Partial("_JazzPartialView")*@
+        </div>
+
+        <h1>Line-up</h1>
+
+        @foreach (var item in Model.Artists)
+        {
+            <div class="row">
+                <div class="col-md-6" style="border-color: black;">
+                    <h2>@Html.DisplayFor(modelItem => item.Name)</h2>
+                    <h2>@Html.DisplayFor(modelItem => item.ArtistDescription)</h2>
+                    @*<img src="@Url.Content("~/Content/Images/u1063.png")" />*@
+                </div>
+            </div>
+        }
+    </div>
+</body>
+</html>
