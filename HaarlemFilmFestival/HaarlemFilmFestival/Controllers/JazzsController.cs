@@ -23,5 +23,9 @@ namespace HaarlemFilmFestival.Controllers
             // ....
             return View(viewmodel);
         }
+        public PartialViewResult ShowPartialView()
+        {
+            return PartialView("_JazzPartialView", viewmodel);
+        }
     }
 }

@@ -21,6 +21,29 @@
 
 
     <h2 class="subtitle fancy"><span> Tickets </span></h2>
+    <table class="historic-table">
+
+        @foreach (Historic j in Model.historicsLeft)
+        {
+            <tr>
+                <td>
+                    @j.StartTime.ToString() - @j.EndTime.ToString()
+                </td>
+                <td>
+                    @j.Location.Name
+                </td>
+                <td>
+                    @j.Location.LocationDescription
+                </td>
+                <td>
+                    @j.Price
+                </td>
+                <td>
+                    @Html.ActionLink("Add to cart", "Index", "Order")
+                </td>
+            </tr>
+        }
+    </table>
 
     <h2 class="fancy amp"><span> Locations </span></h2>
     <ol class="list-stops">

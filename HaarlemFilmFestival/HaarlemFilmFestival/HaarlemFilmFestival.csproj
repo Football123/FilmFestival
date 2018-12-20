@@ -185,6 +185,9 @@
     <Content Include="Content\Food.css" />
     <Content Include="Content\Historic.css" />
     <Content Include="Content\Images\bg.png" />
+    <Content Include="Content\Images\footer-facebook.png" />
+    <Content Include="Content\Images\footer-instagram.png" />
+    <Content Include="Content\Images\footer-twitter.png" />
     <Content Include="Content\Images\HistoricStops\Amsterdamse Poort.jpg" />
     <Content Include="Content\Images\HistoricStops\Church of St. Bavo.jpg" />
     <Content Include="Content\Images\HistoricStops\De Hallen.jpg" />
@@ -261,6 +264,8 @@
     <Content Include="Views\Foods\Index.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Historics\Index.cshtml" />
+    <Content Include="Views\Jazzs\_JazzPartialView.cshtml" />
+    <Content Include="Views\Jazzs\_MySecondJazzPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

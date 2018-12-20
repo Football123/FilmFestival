@@ -40,8 +40,8 @@ body {
     line-height: 1.428571429;
     color: #333333;
     background-image: url(/Content/Images/bg.png);
-    padding: 20px;
-    margin: 50px;
+    /* padding: 20px; */
+    /* margin: 50px; */
 }
 
 a:focus {
@@ -347,6 +347,7 @@ a {
 
 img {
     vertical-align: middle;
+    /*width: 100%;*/
 }
 
 .img-responsive {
@@ -377,6 +378,7 @@ img {
 }
 
 hr {
+    width: 75%;
     margin-top: 20px;
     margin-bottom: 20px;
     border: 0;
@@ -756,10 +758,10 @@ pre {
 }
 
 .container {
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+    /* padding-right: 15px; */
+    /* padding-left: 15px; */
+    /* margin-right: auto; */
+    /* margin-left: auto; */
 }
 
     .container:before,
@@ -865,6 +867,7 @@ pre {
     margin-right: -15px;
     margin-left: -15px;
 }
+
 .home-button-dance {
     position: relative;
     min-height: 1px;
@@ -872,6 +875,7 @@ pre {
     padding-left: 15px;
     width: 45%;
 }
+
 .home-button-food {
     position: relative;
     min-height: 1px;
@@ -879,6 +883,7 @@ pre {
     padding-left: 15px;
     width: 45%;
 }
+
 .home-button-historic {
     position: relative;
     min-height: 1px;
@@ -886,6 +891,7 @@ pre {
     padding-left: 15px;
     width: 45%;
 }
+
 .home-button-jazz {
     position: relative;
     min-height: 1px;
@@ -958,7 +964,7 @@ pre {
 
 @media (min-width: 768px) {
     .container {
-        max-width: 750px;
+        /*max-width: 750px;*/
     }
 
     .col-sm-1,
@@ -1158,7 +1164,7 @@ pre {
 
 @media (min-width: 992px) {
     .container {
-        max-width: 970px;
+        /*max-width: 970px;*/
     }
 
     .col-md-1,
@@ -1370,7 +1376,8 @@ pre {
 
 @media (min-width: 1200px) {
     .container {
-        max-width: 1170px;
+        /*max-width: 1170px;*/
+        max-width: 100%;
     }
 
     .col-lg-1,
@@ -4333,8 +4340,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .container > .navbar-header,
 .container > .navbar-collapse {
-    margin-right: -15px;
-    margin-left: -15px;
+    /*margin-right: -15px;
+    margin-left: -15px;*/
 }
 
 @media (min-width: 768px) {
@@ -4373,6 +4380,11 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-fixed-top {
     top: -7px;
     z-index: 1030;
+}
+
+.body-content-fixed {
+    left: -7px;
+    z-index:
 }
 
 .navbar-fixed-bottom {
@@ -5149,6 +5161,12 @@ a.list-group-item.active > .badge,
 
     .jumbotron p {
         line-height: 1.4;
+        font-family: 'Bahnschrift Light', 'Bahnschrift';
+        font-weight: 300;
+        font-style: normal;
+        text-align: center;
+        margin: 0 85px 40px 85px;
+        color: black;
     }
 
 .container .jumbotron {

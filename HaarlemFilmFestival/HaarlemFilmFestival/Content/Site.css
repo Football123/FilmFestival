@@ -1,34 +1,130 @@
-﻿.bg {
+﻿/* Groene kleur : rgb(102, 204, 0) */
+/* Blauwe kleur : rgba(172, 216, 224, 1) */
+/* Gifgroene kleur : rgba(68, 217, 201, 1) */
+.bg {
     background-image: url(/Content/Images/bg.png);
 }
 
 /* #region Fonts */
+.jumbotron h1 {
+    font-family: 'Bahnschrift SemiLight', 'Bahnschrift Regular', 'Bahnschrift';
+    font-weight: 350;
+    font-style: normal;
+    font-size: 47px;
+    text-align: center;
+}
 
+/* dit is de tekst onder de eventbuttons met de datum */
+/* alleen de datum moet een andere width hebben*/
+.jumbotron .navbar-collapse.home2 {
+    width: 0px;
+}
+
+/* dit is de tekst onder de eventbuttons met de datum en info */
+.jumbotron p.home2,
+.jumbotron p.home3 {
+    line-height: 1.4;
+    font-family: 'Bahnschrift Light', 'Bahnschrift';
+    font-weight: 300;
+    font-style: normal;
+    text-align: center;
+    margin-left: 0;
+    color: black;
+}
 /* #endregion */
 
-/* #region Body */
-body {
-    width: 83.3%;
-    background-image: url(/Content/Images/bg.png);
-    background-color: deeppink;
-    background-size: cover;
-    background-attachment: fixed;
-    padding-top: 50px;
-    padding-bottom: 20px;
-    margin: 7.4px;
+/* #region Images */
+img.logo {
+    margin-left: -14px;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+img.arrow {
+    background-color: rgba(172, 216, 224, 1);
+    padding: 10px 110px 10px 110px;
+    width: 30%;
+    height: 60px;
+    margin: 0% 35% 5% 35%;
 }
 
-.container body-content {
-    width: 80%;
+img.homeimages {
+    width: 100%;
 }
 /* #endregion */
 
+/* #region Lines */
+/* #region Nav-Line */
+.navbar-collapse :after,
+.navbar-collapse :before {
+    height: 6px;
+    border-bottom: 1.4px solid rgb(102, 204, 0);
+    top: 22px;
+    width: 100%;
+}
+
+.navbar-collapse :before {
+    right: 100%;
+    margin-right: 15px;
+}
+
+.navbar-collapse :after {
+    left: 100%;
+    margin-left: 0px;
+}
+/* #endregion */
+/* #region Line Arrow */
+.fancyarrow span {
+    position: relative;
+}
+
+    .fancyarrow span:before,
+    .fancyarrow span:after {
+        content: "";
+        position: absolute;
+        height: 6px;
+        border-bottom: 1.4px solid rgb(102, 204, 0);
+        top: -21px;
+        width: 140px;
+    }
+
+    .fancyarrow span:before {
+        right: 100%;
+        margin-right: -270px;
+    }
+
+    .fancyarrow span:after {
+        left: 100%;
+        margin-left: -270px;
+    }
+/* #endregion */
+/* #region Line "The Events" */
+.fancyevents span {
+    display: inline-block;
+    position: relative;
+}
+
+    .fancyevents span:before,
+    .fancyevents span:after {
+        content: "";
+        position: absolute;
+        height: 6px;
+        border-bottom: 1.4px solid rgb(102, 204, 0);
+        top: 22px;
+        width: 200px;
+    }
+
+    .fancyevents span:before {
+        right: 100%;
+        margin-right: 20px;
+    }
+
+    .fancyevents span:after {
+        left: 100%;
+        margin-left: 20px;
+    }
+/* #endregion */
+/* #endregion */
+
+/* #region Bootstrap */
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
@@ -42,14 +138,10 @@ select,
 textarea {
     max-width: 280px;
 }
+/* #endregion */
 
-img .logo {
-    margin-left: -103px;
-    margin-right: 50px;
-}
-
-/* Home-pagina - Navigatie-balk */
 /* #region Navigatie */
+/* dit is de opmaak van de achtergrond van de header en het juist op zn plaats zetten */
 .navbar-inverse {
     background-color: white;
     margin-top: 1%;
@@ -59,92 +151,79 @@ img .logo {
     border-color: white;
 }
 
-.navbar-collapse :before {
-    height: 6px;
-    border-bottom: 2px solid #b9b9ff;
-    top: 22px;
-    width: 609px;
-    right: 100%;
-    margin-right: 15px;
-}
+    .navbar-inverse a {
+        background-color: #FFF;
+    }
 
-.navbar-collapse :after {
-    height: 6px;
-    border-bottom: 2px solid #b9b9ff;
-    top: 22px;
-    width: 609px;
-    left: 100%;
-    margin-left: 15px;
-}
+    /* het lettertype van de navigatie */
+    .navbar-inverse .navbar-nav > li a {
+        color: black;
+        font-family: 'Bahnschrift Light', 'Bahnschrift';
+        font-weight: 300;
+        font-style: normal;
+        font-size: 28px;
+        float: left;
+    }
 
-.navbar-inverse a {
-    background-color: #FFF;
-}
+    /* zet kleur op groen */
+    .navbar-inverse .active, /* als de tekst actief is */
+    .navbar-inverse .navbar-brand,
+    .navbar-inverse .navbar-brand:hover, /* als je met de muis over het vak heen gaat */
+    .navbar-inverse .navbar-nav > li > a:hover, /* als je met de muis over de link heen gaat */
+    .navbar-inverse .navbar-nav > li > a:focus { /* als je met de muis focust op de link */
+        color: rgb(102, 204, 0);
+    }
 
-.navbar-inverse .navbar-nav > li > a {
-    color: black;
-    font-size: 20px;
-}
+    /* rechtzetten van de navigatiebalk*/
+    .navbar-inverse .navbar-nav {
+        margin-left: 30px;
+        margin-top: 50px;
+    }
 
-.navbar-inverse .navbar-brand,
-.navbar-inverse .navbar-brand:hover {
-    color: lightblue;
-}
-
-.navbar-inverse .navbar-nav > li > a:hover,
-.navbar-inverse .navbar-nav > li > a:focus {
-    color: lightblue;
-}
-
-.navbar-inverse .navbar-nav {
-    margin-left: 30px;
-    margin-top: 50px;
-}
-
-.navbar-inverse .navbar-brand {
-    margin-left: 30px;
-}
-
-.navbar > .container .navbar-brand {
-    margin-left: 30px;
-}
+    .navbar-inverse .navbar-brand,
+    .navbar > .container .navbar-brand {
+        margin-left: 30px;
+    }
 /* #endregion */
 
-/* #region Content */
+/* #region Body */
+body {
+    width: 85.2%;
+    background-image: url(/Content/Images/bg.png);
+    background-color: deeppink;
+    background-size: cover;
+    background-attachment: fixed;
+    padding-top: 0px;
+    margin: 8%;
+    min-height: min-content;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content-fixed {
+    min-width: 103.3%;
+}
+
+.container body-content-fixed {
+    width: 80%;
+}
+
 .container {
     margin-top: 7px;
-    margin-left: 8.6%;
-    margin-right: -6.1%;
+    margin-left: 2.3%;
+    width: 105%;
 }
 
     /* Content */
     .container .jumbotron {
-        width: 105%;
-        margin-top: 45px;
+        width: 90.9%;
         align-content: center;
     }
+/* #endregion */
 
-.home1 {
-    background-color: cornflowerblue;
-    margin-left: 350px;
-    padding-left: 80px;
-    width: 250px;
-    height: 60px;
-}
-
-.col-md-6 {
-    border-color: black;
-}
-
-    .col-md-6 .Foods {
-        background-color: cornflowerblue;
-    }
-
-/* #region home buttons */
+/* #region Home buttons */
 .home-buttons {
     margin: auto;
     position: relative;
-    height: 700px;
     background: inherit;
 }
 
@@ -199,7 +278,7 @@ img .logo {
         -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
         -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
         box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
-        width: 480px;
+        width: 49%;
         position: relative;
     }
 
@@ -227,8 +306,40 @@ img .logo {
 
     .home-buttons a:hover {
         background-color: rgba(255, 204, 102, 1);
-        
     }
 
 /* #endregion */
-/* #endregion */
+
+/* #region Footer*/
+.footer {
+    background-color: white;
+    /* margin-top: -75%; */
+    /* margin-left: 10%; */
+    margin-right: 9%;
+    margin-bottom: -10%;
+    border-color: white;
+}
+
+    .footer .footer-img-part {
+        width: 30%;
+        margin-right: 35%;
+        margin-left: 35%;
+    }
+
+    .footer img.footerimg {
+        margin-left: 6%;
+        margin-right: 6%;
+        position: relative;
+        /* align-content: center; */
+        /* align-items: center; */
+    }
+
+    .footer .footertext {
+        margin-left: 25%;
+        margin-right: 25%;
+        height: 56px;
+        background-color: rgba(255, 255, 255, 0);
+        font-size: 20px;
+        text-align: center;
+    }
+/* #endregion*/

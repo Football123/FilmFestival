@@ -9,6 +9,18 @@
     text-align: center;
 }
 
-h1 {
+.h1 {
     text-align: center;
 }
+
+.foodcontainer {
+    border-color: black;
+}
+.column {
+    float: left;
+    width: 33.33%;
+    font-size: 17px;
+    text-align: left;
+}
+
+

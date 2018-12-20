@@ -30,11 +30,17 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container body-content-fixed">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Film Festival</p>
+        <footer class="footer">
+            <div class="footer-img-part">
+                <img class="footerimg" src="~/Content/Images/footer-facebook.png" />
+                <img class="footerimg" src="~/Content/Images/footer-twitter.png" />
+                <img class="footerimg" src="~/Content/Images/footer-instagram.png" />
+            </div>
+            <br />
+            <p class="footertext">ALL CONTENTS &copy; COPYRIGHT 2018 FINAL DRAFT CREATED BY HAARLEM DEV.</p>
         </footer>
     </div>
 
