@@ -1,6 +1,7 @@
 ﻿body {
 }
 
+/* #region Fonts */
 h1 {
     font-family: 'Bahnschrift SemiLight', 'Bahnschrift Regular', 'Bahnschrift';
     font-weight: 300;
@@ -8,6 +9,15 @@ h1 {
     font-size: 48px;
     text-align: center;
 }
+
+h2 {
+    font-family: 'Arial Vet', 'Arial Standaard', 'Arial';
+    font-weight: 300;
+    font-style: normal;
+    font-size: 48px;
+    text-align: center;
+}
+/* #endregion */
 
 .HistoricInfo {
     font-family: 'Bahnschrift SemiLight', 'Bahnschrift';
@@ -18,14 +28,6 @@ h1 {
     padding-left: 15%;
     padding-right: 15%;
     line-height: 1.6;
-}
-
-h2 {
-    font-family: 'Arial Vet', 'Arial Standaard', 'Arial';
-    font-weight: 300;
-    font-style: normal;
-    font-size: 48px;
-    text-align: center;
 }
 
 /* #region FancyLineNextToText*/
@@ -89,17 +91,23 @@ h2 {
 /* #endregion */
 /* #endregion */
 
-.ol {
-    width-left: 40%;
+/* #region ListStops */
+.list-stops {
+    width: 40%;
     margin-top: 0;
     margin-bottom: 10px;
     align-content: center;
+    display:block;
+    position: center;
+    border: solid 4px;
 }
 
-ol .list-stops {
-    border-style: solid;
-    border-color: rgba(68, 217, 201, 1);
+ol.list-stops li.historic-stop-list {
+    border: dotted 4px;
+    border-color: pink;
     align-content: center;
+    padding: 20px;
+
 }
 
 ol li .historic-stop-list {
@@ -109,3 +117,4 @@ ol li .historic-stop-list {
     font-size: 24px;
     text-align: center;
 }
+/* #endregion */

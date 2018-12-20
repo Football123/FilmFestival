@@ -1,5 +1,6 @@
 ﻿/* Groene kleur : rgb(102, 204, 0) */
 /* Blauwe kleur : rgba(172, 216, 224, 1) */
+/* Gifgroene kleur : rgba(68, 217, 201, 1) */
 .bg {
     background-image: url(/Content/Images/bg.png);
 }
@@ -187,21 +188,22 @@ textarea {
 
 /* #region Body */
 body {
-    width: 88%;
+    width: 85.2%;
     background-image: url(/Content/Images/bg.png);
     background-color: deeppink;
     background-size: cover;
     background-attachment: fixed;
     padding-top: 0px;
     margin: 8%;
+    min-height: min-content;
 }
 
 /* Set padding to keep content from hitting the edges */
-.body-content {
+.body-content-fixed {
     min-width: 103.3%;
 }
 
-.container body-content {
+.container body-content-fixed {
     width: 80%;
 }
 
@@ -209,12 +211,11 @@ body {
     margin-top: 7px;
     margin-left: 2.3%;
     width: 105%;
-   
 }
 
     /* Content */
     .container .jumbotron {
-        width: 88%;
+        width: 90.9%;
         align-content: center;
     }
 /* #endregion */
@@ -314,8 +315,31 @@ body {
     background-color: white;
     /* margin-top: -75%; */
     /* margin-left: 10%; */
-    margin-right: 12%;
+    margin-right: 9%;
     margin-bottom: -10%;
     border-color: white;
 }
+
+    .footer .footer-img-part {
+        width: 30%;
+        margin-right: 35%;
+        margin-left: 35%;
+    }
+
+    .footer img.footerimg {
+        margin-left: 6%;
+        margin-right: 6%;
+        position: relative;
+        /* align-content: center; */
+        /* align-items: center; */
+    }
+
+    .footer .footertext {
+        margin-left: 25%;
+        margin-right: 25%;
+        height: 56px;
+        background-color: rgba(255, 255, 255, 0);
+        font-size: 20px;
+        text-align: center;
+    }
 /* #endregion*/

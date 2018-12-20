@@ -4382,6 +4382,11 @@ textarea.input-group-sm > .input-group-btn > .btn {
     z-index: 1030;
 }
 
+.body-content-fixed {
+    left: -7px;
+    z-index:
+}
+
 .navbar-fixed-bottom {
     bottom: 0;
     margin-bottom: 0;
