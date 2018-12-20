@@ -266,6 +266,7 @@
     <Content Include="Views\Historics\Index.cshtml" />
     <Content Include="Views\Jazzs\_JazzPartialView.cshtml" />
     <Content Include="Views\Jazzs\_MySecondJazzPartialView.cshtml" />
+    <Content Include="Views\Shared\_PartialViews\_HistoricPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
