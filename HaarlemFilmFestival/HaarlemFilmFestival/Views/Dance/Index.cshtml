@@ -6,115 +6,116 @@
 
 @{
     ViewBag.Title = "Dance";
-    IEnumerable<Dance> Events = Model.DanceLeft;
+    IEnumerable<Event> Events = Model.AllDance;
     IEnumerable<Artist> dances = Model.Artists;
 }
     <div class="jumbotron">
-        <h1>Visit Haarlem Dance</h1>
-        <p>
-            The Netherlands is the precursor of the Dance music. The Netherlands has many popular DJ’s like Martin Garrix, Tiësto and Hardwell. These popular Dj’s all play at the Haarlem Dance festival. There are three different days all with their own dance set. Every hour is unique, every day is unique, every second is unique. So check out our information page and see if your favorite Dj will be playing.
-        </p>
-    </div>
+    <h1>Visit Haarlem Dance</h1>
+    <p>
+        The Netherlands is the precursor of the Dance music. The Netherlands has many popular DJ’s like Martin Garrix, Tiësto and Hardwell. These popular Dj’s all play at the Haarlem Dance festival. There are three different days all with their own dance set. Every hour is unique, every day is unique, every second is unique. So check out our information page and see if your favorite Dj will be playing.
+    </p>
 
 
-<h1>Tickets</h1>
 
-<table class="table">
+    <h1>Tickets</h1>
 
-    <tr>
-        <th>
-            Time
-        </th>
-        <th>
-            Location
-        </th>
-        <th>
-            Hall
-        </th>
+    <table class="table">
 
-        <th>
-            Price
-        </th>
-        <th>
-            Add to cart
-        </th>
-    </tr>
-    @foreach (Dance d in Events)
-    {
         <tr>
-            <td>
-                @d.StartTime.ToString() - @d.EndTime.ToString()
-            </td>
-            <td>
-                @d.Location.Name
-            </td>
-            <td>
-                @d.Location.LocationDescription
-            </td>
-            <td>
-                @d.Price
-            </td>
-            <td>
-                @Html.ActionLink("Add to cart", "Index", "Order")
-            </td>
+            <th>
+                Time
+            </th>
+            <th>
+                Location
+            </th>
+            <th>
+                Hall
+            </th>
+
+            <th>
+                Price
+            </th>
+            <th>
+                Add to cart
+            </th>
         </tr>
-    }
+        @foreach (Dance d in Events)
+            {
+                <tr>
+                    <td>
+                        @d.StartTime.ToString() - @d.EndTime.ToString()
+                    </td>
+                    <td>
+                        @d.Location.Name
+                    </td>
+                    <td>
+                        @d.Location.LocationDescription
+                    </td>
+                    <td>
+                        @d.Price
+                    </td>
+                    <td>
+                        @Html.ActionLink("Add to cart", "Index", "Order")
+                    </td>
+                </tr>
+            }
 
-</table>
+    </table>
 
 
 
-   
-
-<h1>Line-up</h1>
 
 
-<div class="clearfix">
-    <div class="box">
-        <p>
-            Haarlem dance invites you to be part of an experience that Haarlem has never seen before.
-            The top DJ's from the Netherlands, which in fact are the top DJ's from the world, are playing all over the city.
+    <h1>Line-up</h1>
+
+
+    <div class="clearfix">
+        <div class="box">
+            <p>
+                Haarlem dance invites you to be part of an experience that Haarlem has never seen before.
+                The top DJ's from the Netherlands, which in fact are the top DJ's from the world, are playing all over the city.
             </p>
-        <p>
-            There will be some bigger shows as some smaller parties.
-            The parties are held in special venues; for example in the 'Caprera openluchttheater', 'Lichtfabriek' and the 'Jopenkerk'.
-            You don't want to miss them , there has never been a dance party in these venue's.
-            If you want to see them all you could also buy one of our special all-access tickets.
-           
-        </p>
-    </div> 
-    <div class="box2"><img src="@Url.Content("~/Content/Images/u53-verkleindvoorwebsite.png")" /></div> 
-</div>
+            <p>
+                There will be some bigger shows as some smaller parties.
+                The parties are held in special venues; for example in the 'Caprera openluchttheater', 'Lichtfabriek' and the 'Jopenkerk'.
+                You don't want to miss them , there has never been a dance party in these venue's.
+                If you want to see them all you could also buy one of our special all-access tickets.
 
-<div class="clearfix">
-    <div class="box2">
-        <p>
-            Haarlem festival is excited to announce that the jubilee from Tiësto will be held in the 'Lichtfabriek'.
-            There are also some special guests invited so your evening won't get boring.
-            This special party is limited to +- 1500 people.
-        </p>
-        <p>
-            Have you ever heard from back-to-back mixes?
-            Now you did! Back-to-back mixes are upcoming and done by many DJ's already. 
-            Back-to-back mixes are simply said that DJ's play together so that there own music is remixed by an other DJ. 
-            There just are a few special back-to-back mixes around the city, so check them quickly! Want to see them all? Check our all-access tickets!
-
-        </p>
+            </p>
+        </div>
+        <div class="box2"><img src="@Url.Content("~/Content/Images/u53-verkleindvoorwebsite.png")" /></div>
     </div>
-    <div class="box"><img src="@Url.Content("~/Content/Images/u41-verkleindvoorwebsite.png")" /></div>
-</div>
+
+    <div class="clearfix">
+        <div class="box2">
+            <p>
+                Haarlem festival is excited to announce that the jubilee from Tiësto will be held in the 'Lichtfabriek'.
+                There are also some special guests invited so your evening won't get boring.
+                This special party is limited to +- 1500 people.
+            </p>
+            <p>
+                Have you ever heard from back-to-back mixes?
+                Now you did! Back-to-back mixes are upcoming and done by many DJ's already.
+                Back-to-back mixes are simply said that DJ's play together so that there own music is remixed by an other DJ.
+                There just are a few special back-to-back mixes around the city, so check them quickly! Want to see them all? Check our all-access tickets!
+
+            </p>
+        </div>
+        <div class="box"><img src="@Url.Content("~/Content/Images/u41-verkleindvoorwebsite.png")" /></div>
+    </div>
 
 
-<div class="w3-content w3-display-container" style="max-width:800px">
-    <img class="mySlides" src="~/Content/Images/u4-verkleindvoorwebsite.png" style="width:100%">
-    <img class="mySlides" src="~/Content/Images/bg.png" style="width:100%">
-    <img class="mySlides" src="~/Content/Images/u4-verkleindvoorwebsite.png" style="width:100%">
-    <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
-        <div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>
-        <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
-        <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
-        <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
-        <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
+    <div class="w3-content w3-display-container" style="max-width:800px">
+        <img class="mySlides" src="~/Content/Images/u4-verkleindvoorwebsite.png" style="width:100%">
+        <img class="mySlides" src="~/Content/Images/bg.png" style="width:100%">
+        <img class="mySlides" src="~/Content/Images/u4-verkleindvoorwebsite.png" style="width:100%">
+        <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
+            <div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>
+            <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
+            <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
+            <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
+            <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
+        </div>
     </div>
 </div>
 
