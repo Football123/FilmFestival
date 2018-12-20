@@ -1,11 +1,12 @@
 ﻿@using HaarlemFilmFestival.Models;
 @using HaarlemFilmFestival.ViewModels;
-    @model FoodViewModel
+@model FoodViewModel
 @{
     ViewBag.Title = "Food";
     IEnumerable<Food> Events = Model.FoodLeft;
     IEnumerable<Cuisine> KeukenTypes = Model.Cuisines;
 }
+<link href="@Url.Content("~/Content/Food.css")" , rel="stylesheet" type="text/css" />
 <div class="jumbotron">
     <h1>Visit Haarlem Restaurants</h1>
     <p>
@@ -15,23 +16,25 @@
     <p class="food1">
         See the restaurants below for locations, prices and the type of food the restaurant serves. A reservation is mandatory.
     </p>
-    <div class="row">
-        <div class="col-md-4">
-            <p>
-                Scroll down to the restaurant section, look at the various restaurants and choose the one that appeals to you the most.
-                For Frensch, you should check out Ratatouille! But if you want to try out some Dutch food, Restaurant ML, Restaurant Fris, Grand Cafe Brinkman and Urban Frenchy Bistro are a good idea!
-                Pick a restaurant and add it to you chart!
-            </p>
+
+    <div class="foodcontainer">
+        <div class="column">
+            Scroll down to the restaurant section, look at the various restaurants and choose the one that appeals to you the most.
+            For Frensch, you should check out Ratatouille! But if you want to try out some Dutch food, Restaurant ML, Restaurant Fris, Grand Cafe Brinkman and Urban Frenchy Bistro are a good idea!
+            Pick a restaurant and add it to you chart!
         </div>
-        <div class="col-md-4">
-            <p><img src="@Url.Content("~/Content/Images/u568aangepast.png")" /></p>
+        <div class="column">
+            <img src="@Url.Content("~/Content/Images/u568aangepast.png")" />
         </div>
-        <div class="col-md-4">
-            <p><img src="@Url.Content("~/Content/Images/u567aangepast.png")" /></p>
+        <div class="column">
+            <img src="@Url.Content("~/Content/Images/u567aangepast.png")" />
         </div>
     </div>
+        
+    <h7>Tickets</h7>
 
     <h1>Tickets</h1>
+
     <table class="table">
         <tr>
             <th>
@@ -63,7 +66,7 @@
                     @f.Discount
                 </td>
                 <td>
-                    @f.Restaurant.Cuisines
+                    @f.Restaurant.Cuisines.
                 </td>
                 <td>
                     @Html.ActionLink("Add to cart", "Index", "Order")
@@ -71,6 +74,7 @@
             </tr>
         }
     </table>
+
     <p>* Reservation is mandatory.  A reservation fee of €10,- per person wil be charged when a reservation is made on the Haarlem Festival site. This fee will be deducted from the final check on visiting the restaurant.</p>
     <p>** When ordering a ticket there will be an option to inform the restaurant for special requests regarding the food or service (allergies, wheelchair etc.)</p>
     <br />
