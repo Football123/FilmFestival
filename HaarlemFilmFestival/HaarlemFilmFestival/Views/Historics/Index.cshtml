@@ -23,12 +23,10 @@
     <h2 class="subtitle fancy"><span> Tickets </span></h2>
     <table class="historic-table">
         <tr>
-            @{ foreach (DateTime day in Model.days)
+            @{ foreach (var day in Model.days)
                 {
-                <th><button id="@day.DayOfWeek.ToString()">Show tickets for <br />@day.DayOfWeek.ToString()</button></th>
-                <th><button id="2">Show tickets for <br />Friday July 27</button></th>
-                <th><button id="3">Show tickets for <br />Saturday July 28</button></th>
-                <th><button id="4">Show tickets for <br />Sunday July 29</button></th>
+                    <th><button id="@day.ToString()">Show tickets for <br /> @day.ToString() </button></th>
+
                 }
             }
         </tr>
@@ -39,7 +37,7 @@
             <th>Dutch tour</th>
             <th>Chinese tour</th>
         </tr>
-        @foreach (Historic e in Model.historicPerDay)
+        @foreach (Historic e in Model.Historics)
         {
             @Html.Partial("_HistoricPartialView", e)
         }
@@ -54,16 +52,19 @@
             }
         }
     </ol>
-    @{
-        foreach (HistoricStop stop in Model.Stops)
+    @{foreach (HistoricStop stop in Model.Stops)
         {
-            <div class="historic-stop" id="@stop.Name">
-                <h3 class="stop-title">@stop.Id @stop.Name</h3>
-                <img src=~/Content/Images/HistoricStops/"@stop.Name".jpg alt="Stop image" />
-                <div class="info">
-                    <p class="desc">@stop.StopDescription</p>
+            int id = 1;
+            if (stop.Id % 2 == 0) { id = 2; }
+            else { id = 1; }
+
+                <div class="historic-stop-@id">
+                    <h3 class="stop-title">@stop.Id @stop.Name</h3>
+                    <img src="~/Content/Images/HistoricStops/@{ @stop.Name }.jpg " alt="Stop image" />
+                    <div class="info">
+                        <p class="desc">@stop.StopDescription</p>
+                    </div>
                 </div>
-            </div>
-        }
+    }
     }
 </div>

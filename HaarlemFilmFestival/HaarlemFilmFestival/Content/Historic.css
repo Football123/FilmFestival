@@ -1,4 +1,5 @@
 ﻿body {
+    background-image: url('Images/historic-bg.jpg');
 }
 
 /* #region Fonts */
@@ -33,10 +34,11 @@ h2 {
 .historic-table {
     border: 1px solid;
 }
-.historic-table img {
-    width: 22px;
-    height: 22px;
-}
+
+    .historic-table img {
+        width: 22px;
+        height: 22px;
+    }
 
 /* #region FancyLineNextToText*/
 /* #region FancyOpmaakTickets */
@@ -50,7 +52,7 @@ h2 {
         content: "";
         position: absolute;
         height: 6px;
-        border-bottom: 1px solid #b9b9ff;
+        border-bottom: 1px solid rgba(68, 217, 201, 1);
         top: 22px;
         width: 200px;
     }
@@ -65,7 +67,6 @@ h2 {
         margin-left: 15px;
     }
 /* #endregion */
-
 /* #region FancyOpmaakLocations */
 .amp {
     margin: 0 0 0.25em 0;
@@ -82,7 +83,7 @@ h2 {
             content: "";
             position: absolute;
             height: 6px;
-            border-bottom: 1px solid #b9b9ff;
+            border-bottom: 1px solid rgba(68, 217, 201, 1);
             top: 22px;
             width: 178px;
         }
@@ -101,21 +102,25 @@ h2 {
 
 /* #region ListStops */
 .list-stops {
-    width: 40%;
-    margin-top: 0;
-    margin-bottom: 10px;
+    width: 50%;
+    margin-left: 25%;
     align-content: center;
-    display:block;
+    display: block;
     position: center;
-    border: solid 4px;
+    padding: inherit;
+    border: 1px solid rgba(68, 217, 201, 1);
+    -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
+    -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
+    box-shadow: 5px 5px 5px rgba(204, 204, 204, 0.349019607843137);
 }
 
 ol.list-stops li.historic-stop-list {
-    border: dotted 4px;
-    border-color: pink;
-    align-content: center;
-    padding: 20px;
-
+    margin-left: 25%;
+    margin-bottom: -5%;
+    font-family: 'Arial Standaard', 'Arial';
+    font-weight: 500;
+    color: #333333;
+    font-size: 23px;
 }
 
 ol li .historic-stop-list {
@@ -124,5 +129,43 @@ ol li .historic-stop-list {
     font-style: normal;
     font-size: 24px;
     text-align: center;
+}
+/* #endregion */
+
+/* #region Stops */
+.historic-stop-1,
+.historic-stop-2 {
+    text-align: center;
+    display: block;
+    width: 38%;
+    border: 1px solid rgba(68, 217, 201, 1);
+    -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
+    -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
+    box-shadow: 5px 5px 5px rgba(204, 204, 204, 0.349019607843137);
+}
+
+.historic-stop-1 {
+    float:left;
+}
+
+.historic-stop-2 {
+    float: right;
+}
+
+.historic-stop h3 {
+    font-weight: bold;
+}
+
+.historic-stop p {
+    width: 88%;
+    margin-left: 6%;
+}
+
+.historic-stop img {
+    width: 333px;
+    height: 280px;
+    object-fit: cover;
+    align-content: center;
+    margin: 4%;
 }
 /* #endregion */

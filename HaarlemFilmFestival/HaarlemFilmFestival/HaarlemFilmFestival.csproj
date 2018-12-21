@@ -188,8 +188,9 @@
     <Content Include="Content\Images\footer-facebook.png" />
     <Content Include="Content\Images\footer-instagram.png" />
     <Content Include="Content\Images\footer-twitter.png" />
+    <Content Include="Content\Images\historic-bg.jpg" />
     <Content Include="Content\Images\HistoricStops\Amsterdamse Poort.jpg" />
-    <Content Include="Content\Images\HistoricStops\Church of St. Bavo.jpg" />
+    <Content Include="Content\Images\HistoricStops\Church of St.Bavo.jpg" />
     <Content Include="Content\Images\HistoricStops\De Hallen.jpg" />
     <Content Include="Content\Images\HistoricStops\Grote Markt.jpg" />
     <Content Include="Content\Images\HistoricStops\Hof van Bakenes.jpg" />
@@ -267,6 +268,7 @@
     <Content Include="Views\Jazzs\_JazzPartialView.cshtml" />
     <Content Include="Views\Jazzs\_MySecondJazzPartialView.cshtml" />
     <Content Include="Views\Shared\_PartialViews\_HistoricPartialView.cshtml" />
+    <Content Include="Views\Historics\_HistoricPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
