@@ -14,7 +14,7 @@ namespace HaarlemFilmFestival.Repositories
 
         public IEnumerable<Restaurant> GetRestaurants()
         {
-            IEnumerable<Restaurant> Restaurants = db.Restaurants;
+            IEnumerable<Restaurant> Restaurants = db.Restaurants.Include("Cuisine");
             return Restaurants;
         }       
 
@@ -35,10 +35,17 @@ namespace HaarlemFilmFestival.Repositories
             IEnumerable<Food> foods = db.Foods;
             return foods;
         }       
-
+        
         public IEnumerable<Cuisine> GetCuisines()
         {
-            IEnumerable<Cuisine> cuisines = db.Cuisines.Distinct();      
+            //List<Cuisine> cuisines = new List<Cuisine>();
+            //Cuisine c;
+           // foreach (Cuisine c in cuisines)
+            //{
+                //c = db.Cuisines.Where(k => k.Id == )
+            //}
+            IEnumerable<Cuisine> cuisines = db.Cuisines;
+            
             return cuisines;
         }
 
