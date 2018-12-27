@@ -4,8 +4,6 @@
 
 @{
     ViewBag.Title = "Jazz";
-    IEnumerable<Jazz> Events = Model.JazzLeft;
-    IEnumerable<Artist> bands = Model.Artists;
 }
 <html>
 <head>
@@ -14,9 +12,9 @@
     <link href="@Url.Content("~/Content/Jazz.css")" , rel="stylesheet" type="text/css" />
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script type="text/javascript">
-        $(function() {
-            $('#btnClick').click(function(data) {
-                $.post("@Url.Action("ShowPartialView", "Jazzs")", function(data) {
+        $(function () {
+            $('#btnClick').click(function (data) {
+                $.post("@Url.Action("ShowPartialView", "Jazzs")", function (data) {
                     if (data) {
                         $('#divTest').append(data);
                     }
@@ -46,11 +44,11 @@
         </div>
 
         <h1>Tickets</h1>
-        <input type="button" value="Show All Tickets" id="btnClick" />
-        <input type="button" value="Show Tickets for 26 July" id="btnClick26" />
-        <input type="button" value="Show Tickets for 27 July" id="btnClick27" />
-        <input type="button" value="Show Tickets for 28 July" id="btnClick28" />
-        <input type="button" value="Show Tickets for 29 July" id="btnClick29" />
+        @foreach (var day in Model.days)
+        {
+            <input type="button" value="Show Tickets for @day.ToString()" id="@day.ToString()" />
+
+        }
         <div id="divTest">
             @*@Html.Partial("_JazzPartialView")*@
         </div>

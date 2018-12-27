@@ -20,8 +20,48 @@ namespace HaarlemFilmFestival.Controllers
         // GET: Jazzs
         public ActionResult Index()
         {
-            // ....
+            viewmodel = FillViewModel();
             return View(viewmodel);
+        }
+
+        public JazzViewModel FillViewModel()
+        {
+            viewmodel.Artists = jazzRepository.GetArtists(viewmodel.jazzLeft);
+            viewmodel.JazzLocations = jazzRepository.GetJazzLocation();
+            viewmodel.Jazzs = jazzRepository.GetJazz();
+            viewmodel.eventsLeft = GetAvailableEvents();
+            viewmodel.jazzLeft = getJazzLeft();
+            viewmodel.days = viewmodel.getDays(viewmodel.eventsLeft);
+            viewmodel.times = viewmodel.getStartTime(viewmodel.eventsLeft);
+            return viewmodel;
+        }
+        public IEnumerable<Jazz> getJazzLeft()
+        {
+            List<Jazz> left = new List<Jazz>();
+            foreach (Jazz jazz in viewmodel.Jazzs)
+            {
+                foreach (Event Event in GetAvailableEvents())
+                {
+                    if (jazz.Id.Equals(Event.Id))
+                        left.Add(jazz);
+                }
+            }
+            return left;
+        }
+        public IEnumerable<Event> GetAvailableEvents()
+        {
+            IEnumerable<OrderRecord> ordered;
+            ordered = jazzRepository.GetOrderedEvents();
+            List<Event> Events = new List<Event>();
+            foreach (Event Event in viewmodel.Jazzs)
+            {
+                int Count = 0;
+                foreach (OrderRecord orderrecord in ordered)
+                    Count = Count + orderrecord.RecordAmount;
+                if (Count < Event.Capacity)
+                    Events.Add(Event);
+            }
+            return Events;
         }
         public PartialViewResult ShowPartialView()
         {

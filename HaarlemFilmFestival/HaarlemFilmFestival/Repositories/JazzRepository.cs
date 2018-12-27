@@ -15,7 +15,13 @@ namespace HaarlemFilmFestival.Repositories
 
         public IEnumerable<OrderRecord> GetOrderedEvents()
         {
-            return eventRepository.GetOrderedEvents();
+            IEnumerable<OrderRecord> ordered = new List<OrderRecord>();
+            ordered = db.OrderRecords.ToList();
+            foreach (OrderRecord order in ordered)
+            {
+                Console.WriteLine(order.Event.Id);
+            }
+            return ordered;
         }
 
         public IEnumerable<Jazz> GetJazz()
@@ -56,5 +62,10 @@ namespace HaarlemFilmFestival.Repositories
             }
             return artists;
         }
+        //IEnumerable<Jazz> GetJazzPerDay(DateTime day)
+        //{
+        //    IEnumerable<Jazz> events = db.Jazzs.Where(a => DbFunctions.TruncateTime(a.StartTime) == day.Date);
+        //    return events;
+        //}
     }
 }
