@@ -199,9 +199,10 @@
     <Content Include="Content\Images\HistoricStops\Proveniershof.jpg" />
     <Content Include="Content\Images\HistoricStops\Waalse Kerk Haarlem.jpg" />
     <Content Include="Content\Images\home-historic.png" />
-    <Content Include="Content\Images\u1055-verkleindvoorwebsite.png" />
-    <Content Include="Content\Images\u1063.png" />
-    <Content Include="Content\Images\u1070-verkleindvoorwebsite.png" />
+    <Content Include="Content\Images\jazz-bg.png" />
+    <Content Include="Content\Images\Bands\Gare du Nord.png" />
+    <Content Include="Content\Images\Bands\Gumbo Kings.png" />
+    <Content Include="Content\Images\Bands\Chris Allen.png" />
     <Content Include="Content\Images\u1082-verkleindvoorwebsite.png" />
     <Content Include="Content\Images\u29.png" />
     <Content Include="Content\Images\u4-verkleindvoorwebsite.png" />

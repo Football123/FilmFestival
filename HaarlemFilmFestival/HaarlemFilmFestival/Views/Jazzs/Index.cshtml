@@ -13,7 +13,7 @@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script type="text/javascript">
         $(function () {
-            $('#btnClick').click(function (data) {
+            $('#day.ToString()').click(function (data) {
                 $.post("@Url.Action("ShowPartialView", "Jazzs")", function (data) {
                     if (data) {
                         $('#divTest').append(data);
@@ -61,7 +61,7 @@
                 <div class="col-md-6" style="border-color: black;">
                     <h2>@Html.DisplayFor(modelItem => item.Name)</h2>
                     <h2>@Html.DisplayFor(modelItem => item.ArtistDescription)</h2>
-                    @*<img src="@Url.Content("~/Content/Images/u1063.png")" />*@
+                    <img src="~/Content/Images/Bands/@{@Html.DisplayFor(modelItem => item.Name)}.jpg" alt="Band image" />
                 </div>
             </div>
         }
