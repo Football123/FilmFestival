@@ -55,12 +55,12 @@
         </tr>
         @foreach (Food f in Events)
         {
-            string stringlist = "";
-                    foreach (Cuisine c in f.Restaurant.Cuisines)
-                    {
-                    stringlist = stringlist + c.CuisineDescription + ", ";
-                    }
-                   
+            //string stringlist = "";
+            //        foreach (Cuisine c in f.Restaurant.Cuisines)
+            //        {
+            //        stringlist = stringlist + c.CuisineDescription + ", ";
+            //        }
+
             <tr>
                 <td>
                     @f.Restaurant.RestaurantName
@@ -71,7 +71,7 @@
                 <td>
                     @f.Discount
                 </td>
-                <td>@stringlist
+                <td>
                 </td>
                 <td>
                     @Html.ActionLink("Add to cart", "Index", "Order")
