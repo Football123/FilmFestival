@@ -10,13 +10,44 @@ namespace HaarlemFilmFestival.Controllers
 {
     public class OrderController : Controller
     {
+        private OrderRepository orderrepository = new OrderRepository();
         private IEventRepository eventRepository = new EventRepository();
+
         // GET: Tickets
         public ActionResult Index()
         {
-            //IEnumerable<Event> allEvents = eventRepository.GetAllEvents();
-            //return View(allEvents);
+            if (Session["Orders"] == null)
+            {
+                Session["Orders"] = new Order();
+            }
+            Order order = (Order)Session["Orders"];
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Order()
+        {
+            return View("Order");
+        }
+
+        [HttpPost]
+        public ActionResult Finalize(Order order)
+        {
+            Customer customer = new Customer();
+            String[] fullname = Request.Form["fullname"].Split(new char[0]);
+            String email = Request.Form["email"];
+          //  DateTime dateofbirth = Request.Form["dateofbirth"];
+            customer.Name = fullname.First();
+            customer.LastName = fullname.Last();
+            customer.EmailAddress = email;
+          //  customer.DateOfBirth = dateofbirth;
+
+            order = (Order)Session["Orders"];
+            order.OrderTime = DateTime.Now;
+            order.Customer = customer;
+
+            orderrepository.AddNewBesteling(order);
+            return View("Finish");
         }
     }
 }

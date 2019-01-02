@@ -9,7 +9,7 @@ namespace HaarlemFilmFestival.Repositories
 {
     public class HistoricRepository : IHistoricRepository
     {
-        private HaarlemFilmFestivalContext database = HaarlemFilmFestivalContext.getInstance();
+        private HaarlemFilmFestivalContext database = HaarlemFilmFestivalContext.getInstance(); 
         private IEventRepository eventrepository = new EventRepository();
 
         public IEnumerable<Historic> GetHistoricPerDay(DateTime day)

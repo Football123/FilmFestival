@@ -25,15 +25,31 @@ namespace HaarlemFilmFestival.Controllers
         [HttpPost]
         public ActionResult Index(OrderRecord orderrecords)
         {
-            return View();
+            if (Session["Orders"] == null)
+                Session["Orders"] = new Order();
+            Order order = (Order)Session["Orders"];
+            orderrecords = new OrderRecord();
+            orderrecords.RecordAmount = int.Parse(Request.Form["number"]);
+            //    orderrecords.Event = historicrepository.GetByDateAndLang(int.Parse(Request.Form["time"]), int.Parse(Request.Form["day"]), (Taal)(int.Parse(Request.Form["lang"])));
+            orderrecords.Event_Id = orderrecords.Event.Id;
+            if (order.OrderRecords == null)
+                order.OrderRecords = new List<OrderRecord>();
+            order.OrderRecords.Add(orderrecords);
+            if (orderrecords.RecordAmount >= 4)
+                orderrecords.TicketType = TicketType.Family;
+            else
+                orderrecords.TicketType = TicketType.Single;
+            Session["Orders"] = order;
+
+            return View(viewmodel);
         }
 
         public PartialViewResult HistoricPartialView()
         {
             viewmodel = FillViewModel();
-        //    string day = Request.Form["day"];
-         //   IEnumerable<Historic> newevents = GetHistoricPerDay(day);
-          //  viewmodel.historicPerDay = newevents;
+            //    string day = Request.Form["day"];
+            //   IEnumerable<Historic> newevents = GetHistoricPerDay(day);
+            //  viewmodel.historicPerDay = newevents;
             return PartialView("_HistoricPartialView", viewmodel);
         }
 

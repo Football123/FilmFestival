@@ -9,6 +9,16 @@ namespace HaarlemFilmFestival.Models
     [Table("Orders")]
     public class Order
     {
+        public Order()
+        {
+            OrderRecords = new List<OrderRecord>();
+        }
+
+        public Order(Customer customer)
+        {
+            this.Customer = customer;
+            this.Customer_Id = customer.Id;
+        }
         public int Id { get; set; }
         public string PaymentMethod { get; set; }
         public DateTime OrderTime { get; set; }

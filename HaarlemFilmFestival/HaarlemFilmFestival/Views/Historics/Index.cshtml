@@ -37,32 +37,13 @@
             <th>Dutch tour</th>
             <th>Chinese tour</th>
         </tr>
-        @{foreach (DateTime day in Model.days)
-            {
+        @{
                 foreach (Historic e in Model.Historics)
                 {
                     <tr>
                         <td> @e.StartTime.ToString(@"HH\:mm")</td>
                         <td> €@e.Price.ToString("N2") </td>
-                        @{foreach (Historic item in Model.GetHistoricPerDay(day))
-                            {
-                            <td>
-                                @{if (item.Languages == Language.English)
-                                    { <a href="~/Views/Order/Index.cshtml"><img src="~/Content/cart.png" /></a> }
-                                }
-                            </td>
-                            <td>
-                                @{if (item.Languages == Language.Dutch)
-                                    { <a href="~/Views/Order/Index.cshtml"><img src="~/Content/cart.png" /></a> }
-                                }
-                            </td>
-                            <td>
-                                @{if (item.Languages == Language.Chinese)
-                                    { <a href="~/Views/Order/Index.cshtml"><img src="~/Content/cart.png" /></a> }
-                                }
-                            </td>
-                                        }
-                                    }}
+                       
                         </tr>
                                     }
         }

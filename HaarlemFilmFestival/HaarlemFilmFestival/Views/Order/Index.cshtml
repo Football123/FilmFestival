@@ -1,41 +1,58 @@
 ﻿@*@model IEnumerable<HaarlemFilmFestival.Models.Jazz>*@
+@using HaarlemFilmFestival.Models;
 @{
     ViewBag.Title = "Tickets";
 }
+<link href="@Url.Content("~/Content/Order.css")" , rel="stylesheet" type="text/css" />
 <div class="jumbotron">
     <h1>TICKETS</h1>
+    <div class="line fancyarrow"><span><img class="arrow2" src="@Url.Content("~/Content/Images/u29.png")" /> 
+        <img class="arrow" src="@Url.Content("~/Content/Images/u29.png")"</span></div>
+    <form method="post" action="~/Order/Order/">
+        <div class="ItemList-Cart">
+            <table class="Cart-table">
+                <tr>
+                    <th class="first">Selected Ticket</th>
+                    <th class="second">Price</th>
+                    <th class="third">Amount</th>
+                    <th class="fourth"></th>
+                </tr>
+                @{
+                    ICollection<OrderRecord> orderrecords = ((Order)Session["Orders"]).OrderRecords;
+                    int amount = 0;
+                    foreach (OrderRecord order in orderrecords)
+                    {
+                        amount++;
+                        <tr>
+                            <td>
+                                @order.Event.GetType()||
+                                @order.Event.Description ||
+                                @order.Event.StartTime.DayOfWeek
+                                @order.Event.StartTime.Date
+                                @order.Event.StartTime.Hour:@order.Event.StartTime.Minute.ToString("00") ||
+                                @order.Event.Location.Name
+                            </td>
+                            <td>@order.RecordAmount x € @order.Event.Price</td>
+                            <td><input id="amount-@amount" type="number" name="number" min="1" max="@order.Event.Capacity" value="@order.RecordAmount" /></td>
+
+                            <script>
+                                $(function () {
+                                    $('#amount-@amount').on('keyup mouseup', function () {
+
+                                        var count = $('#amount-@amount').val();
+                                        $('#price').html("€ " + (@order.Event.Price * count));
+                                    })
+                                });
+                            </script>
+                        </tr>
+                            <p class="left">Amount of tickets: @order.Order.OrderRecords.Count()</p>
+                        
+                    }
+                }
+            </table>
+            <button class="back-button">Shop more tickets</button>
+            <button type="submit" class="pay-button">Pay your tickets</button>
+        </div>
+    </form>
+
 </div>
-@*<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Band)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartTime) - @Html.DisplayNameFor(model => model.EndTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Band)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartTime) - @Html.DisplayFor(modelItem => item.EndTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.ActionLink("Delete", "Index", "Order", new { id = item.Id })
-            </td>
-        </tr>
-    }
-
-</table>*@
-
