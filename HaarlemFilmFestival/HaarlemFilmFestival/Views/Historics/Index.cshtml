@@ -37,34 +37,75 @@
             <th>Dutch tour</th>
             <th>Chinese tour</th>
         </tr>
-        @foreach (Historic e in Model.Historics)
-        {
-            @Html.Partial("_HistoricPartialView", e)
-        }
-    </table>
-
-    <h2 class="fancy amp"><span> Locations </span></h2>
-    <ol class="list-stops">
-        @{
-            foreach (HistoricStop stop in Model.Stops)
+        @{foreach (DateTime day in Model.days)
             {
-                <li class="historic-stop-list">@stop.Name</li>
-            }
+                foreach (Historic e in Model.Historics)
+                {
+                    <tr>
+                        <td> @e.StartTime.ToString(@"HH\:mm")</td>
+                        <td> €@e.Price.ToString("N2") </td>
+                        @{foreach (Historic item in Model.GetHistoricPerDay(day))
+                            {
+                            <td>
+                                @{if (item.Languages == Language.English)
+                                    { <a href="~/Views/Order/Index.cshtml"><img src="~/Content/cart.png" /></a> }
+                                }
+                            </td>
+                            <td>
+                                @{if (item.Languages == Language.Dutch)
+                                    { <a href="~/Views/Order/Index.cshtml"><img src="~/Content/cart.png" /></a> }
+                                }
+                            </td>
+                            <td>
+                                @{if (item.Languages == Language.Chinese)
+                                    { <a href="~/Views/Order/Index.cshtml"><img src="~/Content/cart.png" /></a> }
+                                }
+                            </td>
+                                        }
+                                    }}
+                        </tr>
+                                    }
         }
-    </ol>
-    @{foreach (HistoricStop stop in Model.Stops)
-        {
-            int id = 1;
-            if (stop.Id % 2 == 0) { id = 2; }
-            else { id = 1; }
+        }
+
+                    </table>
+
+
+        <h2 class="fancy amp"><span> Locations </span></h2>
+        <ol class="list-stops">
+            @{
+                foreach (HistoricStop stop in Model.Stops)
+                {
+                    <li class="historic-stop-list">@stop.Name</li>
+                }
+            }
+        </ol>
+        @{foreach (HistoricStop stop in Model.Stops)
+            {
+                int id = 1;
+                if (stop.Id == 1 || stop.Id == 4 || stop.Id == 7) { id = 1; }
+                if (stop.Id == 2 || stop.Id == 5 || stop.Id == 8) { id = 2; }
+                if (stop.Id == 3 || stop.Id == 6 || stop.Id == 9) { id = 3; }
 
                 <div class="historic-stop-@id">
                     <h3 class="stop-title">@stop.Id @stop.Name</h3>
                     <img src="~/Content/Images/HistoricStops/@{ @stop.Name }.jpg " alt="Stop image" />
-                    <div class="info">
-                        <p class="desc">@stop.StopDescription</p>
-                    </div>
+
                 </div>
     }
-    }
-</div>
+        }
+
+
+
+        @*<div class="google">
+                <script>
+                    var map;
+                    function initMap() { map = new google.maps.Map)document.getElementById('map'), {
+                        center: {lat: 23.804143, lng: 90.404327 },
+                        zoom: 12
+                    }};
+                </script>
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuCohuEz731AU10u_DJ3tRJ2sZGY3frjI&callbakc=init<Mao"
+                        async defer></script>
+            </div>*@
+    </div>

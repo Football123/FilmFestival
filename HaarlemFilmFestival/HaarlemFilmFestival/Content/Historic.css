@@ -134,10 +134,11 @@ ol li .historic-stop-list {
 
 /* #region Stops */
 .historic-stop-1,
-.historic-stop-2 {
+.historic-stop-2,
+.historic-stop-3 {
     text-align: center;
     display: block;
-    width: 38%;
+    width: 30%;
     border: 1px solid rgba(68, 217, 201, 1);
     -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
     -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
@@ -145,14 +146,27 @@ ol li .historic-stop-list {
 }
 
 .historic-stop-1 {
-    float:left;
+    margin-top: 5%;
+    width: 30%;
 }
 
 .historic-stop-2 {
-    float: right;
+    width: 30%;
+    margin-top: -281px;
+    position: relative;
+    margin-left: 35%;
 }
 
-.historic-stop h3 {
+.historic-stop-3 {
+    width: 30%;
+    margin-top: -281px;
+    position: relative;
+    margin-left: 71%;
+}
+
+.historic-stop-1 h3,
+.historic-stop-2 h3,
+.historic-stop-3 h3 {
     font-weight: bold;
 }
 
@@ -161,9 +175,11 @@ ol li .historic-stop-list {
     margin-left: 6%;
 }
 
-.historic-stop img {
-    width: 333px;
-    height: 280px;
+.historic-stop-1 img,
+.historic-stop-2 img,
+.historic-stop-3 img {
+    width: 75%;
+    height: 200px;
     object-fit: cover;
     align-content: center;
     margin: 4%;

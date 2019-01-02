@@ -10,10 +10,17 @@ namespace HaarlemFilmFestival.Models
 {
     public class HistoricViewModel : EventViewModel
     {
+        public HistoricsController controller = new HistoricsController();
         public HistoricViewModel()
         {
         }
-        
+
+        public IEnumerable<Historic> GetHistoricPerDay(DateTime day)
+        {
+            this.historicPerDay = controller.GetHistoricPerDay(day);
+            return historicPerDay;
+        }
+
         public IEnumerable<Historic> historicPerDay { get; set; }
         public IEnumerable<TimeSpan> StartTimes { get; set; }
         public IEnumerable<Language> languages { get; set; }

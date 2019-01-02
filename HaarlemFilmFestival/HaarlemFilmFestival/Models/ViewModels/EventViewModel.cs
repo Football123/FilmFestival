@@ -36,18 +36,18 @@ namespace HaarlemFilmFestival.Models
             return times;
         }
 
-        public IEnumerable<DayOfWeek> getDays(IEnumerable<Event> eventsLeft)
+        public IEnumerable<DateTime> getDays(IEnumerable<Event> eventsLeft)
         {
-            List<DayOfWeek> days = new List<DayOfWeek>();
+            List<DateTime> days = new List<DateTime>();
             foreach (var e in eventsLeft)
             {
-                if (!days.Contains(e.StartTime.DayOfWeek))
-                    days.Add(e.StartTime.DayOfWeek);
+                if (!days.Contains(e.StartTime))
+                    days.Add(e.StartTime);
             }
             return days;
         }
 
-        public IEnumerable<DayOfWeek> days { get; set; }
+        public IEnumerable<DateTime> days { get; set; }
         public IEnumerable<DateTime> times { get; set; }
     }
 }
