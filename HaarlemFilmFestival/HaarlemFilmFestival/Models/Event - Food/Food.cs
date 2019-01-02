@@ -11,5 +11,9 @@ namespace HaarlemFilmFestival.Models
     {
        // public string Restaurant_Id { get; set; }
         public virtual Restaurant Restaurant { get; set; }
+        
+        // NotMapped gebruiken om zo expliciet niet de database aan te spreken.
+        [NotMapped]
+        public virtual Cuisine Cuisine { get; set; }
     }
 }

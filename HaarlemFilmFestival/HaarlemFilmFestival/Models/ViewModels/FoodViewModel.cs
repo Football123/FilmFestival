@@ -10,12 +10,13 @@ namespace HaarlemFilmFestival.Models
     public class FoodViewModel : EventViewModel
     {
         private IFoodRepository foodrepository = new FoodRepository();
-        private IEventRepository eventRepository = new EventRepository();
+        // private IEventRepository eventRepository = new EventRepository();
 
         public FoodViewModel()
         {
             this.eventsLeft = AvailableEvents();
-            this.Foods = foodrepository.GetFoods();
+            // this.Foods = foodrepository.GetFoods();
+            this.Foods = foodrepository.RestaurantCuisines();
             this.Restaurants = foodrepository.GetRestaurants();
             this.FoodLocations = foodrepository.GetFoodLocation();
             this.Cuisines = foodrepository.GetCuisines();

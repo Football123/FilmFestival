@@ -3,8 +3,8 @@
 @model FoodViewModel
 @{
     ViewBag.Title = "Food";
-    IEnumerable<Food> Events = Model.FoodLeft;
-    IEnumerable<Cuisine> KeukenTypes = Model.Cuisines;
+    // IEnumerable<Food> Events = Model.FoodLeft;
+    // IEnumerable<Cuisine> KeukenTypes = Model.Cuisines;
 }
 <link href="@Url.Content("~/Content/Food.css")" , rel="stylesheet" type="text/css" />
 <div class="jumbotron">
@@ -53,14 +53,8 @@
                 Order a ticket
             </th>
         </tr>
-        @foreach (Food f in Events)
+        @foreach (Food f in Model.Foods)
         {
-            //string stringlist = "";
-            //        foreach (Cuisine c in f.Restaurant.Cuisines)
-            //        {
-            //        stringlist = stringlist + c.CuisineDescription + ", ";
-            //        }
-
             <tr>
                 <td>
                     @f.Restaurant.RestaurantName
@@ -72,6 +66,7 @@
                     @f.Discount
                 </td>
                 <td>
+                    @f.Cuisine.CuisineDescription
                 </td>
                 <td>
                     @Html.ActionLink("Add to cart", "Index", "Order")
@@ -79,6 +74,7 @@
             </tr>
         }
     </table>
+
 
     <p>* Reservation is mandatory.  A reservation fee of €10,- per person wil be charged when a reservation is made on the Haarlem Festival site. This fee will be deducted from the final check on visiting the restaurant.</p>
     <p>** When ordering a ticket there will be an option to inform the restaurant for special requests regarding the food or service (allergies, wheelchair etc.)</p>

@@ -48,6 +48,7 @@ namespace HaarlemFilmFestival.Models
         public DbSet<Artist> Artists { get; set; }
         public DbSet<Theme> Themes { get; set; }
         public DbSet<Dance> Dances { get; set; }
+        public DbSet<RestaurantCuisine> RestaurantCuisines { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
