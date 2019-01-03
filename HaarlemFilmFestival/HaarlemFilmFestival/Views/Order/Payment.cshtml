@@ -3,6 +3,25 @@
     ViewBag.Title = "Payment";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link href="@Url.Content("~/Content/Order.css")" , rel="stylesheet" type="text/css" />
+<div class="jumbotron">
+    <h1>PAYMENT</h1>
+    <div class="line fancyarrow">
+        <span>
+            <img class="arrow2" src="@Url.Content("~/Content/Images/u29.png")" />
+            <img class="arrow" src="@Url.Content("~/Content/Images/u29.png")" />
+        </span>
+    </div>
 
-<h2>Payment</h2>
+    <form method="post" action="~/Views/Order/Index/">
+        <button class="back2-button" >Go back</button>
+    </form>
+    <form method="post" action="~/Views/Order/Final/">
+        <button type="submit" class="finalpay-button">Pay your tickets</button>
+    </form>
 
+
+
+
+
+</div>

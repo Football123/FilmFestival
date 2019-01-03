@@ -23,11 +23,17 @@ namespace HaarlemFilmFestival.Controllers
             Order order = (Order)Session["Orders"];
             return View();
         }
+        
+        [HttpPost]
+        public ActionResult Payment()
+        {
+            return View("Payment");
+        }
 
         [HttpPost]
-        public ActionResult Order()
+        public ActionResult Final()
         {
-            return View("Order");
+            return View("Final");
         }
 
         [HttpPost]
@@ -47,7 +53,7 @@ namespace HaarlemFilmFestival.Controllers
             order.Customer = customer;
 
             orderrepository.AddNewBesteling(order);
-            return View("Finish");
+            return View("Final");
         }
     }
 }

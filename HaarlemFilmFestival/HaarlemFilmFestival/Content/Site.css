@@ -304,8 +304,8 @@ body {
         background-color: rgba(138, 209, 131, 1);
     }
 
-    .home-buttons a:hover {
-        background-color: rgba(255, 204, 102, 1);
+    .home-buttons > div:hover {
+        background-color: black;
     }
 
 /* #endregion */
