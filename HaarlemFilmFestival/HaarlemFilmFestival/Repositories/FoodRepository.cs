@@ -14,7 +14,7 @@ namespace HaarlemFilmFestival.Repositories
 
         public IEnumerable<Restaurant> GetRestaurants()
         {
-            IEnumerable<Restaurant> Restaurants = db.Restaurants.Include("Cuisine");
+            IEnumerable<Restaurant> Restaurants = db.Restaurants;
             return Restaurants;
         }       
 
@@ -24,11 +24,11 @@ namespace HaarlemFilmFestival.Repositories
             return Foods;
         }
 
-        public Food GetFood(int foodId)
-        {
-            Food food = db.Foods.Find(foodId);
-            return food;
-        }
+        //public Food GetFood(int foodId)
+        //{
+        //    Food food = db.Foods.Find(foodId);
+        //    return food;
+        //}
 
         public IEnumerable<Food> GetFoods()
         {
@@ -71,13 +71,7 @@ namespace HaarlemFilmFestival.Repositories
         }
 
         public IEnumerable<Cuisine> GetCuisines()
-        {
-            //List<Cuisine> cuisines = new List<Cuisine>();
-            //Cuisine c;
-           // foreach (Cuisine c in cuisines)
-            //{
-                //c = db.Cuisines.Where(k => k.Id == )
-            //}
+        {           
             IEnumerable<Cuisine> cuisines = db.Cuisines;
             
             return cuisines;
@@ -100,7 +94,13 @@ namespace HaarlemFilmFestival.Repositories
 
         public IEnumerable<OrderRecord> GetOrderedEvents()
         {
-            return eventrepository.GetOrderedEvents();
+            IEnumerable<OrderRecord> ordered = new List<OrderRecord>();
+            ordered = db.OrderRecords.ToList();
+            foreach (OrderRecord order in ordered)
+            {
+                Console.WriteLine(order.Event.Id);
+            }
+            return ordered;
         }
     }
 }
