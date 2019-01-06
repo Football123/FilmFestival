@@ -61,7 +61,7 @@
                 <div class="col-md-6" style="border-color: black;">
                     <h2>@Html.DisplayFor(modelItem => item.Name)</h2>
                     <h2>@Html.DisplayFor(modelItem => item.ArtistDescription)</h2>
-                    <img src="~/Content/Images/Bands/@{@Html.DisplayFor(modelItem => item.Name)}.jpg" alt="Band image" />
+                    <img src="~/Content/Images/Bands/@{ @Html.DisplayFor(modelItem => item.Name) }.jpg" alt="Band image" />
                 </div>
             </div>
         }

@@ -63,9 +63,10 @@ namespace HaarlemFilmFestival.Controllers
             }
             return Events;
         }
-        public PartialViewResult ShowPartialView()
+        public PartialViewResult ShowPartialView(DateTime day)
         {
-            return PartialView("_JazzPartialView", viewmodel);
+            IEnumerable<Jazz> eventsperday = jazzRepository.GetJazzPerDay(day);
+            return PartialView("_JazzPartialView", eventsperday);
         }
     }
 }

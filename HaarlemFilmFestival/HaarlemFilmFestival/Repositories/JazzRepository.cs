@@ -60,12 +60,12 @@ namespace HaarlemFilmFestival.Repositories
                 a = db.Artists.Where(j => j.Id == e.Band.Id).SingleOrDefault();
                 artists.Add(a);
             }
-            return artists;
+            return artists.Distinct();
         }
-        //IEnumerable<Jazz> GetJazzPerDay(DateTime day)
-        //{
-        //    IEnumerable<Jazz> events = db.Jazzs.Where(a => DbFunctions.TruncateTime(a.StartTime) == day.Date);
-        //    return events;
-        //}
+        public IEnumerable<Jazz> GetJazzPerDay(DateTime day)
+        {
+            IEnumerable<Jazz> events = db.Jazzs.Where(a => DbFunctions.TruncateTime(a.StartTime) == day.Date);
+            return events;
+        }
     }
 }
