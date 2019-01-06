@@ -27,12 +27,13 @@ namespace HaarlemFilmFestival.Controllers
         public FoodViewModel FillViewModel()
         {
             viewmodel.eventsLeft = GetAvailableEvents();
-            viewmodel.AllFood = foodRepository.GetFoods();
+            viewmodel.Foods = foodRepository.GetFoods();
             viewmodel.Foods = foodRepository.RestaurantCuisines();
             viewmodel.Restaurants = foodRepository.GetRestaurants();
             viewmodel.FoodLocations = foodRepository.GetFoodLocation();
             viewmodel.Cuisines = foodRepository.GetCuisines();
             viewmodel.FoodLeft = getFoodsLeft();
+            viewmodel.GetAllFood = foodRepository.GetAllFood();
             return viewmodel;
         }
 
@@ -56,7 +57,7 @@ namespace HaarlemFilmFestival.Controllers
             IEnumerable<OrderRecord> ordered;            
             ordered = foodRepository.GetOrderedEvents();
             List<Event> Events = new List<Event>();
-            foreach (Event Event in viewmodel.AllFood)
+            foreach (Event Event in viewmodel.GetAllFood)
             {
                 int Count = 0;
                 foreach (OrderRecord orderrecord in ordered)

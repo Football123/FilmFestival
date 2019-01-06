@@ -63,6 +63,7 @@ namespace HaarlemFilmFestival.Models
         public IEnumerable<Event> eventsLeft { get; set; }
         public IEnumerable<Food> FoodLeft { get; set; }
         public IEnumerable<Food> AllFood { get; set; }
+        public IEnumerable<Event> GetAllFood { get; set; }
     }
 
 
