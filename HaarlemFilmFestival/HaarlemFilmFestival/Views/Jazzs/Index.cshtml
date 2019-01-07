@@ -44,9 +44,9 @@
         </div>
 
         <h1>Tickets</h1>
-        @foreach (var day in Model.days)
+        @foreach (var day in Model.dates)
         {
-            <input type="button" value="Show Tickets for @day.ToString()" id="@day.ToString()" />
+            <input type="button" value="Show Tickets for @day.DayOfWeek.ToString() @day.Day @day.Month" id="@day.DayOfWeek.ToString()" />
 
         }
         <div id="divTest">

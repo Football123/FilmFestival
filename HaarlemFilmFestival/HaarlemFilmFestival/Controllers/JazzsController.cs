@@ -31,7 +31,7 @@ namespace HaarlemFilmFestival.Controllers
             viewmodel.JazzLocations = jazzRepository.GetJazzLocation();    
             viewmodel.eventsLeft = GetAvailableEvents();
             viewmodel.jazzLeft = getJazzLeft();
-            viewmodel.days = viewmodel.getDays(viewmodel.eventsLeft);
+            viewmodel.dates = viewmodel.getDays(viewmodel.eventsLeft);
             viewmodel.times = viewmodel.getStartTime(viewmodel.eventsLeft);
             return viewmodel;
         }
@@ -58,7 +58,7 @@ namespace HaarlemFilmFestival.Controllers
                 int Count = 0;
                 foreach (OrderRecord orderrecord in ordered)
                     Count = Count + orderrecord.RecordAmount;
-                if (Count < Event.Capacity)
+                if (Count < Event.Capacity || Event.Capacity == null)
                     Events.Add(Event);
             }
             return Events;

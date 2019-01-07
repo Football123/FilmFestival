@@ -70,7 +70,7 @@ namespace HaarlemFilmFestival.Controllers
             viewmodel.Stops = historicrepository.GetStops();
             viewmodel.eventsLeft = GetAvailableEvents();
             viewmodel.historicsLeft = getHistoricsLeft();
-            viewmodel.days = viewmodel.getDays(viewmodel.eventsLeft);
+            viewmodel.dates = viewmodel.getDays(viewmodel.eventsLeft);
             viewmodel.times = viewmodel.getStartTime(viewmodel.eventsLeft);
             return viewmodel;
         }
