@@ -44,26 +44,11 @@ namespace HaarlemFilmFestival.Controllers
             return View(viewmodel);
         }
 
-        public PartialViewResult HistoricPartialView()
-        {
-            viewmodel = FillViewModel();
-            //    string day = Request.Form["day"];
-            //   IEnumerable<Historic> newevents = GetHistoricPerDay(day);
-            //  viewmodel.historicPerDay = newevents;
-            return PartialView("_HistoricPartialView", viewmodel);
-        }
-
-        public ActionResult GetPerDay(DateTime day)
-        {
-            IEnumerable<Historic> newevents = GetHistoricPerDay(day);
-            viewmodel.historicPerDay = newevents;
-            return View(viewmodel);
-        }
-
         public HistoricViewModel FillViewModel()
         {
-            DateTime d = new DateTime(2018, 7, 26, 10, 00, 00);
-            viewmodel.historicPerDay = GetHistoricPerDay(d);
+            // DateTime d = new DateTime(2018, 7, 26, 10, 00, 00);
+            //  viewmodel.GetPerTime = GetPerTime(d);
+            //  viewmodel.historicPerDay = GetHistoricPerDay(d);
             viewmodel.StartTimes = historicrepository.GetStartTimes();
             viewmodel.Historics = historicrepository.GetHistoricEvents();
             viewmodel.languages = GetLanguages();
@@ -75,9 +60,27 @@ namespace HaarlemFilmFestival.Controllers
             return viewmodel;
         }
 
+        public PartialViewResult HistoricPartialView(string day)
+        {
+            DateTime dt;
+            if (Enum.TryParse<DateTime>(day, out dt))
+            {
+                IEnumerable<Historic> newevents = GetHistoricPerDay(dt);
+                viewmodel.historicPerDay = newevents;
+                viewmodel = FillViewModel();
+            }
+            return PartialView("_HistoricPartialView", viewmodel);
+        }
+
         public IEnumerable<Historic> GetHistoricPerDay(DateTime day)
         {
             IEnumerable<Historic> events = historicrepository.GetHistoricPerDay(day);
+            return events;
+        }
+
+        public IEnumerable<Historic> GetPerTime(DateTime time)
+        {
+            IEnumerable<Historic> events = historicrepository.GetHistoricPerDay(time);
             return events;
         }
 

@@ -40,6 +40,7 @@ h2 {
         height: 22px;
     }
 
+
 /* #region FancyLineNextToText*/
 /* #region FancyOpmaakTickets */
 .fancy span {
@@ -125,7 +126,7 @@ ol.list-stops li.historic-stop-list {
 
 ol li .historic-stop-list {
     font-family: 'Bahnschrift SemiLight', 'Bahnschrift';
-    font-weight: 350;
+    font-weight: 300;
     font-style: normal;
     font-size: 24px;
     text-align: center;
@@ -164,11 +165,11 @@ ol li .historic-stop-list {
     margin-left: 71%;
 }
 
-.historic-stop-1 h3,
-.historic-stop-2 h3,
-.historic-stop-3 h3 {
-    font-weight: bold;
-}
+    .historic-stop-1 h3,
+    .historic-stop-2 h3,
+    .historic-stop-3 h3 {
+        font-weight: bold;
+    }
 
 .historic-stop p {
     width: 88%;
@@ -185,3 +186,18 @@ ol li .historic-stop-list {
     margin: 4%;
 }
 /* #endregion */
+
+.google img {
+    width: 80%;
+    display: block;
+    align-content: center;
+    padding: 40px;
+    border: 1px solid rgba(68, 217, 201, 1);
+    -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
+    -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
+    box-shadow: 5px 5px 5px rgba(204, 204, 204, 0.349019607843137);
+}
+
+.google {
+    position: center;
+}

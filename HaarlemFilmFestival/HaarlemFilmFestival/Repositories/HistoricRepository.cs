@@ -9,7 +9,7 @@ namespace HaarlemFilmFestival.Repositories
 {
     public class HistoricRepository : IHistoricRepository
     {
-        private HaarlemFilmFestivalContext database = HaarlemFilmFestivalContext.getInstance(); 
+        private HaarlemFilmFestivalContext database = HaarlemFilmFestivalContext.getInstance();
         private IEventRepository eventrepository = new EventRepository();
 
         public IEnumerable<Historic> GetHistoricPerDay(DateTime day)
@@ -17,16 +17,21 @@ namespace HaarlemFilmFestival.Repositories
             IEnumerable<Historic> events = database.Historics.Where(a => DbFunctions.TruncateTime(a.StartTime) == day.Date);
             return events;
         }
+        public IEnumerable<Historic> GetHistoricPerTime(DateTime time)
+        {
+            IEnumerable<Historic> events = database.Historics.Where(a => (a.StartTime.Hour) == time.Hour && a.StartTime.Minute == time.Minute);
+            return events;
+        }
 
         public IEnumerable<Historic> GetHistoricEvents()
         {
-            IEnumerable<Historic> historics = database.Historics;
+            IEnumerable<Historic> historics = database.Historics.OrderBy(i => i.StartTime);
             return historics;
         }
-        
+
         public IEnumerable<TimeSpan> GetStartTimes()
         {
-            IEnumerable <TimeSpan> starttimes = database.Historics.Select(i => i.StartTime.TimeOfDay).Distinct();
+            IEnumerable<TimeSpan> starttimes = database.Historics.Select(i => i.StartTime.TimeOfDay).Distinct();
             return starttimes;
         }
 

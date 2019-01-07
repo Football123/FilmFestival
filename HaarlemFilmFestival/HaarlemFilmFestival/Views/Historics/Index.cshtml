@@ -19,14 +19,23 @@
         ‘Haarlem Historic’ will mark the exact starting location.
     </div>
 
+    <script type="text/javascript">
+        function EventsPerDay() {
+            var day = document.getElementById('hello');
+            hello.value = 'value from javascript';
+        }
+   </script>
 
     <h2 class="subtitle fancy"><span> Tickets </span></h2>
     <table class="historic-table">
         <tr>
-            @{ foreach (var day in Model.days)
+            @{
+                foreach (var day in Model.dates)
                 {
-                    <th><button id="@day.ToString()">Show tickets for <br /> @day.ToString() </button></th>
-
+                    <th><button id="@day.DayOfWeek" name="day" 
+                                @*onclick="@Html.Partial("_HistoricPartialView", null, 
+                                        new ViewDataDictionary { { "historic", day } })*@>
+                        Show tickets for <br /> @day.ToString() </button></th>
                 }
             }
         </tr>
@@ -38,30 +47,24 @@
             <th>Chinese tour</th>
         </tr>
         @{
-                foreach (Historic e in Model.Historics)
-                {
-                    <tr>
-                        <td> @e.StartTime.ToString(@"HH\:mm")</td>
-                        <td> €@e.Price.ToString("N2") </td>
-                       
-                        </tr>
-                                    }
-        }
-        }
-
-                    </table>
-
-
-        <h2 class="fancy amp"><span> Locations </span></h2>
-        <ol class="list-stops">
-            @{
-                foreach (HistoricStop stop in Model.Stops)
-                {
-                    <li class="historic-stop-list">@stop.Name</li>
-                }
+            foreach (Historic e in Model.Historics)
+            {
+                @Html.Partial("_HistoricPartialView", null, new ViewDataDictionary { { "historic", e } })
             }
-        </ol>
-        @{foreach (HistoricStop stop in Model.Stops)
+        }
+    </table>
+
+
+    <h2 class="fancy amp"><span> Locations </span></h2>
+    <ol class="list-stops">
+        @{
+            foreach (HistoricStop stop in Model.Stops)
+            {
+                <li class="historic-stop-list">@stop.Name</li>
+            }
+        }
+    </ol>
+    @{foreach (HistoricStop stop in Model.Stops)
             {
                 int id = 1;
                 if (stop.Id == 1 || stop.Id == 4 || stop.Id == 7) { id = 1; }
@@ -74,19 +77,23 @@
 
                 </div>
     }
-        }
+    }
 
-
-
-        @*<div class="google">
-                <script>
-                    var map;
-                    function initMap() { map = new google.maps.Map)document.getElementById('map'), {
-                        center: {lat: 23.804143, lng: 90.404327 },
-                        zoom: 12
-                    }};
-                </script>
-                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuCohuEz731AU10u_DJ3tRJ2sZGY3frjI&callbakc=init<Mao"
-                        async defer></script>
-            </div>*@
+    <div class="google">
+        <img src="~/Content/Images/HistoricStops/GoogleMaps.png" />
     </div>
+
+
+
+    @*<div class="google">
+            <script>
+                var map;
+                function initMap() { map = new google.maps.Map)document.getElementById('map'), {
+                    center: {lat: 23.804143, lng: 90.404327 },
+                    zoom: 12
+                }};
+            </script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuCohuEz731AU10u_DJ3tRJ2sZGY3frjI&callbakc=init<Mao"
+                    async defer></script>
+        </div>*@
+</div>

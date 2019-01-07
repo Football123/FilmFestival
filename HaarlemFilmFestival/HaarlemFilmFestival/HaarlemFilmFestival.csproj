@@ -186,6 +186,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Dance.css" />
     <Content Include="Content\Food.css" />
+    <Content Include="Content\Images\HistoricStops\GoogleMaps.png" />
     <Content Include="Content\Historic.css" />
     <Content Include="Content\Images\bg.png" />
     <Content Include="Content\Images\footer-facebook.png" />
