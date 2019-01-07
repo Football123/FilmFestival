@@ -15,7 +15,8 @@ namespace HaarlemFilmFestival.Repositories
         RestaurantCuisine GetRestaurantCuisine(int restaurantId);
         IEnumerable<Location> GetFoodLocation();
         IEnumerable<OrderRecord> GetOrderedEvents();
-        IEnumerable<Event> GetAllFood();
+        IEnumerable<Food> GetPerRestaurant(Restaurant r);
+        //IEnumerable<Event> GetAllFood();
         IEnumerable<Food> GetFoods();
         IEnumerable<Restaurant> GetRestaurants();
        // Food GetFood(int foodId);

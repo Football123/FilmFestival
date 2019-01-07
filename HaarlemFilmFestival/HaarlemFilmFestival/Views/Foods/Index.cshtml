@@ -30,7 +30,7 @@
             <img src="@Url.Content("~/Content/Images/u567aangepast.png")" />
         </div>
     </div>
-        
+
     <h7>Tickets</h7>
 
     <h1>Tickets</h1>
@@ -53,7 +53,7 @@
                 Order a ticket
             </th>
         </tr>
-        @foreach (Food f in Model.Foods)
+        @foreach (Food f in Model.FoodPerDay)
         {
             <tr>
                 <td>
@@ -73,6 +73,7 @@
                 </td>
             </tr>
         }
+
     </table>
 
 

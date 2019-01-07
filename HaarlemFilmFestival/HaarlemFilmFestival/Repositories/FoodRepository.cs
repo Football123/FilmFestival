@@ -16,13 +16,13 @@ namespace HaarlemFilmFestival.Repositories
         {
             IEnumerable<Restaurant> Restaurants = db.Restaurants;
             return Restaurants;
-        }       
-
-        public IEnumerable<Event> GetAllFood()
-        {           
-            IEnumerable<Food> Foods = GetFoods();           
-            return Foods;
         }
+
+        //public IEnumerable<Event> GetAllFood()
+        //{
+        //    IEnumerable<Food> Foods = GetFoods();
+        //    return Foods;
+        //}
 
         //public Food GetFood(int foodId)
         //{
@@ -36,6 +36,11 @@ namespace HaarlemFilmFestival.Repositories
 
             return foods;
         }       
+        public IEnumerable<Food> GetPerRestaurant(Restaurant r)
+        {
+            IEnumerable<Food> events = db.Foods.Where(e => e.Restaurant.Id == r.Id);
+            return events;
+        }
 
         // deze functie aanpassen, eventueel verwijderen.
         public IEnumerable<Food> RestaurantCuisines()
