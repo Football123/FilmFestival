@@ -38,6 +38,7 @@ namespace HaarlemFilmFestival.Controllers
             return viewmodel;
         }
 
+        //hier moet juist cuisine lijst opgehaald worden
         private IEnumerable<Food> GetPerRestaurant(Restaurant r)
         {
             IEnumerable<Food> events = foodRepository.GetPerRestaurant(r);

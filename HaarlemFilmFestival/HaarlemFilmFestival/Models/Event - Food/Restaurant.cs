@@ -14,7 +14,7 @@ namespace HaarlemFilmFestival.Models
         public int Stars { get; set; }
         public string WebsiteLink { get; set; }
 
-        // Koppeling Keuken
+        // Koppeling Keuken en dit moet gebruikt worden in de foodcontroller (en foodviewmodel)
         public ICollection<Cuisine> Cuisines { get; set; }
     }
 }

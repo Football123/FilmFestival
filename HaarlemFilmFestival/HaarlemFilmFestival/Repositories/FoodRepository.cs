@@ -12,10 +12,13 @@ namespace HaarlemFilmFestival.Repositories
         private HaarlemFilmFestivalContext db = HaarlemFilmFestivalContext.getInstance();
         private IEventRepository eventrepository = new EventRepository();        
 
+        //hier moet de juist cuisine lijst opgehaald worden
         public IEnumerable<Restaurant> GetRestaurants()
         {
+            List <Cuisine> cuisines = new List<Cuisine>();
+            ICollection<Cuisine> cuis;
             IEnumerable<Restaurant> Restaurants = db.Restaurants;
-            return Restaurants;
+            return db.Restaurants;
         }
 
         //public IEnumerable<Event> GetAllFood()
@@ -51,6 +54,8 @@ namespace HaarlemFilmFestival.Repositories
             {
                 RestaurantCuisine resCuisine = new RestaurantCuisine();
                 resCuisine = GetRestaurantCuisine(f.Restaurant.Id);
+                //dit is niet goed want je krijgt elke keer 1 cuisinesoort binnen 
+                //terwijl een restaurant meerdere cuisines kan hebben
                 f.Cuisine = GetCuisine(resCuisine.cuisid);
             }
 
