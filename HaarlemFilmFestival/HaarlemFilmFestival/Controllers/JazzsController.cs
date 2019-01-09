@@ -63,7 +63,7 @@ namespace HaarlemFilmFestival.Controllers
             }
             return Events;
         }
-        public PartialViewResult ShowPartialView()  // DateTime day)
+        public PartialViewResult ShowPartialView(string dayOfFestival)
         {
             DateTime day = new DateTime(2018, 07, 26);    // just for testing...
             IEnumerable<Jazz> eventsperdate = jazzRepository.GetJazzPerDay(day);
