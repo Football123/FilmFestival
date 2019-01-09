@@ -19,7 +19,13 @@ namespace HaarlemFilmFestival.Repositories
         }
         public IEnumerable<Historic> GetHistoricPerTime(DateTime time)
         {
-            IEnumerable<Historic> events = database.Historics.Where(a => (a.StartTime.Hour) == time.Hour && a.StartTime.Minute == time.Minute);
+            IEnumerable<Historic> events = database.Historics.Where(a => (a.StartTime.Hour) == time.Hour && a.StartTime.Minute == time.Minute && a.StartTime == time.Date);
+            return events;
+        }
+
+        public IEnumerable<Historic> GetPerDayAndTime(DateTime daytime)
+        {
+            IEnumerable<Historic> events = database.Historics.Where(a => a.StartTime == daytime);
             return events;
         }
 
