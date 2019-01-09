@@ -20,7 +20,7 @@ namespace HaarlemFilmFestival.Models
         //    return historicPerDay;
         //}
 
-        public IEnumerable<Historic> GetPerTime { get; set; }
+        public IEnumerable<Historic> historicPerTime { get; set; }
         public IEnumerable<Historic> historicPerDay { get; set; }
         public IEnumerable<TimeSpan> StartTimes { get; set; }
         public IEnumerable<Language> languages { get; set; }

@@ -38,6 +38,17 @@ img.logo {
     margin-left: -14px;
 }
 
+img.arrow2 {
+    background-color: rgba(172, 216, 224, 1);
+    width: 47px;
+    height: 28px;
+    margin: 0% 35% 5% 35%;
+    border-width: 0px;
+    position: absolute;
+    left: 12.5%;
+    border-radius: 51%;
+}
+
 img.arrow {
     background-color: rgba(172, 216, 224, 1);
     padding: 10px 110px 10px 110px;
