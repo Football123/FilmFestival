@@ -2,10 +2,10 @@
 @using HaarlemFilmFestival.Models;
 
 @{ 
-    Historic historic = this.ViewData.ContainsKey("historic") ? (Historic)this.ViewData["historic"] : null; 
+    Historic historic = Model; // (Historic)this.ViewData["historic"];
 }
 <tr>
-    <td> @historic.StartTime.ToString(@"HH\:mm")</td>
+    <td> @historic.StartTime)</td>
     <td> €@historic.Price.ToString("N2") </td>
     <td>
         @{if (historic.Languages == Language.English)
