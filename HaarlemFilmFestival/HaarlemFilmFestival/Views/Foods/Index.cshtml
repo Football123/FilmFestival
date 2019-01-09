@@ -53,6 +53,21 @@
                 Order a ticket
             </th>
         </tr>
+        @{ foreach (Restaurant f in Model.Restaurants)
+            {
+                <p>@f.RestaurantName</p>;
+                string stars = "";
+                for (int i = 0; i < f.Stars; i++)
+                {
+                    stars = stars + "*";
+                }
+        <th> @stars</th>;
+                    @*<th>@f.Cuisine.CuisineDescription</th>;*@
+
+                
+
+            }
+        }
         @foreach (Food f in Model.FoodPerDay)
         {
             <tr>
@@ -89,7 +104,7 @@
                 <h2>@Html.DisplayFor(modelItem => item.Restaurant.Stars) stars</h2>
                 @*<h2>@Html.DisplayFor(modelItem => item.Location.Address) </h2>*@
                 <h2>@Html.DisplayFor(modelItem => item.Restaurant.WebsiteLink)</h2>
-                @*<img src="@Url.Content("~/Content/Images/u1063.png")" />*@
+                <img src="~/Content/Images/Restarants/@{ @Html.DisplayFor(modelItem => item.Restaurant.RestaurantName) }.jpg" alt="Restaurant image" />
             </div>
         </div>
     }

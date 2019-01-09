@@ -10,27 +10,31 @@ namespace HaarlemFilmFestival.Repositories
     public class FoodRepository : IFoodRepository
     {
         private HaarlemFilmFestivalContext db = HaarlemFilmFestivalContext.getInstance();
-        private IEventRepository eventrepository = new EventRepository();        
+        private IEventRepository eventrepository = new EventRepository();
 
-        //hier moet de juist cuisine lijst opgehaald worden
+        //hier moet de juiste cuisine lijst opgehaald worden
         public IEnumerable<Restaurant> GetRestaurants()
         {
-            List <Cuisine> cuisines = new List<Cuisine>();
-            ICollection<Cuisine> cuis;
-            IEnumerable<Restaurant> Restaurants = db.Restaurants;
-            return db.Restaurants;
+            //IEnumerable<Cuisine> cuisines = new List<Cuisine>();
+            //cuisines = GetCuisines();
+            //IEnumerable<Restaurant> Restaurants = db.Restaurants;
+            IEnumerable<Restaurant> Restaurants = db.Restaurants.Include("Cuisines");
+            //foreach (Restaurant r in GetCuisines())
+            //{
+            //    RestaurantCuisine resCuisine = new RestaurantCuisine();
+            //    resCuisine = GetRestaurantCuisine(r.Id);
+            //    foreach (Cuisine c in GetCuisines())
+            //    {
+            //        r.Cuisines = GetCuisines(c.Id);
+            //    }
+            //}
+            return Restaurants;
         }
 
-        //public IEnumerable<Event> GetAllFood()
+        //public ICollection<Cuisine> Cuisines()
         //{
-        //    IEnumerable<Food> Foods = GetFoods();
-        //    return Foods;
-        //}
-
-        //public Food GetFood(int foodId)
-        //{
-        //    Food food = db.Foods.Find(foodId);
-        //    return food;
+        //    List<Cuisine> cuisines = new List<Cuisine>();
+        //    return cuisines;
         //}
 
         public IEnumerable<Food> GetFoods()
@@ -38,7 +42,7 @@ namespace HaarlemFilmFestival.Repositories
             IEnumerable<Food> foods = db.Foods;
 
             return foods;
-        }       
+        }
         public IEnumerable<Food> GetPerRestaurant(Restaurant r)
         {
             IEnumerable<Food> events = db.Foods.Where(e => e.Restaurant.Id == r.Id);
@@ -80,10 +84,16 @@ namespace HaarlemFilmFestival.Repositories
             return res;
         }
 
+        //public List<string> GetKoppeling()
+        //{
+        //    List<string> list = new List<string>();
+        //    db.Restaurants.Where(db.Restaurants = db.RestaurantCuisines)
+        //}
+
         public IEnumerable<Cuisine> GetCuisines()
-        {           
+        {
             IEnumerable<Cuisine> cuisines = db.Cuisines;
-            
+
             return cuisines;
         }
 
