@@ -13,8 +13,9 @@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script type="text/javascript">
         $(function () {
-            $('#day.ToString()').click(function (data) {
-                $.post("@Url.Action("ShowPartialView", "Jazzs")", function (data) {
+            $("#Thursday").click(function (data) {
+                alert("button clicked!");
+                $.get("@Url.Action("ShowPartialView", "Jazzs")", function (data) {
                     if (data) {
                         $('#divTest').append(data);
                     }
@@ -46,7 +47,7 @@
         <h1>Tickets</h1>
         @foreach (var day in Model.dates)
         {
-            <input type="button" value="Show Tickets for @day.DayOfWeek.ToString() @day.Day @day.Month" id="@day.DayOfWeek.ToString()" />
+            <input type="button" value="Show Tickets for @day.Date.ToShortDateString()" id="@day.DayOfWeek.ToString()" />
 
         }
         <div id="divTest">

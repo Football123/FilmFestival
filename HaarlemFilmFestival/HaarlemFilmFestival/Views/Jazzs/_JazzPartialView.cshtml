@@ -7,9 +7,9 @@
     IEnumerable<Jazz> Events = Model.jazzLeft;
     IEnumerable<Artist> bands = Model.Artists;
 }
-<h6> This below table content is from partial view</h6>
+<h6>This below table content is from partial view</h6>
 <table class="table">
-
+  
     <tr>
         <th>
             Time
@@ -30,7 +30,6 @@
             Add to cart
         </th>
     </tr>
-    
     @foreach (Jazz j in Events)
     {
         <tr>
@@ -50,7 +49,7 @@
                 @j.Price
             </td>
             <td>
-                @Html.ActionLink("Add to cart", "Index", "Order")
+                @Html.ActionLink("Add to cart", "Index", "Order", new { id = j.Id })
             </td>
         </tr>
     }
