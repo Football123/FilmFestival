@@ -65,7 +65,8 @@ namespace HaarlemFilmFestival.Controllers
         }
         public PartialViewResult ShowPartialView(string dayOfFestival)
         {
-            DateTime day = new DateTime(2018, 07, 26);    // just for testing...
+            //DateTime day = Convert.ToDateTime(dayOfFestival);
+            DateTime day = new DateTime(2018, 07, 27);    // just for testing...
             IEnumerable<Jazz> eventsperdate = jazzRepository.GetJazzPerDay(day);
             return PartialView("_JazzPartialView", eventsperdate);
         }
