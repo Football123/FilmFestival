@@ -15,7 +15,6 @@ namespace HaarlemFilmFestival.ViewModels
         public IEnumerable<Jazz> jazzLeft { get; set; }
         public IEnumerable<Event> eventsLeft { get; set; }
 
-
         public JazzViewModel()
         {
         }
