@@ -14,14 +14,16 @@ namespace HaarlemFilmFestival.Controllers
         private IEventRepository eventRepository = new EventRepository();
 
         // GET: Tickets
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
             if (Session["Orders"] == null)
             {
                 Session["Orders"] = new Order();
             }
             Order order = (Order)Session["Orders"];
-            return View();
+            //IEnumerable<Event> events = eventRepository.GetEvent(id);
+            IEnumerable<Event> events = eventRepository.GetAllEvents();
+            return View(events);
         }
         
         [HttpPost]
