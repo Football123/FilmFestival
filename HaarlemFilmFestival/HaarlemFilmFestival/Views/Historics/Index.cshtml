@@ -33,9 +33,9 @@
     <table class="historic-table">
         <tr>
             @foreach (var day in Model.dates)
-                {
-                   <th><button id="@day.DayOfWeek.ToString()">Show tickets for <br /> @day.DayOfWeek.ToString()</button> </th> 
-                }
+            {
+                <th><button id="@day.DayOfWeek.ToString()">Show tickets for <br /> @day.DayOfWeek.ToString()</button> </th>
+            }
         </tr>
         <tr>
             <th>Time</th>
@@ -44,12 +44,17 @@
             <th>Dutch tour</th>
             <th>Chinese tour</th>
         </tr>
-        <div id="viewPlaceHolder"></div>
         @{
-            foreach (Historic e in Model.Historics)
+            foreach (DateTime time in Model.times)
             {
-                @Html.Partial("_HistoricPartialView", e); ///null, new ViewDataDictionary { { "historic", e } })
+                <tr>
+                    <th>@time.Hour:@time.Minute </th>
+                </tr>
+                @Html.Partial("_HistoricPartialView", Model.Historics.Where(a => a.StartTime == time)); ///null, new ViewDataDictionary { { "historic", e } })
+
             }
+
+
         }
     </table>
 

@@ -1,25 +1,33 @@
-﻿@model HaarlemFilmFestival.Models.Historic
+﻿@*// @model HaarlemFilmFestival.Models.Historic*@
+@model IEnumerable<Historic>
 @using HaarlemFilmFestival.Models;
 
-@{ 
-    Historic historic = Model; // (Historic)this.ViewData["historic"];
-}
-<tr>
-    <td> @historic.StartTime)</td>
-    <td> €@historic.Price.ToString("N2") </td>
-    <td>
-        @{if (historic.Languages == Language.English)
-            { <a href="~/Views/Order/Index.cshtml"><img src="~/Content/cart.png" /></a> }
-        }
-    </td>
-    <td>
-        @{if (historic.Languages == Language.Dutch)
-            { <a href="~/Views/Order/Index.cshtml"><img src="~/Content/cart.png" /></a> }
-        }
-    <td>
-        @{if (historic.Languages == Language.Chinese)
-            { <a href="~/Views/Order/Index.cshtml"><img src="~/Content/cart.png" /></a> }
-        }
-    </td>
+@{
+    @**@IEnumerable<Historic> historics = Model;
 
-</tr>
+}
+
+@{
+    foreach (Historic historic in Model)
+    {
+    <tr>
+        <td> @historic.StartTime</td>
+        <td> €@historic.Price.ToString("N2") </td>
+        <td>
+            @{if (historic.Languages == Language.English)
+                { <a href="~/Views/Order/Index.cshtml"><img src="~/Content/cart.png" /></a> }
+            }
+        </td>
+        <td>
+            @{if (historic.Languages == Language.Dutch)
+                { <a href="~/Views/Order/Index.cshtml"><img src="~/Content/cart.png" /></a> }
+            }
+        </td>
+        <td>
+            @{if (historic.Languages == Language.Chinese)
+                { <a href="~/Views/Order/Index.cshtml"><img src="~/Content/cart.png" /></a> }
+            }
+        </td>
+    </tr>
+                }
+}
