@@ -17,8 +17,9 @@
                 alert("button clicked!" + document.activeElement.id);   // Thursday, ...
                 //alert("button clicked!");
                 var day = document.activeElement.id;
-                $.get("@Url.Action("ShowPartialView", "Jazzs",  new {  dayOfFestival = DayOfWeek.Thursday })", function (data) {
+                $.get("@Url.Action("ShowPartialView", "Jazzs",  new {  dayOfFestival = DayOfWeek.Thursday})", function (data) {
                     if (data) {
+                        $('#divTest').empty();
                         $('#divTest').append(data);
                     }
                 });
@@ -51,6 +52,7 @@
         {
             <input type="button" value="Show Tickets for @day.Date.ToShortDateString()" class="dayButton" id="@day.DayOfWeek.ToString()" />
         }
+        
         <div id="divTest">
             @*@Html.Partial("_JazzPartialView", Model.eve)*@
         </div>

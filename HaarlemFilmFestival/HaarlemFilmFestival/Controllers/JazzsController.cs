@@ -63,12 +63,38 @@ namespace HaarlemFilmFestival.Controllers
             }
             return Events;
         }
+        [HttpPost]
         public PartialViewResult ShowPartialView(string dayOfFestival)
+        { 
+            //DateTime day = Convert.ToDateTime(dayOfFestival);
+                       
+            //DateTime day;    // just for testing...
+            //IEnumerable<Jazz> eventsperdate = jazzRepository.GetJazzPerDay(day);
+            //return PartialView("_JazzPartialView", eventsperdate);               
+            viewmodel = FillViewModel();
+            switch (dayOfFestival)
+            {
+                case "Thursday":
+                    viewmodel.jazzPerDay = jazzRepository.GetJazzPerDay(new DateTime(2018, 7, 26));
+                    break;
+                case "Friday":
+                    viewmodel.jazzPerDay = jazzRepository.GetJazzPerDay(new DateTime(2018, 7, 27));
+                    break;
+                case "Saturday":
+                    viewmodel.jazzPerDay = jazzRepository.GetJazzPerDay(new DateTime(2018, 7, 28));
+                    break;
+                case "Sunday":
+                    viewmodel.jazzPerDay = jazzRepository.GetJazzPerDay(new DateTime(2018, 7, 29));
+                    break;
+                default:
+                    viewmodel.jazzPerDay = jazzRepository.GetJazzPerDay(new DateTime(2018, 7, 26));
+                    break;
+            }
+                return PartialView("_JazzPartialView", viewmodel.jazzPerDay);           
+        }
+        public ActionResult ShowPartialView()
         {
-            //DateTime day = Convert.ToDateTime(dayOfFestival);           
-            DateTime day = new DateTime(2018, 07, 27);    // just for testing...
-            IEnumerable<Jazz> eventsperdate = jazzRepository.GetJazzPerDay(day);
-            return PartialView("_JazzPartialView", eventsperdate);
+            return View();
         }
     }
 }
