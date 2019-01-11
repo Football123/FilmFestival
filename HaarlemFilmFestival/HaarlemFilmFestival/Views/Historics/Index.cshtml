@@ -1,12 +1,31 @@
-﻿@using HaarlemFilmFestival.Controllers;
+﻿@* vragen staan op regels: 18, 63 *@
+
+@using HaarlemFilmFestival.Controllers;
 @using HaarlemFilmFestival.Models;
 @using HaarlemFilmFestival.ViewModels;
 @model HistoricViewModel
 @{
     ViewBag.Title = "Historic";
 }
-
 <link href="@Url.Content("~/Content/Historic.css")" , rel="stylesheet" type="text/css" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $(".dayButton").click(function (data) {
+            alert("button clicked!" + document.activeElement.id);   // Thursday, ...
+            var day = document.activeElement.id;
+            // hoe geef ik hier niet hardcoded "saturday" mee maar haal ik dit uit de activeElement?
+            $.get("@Url.Action("HistoricPartialView", "Historics", new { day = DayOfWeek.Saturday })", function (data) {
+                if (data) {
+                    $('#divTest').append(data);
+                }
+            });
+        });
+    });
+</script>
+
+
 <div class="jumbotron">
     <h1>Visit Haarlem Historic</h1>
 
@@ -19,24 +38,13 @@
         ‘Haarlem Historic’ will mark the exact starting location.
     </div>
 
-    <script type="text/javascript">
-        $(function () {
-            $('#Thursday').click(function () {
-                alert('button clicked');
-
-                $("#viewPlaceHolder").load("/Historics/HistoricPartialView", { day: "2018/07/26" });
-            });
-        });
-    </script>
 
     <h2 class="subtitle fancy"><span> Tickets </span></h2>
-    <table class="historic-table">
-        <tr>
-            @foreach (var day in Model.dates)
+    @foreach (var day in Model.dates)
             {
-                <th><button id="@day.DayOfWeek.ToString()">Show tickets for <br /> @day.DayOfWeek.ToString()</button> </th>
-            }
-        </tr>
+        <button class="dayButton" id="@day.DayOfWeek.ToString()">Show tickets for <br /> @day.DayOfWeek.ToString()</button>
+    }
+    <table class="historic-table">
         <tr>
             <th>Time</th>
             <th>Price</th>
@@ -50,14 +58,13 @@
                 <tr>
                     <th>@time.Hour:@time.Minute </th>
                 </tr>
-                @Html.Partial("_HistoricPartialView", Model.Historics.Where(a => a.StartTime == time)); ///null, new ViewDataDictionary { { "historic", e } })
-
+                // @Html.Partial("_HistoricPartialView", Model.Historics.Where(a => a.StartTime == time)); ///null, new ViewDataDictionary { { "historic", e } })
             }
-
-
+            // hoe zorg ik ervoor dat dit partialview (die hieronder wordt gevuld) zichzelf 
+            // overschrijft ipv na elke buttonclick onder elkaar zet?
+        <div id="divTest"></div>
         }
     </table>
-
 
     <h2 class="fancy amp"><span> Locations </span></h2>
     <ol class="list-stops">
