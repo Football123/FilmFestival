@@ -15,20 +15,44 @@ namespace HaarlemFilmFestival.Repositories
         //hier moet de juiste cuisine lijst opgehaald worden
         public IEnumerable<Restaurant> GetRestaurants()
         {
-            //IEnumerable<Cuisine> cuisines = new List<Cuisine>();
-            //cuisines = GetCuisines();
-            //IEnumerable<Restaurant> Restaurants = db.Restaurants;
-            IEnumerable<Restaurant> Restaurants = db.Restaurants.Include("Cuisines");
-            //foreach (Restaurant r in GetCuisines())
-            //{
-            //    RestaurantCuisine resCuisine = new RestaurantCuisine();
-            //    resCuisine = GetRestaurantCuisine(r.Id);
-            //    foreach (Cuisine c in GetCuisines())
-            //    {
-            //        r.Cuisines = GetCuisines(c.Id);
-            //    }
-            //}
-            return Restaurants;
+            IEnumerable<Cuisine> cuisines = new List<Cuisine>();
+            cuisines = GetCuisines();
+            IEnumerable<Restaurant> restaurants = db.Restaurants;            
+
+            foreach (Restaurant r in restaurants)
+            {
+                List<RestaurantCuisine> restaurantcuisines = GetRestaurantCuisinesByRestaurantId(r.Id);
+                // r.Cuisines = GetCuisinesByRestaurantCuisine(r.Id); 
+
+
+                foreach (RestaurantCuisine c in restaurantcuisines)
+                {
+                    r.RestaurantName += "Restaurant: " + c.resid + " Cuisine: " + c.cuisid + "/// ";
+                }
+                
+            }
+            // vul restaurant
+           
+            return restaurants;
+        }
+
+
+        public List<RestaurantCuisine> GetRestaurantCuisinesByRestaurantId(int restaurantId)
+        {
+            List<RestaurantCuisine> restaurantCuisines = new List<RestaurantCuisine>();
+
+            using (HaarlemFilmFestivalContext db = new HaarlemFilmFestivalContext())
+            {
+                restaurantCuisines = db.RestaurantCuisines.Where(xid => xid.resid == restaurantId).ToList();
+            }
+
+
+            return restaurantCuisines;
+        }
+
+        public ICollection<Cuisine> GetCuisinesByRestaurantCuisine(int restaurantCuisineId)
+        {
+            return db.Cuisines.Where(xid => xid.Id == restaurantCuisineId).ToList();
         }
 
         //public ICollection<Cuisine> Cuisines()
@@ -60,7 +84,7 @@ namespace HaarlemFilmFestival.Repositories
                 resCuisine = GetRestaurantCuisine(f.Restaurant.Id);
                 //dit is niet goed want je krijgt elke keer 1 cuisinesoort binnen 
                 //terwijl een restaurant meerdere cuisines kan hebben
-                f.Cuisine = GetCuisine(resCuisine.cuisid);
+               // f.Cuisine = GetCuisine(resCuisine.cuisid);
             }
 
             return foods;
@@ -83,12 +107,6 @@ namespace HaarlemFilmFestival.Repositories
 
             return res;
         }
-
-        //public List<string> GetKoppeling()
-        //{
-        //    List<string> list = new List<string>();
-        //    db.Restaurants.Where(db.Restaurants = db.RestaurantCuisines)
-        //}
 
         public IEnumerable<Cuisine> GetCuisines()
         {
