@@ -19,16 +19,20 @@ namespace HaarlemFilmFestival.Repositories
             cuisines = GetCuisines();
             IEnumerable<Restaurant> restaurants = db.Restaurants;            
 
+
             foreach (Restaurant r in restaurants)
             {
                 List<RestaurantCuisine> restaurantcuisines = GetRestaurantCuisinesByRestaurantId(r.Id);
-                // r.Cuisines = GetCuisinesByRestaurantCuisine(r.Id); 
+                List<Cuisine> cuisinez = new List<Cuisine>();
 
 
                 foreach (RestaurantCuisine c in restaurantcuisines)
                 {
-                    r.RestaurantName += "Restaurant: " + c.resid + " Cuisine: " + c.cuisid + "/// ";
+                    Cuisine kx = GetCuisine(c.cuisid);
+                    
+                    cuisinez.Add(kx);
                 }
+                r.Cuisines = cuisinez;
                 
             }
             // vul restaurant
@@ -54,12 +58,6 @@ namespace HaarlemFilmFestival.Repositories
         {
             return db.Cuisines.Where(xid => xid.Id == restaurantCuisineId).ToList();
         }
-
-        //public ICollection<Cuisine> Cuisines()
-        //{
-        //    List<Cuisine> cuisines = new List<Cuisine>();
-        //    return cuisines;
-        //}
 
         public IEnumerable<Food> GetFoods()
         {
