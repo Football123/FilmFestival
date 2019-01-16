@@ -41,7 +41,7 @@ namespace HaarlemFilmFestival.Controllers
                 orderrecords.TicketType = TicketType.Single;
             Session["Orders"] = order;
 
-            return View("Index", "Order");
+            return View(viewmodel);
         }
 
         public HistoricViewModel FillViewModel()
