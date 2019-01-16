@@ -19,7 +19,6 @@
     $(function () {
         $("#Thursday").click(function (data) {
             var day = document.activeElement.id;
-            alert("button clicked!" + day);
             $.get("@Url.Action("HistoricPartialView", "Historics", new { day = DayOfWeek.Thursday })", function (data) {
                 if (data) {
                     $('#divTable').empty();

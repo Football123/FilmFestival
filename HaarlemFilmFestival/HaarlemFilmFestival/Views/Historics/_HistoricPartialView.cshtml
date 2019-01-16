@@ -1,11 +1,7 @@
-﻿@* vragen staan op regels: 14, 26, 60 *@
-@*@model IEnumerable<Historic>*@
-@using HaarlemFilmFestival.Models;
+﻿@using HaarlemFilmFestival.Models;
 @using HaarlemFilmFestival.ViewModels;
 @model HistoricViewModel
-@{
-//IEnumerable<Historic> historics = Model;
-}
+
 <link href="@Url.Content("~/Content/Historic.css")" , rel="stylesheet" type="text/css" />
 @* Scripts *@
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
@@ -14,26 +10,16 @@
     $(document).ready(function () {
         $("#hide").click(function () {
             $(".orderPopUp").hide();
-            alert("pop up is down! :) ");
         });
         $(".orderButton").click(function (data) {
             var id = document.activeElement.id;
-            var event = $(data).attr("id");
-            alert("event clicked!" + event);
+            var event = $(this).attr("id");
             $(".orderPopUp").show();
             $(".eventidinput").val(event);
         });
-        });
+    });
 </script>
 
-@* hoe zorg ik ervoor dat deze tabel niet onder elkaar loopt, maar naast elkaar?
-    time    price   english     dutch   chinese
-    10:00   17,50
-    13:00   17,50
-    16:00   17,50
-    en dat de loop dan voor elk tijdstip kijkt in welke taal het event
-    is, dan naar het volgende event en die ernaast zet ipv eronder
-*@
 @{
     <table class="historic-table">
         <tr>
@@ -48,50 +34,48 @@
             {
                 foreach (Historic historic in Model.historicPerDay.Where(a => a.StartTime.Hour == time.Hour && a.StartTime.Minute == time.Minute))
                 {
-                <tr>
-                    <td>@historic.StartTime.ToString("HH:mm")</td>
-                    <td>€@historic.Price.ToString("N2") </td>
-                    
+                    <tr>
+                        <td>@historic.StartTime.ToString("HH:mm")</td>
+                        <td>€@historic.Price.ToString("N2") </td>
+
                         <td>
                             @{if (historic.Languages == Language.English)
-                                { <a class="orderButton" id="@historic.Id">@historic.Id<img src="~/Content/cart.png" /></a> }
-                            }
+                                { <a class="orderButton" id="@historic.Id"><img src="~/Content/cart.png" /></a> }}
                         </td>
                         <td>
                             @{if (historic.Languages == Language.Dutch)
-                                { <a class="orderButton" id="@historic.Id">@historic.Id<img src="~/Content/cart.png" /></a> }
-                            }
+                                { <a class="orderButton" id="@historic.Id"><img src="~/Content/cart.png" /></a> }}
                         </td>
                         <td>
                             @{if (historic.Languages == Language.Chinese)
-                                { <a class="orderButton" id="@historic.Id">@historic.Id<img src="~/Content/cart.png" /></a> }
-                            }
-                        </td>       
+                            { <a class="orderButton" id="@historic.Id"><img src="~/Content/cart.png" /></a> }}
+                    </td>
                 </tr>
-                
-                                        }
-                                    }
                                 }
+                            }
+        }
         <tr><td colspan="5"> <br /> </td></tr>
         <tr>
-            <td colspan="3" id="familyticket">Also available, family tickets! For 4 persons 
-            <br/> only for English and Dutch</td>
+            <td colspan="3" id="familyticket">
+                Also available, family tickets! For 4 persons
+                <br /> only for English and Dutch
+            </td>
             <td id="familyticket">Price €60,-</td>
-            <td id="familyticket"><a class="orderButton"><img src="~/Content/cart.png" /></a></td>
+            <td><a class="orderButton"><img src="~/Content/cart.png" /></a></td>
         </tr>
     </table>
 }
+
 <div class="orderPopUp">
-    <form class="placeOrder" method="post" action="~/Historics/">
+    <form class="placeOrder" method="post" action="~/Historics/Index">
         <div class="idtext"></div>
         Amount of tickets:<br />
-        Hoi! :) <br/>
-        <input type="text" class="eventidinput" name="eventid" />
+        <input type="text" class="eventidinput" name="eventid" hidden />
         <input type="number" name="amountOfTickets" required><br />
-
         <br />
-        
+        @*@Html.ActionLink("Add to cart", "Index", "Order", new { id = j.Id }, null)*@
         <input type="submit" value="Add ticket">
         <input id="hide" type="button" value="CANCEL">
     </form>
 </div>
+
