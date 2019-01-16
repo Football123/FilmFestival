@@ -29,9 +29,9 @@ namespace HaarlemFilmFestival.Controllers
                 Session["Orders"] = new Order();
             Order order = (Order)Session["Orders"];
             orderrecords = new OrderRecord();
-            orderrecords.RecordAmount = int.Parse(Request.Form["number"]);
+            orderrecords.RecordAmount = int.Parse(Request.Form["amountOfTickets"]);
             //    orderrecords.Event = historicrepository.GetByDateAndLang(int.Parse(Request.Form["time"]), int.Parse(Request.Form["day"]), (Taal)(int.Parse(Request.Form["lang"])));
-            orderrecords.Event_Id = orderrecords.Event.Id;
+            //orderrecords.Event_Id = orderrecords.Event.Id;
             if (order.OrderRecords == null)
                 order.OrderRecords = new List<OrderRecord>();
             order.OrderRecords.Add(orderrecords);
@@ -44,10 +44,15 @@ namespace HaarlemFilmFestival.Controllers
             return View(viewmodel);
         }
 
+        public ActionResult PlaceOrder(string id)
+        {
+            Historic historic = historicrepository.GetHistoricEvent(Int32.Parse(id));
+            return View(historic);
+        }
+
         public HistoricViewModel FillViewModel()
         {
-            //   viewmodel.historicPerTime = GetPerTime(d);
-            //   viewmodel.historicPerDay = GetHistoricPerDay(d);
+            viewmodel.historicPerDay = GetHistoricPerDay(new DateTime(2018, 7, 26));
             viewmodel.StartTimes = historicrepository.GetStartTimes();
             viewmodel.Historics = historicrepository.GetHistoricEvents();
             viewmodel.languages = GetLanguages();
@@ -56,10 +61,7 @@ namespace HaarlemFilmFestival.Controllers
             viewmodel.historicsLeft = getHistoricsLeft();
             viewmodel.dates = viewmodel.getDays(viewmodel.eventsLeft);
             viewmodel.times = viewmodel.getStartTime(viewmodel.eventsLeft);
-            foreach (DateTime daytime in viewmodel.dates)
-            {
-                viewmodel.historicPerDay = GetPerDayAndTime(daytime);
-            }
+            
             return viewmodel;
         }
 
@@ -84,7 +86,7 @@ namespace HaarlemFilmFestival.Controllers
                     viewmodel.historicPerDay = GetHistoricPerDay(new DateTime(2018, 7, 26));
                     break;
             }
-            return PartialView("_HistoricPartialView", viewmodel.historicPerDay);
+            return PartialView("_HistoricPartialView", viewmodel);
         }
 
         public IEnumerable<Historic> GetHistoricPerDay(DateTime day)
