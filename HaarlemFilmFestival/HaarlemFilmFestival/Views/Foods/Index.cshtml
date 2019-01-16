@@ -74,7 +74,7 @@ model FoodViewModel
                     @f.CuisinesString
                 </td>
                 <td>
-                    @Html.ActionLink("Add to cart", "Index", "Order")
+                    @Html.ActionLink("Add to cart", "Index", "Order", new { id = f.Id }, null)
                 </td>
             </tr>
         }
@@ -91,13 +91,12 @@ model FoodViewModel
         @foreach (var item in Model)
         {
 
-            <div class="col-md-4">
-                <h2>@Html.DisplayFor(modelItem => item.RestaurantName)</h2>
-                <h2>@Html.DisplayFor(modelItem => item.Stars) stars</h2>
-                <img src="@Url.Content("~/Content/Images/Restaurants/")@{ @Html.DisplayFor(modelItem => item.FixedImageName) }.png" alt="Restaurant image" />
-                <h2><img src="@Url.Content("~/Content/Images/Restaurants/u451aangepast.png")" /><img src="@Url.Content("~/Content/Images/Restaurants/u446aangepast.png")" />@Html.DisplayFor(modelItem => item.WebsiteLink)</h2>
-
-            </div>
+        <div class="col-md-4">
+            <h2>@Html.DisplayFor(modelItem => item.RestaurantName)</h2>
+            <h2>@Html.DisplayFor(modelItem => item.Stars) stars <img src="@Url.Content("~/Content/Images/Restaurants/u447.png")" /></h2>
+            <img src="@Url.Content("~/Content/Images/Restaurants/")@{ @Html.DisplayFor(modelItem => item.FixedImageName) }.png" alt="Restaurant image" />
+            <h2><img src="@Url.Content("~/Content/Images/Restaurants/u451aangepast.png")" /><a href="@item.WebsiteLink"><img src="@Url.Content("~/Content/Images/Restaurants/u446aangepast.png")" /></a></h2>            
+        </div>
         }
     </div>
 
