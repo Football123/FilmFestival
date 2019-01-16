@@ -22,8 +22,8 @@ namespace HaarlemFilmFestival.Controllers
         {
             // viewmodel = FillViewModel();
             // return View(viewmodel);
-
-            return View((IEnumerable<Restaurant>)foodRepository.GetRestaurants());
+            IEnumerable<Restaurant> restaurants = foodRepository.GetRestaurants();
+            return View(restaurants);
         }
 
         public FoodViewModel FillViewModel()

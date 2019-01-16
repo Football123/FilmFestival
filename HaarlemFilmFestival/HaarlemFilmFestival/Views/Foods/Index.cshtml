@@ -27,14 +27,15 @@ model FoodViewModel
             Pick a restaurant and add it to you chart!
         </div>
         <div class="column">
-            <img src="@Url.Content("~/Content/Images/u568aangepast.png")" />
+            <img src="@Url.Content("~/Content/Images/Restaurants/u568aangepast.png")" />
         </div>
         <div class="column">
-            <img src="@Url.Content("~/Content/Images/u567aangepast.png")" />
+            <img src="@Url.Content("~/Content/Images/Restaurants/u567aangepast.png")" />
         </div>
     </div>
 
-    <h7>Tickets</h7>
+    <br />
+    <h7 style="color:white;">Tickets</h7>
 
     <h1>Tickets</h1>
 
@@ -55,22 +56,8 @@ model FoodViewModel
             <th>
                 Order a ticket
             </th>
-        </tr>@*
-            @{ foreach (Restaurant f in Model.Restaurants)
-                {
-                    <p>@f.RestaurantName</p>;
-                    string stars = "";
-                    for (int i = 0; i < f.Stars; i++)
-                    {
-                        stars = stars + "*";
-                    }
-                    <th> @stars</th>;
-                    <th>@f.Cuisine.CuisineDescription</th>;
+        </tr>
 
-                     LOOP VOOR ONDEREN
-                     @foreach (Food f in Model.FoodPerDay)
-                    }*@
-        }
         @foreach (Restaurant f in Model)
         {
             <tr>
@@ -84,7 +71,7 @@ model FoodViewModel
                     f.Discount
                 </td>
                 <td>
-                    f.Cuisine.CuisineDescription
+                    @f.CuisinesString
                 </td>
                 <td>
                     @Html.ActionLink("Add to cart", "Index", "Order")
@@ -100,17 +87,43 @@ model FoodViewModel
     <br />
     <h1>Restaurants</h1>
 
-
-    AAPSTAARTforeach (var item in Model.Foods)
-    {
     <div class="row">
-        <div class="col-md-4">
-            AAPSTAART<h2>Html.DisplayFor(modelItem => item.Restaurant.RestaurantName)</h2>
-            AAPSTAART<h2>Html.DisplayFor(modelItem => item.Restaurant.Stars) stars</h2>
-            @*<h2>@Html.DisplayFor(modelItem => item.Location.Address) </h2>*@
-            AAPSTAART <h2>Html.DisplayFor(modelItem => item.Restaurant.WebsiteLink)</h2>
-            <img src="~/Content/Images/Restarants/AAPSTAART{ AAPSTAARTHtml.DisplayFor(modelItem => item.Restaurant.RestaurantName) }.jpg" alt="Restaurant image" />
+        @foreach (var item in Model)
+        {
+
+            <div class="col-md-4">
+                <h2>@Html.DisplayFor(modelItem => item.RestaurantName)</h2>
+                <h2>@Html.DisplayFor(modelItem => item.Stars) stars</h2>
+                <img src="@Url.Content("~/Content/Images/Restaurants/")@{ @Html.DisplayFor(modelItem => item.FixedImageName) }.png" alt="Restaurant image" />
+                <h2><img src="@Url.Content("~/Content/Images/Restaurants/u451aangepast.png")" /><img src="@Url.Content("~/Content/Images/Restaurants/u446aangepast.png")" />@Html.DisplayFor(modelItem => item.WebsiteLink)</h2>
+
+            </div>
+        }
+    </div>
+
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add to cart!</button>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Choose your food ticket please.</h4>
+                </div>
+                <div class="modal-body">
+                    <p>The time you can eat in this restaurant is 2 hours.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Add to shoppingcart</button>
+                </div>
+            </div>
+
         </div>
     </div>
-    }
+
 </div>
