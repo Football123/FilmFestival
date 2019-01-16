@@ -3,6 +3,7 @@ using HaarlemFilmFestival.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -14,14 +15,25 @@ namespace HaarlemFilmFestival.Controllers
         private IEventRepository eventRepository = new EventRepository();
 
         // GET: Tickets
-        public ActionResult Index()
-        {
+        public ActionResult Index(int? id)
+        {            
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Jazz jazzevent = (Jazz) eventRepository.GetEvent((int)id);
+            if (jazzevent == null)
+            {
+                return HttpNotFound();
+            }
+
             if (Session["Orders"] == null)
             {
                 Session["Orders"] = new Order();
             }
             Order order = (Order)Session["Orders"];
-            return View();
+
+            return View(jazzevent);
         }
         
         [HttpPost]

@@ -45,7 +45,8 @@ namespace HaarlemFilmFestival.Models
                 if (!dayofweeks.Contains(e.StartTime.DayOfWeek))
                 {
                     dayofweeks.Add(e.StartTime.DayOfWeek);
-                    dates.Add(e.StartTime);
+                    //dates.OrderByDescending(e.Id);
+                    dates.Add(e.StartTime);                 
                 }
             }
             return dates;

@@ -13,15 +13,55 @@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script type="text/javascript">
         $(function () {
-            $("#Thursday").click(function (data) {
-                alert("button clicked!");
-                $.get("@Url.Action("ShowPartialView", "Jazzs")", function (data) {
+            $(".dayButton").click(function (data) {
+                $.get("@Url.Action("ShowPartialView", "Jazzs",  new {  dayOfFestival = DayOfWeek.Thursday})", function (data) {
                     if (data) {
+                        $('#divTest').empty();
                         $('#divTest').append(data);
                     }
                 });
             });
         });
+        @*$(function () {
+            $(".dayButton").click(function (data) {
+                $.post("@Url.Action("ShowPartialView", "Jazzs",  new {  dayOfFestival = DayOfWeek.Thursday, number = 1})", function (data) {
+                    if (data) {
+                        $('#divTest').empty();
+                        $('#divTest').append(data);
+                    }
+                });
+            });
+        });*@
+       @*$(function () {
+            $(".dayButton").click(function (data) {
+                $.get("@Url.Action("ShowPartialView", "Jazzs",  new {  dayOfFestival = DayOfWeek.Friday})", function (data) {
+                    if (data) {
+                        $('#divTest').empty();
+                        $('#divTest').append(data);
+                    }
+                });
+            });
+        });
+        $(function () {
+            $(".dayButton").click(function (data) {
+                $.get("@Url.Action("ShowPartialView", "Jazzs",  new {  dayOfFestival = DayOfWeek.Saturday})", function (data) {
+                    if (data) {
+                        $('#divTest').empty();
+                        $('#divTest').append(data);
+                    }
+                });
+            });
+        });
+        $(function () {
+            $(".dayButton").click(function (data) {
+                $.get("@Url.Action("ShowPartialView", "Jazzs",  new {  dayOfFestival = DayOfWeek.Sunday})", function (data) {
+                    if (data) {
+                        $('#divTest').empty();
+                        $('#divTest').append(data);
+                    }
+                });
+            });
+        });*@
     </script>
 </head>
 <body>
@@ -47,11 +87,11 @@
         <h1>Tickets</h1>
         @foreach (var day in Model.dates)
         {
-            <input type="button" value="Show Tickets for @day.Date.ToShortDateString()" id="@day.DayOfWeek.ToString()" />
-
+            <input type="button" value="Show Tickets for @day.Date.DayOfWeek" class="dayButton" id="@day.DayOfWeek.ToString()" />
         }
+        
         <div id="divTest">
-            @*@Html.Partial("_JazzPartialView")*@
+            @*@Html.Partial("_JazzPartialView", Model.eve)*@
         </div>
 
         <h1>Line-up</h1>
@@ -62,7 +102,7 @@
                 <div class="col-md-6" style="border-color: black;">
                     <h2>@Html.DisplayFor(modelItem => item.Name)</h2>
                     <h2>@Html.DisplayFor(modelItem => item.ArtistDescription)</h2>
-                    <img src="~/Content/Images/Bands/@{ @Html.DisplayFor(modelItem => item.Name) }.jpg" alt="Band image" />
+                    <img src="~/Content/Images/Bands/@{ @item.Name }.png " alt="Band image" />
                 </div>
             </div>
         }

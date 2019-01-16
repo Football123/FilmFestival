@@ -29,9 +29,9 @@ namespace HaarlemFilmFestival.Controllers
                 Session["Orders"] = new Order();
             Order order = (Order)Session["Orders"];
             orderrecords = new OrderRecord();
-            orderrecords.RecordAmount = int.Parse(Request.Form["number"]);
+            orderrecords.RecordAmount = int.Parse(Request.Form["amountOfTickets"]);
             //    orderrecords.Event = historicrepository.GetByDateAndLang(int.Parse(Request.Form["time"]), int.Parse(Request.Form["day"]), (Taal)(int.Parse(Request.Form["lang"])));
-            orderrecords.Event_Id = orderrecords.Event.Id;
+            //orderrecords.Event_Id = orderrecords.Event.Id;
             if (order.OrderRecords == null)
                 order.OrderRecords = new List<OrderRecord>();
             order.OrderRecords.Add(orderrecords);
@@ -44,13 +44,15 @@ namespace HaarlemFilmFestival.Controllers
             return View(viewmodel);
         }
 
+        public ActionResult PlaceOrder(string id)
+        {
+            Historic historic = historicrepository.GetHistoricEvent(Int32.Parse(id));
+            return View(historic);
+        }
+
         public HistoricViewModel FillViewModel()
         {
-            DateTime d = new DateTime(2018, 7, 26, 10, 00, 00);
-            viewmodel.historicPerDay = GetPerDayAndTime(d);
-
-            //viewmodel.historicPerTime = GetPerTime(d);
-         //   viewmodel.historicPerDay = GetHistoricPerDay(d);
+            viewmodel.historicPerDay = GetHistoricPerDay(new DateTime(2018, 7, 26));
             viewmodel.StartTimes = historicrepository.GetStartTimes();
             viewmodel.Historics = historicrepository.GetHistoricEvents();
             viewmodel.languages = GetLanguages();
@@ -59,24 +61,37 @@ namespace HaarlemFilmFestival.Controllers
             viewmodel.historicsLeft = getHistoricsLeft();
             viewmodel.dates = viewmodel.getDays(viewmodel.eventsLeft);
             viewmodel.times = viewmodel.getStartTime(viewmodel.eventsLeft);
+            
             return viewmodel;
         }
 
         public PartialViewResult HistoricPartialView(string day)
         {
-            DateTime dt;
-            if (Enum.TryParse<DateTime>(day, out dt))
+            viewmodel = FillViewModel();
+            switch (day)
             {
-                viewmodel = FillViewModel();
-                IEnumerable<Historic> newevents = GetHistoricPerDay(dt);
-                viewmodel.historicPerDay = newevents;
+                case "Thursday":
+                    viewmodel.historicPerDay = GetHistoricPerDay(new DateTime(2018, 7, 26));
+                    break;
+                case "Friday":
+                    viewmodel.historicPerDay = GetHistoricPerDay(new DateTime(2018, 7, 27));
+                    break;
+                case "Saturday":
+                    viewmodel.historicPerDay = GetHistoricPerDay(new DateTime(2018, 7, 28));
+                    break;
+                case "Sunday":
+                    viewmodel.historicPerDay = GetHistoricPerDay(new DateTime(2018, 7, 29));
+                    break;
+                default:
+                    viewmodel.historicPerDay = GetHistoricPerDay(new DateTime(2018, 7, 26));
+                    break;
             }
             return PartialView("_HistoricPartialView", viewmodel);
         }
 
         public IEnumerable<Historic> GetHistoricPerDay(DateTime day)
         {
-           IEnumerable<Historic> events = historicrepository.GetHistoricPerDay(day);
+            IEnumerable<Historic> events = historicrepository.GetHistoricPerDay(day);
             return events;
         }
 

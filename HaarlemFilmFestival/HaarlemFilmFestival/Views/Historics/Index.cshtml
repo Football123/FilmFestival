@@ -5,8 +5,62 @@
 @{
     ViewBag.Title = "Historic";
 }
-
 <link href="@Url.Content("~/Content/Historic.css")" , rel="stylesheet" type="text/css" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+    @*$(document).ready(function () {
+        $.get("@Url.Action("HistoricPartialView", "Historics", new { day = DayOfWeek.Thursday })", function (data) {
+            if (data) {
+                $('#divTable').empty();
+                $('#divTable').append(data);
+            }
+        });
+    });*@
+    $(function () {
+        $("#Thursday").click(function (data) {
+            var day = document.activeElement.id;
+            alert("button clicked!" + day);
+            $.get("@Url.Action("HistoricPartialView", "Historics", new { day = DayOfWeek.Thursday })", function (data) {
+                if (data) {
+                    $('#divTable').empty();
+                    $('#divTable').append(data);
+                }
+            });
+        });
+    });
+    $(function () {
+        $("#Friday").click(function (data) {
+            $.get("@Url.Action("HistoricPartialView", "Historics", new { day = DayOfWeek.Friday })", function (data) {
+                if (data) {
+                    $('#divTable').empty();
+                    $('#divTable').append(data);
+                }
+            });
+        });
+    });
+    $(function () {
+        $("#Saturday").click(function (data) {
+            $.get("@Url.Action("HistoricPartialView", "Historics", new { day = DayOfWeek.Saturday })", function (data) {
+                if (data) {
+                    $('#divTable').empty();
+                    $('#divTable').append(data);
+                }
+            });
+        });
+    });
+    $(function () {
+        $("#Sunday").click(function (data) {
+            $.get("@Url.Action("HistoricPartialView", "Historics", new { day = DayOfWeek.Sunday })", function (data) {
+                if (data) {
+                    $('#divTable').empty();
+                    $('#divTable').append(data);
+                }
+            });
+        });
+    });
+</script>
+
+
 <div class="jumbotron">
     <h1>Visit Haarlem Historic</h1>
 
@@ -19,40 +73,16 @@
         ‘Haarlem Historic’ will mark the exact starting location.
     </div>
 
-    <script type="text/javascript">
-        $(function () {
-            $('#Thursday').click(function () {
-                alert('button clicked');
-
-                $("#viewPlaceHolder").load("/Historics/HistoricPartialView", { day: "2018/07/26" });
-            });
-        });
-    </script>
 
     <h2 class="subtitle fancy"><span> Tickets </span></h2>
-    <table class="historic-table">
-        <tr>
-            @foreach (var day in Model.dates)
-                {
-                   <th><button id="@day.DayOfWeek.ToString()">Show tickets for <br /> @day.DayOfWeek.ToString()</button> </th> 
-                }
-        </tr>
-        <tr>
-            <th>Time</th>
-            <th>Price</th>
-            <th>English tour</th>
-            <th>Dutch tour</th>
-            <th>Chinese tour</th>
-        </tr>
-        <div id="viewPlaceHolder"></div>
-        @{
-            foreach (Historic e in Model.Historics)
-            {
-                @Html.Partial("_HistoricPartialView", e); ///null, new ViewDataDictionary { { "historic", e } })
-            }
-        }
-    </table>
+    @foreach (var day in Model.dates)
+    {
+        <div class="daybuttons">
+            <button class="dayButton" id="@day.DayOfWeek.ToString()">Show tickets for <br /> @day.DayOfWeek.ToString()</button>
+        </div>
+    }
 
+    <div id="divTable"></div>
 
     <h2 class="fancy amp"><span> Locations </span></h2>
     <ol class="list-stops">

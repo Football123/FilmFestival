@@ -20,8 +20,10 @@ namespace HaarlemFilmFestival.Controllers
         // GET: Foods
         public ActionResult Index()
         {
-            viewmodel = FillViewModel();
-            return View(viewmodel);
+            // viewmodel = FillViewModel();
+            // return View(viewmodel);
+            IEnumerable<Restaurant> restaurants = foodRepository.GetRestaurants();
+            return View(restaurants);
         }
 
         public FoodViewModel FillViewModel()

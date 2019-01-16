@@ -1,13 +1,11 @@
 ﻿@using HaarlemFilmFestival.ViewModels;
 @using HaarlemFilmFestival.Models;
-@model JazzViewModel
+@model  IEnumerable<Jazz> 
 
 @{
     ViewBag.Title = "Jazz";
-    IEnumerable<Jazz> Events = Model.jazzLeft;
-    IEnumerable<Artist> bands = Model.Artists;
+    IEnumerable<Jazz> Events = Model;
 }
-<h6>This below table content is from partial view</h6>
 <table class="table">
   
     <tr>
@@ -49,7 +47,7 @@
                 @j.Price
             </td>
             <td>
-                @Html.ActionLink("Add to cart", "Index", "Order", new { id = j.Id })
+               @Html.ActionLink("Add to cart", "Index", "Order", new { id = j.Id }, null)
             </td>
         </tr>
     }

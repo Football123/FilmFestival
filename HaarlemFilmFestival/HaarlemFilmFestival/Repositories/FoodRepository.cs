@@ -10,35 +10,61 @@ namespace HaarlemFilmFestival.Repositories
     public class FoodRepository : IFoodRepository
     {
         private HaarlemFilmFestivalContext db = HaarlemFilmFestivalContext.getInstance();
-        private IEventRepository eventrepository = new EventRepository();        
+        private IEventRepository eventrepository = new EventRepository();
 
-        //hier moet de juist cuisine lijst opgehaald worden
+        //hier moet de juiste cuisine lijst opgehaald worden
         public IEnumerable<Restaurant> GetRestaurants()
         {
-            List <Cuisine> cuisines = new List<Cuisine>();
-            ICollection<Cuisine> cuis;
-            IEnumerable<Restaurant> Restaurants = db.Restaurants;
-            return db.Restaurants;
+            IEnumerable<Cuisine> cuisines = new List<Cuisine>();
+            cuisines = GetCuisines();
+            IEnumerable<Restaurant> restaurants = db.Restaurants;            
+
+
+            foreach (Restaurant r in restaurants)
+            {
+                List<RestaurantCuisine> restaurantcuisines = GetRestaurantCuisinesByRestaurantId(r.Id);
+                List<Cuisine> cuisinez = new List<Cuisine>();
+
+
+                foreach (RestaurantCuisine c in restaurantcuisines)
+                {
+                    Cuisine kx = GetCuisine(c.cuisid);
+                    
+                    cuisinez.Add(kx);
+                }
+                r.Cuisines = cuisinez;
+                
+            }
+            // vul restaurant
+           
+            return restaurants;
         }
 
-        //public IEnumerable<Event> GetAllFood()
-        //{
-        //    IEnumerable<Food> Foods = GetFoods();
-        //    return Foods;
-        //}
 
-        //public Food GetFood(int foodId)
-        //{
-        //    Food food = db.Foods.Find(foodId);
-        //    return food;
-        //}
+        public List<RestaurantCuisine> GetRestaurantCuisinesByRestaurantId(int restaurantId)
+        {
+            List<RestaurantCuisine> restaurantCuisines = new List<RestaurantCuisine>();
+
+            using (HaarlemFilmFestivalContext db = new HaarlemFilmFestivalContext())
+            {
+                restaurantCuisines = db.RestaurantCuisines.Where(xid => xid.resid == restaurantId).ToList();
+            }
+
+
+            return restaurantCuisines;
+        }
+
+        public ICollection<Cuisine> GetCuisinesByRestaurantCuisine(int restaurantCuisineId)
+        {
+            return db.Cuisines.Where(xid => xid.Id == restaurantCuisineId).ToList();
+        }
 
         public IEnumerable<Food> GetFoods()
         {
             IEnumerable<Food> foods = db.Foods;
 
             return foods;
-        }       
+        }
         public IEnumerable<Food> GetPerRestaurant(Restaurant r)
         {
             IEnumerable<Food> events = db.Foods.Where(e => e.Restaurant.Id == r.Id);
@@ -56,7 +82,7 @@ namespace HaarlemFilmFestival.Repositories
                 resCuisine = GetRestaurantCuisine(f.Restaurant.Id);
                 //dit is niet goed want je krijgt elke keer 1 cuisinesoort binnen 
                 //terwijl een restaurant meerdere cuisines kan hebben
-                f.Cuisine = GetCuisine(resCuisine.cuisid);
+               // f.Cuisine = GetCuisine(resCuisine.cuisid);
             }
 
             return foods;
@@ -81,9 +107,9 @@ namespace HaarlemFilmFestival.Repositories
         }
 
         public IEnumerable<Cuisine> GetCuisines()
-        {           
+        {
             IEnumerable<Cuisine> cuisines = db.Cuisines;
-            
+
             return cuisines;
         }
 

@@ -20,6 +20,62 @@ h2 {
 }
 /* #endregion */
 
+/* #region table */
+.daybuttons {
+    margin-left: 15%;
+}
+
+.dayButton {
+    background-color: rgba(242, 242, 242, 0.5);
+    border-style: none;
+    align-content: center;
+    font-size: small;
+    width: 20%;
+    float: left;
+    margin-right: 4px;
+    border-bottom: 1px solid rgba(68, 217, 201, 1);
+    margin-bottom: 20px;
+    color: dimgray;
+}
+
+.dayButton .active {
+    color: black;
+}
+
+.historic-table {
+    border-left: 1px solid rgba(255, 204, 102, 1);
+    border-right: 1px solid rgba(255, 204, 102, 1);
+    align-content: center;
+    border-collapse: collapse;
+    text-align: center;
+    margin: 5% 20% 5% 20%;
+    width: 60%;
+}
+
+th, td {
+    border-left: 1px solid black;
+    border-color: rgba(255, 204, 102, 1);
+    text-align: center;
+    font-size: 19px;
+    width: 150px;
+}
+
+    td#familyticket {
+        font-size: small;
+        border-color: white;
+        border-top: 1px solid rgba(68, 217, 201, 1) !important;
+    }
+
+        td#familyticket:first-child {
+            border-color: rgba(255, 204, 102, 1);
+        }
+
+.historic-table img {
+    width: 22px;
+    height: 22px;
+}
+/* #endregion table */
+
 .HistoricInfo {
     font-family: 'Bahnschrift SemiLight', 'Bahnschrift';
     font-weight: 300;
@@ -30,16 +86,6 @@ h2 {
     padding-right: 15%;
     line-height: 1.6;
 }
-
-.historic-table {
-    border: 1px solid;
-}
-
-    .historic-table img {
-        width: 22px;
-        height: 22px;
-    }
-
 
 /* #region FancyLineNextToText*/
 /* #region FancyOpmaakTickets */
@@ -187,17 +233,87 @@ ol li .historic-stop-list {
 }
 /* #endregion */
 
+/* #region Google */
 .google iframe {
     width: 80%;
     display: block;
     align-content: center;
+    float: initial;
     padding: 40px;
+    margin: 10% 10% 2% 10%;
     border: 1px solid rgba(68, 217, 201, 1);
     -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
     -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
     box-shadow: 5px 5px 5px rgba(204, 204, 204, 0.349019607843137);
+    position: center;
 }
 
 .google {
     position: center;
 }
+/* #endregion */
+
+/*#region OrderField*/
+#orderButton {
+    color: black;
+    background-image: url("~/Content/cart.png");
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 1px 15px;
+    float: right;
+    margin: 20px;
+    font-size: 28px;
+    font-family: Phenomena;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.orderPopUp {
+    display: none;
+    z-index: 101;
+    left: 0;
+    top: 0;
+    position: fixed;
+    background-color: #fefefe;
+    margin: auto;
+    border: 1px solid black;
+    width: 600px;
+    height: 300px;
+    border-radius: 20px;
+    font-size: 20px;
+    font-weight: 700;
+    transform: translate(27%, 57%);
+}
+
+    .orderPopUp input {
+        font-family: Arial;
+        font-size: 13px;
+        width: 300px;
+    }
+
+    .orderPopUp [type=submit], input[type=button] {
+        background-color: #169BD5;
+        border: none;
+        color: white;
+        padding: 5px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-family: phenomena;
+        font-size: 20px;
+        font-weight: 800;
+    }
+
+    .orderPopUp [type=button] {
+        width: 150px;
+        right: 0;
+        bottom: -45%;
+        position: fixed;
+    }
+
+.placeOrder {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+/* #endregion */
