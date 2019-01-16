@@ -1,4 +1,5 @@
-﻿
+﻿@model HaarlemFilmFestival.Models.RegisterModel
+
 @{
     ViewBag.Title = "Payment";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,16 +13,37 @@
             <img class="arrow" src="@Url.Content("~/Content/Images/u29.png")" />
         </span>
     </div>
-
+    @Html.ValidationSummary()
+    @using (Html.BeginForm())
+    {
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name)
+        @Html.ValidationMessageFor(m => m.Name)
+        <br /><br />
+        @Html.LabelFor(m => m.LastName)
+        @Html.TextBoxFor(m => m.LastName)
+        @Html.ValidationMessageFor(m => m.LastName)
+        <br /><br />
+        @Html.LabelFor(m => m.DateOfBirth)
+        @Html.TextBoxFor(m => m.DateOfBirth)
+        @Html.ValidationMessageFor(m => m.DateOfBirth)
+        <br /><br />
+        @Html.LabelFor(m => m.EmailAddres)
+        @Html.TextBoxFor(m => m.EmailAddres)
+        @Html.ValidationMessageFor(m => m.EmailAddres)
+        <br /><br />
+        @*@Html.LabelFor(m => m.PaymentMethod)
+        @Html.EnumDropDownListFor(m => m.PaymentMethod)
+        @Html.ValidationMessageFor(m => m.PaymentMethod)
+        <br /><br />*@
+        <input type="submit" value="Register" />
+    }
+    <p>We don't want to store top much data about our customers. Once you've filled this form in, there is no way back to change details.<br />
+    So we ask you to check this form carefully before submitting. <br />Once submitted, your data will be stored in a secure database.</p>
     <form method="post" action="~/Views/Order/Index/">
         <button class="back2-button" >Go back</button>
     </form>
     <form method="post" action="~/Views/Order/Final/">
         <button type="submit" class="finalpay-button">Pay your tickets</button>
     </form>
-
-
-
-
-
 </div>

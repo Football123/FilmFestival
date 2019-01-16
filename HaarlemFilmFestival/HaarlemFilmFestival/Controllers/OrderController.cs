@@ -6,12 +6,14 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace HaarlemFilmFestival.Controllers
 {
     public class OrderController : Controller
     {
-        private OrderRepository orderrepository = new OrderRepository();
+        private OrderRepository orderRepository = new OrderRepository();
+        private CustomerRepository customerRepository = new CustomerRepository();
         private IEventRepository eventRepository = new EventRepository();
 
         // GET: Tickets
@@ -35,17 +37,44 @@ namespace HaarlemFilmFestival.Controllers
 
             return View(jazzevent);
         }
-        
-        [HttpPost]
         public ActionResult Payment()
         {
-            return View("Payment");
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Payment(RegisterModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Customer customer = new Customer();
+                customer.Name = model.Name;
+                customer.LastName = model.LastName;
+                customer.DateOfBirth = model.DateOfBirth;
+                customer.EmailAddress = model.EmailAddres;
+
+                customerRepository.AddCustomer(customer);
+
+                if (customer != null)
+                {
+                    FormsAuthentication.SetAuthCookie(customer.EmailAddress, false);
+
+                    //Session["loggedin_account"] = account;
+
+                    return RedirectToAction("Final", "Order");
+                }
+                else
+                {
+                    ModelState.AddModelError("register-error", "the username or password provided is incorrect");
+                }
+
+            }         
+            return View(model);
         }
 
-        [HttpPost]
+        //[HttpPost]
         public ActionResult Final()
         {
-            return View("Final");
+            return View();
         }
 
         [HttpPost]
@@ -64,7 +93,7 @@ namespace HaarlemFilmFestival.Controllers
             order.OrderTime = DateTime.Now;
             order.Customer = customer;
 
-            orderrepository.AddNewBesteling(order);
+            orderRepository.AddNewBesteling(order);
             return View("Final");
         }
     }
