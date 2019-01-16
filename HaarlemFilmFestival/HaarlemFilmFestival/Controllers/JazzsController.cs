@@ -27,7 +27,6 @@ namespace HaarlemFilmFestival.Controllers
         public JazzViewModel FillViewModel()
         {
             viewmodel.Jazzs = jazzRepository.GetJazz();
-            ;
             viewmodel.JazzLocations = jazzRepository.GetJazzLocation();    
             viewmodel.eventsLeft = GetAvailableEvents();
             viewmodel.jazzLeft = getJazzLeft();

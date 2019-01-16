@@ -112,10 +112,11 @@
                         </tr>
                         @*<p class="left">Amount of tickets: @order.Order.OrderRecords.Count()</p>*@               
             </table>
-            <form method="post" action="~/Home/Index">
-                <button class="back-button">Shop more tickets</button>
-            </form>
-            <button type="submit" class="pay-button">Pay your tickets</button>
+            @*<form method="post" action="~/Home/Index">*@
+                <input type="button" value="Shop more tickets" onclick="@("window.location.href='" + @Url.Action("Index", "Home") + "'");" />
+                <input type="button" value="Pay your tickets" onclick="@("window.location.href='" + @Url.Action("Payment", "Order") + "'");" />
+            @*</form>*@
+
         </div>
     </form>
 

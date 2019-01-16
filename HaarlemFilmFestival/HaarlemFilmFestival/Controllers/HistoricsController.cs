@@ -29,9 +29,9 @@ namespace HaarlemFilmFestival.Controllers
                 Session["Orders"] = new Order();
             Order order = (Order)Session["Orders"];
             orderrecords = new OrderRecord();
+            orderrecords.Event_Id = int.Parse(Request.Form["eventid"]);
             orderrecords.RecordAmount = int.Parse(Request.Form["amountOfTickets"]);
-            //    orderrecords.Event = historicrepository.GetByDateAndLang(int.Parse(Request.Form["time"]), int.Parse(Request.Form["day"]), (Taal)(int.Parse(Request.Form["lang"])));
-            //orderrecords.Event_Id = orderrecords.Event.Id;
+            orderrecords.Order_Id = orderrecords.Event_Id;
             if (order.OrderRecords == null)
                 order.OrderRecords = new List<OrderRecord>();
             order.OrderRecords.Add(orderrecords);
@@ -42,12 +42,6 @@ namespace HaarlemFilmFestival.Controllers
             Session["Orders"] = order;
 
             return View(viewmodel);
-        }
-
-        public ActionResult PlaceOrder(string id)
-        {
-            Historic historic = historicrepository.GetHistoricEvent(Int32.Parse(id));
-            return View(historic);
         }
 
         public HistoricViewModel FillViewModel()
@@ -94,19 +88,7 @@ namespace HaarlemFilmFestival.Controllers
             IEnumerable<Historic> events = historicrepository.GetHistoricPerDay(day);
             return events;
         }
-
-        public IEnumerable<Historic> GetPerTime(DateTime time)
-        {
-            IEnumerable<Historic> events = historicrepository.GetHistoricPerTime(time);
-            return events;
-        }
-
-        public IEnumerable<Historic> GetPerDayAndTime(DateTime daytime)
-        {
-            IEnumerable<Historic> events = historicrepository.GetPerDayAndTime(daytime);
-            return events;
-        }
-
+        
         public IEnumerable<Historic> getHistoricsLeft()
         {
             List<Historic> left = new List<Historic>();
