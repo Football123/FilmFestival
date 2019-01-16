@@ -27,12 +27,13 @@ namespace HaarlemFilmFestival.Controllers
         public JazzViewModel FillViewModel()
         {
             viewmodel.Jazzs = jazzRepository.GetJazz();
-            viewmodel.Artists = jazzRepository.GetArtists(viewmodel.Jazzs);
+            ;
             viewmodel.JazzLocations = jazzRepository.GetJazzLocation();    
             viewmodel.eventsLeft = GetAvailableEvents();
             viewmodel.jazzLeft = getJazzLeft();
             viewmodel.dates = viewmodel.getDays(viewmodel.eventsLeft);
             viewmodel.times = viewmodel.getStartTime(viewmodel.eventsLeft);
+            viewmodel.Artists = jazzRepository.GetArtists(viewmodel.Jazzs);
             return viewmodel;
         }
         public IEnumerable<Jazz> getJazzLeft()
@@ -63,14 +64,9 @@ namespace HaarlemFilmFestival.Controllers
             }
             return Events;
         }
-        [HttpPost]
+        [HttpGet]
         public PartialViewResult ShowPartialView(string dayOfFestival)
-        { 
-            //DateTime day = Convert.ToDateTime(dayOfFestival);
-                       
-            //DateTime day;    // just for testing...
-            //IEnumerable<Jazz> eventsperdate = jazzRepository.GetJazzPerDay(day);
-            //return PartialView("_JazzPartialView", eventsperdate);               
+        {
             viewmodel = FillViewModel();
             switch (dayOfFestival)
             {
@@ -90,11 +86,16 @@ namespace HaarlemFilmFestival.Controllers
                     viewmodel.jazzPerDay = jazzRepository.GetJazzPerDay(new DateTime(2018, 7, 26));
                     break;
             }
-                return PartialView("_JazzPartialView", viewmodel.jazzPerDay);           
+            return PartialView("_JazzPartialView", viewmodel.jazzPerDay);
         }
-        public ActionResult ShowPartialView()
+        [HttpPost]
+        public PartialViewResult ShowPartialView(string dayOfFestival, int number)
         {
-            return View();
+            return PartialView(dayOfFestival, number);
         }
+
+
+
+
     }
 }
