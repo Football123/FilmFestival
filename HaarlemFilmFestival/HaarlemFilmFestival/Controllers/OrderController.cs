@@ -35,7 +35,7 @@ namespace HaarlemFilmFestival.Controllers
             }
             Order order = (Order)Session["Orders"];
 
-            return View(jazzevent);
+            return View();
         }
         public ActionResult Payment()
         {

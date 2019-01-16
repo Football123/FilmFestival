@@ -1,6 +1,6 @@
 ﻿@*@model IEnumerable<HaarlemFilmFestival.Models.Jazz>
-@using HaarlemFilmFestival.ViewModels;
-@using HaarlemFilmFestival.Models;*@
+    @using HaarlemFilmFestival.ViewModels;*@
+@using HaarlemFilmFestival.Models;
 @model  HaarlemFilmFestival.Models.Jazz
 
 @*@{
@@ -19,88 +19,85 @@
     <form method="post" action="~/Order/Payment/">
         <div class="ItemList-Cart">
             <table class="Cart-table">
-                <tr>
-                    <th class="first">Selected Ticket</th>
-                    <th class="second">Price</th>
-                    <th class="third">Amount</th>
-                    <th class="fourth"></th>
-                </tr>
-                @*@foreach (Jazz j in jevent)
-                {
-                    @j.StartTime @j.EndTime
-                    @j.Description
-                    @j.Location
-                    @j.Location.LocationDescription
-                    @j.Band
-                    @j.Price
-                }*@
-                @*@{
-                    ICollection<OrderRecord> orderrecords = ((Order)Session["Orders"]).OrderRecords;
-                    int amount = 0;
-                    foreach (OrderRecord order in orderrecords)
-                    {
-                        amount++;
-                    *@
-                        <tr>
-                            <td>
-                                <dl class="dl-horizontal">
-                                    <dt>
-                                        @Html.DisplayNameFor(model => model.StartTime)
-                                    </dt>
+    <tr>
+        <th class="first">Selected Ticket</th>
+        <th class="second">Price</th>
+        <th class="third">Amount</th>
+        <th class="fourth"></th>
+    </tr>
 
-                                    <dd>
-                                        @Html.DisplayFor(model => model.StartTime)
-                                    </dd>
-                                    <dt>
-                                        @Html.DisplayNameFor(model => model.EndTime)
-                                    </dt>
+    @{
+        ICollection<OrderRecord> orderrecords = ((Order)Session["Orders"]).OrderRecords;
+        int amount = 0;
+        foreach (OrderRecord order in orderrecords)
+        {
+            amount++;
+            <tr>
+                <td>
+                    @order.Event.StartTime.ToString();
+                </td>
+            </tr>
+            } }
+                    <tr>
+                        <td>
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.StartTime)
+                                </dt>
 
-                                    <dd>
-                                        @Html.DisplayFor(model => model.EndTime)
-                                    </dd>
+                                <dd>
+                                    @Html.DisplayFor(model => model.StartTime)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.EndTime)
+                                </dt>
 
-                                    <dt>
-                                        Location
-                                    </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.EndTime)
+                                </dd>
 
-                                    <dd>
-                                        @Html.DisplayFor(model => model.Location.Name)
-                                    </dd>
-                                    <dt>
-                                        Description
-                                    </dt>
+                                <dt>
+                                    Location
+                                </dt>
 
-                                    <dd>
-                                        @Html.DisplayFor(model => model.Location.LocationDescription)
-                                    </dd>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Location.Name)
+                                </dd>
+                                <dt>
+                                    Description
+                                </dt>
 
-                                    <dt>
-                                        Band
-                                    </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Location.LocationDescription)
+                                </dd>
 
-                                    <dd>
-                                        @Html.DisplayFor(model => model.Band.Name)
-                                    </dd>
-                                    <dt>
-                                        @Html.DisplayNameFor(model => model.Price)
-                                    </dt>
+                                <dt>
+                                    Band
+                                </dt>
 
-                                    <dd>
-                                        @Html.DisplayFor(model => model.Price)
-                                    </dd>
-                                   
-                                </dl>
-                                @*@order.Event.GetType()||
+                                <dd>
+                                    @Html.DisplayFor(model => model.Band.Name)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Price)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Price)
+                                </dd>
+
+                            </dl>
+                            @*@order.Event.GetType()||
                                 @order.Event.Description ||
                                 @order.Event.StartTime.DayOfWeek
                                 @order.Event.StartTime.Date
                                 @order.Event.StartTime.Hour:@order.Event.StartTime.Minute.ToString("00") ||
                                 @order.Event.Location.Name*@
-                            </td>
-                            <td>@*@order.RecordAmount x € @order.Event.Price*@</td>
-                            <td>@*<input id="amount-@amount" type="number" name="number" min="1" max="@order.Event.Capacity" value="@order.RecordAmount" />*@</td>
+                        </td>
+                        <td>@*@order.RecordAmount x € @order.Event.Price*@</td>
+                        <td>@*<input id="amount-@amount" type="number" name="number" min="1" max="@order.Event.Capacity" value="@order.RecordAmount" />*@</td>
 
-                            @*<script>
+                        @*<script>
                                 $(function () {
                                     $('#amount-@amount').on('keyup mouseup', function () {
 
@@ -109,9 +106,9 @@
                                     })
                                 });
                             </script>*@
-                        </tr>
-                        @*<p class="left">Amount of tickets: @order.Order.OrderRecords.Count()</p>*@               
-            </table>
+                    </tr>
+                        @*<p class="left">Amount of tickets: @order.Order.OrderRecords.Count()</p>*@
+                    </table>
             @*<form method="post" action="~/Home/Index">*@
                 <input type="button" value="Shop more tickets" onclick="@("window.location.href='" + @Url.Action("Index", "Home") + "'");" />
                 <input type="button" value="Pay your tickets" onclick="@("window.location.href='" + @Url.Action("Payment", "Order") + "'");" />
