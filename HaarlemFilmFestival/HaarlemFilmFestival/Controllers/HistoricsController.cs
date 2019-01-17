@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using HaarlemFilmFestival.Models;
 using HaarlemFilmFestival.Repositories;
@@ -82,6 +77,7 @@ namespace HaarlemFilmFestival.Controllers
                     viewmodel.historicPerDay = GetHistoricPerDay(new DateTime(2018, 7, 26));
                     break;
             }
+            ViewBag.FamilyList = new SelectList(viewmodel.historicPerDay, "times", "languages");
             return PartialView("_HistoricPartialView", viewmodel);
         }
 

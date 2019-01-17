@@ -10,8 +10,7 @@ namespace HaarlemFilmFestival.Controllers
         private OrderRepository orderRepository = new OrderRepository();
         private CustomerRepository customerRepository = new CustomerRepository();
         private IEventRepository eventRepository = new EventRepository();
-
-        // GET: Tickets
+        
         public ActionResult Index()
         {
             if (Session["Orders"] == null)

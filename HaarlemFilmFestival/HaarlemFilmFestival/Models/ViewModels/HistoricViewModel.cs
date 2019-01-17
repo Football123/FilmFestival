@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using HaarlemFilmFestival.Repositories;
-using HaarlemFilmFestival.Controllers;
-using HaarlemFilmFestival.ViewModels;
 
 namespace HaarlemFilmFestival.Models
 {
@@ -14,12 +9,6 @@ namespace HaarlemFilmFestival.Models
         {
         }
 
-        //public IEnumerable<Historic> GetHistoricPerDay(string value)
-        //{
-        //    this.historicPerDay = controller.GetHistoricPerDay(day);
-        //    return historicPerDay;
-        //}
-
         public IEnumerable<Historic> historicPerTime { get; set; }
         public IEnumerable<Historic> historicPerDay { get; set; }
         public IEnumerable<TimeSpan> StartTimes { get; set; }
@@ -28,6 +17,5 @@ namespace HaarlemFilmFestival.Models
         public IEnumerable<Event> eventsLeft { get; set; }
         public IEnumerable<Historic> historicsLeft { get; set; }
         public IEnumerable<Historic> Historics { get; set; }
-
     }
 }

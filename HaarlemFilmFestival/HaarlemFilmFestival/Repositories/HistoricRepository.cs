@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using HaarlemFilmFestival.Models;
 using System.Data.Entity;
 
@@ -14,8 +13,8 @@ namespace HaarlemFilmFestival.Repositories
         
         public Historic GetHistoricById(int Event_Id)
         {
-            Historic h = database.Historics.Where(a => a.Id == Event_Id).SingleOrDefault();
-            return h;
+            Historic item = database.Historics.Where(a => a.Id == Event_Id).SingleOrDefault();
+            return item;
         }
 
         public IEnumerable<Historic> GetHistoricPerDay(DateTime day)
