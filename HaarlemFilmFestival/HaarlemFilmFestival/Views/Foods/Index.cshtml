@@ -1,15 +1,29 @@
 ﻿@using HaarlemFilmFestival.Models;
 @using HaarlemFilmFestival.ViewModels;
 
-model FoodViewModel
+@model FoodViewModel
 
-@model IEnumerable<Restaurant>
+@*@model IEnumerable<Restaurant>*@
 @{
     ViewBag.Title = "Food";
-    // IEnumerable<Food> Events = Model.FoodLeft;
-    // IEnumerable<Cuisine> KeukenTypes = Model.Cuisines;
 }
 <link href="@Url.Content("~/Content/Food.css")" , rel="stylesheet" type="text/css" />
+
+<!--#region scripts-->
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>$(document).ready(function () {
+        $("#hide").click(function () {
+            $(".orderPopUp").hide();
+        });
+        $(".orderButton").click(function (data) {
+            var id = document.activeElement.id;
+            var event = $(this).attr("id");
+            $(".orderPopUp").show();
+            $(".eventidinput").val(event);
+        });
+    });</script>
+<!--#endregion scripts -->
+
 <div class="jumbotron">
     <h1>Visit Haarlem Restaurants</h1>
     <p>
@@ -58,23 +72,23 @@ model FoodViewModel
             </th>
         </tr>
 
-        @foreach (Restaurant f in Model)
+        @foreach (var item in ViewBag.foodz)
         {
             <tr>
                 <td>
-                    @f.RestaurantName
+                    @item.RestaurantName
                 </td>
                 <td>
-                    f.Price
+                    item.Price
                 </td>
                 <td>
-                    f.Discount
+                    item.Discount
                 </td>
                 <td>
-                    @f.CuisinesString
+                    @item.CuisinesString
                 </td>
                 <td>
-                    @Html.ActionLink("Add to cart", "Index", "Order", new { id = f.Id }, null)
+                    <a class="orderButton" id="@item.Id"><img src="~/Content/Images/cart.png" /></a>
                 </td>
             </tr>
         }
@@ -88,41 +102,29 @@ model FoodViewModel
     <h1>Restaurants</h1>
 
     <div class="row">
-        @foreach (var item in Model)
+        @foreach (var item in Model.Restaurants)
         {
 
-        <div class="col-md-4">
-            <h2>@Html.DisplayFor(modelItem => item.RestaurantName)</h2>
-            <h2>@Html.DisplayFor(modelItem => item.Stars) stars <img src="@Url.Content("~/Content/Images/Restaurants/u447.png")" /></h2>
-            <img src="@Url.Content("~/Content/Images/Restaurants/")@{ @Html.DisplayFor(modelItem => item.FixedImageName) }.png" alt="Restaurant image" />
-            <h2><img src="@Url.Content("~/Content/Images/Restaurants/u451aangepast.png")" /><a href="@item.WebsiteLink"><img src="@Url.Content("~/Content/Images/Restaurants/u446aangepast.png")" /></a></h2>            
-        </div>
+            <div class="col-md-4">
+                <h3>@Html.DisplayFor(modelItem => item.RestaurantName)</h3>
+                <h3>@Html.DisplayFor(modelItem => item.Stars) stars <img src="@Url.Content("~/Content/Images/Restaurants/u447.png")" /></h3>
+                <img src="@Url.Content("~/Content/Images/Restaurants/")@{ @Html.DisplayFor(modelItem => item.FixedImageName) }.png" alt="Restaurant image" />
+                <h3><img src="@Url.Content("~/Content/Images/Restaurants/u451aangepast.png")" /><a href="@item.WebsiteLink"><img src="@Url.Content("~/Content/Images/Restaurants/u446aangepast.png")" /></a></h3>
+            </div>
         }
     </div>
 
-    <!-- Trigger the modal with a button -->
-    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add to cart!</button>
-
-    <!-- Modal -->
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Choose your food ticket please.</h4>
-                </div>
-                <div class="modal-body">
-                    <p>The time you can eat in this restaurant is 2 hours.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Add to shoppingcart</button>
-                </div>
-            </div>
-
-        </div>
+    <div class="orderPopUp">
+        <form class="placeOrder" method="post" action="~/Foods/Index">
+            <div class="idtext"></div>
+            Amount of adults:
+            <br />
+            <input type="text" class="eventidinput" name="eventid" hidden />
+            <input type="number" name="amountOfTickets" min="1" max="10" required><br />
+            <br />
+            <input type="submit" value="Add ticket">
+            <input id="hide" type="button" value="CANCEL">
+        </form>
     </div>
 
 </div>

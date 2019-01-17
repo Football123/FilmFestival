@@ -24,4 +24,65 @@
     text-align: left;
 }
 
+/*#region OrderField*/
+#orderButton {
+    color: black;
+    background-image: url("~/Content/cart.png");
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 1px 15px;
+    float: right;
+    margin: 20px;
+    font-size: 28px;
+    font-weight: 800;
+}
 
+.orderPopUp {
+    display: none;
+    z-index: 101;
+    left: 0;
+    top: 0;
+    position: fixed;
+    background-color: #fefefe;
+    margin: auto;
+    border: 1px solid black;
+    width: 600px;
+    height: 300px;
+    border-radius: 20px;
+    font-size: 20px;
+    font-weight: 700;
+    transform: translate(27%, 57%);
+}
+
+    .orderPopUp input {
+        font-family: Arial;
+        font-size: 13px;
+        width: 300px;
+    }
+
+    .orderPopUp [type=submit], input[type=button] {
+        background-color: #169BD5;
+        border: none;
+        color: white;
+        padding: 5px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-family: phenomena;
+        font-size: 20px;
+        font-weight: 800;
+    }
+
+    .orderPopUp [type=button] {
+        width: 150px;
+        right: 0;
+        bottom: -45%;
+        position: fixed;
+    }
+
+.placeOrder {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+/* #endregion */
