@@ -10,6 +10,7 @@ namespace HaarlemFilmFestival.Repositories
 {
     interface IHistoricRepository
     {
+        Historic GetHistoricById(int Event_Id);
         IEnumerable<Historic> GetPerDayAndTime(DateTime daytime);
         IEnumerable<Historic> GetHistoricPerTime(DateTime time);
         IEnumerable<Historic> GetHistoricPerDay(DateTime day);

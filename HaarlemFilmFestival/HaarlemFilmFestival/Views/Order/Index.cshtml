@@ -1,12 +1,5 @@
-﻿@*@model IEnumerable<HaarlemFilmFestival.Models.Jazz>
-    @using HaarlemFilmFestival.ViewModels;*@
-@using HaarlemFilmFestival.Models;
-@model  HaarlemFilmFestival.Models.Jazz
+﻿@using HaarlemFilmFestival.Models;
 
-@*@{
-    ViewBag.Title = "Jazz";
-    IEnumerable<Jazz> jevent = Model;
-}*@
 <link href="@Url.Content("~/Content/Order.css")" , rel="stylesheet" type="text/css" />
 <div class="jumbotron">
     <h1>TICKETS</h1>
@@ -19,101 +12,59 @@
     <form method="post" action="~/Order/Payment/">
         <div class="ItemList-Cart">
             <table class="Cart-table">
-    <tr>
-        <th class="first">Selected Ticket</th>
-        <th class="second">Price</th>
-        <th class="third">Amount</th>
-        <th class="fourth"></th>
-    </tr>
-
-    @{
-        ICollection<OrderRecord> orderrecords = ((Order)Session["Orders"]).OrderRecords;
-        int amount = 0;
-        foreach (OrderRecord order in orderrecords)
-        {
-            amount++;
-            <tr>
-                <td>
-                    @order.Event.StartTime.ToString();
-                </td>
-            </tr>
-            } }
-                    <tr>
-                        <td>
-                            <dl class="dl-horizontal">
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.StartTime)
-                                </dt>
-
-                                <dd>
-                                    @Html.DisplayFor(model => model.StartTime)
-                                </dd>
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.EndTime)
-                                </dt>
-
-                                <dd>
-                                    @Html.DisplayFor(model => model.EndTime)
-                                </dd>
-
-                                <dt>
-                                    Location
-                                </dt>
-
-                                <dd>
-                                    @Html.DisplayFor(model => model.Location.Name)
-                                </dd>
-                                <dt>
-                                    Description
-                                </dt>
-
-                                <dd>
-                                    @Html.DisplayFor(model => model.Location.LocationDescription)
-                                </dd>
-
-                                <dt>
-                                    Band
-                                </dt>
-
-                                <dd>
-                                    @Html.DisplayFor(model => model.Band.Name)
-                                </dd>
-                                <dt>
-                                    @Html.DisplayNameFor(model => model.Price)
-                                </dt>
-
-                                <dd>
-                                    @Html.DisplayFor(model => model.Price)
-                                </dd>
-
-                            </dl>
-                            @*@order.Event.GetType()||
-                                @order.Event.Description ||
-                                @order.Event.StartTime.DayOfWeek
-                                @order.Event.StartTime.Date
-                                @order.Event.StartTime.Hour:@order.Event.StartTime.Minute.ToString("00") ||
-                                @order.Event.Location.Name*@
-                        </td>
-                        <td>@*@order.RecordAmount x € @order.Event.Price*@</td>
-                        <td>@*<input id="amount-@amount" type="number" name="number" min="1" max="@order.Event.Capacity" value="@order.RecordAmount" />*@</td>
-
-                        @*<script>
-                                $(function () {
-                                    $('#amount-@amount').on('keyup mouseup', function () {
-
-                                        var count = $('#amount-@amount').val();
-                                        $('#price').html("€ " + (@order.Event.Price * count));
-                                    })
-                                });
-                            </script>*@
-                    </tr>
-                        @*<p class="left">Amount of tickets: @order.Order.OrderRecords.Count()</p>*@
-                    </table>
-            @*<form method="post" action="~/Home/Index">*@
-                <input type="button" value="Shop more tickets" onclick="@("window.location.href='" + @Url.Action("Index", "Home") + "'");" />
-                <input type="button" value="Pay your tickets" onclick="@("window.location.href='" + @Url.Action("Payment", "Order") + "'");" />
-            @*</form>*@
-
+                <tr>
+                    <th class="first">Selected Ticket</th>
+                    <th class="second">Price</th>
+                    <th class="third">Amount</th>
+                    <th class="fourth"></th>
+                </tr>
+                @{
+                    ICollection<OrderRecord> orderrecords = ((Order)Session["Orders"]).OrderRecords;
+                    foreach (OrderRecord order in orderrecords)
+                    {
+                        if (order.Event is Historic)
+                        {
+                            Historic item = (Historic)order.Event;
+                            <tr>
+                                <td> <p>Historic event || @order.Event.StartTime.DayOfWeek.ToString() @order.Event.StartTime.ToString("MMMM dd") || €@order.Event.Price.ToString("N2") || @item.Languages.ToString() tour</p> </td>
+                                @{ var total = order.RecordAmount * order.Event.Price; }
+                                <td>@order.RecordAmount x €@order.Event.Price.ToString("N2") = €@total.ToString("N2")</td>
+                                <td>@order.RecordAmount</td>
+                            </tr>
+                                    }
+                                    else if (order.Event is Jazz)
+                                    {
+                                        Jazz item = (Jazz)order.Event;
+                                        <tr>
+                                            <td><p>Jazz ticket || @item.Band.Name || @order.Event.StartTime.DayOfWeek.ToString() @order.Event.StartTime.Month @order.Event.StartTime.Day || @order.Event.Location.Name @order.Event.Location.LocationDescription</p></td>
+                                            @{ var total = order.RecordAmount * order.Event.Price; }
+                                            <td>@order.RecordAmount x €@order.Event.Price.ToString("N2") = €@total.ToString("N2")</td>
+                                            <td>@order.RecordAmount</td>
+                                        </tr>}
+                                                else if (order.Event is Food)
+                                                {
+                                                    Food item = (Food)order.Event;
+                                                    <tr>
+                                                        <td><p>@item.Restaurant.RestaurantName || @order.RecordAmount.ToString() Persons || @item.Restaurant.CuisinesString || @order.Event.StartTime.DayOfWeek.ToString() @order.Event.StartTime.Month @order.Event.StartTime.Day</p></td>
+                                                        @{ var total = order.RecordAmount * order.Event.Price; }
+                                                        <td>@order.RecordAmount x €@order.Event.Price.ToString("N2") = €@total.ToString("N2")</td>
+                                                        <td>@order.RecordAmount</td>
+                                                    </tr>}
+                                                            else if (order.Event is Dance)
+                                                            {
+                                                                Dance item = (Dance)order.Event;
+                                                                <tr>
+                                                                    <td><p>Dance ticket || @order.Event.Location.Name || @order.Event.StartTime.DayOfWeek.ToString() @order.Event.StartTime.Month @order.Event.StartTime.Day || @item.Theme.ToString()</p></td>
+                                                                    @{ var total = order.RecordAmount * order.Event.Price; }
+                                                                    <td>@order.RecordAmount x €@order.Event.Price.ToString("N2") = €@total.ToString("N2")</td>
+                                                                    <td>@order.RecordAmount</td>
+                                                                </tr>
+                                                                            }
+                                                                        }
+                }
+            </table>
+            <input type="button" value="Shop more tickets" onclick="history.back()" />
+            <input type="submit" value="Pay your tickets" />
         </div>
     </form>
 

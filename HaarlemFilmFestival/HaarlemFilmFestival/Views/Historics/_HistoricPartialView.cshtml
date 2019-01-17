@@ -1,11 +1,9 @@
 ﻿@using HaarlemFilmFestival.Models;
-@using HaarlemFilmFestival.ViewModels;
 @model HistoricViewModel
 
 <link href="@Url.Content("~/Content/Historic.css")" , rel="stylesheet" type="text/css" />
-@* Scripts *@
+<!--#region scripts-->
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-
 <script>
     $(document).ready(function () {
         $("#hide").click(function () {
@@ -19,6 +17,7 @@
         });
     });
 </script>
+<!--#endregion scripts -->
 
 @{
     <table class="historic-table">
@@ -71,9 +70,8 @@
         <div class="idtext"></div>
         Amount of tickets:<br />
         <input type="text" class="eventidinput" name="eventid" hidden />
-        <input type="number" name="amountOfTickets" required><br />
+        <input type="number" name="amountOfTickets" min="1" max="10" required><br />
         <br />
-        @*@Html.ActionLink("Add to cart", "Index", "Order", new { id = j.Id }, null)*@
         <input type="submit" value="Add ticket">
         <input id="hide" type="button" value="CANCEL">
     </form>

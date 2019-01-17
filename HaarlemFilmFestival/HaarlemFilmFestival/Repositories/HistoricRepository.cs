@@ -12,6 +12,12 @@ namespace HaarlemFilmFestival.Repositories
         private HaarlemFilmFestivalContext database = HaarlemFilmFestivalContext.getInstance();
         private IEventRepository eventrepository = new EventRepository();
         
+        public Historic GetHistoricById(int Event_Id)
+        {
+            Historic h = database.Historics.Where(a => a.Id == Event_Id).SingleOrDefault();
+            return h;
+        }
+
         public IEnumerable<Historic> GetHistoricPerDay(DateTime day)
         {
             IEnumerable<Historic> events = database.Historics.Where(a => DbFunctions.TruncateTime(a.StartTime) == day.Date);

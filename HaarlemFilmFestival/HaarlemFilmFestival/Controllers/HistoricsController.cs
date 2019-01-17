@@ -32,6 +32,7 @@ namespace HaarlemFilmFestival.Controllers
             orderrecords.Event_Id = int.Parse(Request.Form["eventid"]);
             orderrecords.RecordAmount = int.Parse(Request.Form["amountOfTickets"]);
             orderrecords.Order_Id = orderrecords.Event_Id;
+            orderrecords.Event = historicrepository.GetHistoricById(orderrecords.Event_Id);
             if (order.OrderRecords == null)
                 order.OrderRecords = new List<OrderRecord>();
             order.OrderRecords.Add(orderrecords);
