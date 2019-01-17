@@ -24,6 +24,30 @@ namespace HaarlemFilmFestival.Controllers
             return View(viewmodel);
         }
 
+        [HttpPost]
+        public ActionResult Index(OrderRecord orderrecords)
+        {
+            if (Session["Orders"] == null)
+                Session["Orders"] = new Order();
+            Order order = (Order)Session["Orders"];
+            orderrecords = new OrderRecord();
+            orderrecords.Event_Id = int.Parse(Request.Form["eventid"]);
+            orderrecords.RecordAmount = int.Parse(Request.Form["amountOfTickets"]);
+            orderrecords.Order_Id = orderrecords.Event_Id;
+            orderrecords.Event = jazzRepository.GetJazz(orderrecords.Event_Id);
+            if (order.OrderRecords == null)
+                order.OrderRecords = new List<OrderRecord>();
+            order.OrderRecords.Add(orderrecords);
+            if (orderrecords.RecordAmount >= 4)
+                orderrecords.TicketType = TicketType.Family;
+            else
+                orderrecords.TicketType = TicketType.Single;
+            Session["Orders"] = order;
+
+            viewmodel = FillViewModel();
+            return View(viewmodel);
+        }
+
         public JazzViewModel FillViewModel()
         {
             viewmodel.Jazzs = jazzRepository.GetJazz();
@@ -87,14 +111,5 @@ namespace HaarlemFilmFestival.Controllers
             }
             return PartialView("_JazzPartialView", viewmodel.jazzPerDay);
         }
-        [HttpPost]
-        public PartialViewResult ShowPartialView(string dayOfFestival, int number)
-        {
-            return PartialView(dayOfFestival, number);
-        }
-
-
-
-
     }
 }

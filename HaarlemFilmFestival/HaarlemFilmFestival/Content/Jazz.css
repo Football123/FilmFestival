@@ -18,3 +18,111 @@ h1 {
 .jazzimage {
     text-align: center;
 }
+
+#orderButton {
+    color: black;
+    background-image: url("~/Content/cart.png");
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 1px 15px;
+    float: right;
+    margin: 20px;
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.orderPopUp {
+    display: none;
+    z-index: 101;
+    left: 0;
+    top: 0;
+    position: fixed;
+    background-color: #fefefe;
+    margin: auto;
+    border: 1px solid black;
+    width: 600px;
+    height: 300px;
+    border-radius: 20px;
+    font-size: 20px;
+    font-weight: 700;
+    transform: translate(27%, 57%);
+}
+
+    .orderPopUp input {
+        font-family: Arial;
+        font-size: 13px;
+        width: 300px;
+    }
+
+    .orderPopUp [type=submit], input[type=button] {
+        background-color: #169BD5;
+        border: none;
+        color: white;
+        padding: 5px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-family: phenomena;
+        font-size: 20px;
+        font-weight: 800;
+    }
+
+    .orderPopUp [type=button] {
+        width: 150px;
+        right: 0;
+        bottom: -45%;
+        position: fixed;
+    }
+
+.placeOrder {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.jazz-1,
+.jazz-2,
+.jazz-3 {
+    text-align: center;
+    display: block;
+    width: 30%;
+    border: 1px solid rgba(68, 217, 201, 1);
+    -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
+    -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
+    box-shadow: 5px 5px 5px rgba(204, 204, 204, 0.349019607843137);
+}
+
+.jazz-1 {
+    margin-top: 5%;
+    width: 30%;
+}
+
+.jazz-2 {
+    width: 30%;
+    margin-top: -281px;
+    position: relative;
+    margin-left: 35%;
+}
+
+.jazz-3 {
+    width: 30%;
+    margin-top: -281px;
+    position: relative;
+    margin-left: 71%;
+}
+
+    .jazz-1 h3,
+    .jazz-2 h3,
+    .jazz-3 h3 {
+        font-weight: bold;
+    }
+
+.jazz-1 img,
+.jazz-2 img,
+.jazz-3 img {
+    width: 75%;
+    height: 200px;
+    object-fit: cover;
+    align-content: center;
+    margin: 4%;
+}

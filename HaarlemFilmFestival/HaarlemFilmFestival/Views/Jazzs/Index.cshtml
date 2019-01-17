@@ -13,7 +13,7 @@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script type="text/javascript">
         $(function () {
-            $(".dayButton").click(function (data) {
+            $("#Thursday").click(function (data) {
                 $.get("@Url.Action("ShowPartialView", "Jazzs",  new {  dayOfFestival = DayOfWeek.Thursday})", function (data) {
                     if (data) {
                         $('#divTest').empty();
@@ -22,18 +22,8 @@
                 });
             });
         });
-        @*$(function () {
-            $(".dayButton").click(function (data) {
-                $.post("@Url.Action("ShowPartialView", "Jazzs",  new {  dayOfFestival = DayOfWeek.Thursday, number = 1})", function (data) {
-                    if (data) {
-                        $('#divTest').empty();
-                        $('#divTest').append(data);
-                    }
-                });
-            });
-        });*@
-       @*$(function () {
-            $(".dayButton").click(function (data) {
+       $(function () {
+           $("#Friday").click(function (data) {
                 $.get("@Url.Action("ShowPartialView", "Jazzs",  new {  dayOfFestival = DayOfWeek.Friday})", function (data) {
                     if (data) {
                         $('#divTest').empty();
@@ -43,7 +33,7 @@
             });
         });
         $(function () {
-            $(".dayButton").click(function (data) {
+            $("#Saturday").click(function (data) {
                 $.get("@Url.Action("ShowPartialView", "Jazzs",  new {  dayOfFestival = DayOfWeek.Saturday})", function (data) {
                     if (data) {
                         $('#divTest').empty();
@@ -53,7 +43,7 @@
             });
         });
         $(function () {
-            $(".dayButton").click(function (data) {
+            $("#Sunday").click(function (data) {
                 $.get("@Url.Action("ShowPartialView", "Jazzs",  new {  dayOfFestival = DayOfWeek.Sunday})", function (data) {
                     if (data) {
                         $('#divTest').empty();
@@ -61,7 +51,7 @@
                     }
                 });
             });
-        });*@
+        });
     </script>
 </head>
 <body>
@@ -76,7 +66,7 @@
         <div class="jazz">
             <p>
                 Haarlem Jazz is one of the big jazz stages in The Netherlands! Various famous artists will be playing.
-                All kinds of famous artists will be playing. Gare du Nord, Soul Six , Lilith Merlot and many more. If you want some standard dabbler tracks, you should definitely listen to Gare du Nord.
+                All kinds of famous artists will be playing. Gare du Nord, Soul Six, Lilith Merlot and many more. If you want some standard dabbler tracks, you should definitely listen to Gare du Nord.
                 But if you want a more special act, don’t forget Han Bennink! Haarlem Jazz will show Haarlem what they got!
                 And last but not least, Sunday is free for all visitors! Come and visit the Grote Markt for free, and enjoy with other people.
                 So what holds you back? Pick a ticket and add it to your shopping cart.
@@ -85,25 +75,27 @@
         </div>
 
         <h1>Tickets</h1>
-        @foreach (var day in Model.dates)
+        @foreach (var day in Model.dates.OrderBy(x => ((int)x.DayOfWeek + 6) % 7))
         {
             <input type="button" value="Show Tickets for @day.Date.DayOfWeek" class="dayButton" id="@day.DayOfWeek.ToString()" />
         }
         
         <div id="divTest">
-            @*@Html.Partial("_JazzPartialView", Model.eve)*@
+            @Html.Partial("_JazzPartialView", Model.jazzLeft)
         </div>
 
         <h1>Line-up</h1>
 
         @foreach (var item in Model.Artists)
         {
-            <div class="row">
-                <div class="col-md-6" style="border-color: black;">
-                    <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
-                    <h3>@Html.DisplayFor(modelItem => item.ArtistDescription)</h3>
-                    <img src="~/Content/Images/Bands/@{ @item.Name }.png"/>
-                </div>
+            int id = 1;
+            if (item.Id == 1 || item.Id == 4 || item.Id == 7) { id = 1; }
+            if (item.Id == 2 || item.Id == 5 || item.Id == 8) { id = 2; }
+            if (item.Id == 3 || item.Id == 6 || item.Id == 9) { id = 3; }
+            <div class="jazz-@id">
+                <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
+                <h3>@Html.DisplayFor(modelItem => item.ArtistDescription)</h3>
+                <img src="~/Content/Images/Bands/@{ @item.Name }.png" />
             </div>
         }
     </div>

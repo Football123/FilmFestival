@@ -6,6 +6,22 @@
     ViewBag.Title = "Jazz";
     IEnumerable<Jazz> Events = Model;
 }
+<link href="@Url.Content("~/Content/Jazz.css")" , rel="stylesheet" type="text/css" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#hide").click(function () {
+            $(".orderPopUp").hide();
+        });
+        $(".orderButton").click(function (data) {
+            var id = document.activeElement.id;
+            var event = $(this).attr("id");
+            alert("buttonclicked" + event);
+            $(".orderPopUp").show();
+            $(".eventidinput").val(event);
+        });
+    });
+</script>
 <table class="table">
   
     <tr>
@@ -47,9 +63,19 @@
                 @j.Price
             </td>
             <td>
-               @Html.ActionLink("Add to cart", "Index", "Order", new { id = j.Id }, null)
+                <a class="orderButton" id="@j.Id"><img src="~/Content/cart.png" /></a>
             </td>
         </tr>
     }
 </table>
-
+<div class="orderPopUp">
+    <form class="placeOrder" method="post" action="~/Jazzs/Index">
+        <div class="idtext"></div>
+        Amount of tickets:<br />
+        <input type="text" class="eventidinput" name="eventid" hidden />
+        <input type="number" name="amountOfTickets" min="1" max="10" required><br />
+        <br />
+        <input type="submit" value="Add ticket">
+        <input id="hide" type="button" value="CANCEL">
+    </form>
+</div>

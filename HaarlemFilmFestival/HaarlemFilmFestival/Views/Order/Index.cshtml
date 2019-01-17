@@ -64,7 +64,7 @@
                 }
             </table>
             <input type="button" value="Shop more tickets" onclick="history.back()" />
-            <input type="submit" value="Pay your tickets" />
+            <input type="button" value="Pay your tickets" onclick="@("window.location.href='" + @Url.Action("Payment", "Order") + "'");" />
         </div>
     </form>
 
