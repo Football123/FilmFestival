@@ -149,6 +149,7 @@
     <Compile Include="Models\Event - Food\RestaurantCuisine.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Event - Food\Food.cs" />
+    <Compile Include="Models\PaymentMethod.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\TicketType.cs" />
     <Compile Include="Models\ViewModels\DanceViewModel.cs" />

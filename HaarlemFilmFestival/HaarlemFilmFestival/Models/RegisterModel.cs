@@ -12,7 +12,7 @@ namespace HaarlemFilmFestival.Models
         [Required] public string LastName { get; set; }
         [Required] public DateTime DateOfBirth { get; set; }
         [Required] public string EmailAddres { get; set; }
-        //[Required] public string PaymentMethod { get; set; }
-        //[Required] public OrderRecord PaymentMethod { get; set; }
+     //   [Required] public string PaymentMethod { get; set; }
+        [Required] public PaymentMethod PaymentMethod { get; set; }
     }
 }

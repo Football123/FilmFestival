@@ -1,5 +1,6 @@
 ﻿using HaarlemFilmFestival.Models;
 using HaarlemFilmFestival.Repositories;
+using System;
 using System.Web.Mvc;
 using System.Web.Security;
 
@@ -10,7 +11,7 @@ namespace HaarlemFilmFestival.Controllers
         private OrderRepository orderRepository = new OrderRepository();
         private CustomerRepository customerRepository = new CustomerRepository();
         private IEventRepository eventRepository = new EventRepository();
-        
+
         public ActionResult Index()
         {
             if (Session["Orders"] == null)
@@ -26,7 +27,7 @@ namespace HaarlemFilmFestival.Controllers
         }
 
         [HttpPost]
-        public ActionResult Payment(RegisterModel model)
+        public ActionResult Payment(RegisterModel model, Order order)
         {
             if (ModelState.IsValid)
             {
@@ -35,11 +36,18 @@ namespace HaarlemFilmFestival.Controllers
                 customer.LastName = model.LastName;
                 customer.DateOfBirth = model.DateOfBirth;
                 customer.EmailAddress = model.EmailAddres;
-                customerRepository.AddCustomer(customer);
+                order = (Order)Session["Orders"];
+                order.OrderTime = DateTime.Now;
+                order.PaymentMethod = model.PaymentMethod.ToString();
+                order.Code = 11111;
 
-                if (customer != null)
+                if (customer != null && order != null)
                 {
                     FormsAuthentication.SetAuthCookie(customer.EmailAddress, false);
+                    order.Paid = true;
+                    customerRepository.AddCustomer(customer);
+                    order.Customer_Id = customer.Id;
+                    orderRepository.AddNewOrder(order);
                     return RedirectToAction("Final", "Order");
                 }
                 else

@@ -8,6 +8,6 @@ namespace HaarlemFilmFestival.Repositories.Interfaces
 {
     interface ICustomerRepository
     {
-        void AddCustomer(Customer customer);
+        int AddCustomer(Customer customer);
     }
 }
