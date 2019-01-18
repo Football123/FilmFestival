@@ -23,7 +23,6 @@ namespace HaarlemFilmFestival.Repositories
 
         List<RestaurantCuisine> GetRestaurantCuisinesByRestaurantId(int restaurantId);
         ICollection<Cuisine> GetCuisinesByRestaurantCuisine(int restaurantCuisineId);
-
-
+        Food GetFood(int Event_Id);
     }
 }

@@ -76,16 +76,16 @@
         {
             <tr>
                 <td>
-                    @item.RestaurantName
+                    @item.Restaurant.RestaurantName
                 </td>
                 <td>
-                    item.Price
+                    @item.Price
                 </td>
                 <td>
-                    item.Discount
+                    @item.Discount
                 </td>
                 <td>
-                    @item.CuisinesString
+                    @item.Restaurant.CuisinesString
                 </td>
                 <td>
                     <a class="orderButton" id="@item.Id"><img src="~/Content/Images/cart.png" /></a>
@@ -117,10 +117,34 @@
     <div class="orderPopUp">
         <form class="placeOrder" method="post" action="~/Foods/Index">
             <div class="idtext"></div>
+            Date:
+            <br />
+            <input type="text" class="eventidinput" name="eventid" hidden />
+            <input type="date" name="amountOfTickets" @*required*@><br />
+            <br />
+            <div class="idtext"></div>
+            Time*:
+            <br />
+            <input type="text" class="eventidinput" name="eventid" hidden />
+            <input type="datetime" name="amountOfTickets" @*required*@><br />
+            <br />
+            <div class="idtext"></div>
             Amount of adults:
             <br />
             <input type="text" class="eventidinput" name="eventid" hidden />
             <input type="number" name="amountOfTickets" min="1" max="10" required><br />
+            <br />
+            <div class="idtext"></div>
+            Amount of children:
+            <input type="text" class="eventidinput" name="eventid" hidden />
+            <input type="number" name="amountOfTickets" min="1" max="10" required><br />
+            <br />
+            <br />
+            <div class="idtext"></div>
+            Special request:
+            <br />
+            <input type="text" class="eventidinput" name="eventid" hidden />
+            <input type="text" name="amountOfTickets" @*required*@><br />
             <br />
             <input type="submit" value="Add ticket">
             <input id="hide" type="button" value="CANCEL">

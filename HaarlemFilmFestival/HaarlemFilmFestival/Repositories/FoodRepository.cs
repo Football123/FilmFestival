@@ -65,6 +65,13 @@ namespace HaarlemFilmFestival.Repositories
 
             return foods;
         }
+
+        public Food GetFood(int Event_Id)
+        {
+            Food item = db.Foods.Where(a => a.Id == Event_Id).SingleOrDefault();
+            return item;
+        }
+
         public IEnumerable<Food> GetPerRestaurant(Restaurant r)
         {
             IEnumerable<Food> events = db.Foods.Where(e => e.Restaurant.Id == r.Id);
