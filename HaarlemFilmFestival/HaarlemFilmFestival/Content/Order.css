@@ -15,6 +15,21 @@
     position: relative;
 }
 
+
+.Order-List {
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.Order-Table {
+    clear: both;
+    width: 100%;
+}
+
+    .Order-Table th {
+        border-bottom: 1px solid grey;
+    }
+
 table.Order-Table {
     margin-bottom: 20px;
     border: 1px solid black;
@@ -133,82 +148,3 @@ img.littlearrow {
 
 /* #endregion */
 
-.Order-details {
-    display: table;
-    width: 100%;
-    float: left;
-}
-
-    .Order-details p {
-        display: table-row;
-    }
-
-    .Order-details label {
-        display: table-cell;
-    }
-
-    .Order-details input {
-        display: table-cell;
-        width: 100%;
-        margin: 2px;
-    }
-
-.Order-Cart {
-    width: 100%;
-    margin-bottom: 50px;
-}
-
-.Order-table {
-    clear: both;
-    width: 100%;
-}
-
-    .Order-table th {
-        border-bottom: 1px solid grey;
-    }
-
-.price-total {
-    float: right;
-}
-
-.payment-method {
-    float: left;
-}
-
-.cart-buttons {
-    clear: both;
-    float: right;
-    width: 200px;
-}
-
-
-.order-button {
-    background-color: #169BD5;
-    color: white;
-    float: right;
-    font-weight: 700;
-    border-radius: 5px;
-    width: 100px;
-    height: 40px;
-}
-
-
-
-.cart-progress-bar {
-    width: 960px;
-}
-
-    .cart-progress-bar ul {
-        list-style-type: none;
-    }
-
-    .cart-progress-bar li {
-        float: left;
-        padding: 0 10px;
-        font-size: 25px;
-        font-weight: 800;
-    }
-
-.cart-pijl {
-    max-width: 50px;
-}

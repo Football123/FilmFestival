@@ -51,7 +51,7 @@ namespace HaarlemFilmFestival.Controllers
         public JazzViewModel FillViewModel()
         {
             viewmodel.Jazzs = jazzRepository.GetJazz();
-            viewmodel.JazzLocations = jazzRepository.GetJazzLocation();    
+            viewmodel.JazzLocations = jazzRepository.GetJazzLocation();
             //viewmodel.eventsLeft = GetAvailableEvents();
             viewmodel.jazzLeft = getJazzLeft();
             //viewmodel.dates = viewmodel.getDays(viewmodel.eventsLeft);
@@ -74,11 +74,8 @@ namespace HaarlemFilmFestival.Controllers
                 {
                     left.Add(jazz);
                 }
-                //foreach (Event Event in GetAvailableEvents())
-                //{
-                //    if (jazz.Id.Equals(Event.Id))
-                //        left.Add(jazz);
-                //}
+                else if (jazz.StartTime.DayOfWeek.ToString() == "Sunday")
+                    left.Add(jazz);
             }
             return left;
         }
@@ -115,7 +112,7 @@ namespace HaarlemFilmFestival.Controllers
                 case "Sunday":
                     viewmodel.jazzPerDay = jazzRepository.GetJazzPerDay(new DateTime(2018, 7, 29));
                     return PartialView("SundayJazzPartialView", viewmodel.jazzPerDay);
-                    //break;
+                //break;
                 default:
                     viewmodel.jazzPerDay = jazzRepository.GetJazzPerDay(new DateTime(2018, 7, 26));
                     break;

@@ -9,18 +9,10 @@
 <link href="@Url.Content("~/Content/Jazz.css")" , rel="stylesheet" type="text/css" />
 <table class="table">
     <tr>
-        <th>
-            Time
-        </th>
-        <th>
-            Location
-        </th>
-        <th>
-            Band
-        </th>
-        <th>
-            Price
-        </th>
+        <th> Time </th>
+        <th> Location </th>
+        <th> Band </th>
+        <th> Price </th>
     </tr>
     @foreach (Jazz j in Events)
     {
@@ -37,7 +29,7 @@
             <td>
                 €@j.Price,-
             </td>
-        </tr>       
+        </tr>
     }
 </table>
 <p>All jazz event are free on this day. No reservation needed.</p>
