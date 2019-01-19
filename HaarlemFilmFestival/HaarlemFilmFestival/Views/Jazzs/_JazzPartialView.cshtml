@@ -16,7 +16,6 @@
         $(".orderButton").click(function (data) {
             var id = document.activeElement.id;
             var event = $(this).attr("id");
-            alert("buttonclicked" + event);
             $(".orderPopUp").show();
             $(".eventidinput").val(event);
         });
@@ -60,13 +59,29 @@
                 @j.Band.Name
             </td>
             <td>
-                @j.Price
+                €@j.Price,-
             </td>
             <td>
                 <a class="orderButton" id="@j.Id"><img src="~/Content/cart.png" /></a>
             </td>
         </tr>
     }
+    <tr><td colspan="6"> <br /> </td></tr>
+    <tr>
+        <td colspan="4" style="text-align:center">
+            All access for this day
+        </td>
+        <td>€35,-</td>
+        <td><a class="orderButton"><img src="~/Content/cart.png" /></a></td>
+    </tr>
+    <tr><td colspan="6"> <br /> </td></tr>
+    <tr>
+        <td colspan="4" style="text-align:center">
+            All access for July 26, 27 and 28
+        </td>
+        <td>€80,-</td>
+        <td><a class="orderButton"><img src="~/Content/cart.png" /></a></td>
+    </tr>
 </table>
 <div class="orderPopUp">
     <form class="placeOrder" method="post" action="~/Jazzs/Index">

@@ -295,7 +295,7 @@
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Historics\Index.cshtml" />
     <Content Include="Views\Jazzs\_JazzPartialView.cshtml" />
-    <Content Include="Views\Jazzs\_MySecondJazzPartialView.cshtml" />
+    <Content Include="Views\Jazzs\SundayJazzPartialView.cshtml" />
     <Content Include="Views\Shared\_PartialViews\_HistoricPartialView.cshtml" />
     <Content Include="Views\Historics\_HistoricPartialView.cshtml" />
     <Content Include="Views\Order\Payment.cshtml" />

@@ -52,7 +52,7 @@ namespace HaarlemFilmFestival.Controllers
         {
             viewmodel.Jazzs = jazzRepository.GetJazz();
             viewmodel.JazzLocations = jazzRepository.GetJazzLocation();    
-            viewmodel.eventsLeft = GetAvailableEvents();
+            //viewmodel.eventsLeft = GetAvailableEvents();
             viewmodel.jazzLeft = getJazzLeft();
             //viewmodel.dates = viewmodel.getDays(viewmodel.eventsLeft);
             //viewmodel.times = viewmodel.getStartTime(viewmodel.eventsLeft);
@@ -70,29 +70,33 @@ namespace HaarlemFilmFestival.Controllers
             List<Jazz> left = new List<Jazz>();
             foreach (Jazz jazz in viewmodel.Jazzs)
             {
-                foreach (Event Event in GetAvailableEvents())
+                if (jazz.Capacity > 0)
                 {
-                    if (jazz.Id.Equals(Event.Id))
-                        left.Add(jazz);
+                    left.Add(jazz);
                 }
+                //foreach (Event Event in GetAvailableEvents())
+                //{
+                //    if (jazz.Id.Equals(Event.Id))
+                //        left.Add(jazz);
+                //}
             }
             return left;
         }
-        public IEnumerable<Event> GetAvailableEvents()
-        {
-            IEnumerable<OrderRecord> ordered;
-            ordered = jazzRepository.GetOrderedEvents();
-            List<Event> Events = new List<Event>();
-            foreach (Event Event in viewmodel.Jazzs)
-            {
-                int Count = 0;
-                foreach (OrderRecord orderrecord in ordered)
-                    Count = Count + orderrecord.RecordAmount;
-                if (Count < Event.Capacity || Event.Capacity == null)
-                    Events.Add(Event);
-            }
-            return Events;
-        }
+        //public IEnumerable<Event> GetAvailableEvents()
+        //{
+        //    IEnumerable<OrderRecord> ordered;
+        //    ordered = jazzRepository.GetOrderedEvents();
+        //    List<Event> Events = new List<Event>();
+        //    foreach (Event Event in viewmodel.Jazzs)
+        //    {
+        //        int Count = 0;
+        //        foreach (OrderRecord orderrecord in ordered)
+        //            Count = Count + orderrecord.RecordAmount;
+        //        if (Count < Event.Capacity || Event.Capacity == null)
+        //            Events.Add(Event);
+        //    }
+        //    return Events;
+        //}
         [HttpGet]
         public PartialViewResult ShowPartialView(string dayOfFestival)
         {
@@ -110,7 +114,8 @@ namespace HaarlemFilmFestival.Controllers
                     break;
                 case "Sunday":
                     viewmodel.jazzPerDay = jazzRepository.GetJazzPerDay(new DateTime(2018, 7, 29));
-                    break;
+                    return PartialView("SundayJazzPartialView", viewmodel.jazzPerDay);
+                    //break;
                 default:
                     viewmodel.jazzPerDay = jazzRepository.GetJazzPerDay(new DateTime(2018, 7, 26));
                     break;

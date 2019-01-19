@@ -13,21 +13,20 @@ namespace HaarlemFilmFestival.Repositories
         private HaarlemFilmFestivalContext db = HaarlemFilmFestivalContext.getInstance();
         private IEventRepository eventRepository = new EventRepository();
 
-        public IEnumerable<OrderRecord> GetOrderedEvents()
-        {
-            IEnumerable<OrderRecord> ordered = new List<OrderRecord>();
-            ordered = db.OrderRecords.ToList();
-            foreach (OrderRecord order in ordered)
-            {
-                Console.WriteLine(order.Event.Id);
-            }
-            return ordered;
-        }
+        //public IEnumerable<OrderRecord> GetOrderedEvents()
+        //{
+        //    IEnumerable<OrderRecord> ordered = new List<OrderRecord>();
+        //    ordered = db.OrderRecords.ToList();
+        //    foreach (OrderRecord order in ordered)
+        //    {
+        //        Console.WriteLine(order.Event.Id);
+        //    }
+        //    return ordered;
+        //}
 
         public IEnumerable<Jazz> GetJazz()
         {
             IEnumerable<Jazz> Jazzs = db.Jazzs;
-            //IEnumerable<Jazz> Jazzs = db.Jazzs.Include("Artists");
             return Jazzs;
         }
         public IEnumerable<Location> GetJazzLocation()

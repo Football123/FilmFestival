@@ -4,7 +4,8 @@
 
 /* Jazz-pagina */
 .jazz {
-    background-color: cornflowerblue;
+   background-color: rgba(172, 216, 224, 1);
+   display: block;
 }
 
 h1 {
@@ -16,7 +17,7 @@ h1 {
 }
 
 .jazzimage {
-    text-align: center;
+    text-align:center;
 }
 
 #orderButton {
@@ -80,9 +81,17 @@ h1 {
     transform: translate(-50%, -50%);
 }
 
-.jazz-1,
-.jazz-2,
-.jazz-3 {
+.jazz-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+    
+}
+
+.jazz-item {
+    width: 33%;
+    padding: 1em;
     text-align: center;
     display: block;
     width: 30%;
@@ -90,41 +99,23 @@ h1 {
     -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
     -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
     box-shadow: 5px 5px 5px rgba(204, 204, 204, 0.349019607843137);
+    margin-bottom: 1em;
 }
 
-.jazz-1 {
-    margin-top: 5%;
-    width: 30%;
+.jazz-image {
+    max-width: 100%;
 }
 
-.jazz-2 {
-    width: 30%;
-    margin-top: -281px;
-    position: relative;
-    margin-left: 35%;
+.dayButton{
+    margin-left: 8%;
+    left: 0px;
+    font-family: arial !important;
+    font-weight: 400 !important;
+    font-size: 13px !important;
+    top: 0px;
+    width: auto;
+    height: 70px;
+    background: inherit;
+    background-color: rgba(242, 242, 242, 1) !important;
+    color: black !important;
 }
-
-.jazz-3 {
-    width: 30%;
-    margin-top: -281px;
-    position: relative;
-    margin-left: 71%;
-}
-
-    .jazz-1 h3,
-    .jazz-2 h3,
-    .jazz-3 h3 {
-        font-weight: bold;
-    }
-
-.jazz-1 img,
-.jazz-2 img,
-.jazz-3 img {
-    width: 75%;
-    height: 200px;
-    object-fit: cover;
-    align-content: center;
-    margin: 4%;
-}
-
-.button-clicked {border:3px solid red; background-color: red;color: #FFF; }

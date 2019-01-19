@@ -1,0 +1,45 @@
+﻿@using HaarlemFilmFestival.ViewModels;
+@using HaarlemFilmFestival.Models;
+@model  IEnumerable<Jazz>
+
+@{
+    ViewBag.Title = "Jazz";
+    IEnumerable<Jazz> Events = Model;
+}
+<link href="@Url.Content("~/Content/Jazz.css")" , rel="stylesheet" type="text/css" />
+<table class="table">
+    <tr>
+        <th>
+            Time
+        </th>
+        <th>
+            Location
+        </th>
+        <th>
+            Band
+        </th>
+        <th>
+            Price
+        </th>
+    </tr>
+    @foreach (Jazz j in Events)
+    {
+        <tr>
+            <td>
+                @j.StartTime.ToString() - @j.EndTime.ToString()
+            </td>
+            <td>
+                @j.Location.Name
+            </td>
+            <td>
+                @j.Band.Name
+            </td>
+            <td>
+                €@j.Price,-
+            </td>
+        </tr>       
+    }
+</table>
+<p>All jazz event are free on this day. No reservation needed.</p>
+
+
