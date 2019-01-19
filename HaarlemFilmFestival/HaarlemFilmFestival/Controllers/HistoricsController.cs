@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using HaarlemFilmFestival.Models;
 using HaarlemFilmFestival.Repositories;
+using System.Collections;
 
 namespace HaarlemFilmFestival.Controllers
 {
@@ -26,7 +27,6 @@ namespace HaarlemFilmFestival.Controllers
             orderrecords = new OrderRecord();
             orderrecords.Event_Id = int.Parse(Request.Form["eventid"]);
             orderrecords.RecordAmount = int.Parse(Request.Form["amountOfTickets"]);
-            orderrecords.Order_Id = orderrecords.Event_Id;
             orderrecords.Event = historicrepository.GetHistoricById(orderrecords.Event_Id);
             if (order.OrderRecords == null)
                 order.OrderRecords = new List<OrderRecord>();
@@ -44,15 +44,17 @@ namespace HaarlemFilmFestival.Controllers
         public HistoricViewModel FillViewModel()
         {
             viewmodel.historicPerDay = GetHistoricPerDay(new DateTime(2018, 7, 26));
-            viewmodel.StartTimes = historicrepository.GetStartTimes();
             viewmodel.Historics = historicrepository.GetHistoricEvents();
             viewmodel.languages = GetLanguages();
             viewmodel.Stops = historicrepository.GetStops();
-            viewmodel.eventsLeft = GetAvailableEvents();
             viewmodel.historicsLeft = getHistoricsLeft();
-            viewmodel.dates = viewmodel.getDays(viewmodel.eventsLeft);
-            viewmodel.times = viewmodel.getStartTime(viewmodel.eventsLeft);
-            
+            List<DayOfWeek> days;
+            List<DateTime> starttimes;
+            List<DateTime> endtimes;
+            viewmodel.getStarts(viewmodel.historicsLeft, out starttimes, out endtimes, out days);
+            viewmodel.times = starttimes;
+            viewmodel.days = days;
+
             return viewmodel;
         }
 
@@ -77,7 +79,6 @@ namespace HaarlemFilmFestival.Controllers
                     viewmodel.historicPerDay = GetHistoricPerDay(new DateTime(2018, 7, 26));
                     break;
             }
-            ViewBag.FamilyList = new SelectList(viewmodel.historicPerDay, "times", "languages");
             return PartialView("_HistoricPartialView", viewmodel);
         }
 
@@ -85,20 +86,6 @@ namespace HaarlemFilmFestival.Controllers
         {
             IEnumerable<Historic> events = historicrepository.GetHistoricPerDay(day);
             return events;
-        }
-        
-        public IEnumerable<Historic> getHistoricsLeft()
-        {
-            List<Historic> left = new List<Historic>();
-            foreach (Historic historic in viewmodel.Historics)
-            {
-                foreach (Event Event in GetAvailableEvents())
-                {
-                    if (historic.Id.Equals(Event.Id))
-                        left.Add(historic);
-                }
-            }
-            return left;
         }
 
         public IEnumerable<Language> GetLanguages()
@@ -112,20 +99,15 @@ namespace HaarlemFilmFestival.Controllers
             return languages;
         }
 
-        public IEnumerable<Event> GetAvailableEvents()
+        public IEnumerable<Historic> getHistoricsLeft()
         {
-            IEnumerable<OrderRecord> ordered;
-            ordered = historicrepository.GetOrderedEvents();
-            List<Event> Events = new List<Event>();
-            foreach (Event Event in viewmodel.Historics)
+            List<Historic> left = new List<Historic>();
+            foreach (Historic historic in viewmodel.Historics)
             {
-                int Count = 0;
-                foreach (OrderRecord orderrecord in ordered)
-                    Count = Count + orderrecord.RecordAmount;
-                if (Count < Event.Capacity)
-                    Events.Add(Event);
+                if (historic.Capacity > 0)
+                    left.Add(historic);
             }
-            return Events;
+            return left;
         }
     }
 }

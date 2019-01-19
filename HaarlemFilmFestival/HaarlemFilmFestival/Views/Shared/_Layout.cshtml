@@ -1,4 +1,18 @@
-﻿<!DOCTYPE html>
+﻿@using HaarlemFilmFestival.Models;
+@{
+    int amount;
+
+    if (Session["Orders"] == null)
+    {
+        amount = 0;
+    }
+    else
+    {
+        amount = ((Order)Session["Orders"]).OrderRecords.Count;
+    }
+}
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -25,7 +39,7 @@
                     <li>@Html.ActionLink("DANCE", "Index", "Dance")</li>
                     <li>@Html.ActionLink("FOOD", "Index", "Foods")</li>
                     <li>@Html.ActionLink("HISTORIC", "Index", "Historics")</li>
-                    <li>@Html.ActionLink("TICKETS", "Index", "Order")</li>
+                    <li>@Html.ActionLink("TICKETS", "Index", "Order") #@amount</li>
                 </ul>
             </div>
         </div>

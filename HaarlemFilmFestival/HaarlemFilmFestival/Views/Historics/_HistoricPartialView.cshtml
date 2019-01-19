@@ -14,6 +14,7 @@
             var event = $(this).attr("id");
             $(".orderPopUp").show();
             $(".eventidinput").val(event);
+            alert("Order is placed in the basket!");
         });
     });
 </script>
@@ -47,11 +48,11 @@
                         </td>
                         <td>
                             @{if (historic.Languages == Language.Chinese)
-                            { <a class="orderButton" id="@historic.Id"><img src="~/Content/cart.png" /></a> }}
+                                { <a class="orderButton" id="@historic.Id"><img src="~/Content/cart.png" /></a> }}
                     </td>
                 </tr>
+                                    }
                                 }
-                            }
         }
         <tr><td colspan="5"> <br /> </td></tr>
         <tr>
@@ -77,19 +78,28 @@
     </form>
 </div>
 
-<div class="orderPopUpFamily">
+@*<div class="orderPopUpFamily">
     <form class="placeOrderFamily" method="post" action="~/Historics/Index">
         <div class="idtext"></div>
         Choose your family ticket<br />
+        @{List<DateTime> times = new List<DateTime>();}
+        @foreach (DateTime time in Model.times)
+        {
+            times.Add(time);
+        }
+        @foreach (Historic item in Model.historicPerDay)
+        {
+
+        }
         @if (ViewBag.FamilyList != null)
         {
-            @Html.DropDownListFor(item => item.times, ViewBag.FamilyList as SelectList, "Select time", new { @class = "form-control" });
+            @Html.DropDownListFor(item => item.languages, new SelectList(""), "Select language", new { @class = "form-control" });
+            @Html.DropDownListFor(item => item.dates, ViewBag.FamilyList as SelectList, "Select time", new { @class = "form-control" });
         }
-        @Html.DropDownListFor(item => item.languages, new SelectList(""), "Select language", new { @class = "form-control" }));
-       
-         <input type="number" name="amountOfTickets" min="1" max="10" required><br />
+
+        <input type="number" name="amountOfTickets" min="1" max="10" required><br />
         <br />
         <input type="submit" value="Add ticket">
         <input id="hide" type="button" value="CANCEL">
     </form>
-</div>
+</div>*@

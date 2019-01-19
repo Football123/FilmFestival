@@ -54,9 +54,15 @@ namespace HaarlemFilmFestival.Controllers
             viewmodel.JazzLocations = jazzRepository.GetJazzLocation();    
             viewmodel.eventsLeft = GetAvailableEvents();
             viewmodel.jazzLeft = getJazzLeft();
-            viewmodel.dates = viewmodel.getDays(viewmodel.eventsLeft);
-            viewmodel.times = viewmodel.getStartTime(viewmodel.eventsLeft);
+            //viewmodel.dates = viewmodel.getDays(viewmodel.eventsLeft);
+            //viewmodel.times = viewmodel.getStartTime(viewmodel.eventsLeft);
             viewmodel.Artists = jazzRepository.GetArtists(viewmodel.Jazzs);
+            List<DayOfWeek> days; // Kayleigh aangepast
+            List<DateTime> starttimes; // Kayleigh aangepast
+            List<DateTime> endtimes; // Kayleigh aangepast
+            viewmodel.getStarts(viewmodel.jazzLeft, out starttimes, out endtimes, out days); // Kayleigh aangepast
+            viewmodel.times = starttimes; // Kayleigh aangepast
+            viewmodel.days = days; // Kayleigh aangepast
             return viewmodel;
         }
         public IEnumerable<Jazz> getJazzLeft()

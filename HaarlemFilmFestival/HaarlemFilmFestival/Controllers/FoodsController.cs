@@ -20,8 +20,32 @@ namespace HaarlemFilmFestival.Controllers
         // GET: Foods
         public ActionResult Index()
         {
-            ViewBag.foodz = foodRepository.GetRestaurants();
+            List<Food> foods = new List<Food>();
+            IEnumerable<Restaurant> restaurants = foodRepository.GetRestaurants();
+
             viewmodel = FillViewModel();
+            IEnumerable<Food> getFoods = foodRepository.GetFoods() ;
+            List<Food> foodsFromViewModel = new List<Food>();
+            foreach  (Food food in getFoods)
+            {
+                foodsFromViewModel.Add(food);
+            }
+            
+            int teller = 0;
+            int moneyFix = 12;
+            foreach (Restaurant r in restaurants)
+            {
+                Food food = new Food();
+                food.Restaurant = r;
+                food.Price = foodsFromViewModel[(teller * moneyFix)].Price;
+                food.Discount = foodsFromViewModel[(teller * moneyFix)].Discount;
+                foods.Add(food);
+                teller++;
+            }
+
+            ViewBag.foodz = foods;
+
+            
             return View(viewmodel);
         }
 
@@ -35,14 +59,10 @@ namespace HaarlemFilmFestival.Controllers
             orderrecords.Event_Id = int.Parse(Request.Form["eventid"]);
             orderrecords.RecordAmount = int.Parse(Request.Form["amountOfTickets"]);
             orderrecords.Order_Id = orderrecords.Event_Id;
-            //orderrecords.Event = foodRepository.GetFoods(orderrecords.Event_Id);
+            orderrecords.Event = foodRepository.GetFood(orderrecords.Event_Id);
             if (order.OrderRecords == null)
                 order.OrderRecords = new List<OrderRecord>();
-            order.OrderRecords.Add(orderrecords);
-            if (orderrecords.RecordAmount >= 4)
-                orderrecords.TicketType = TicketType.Family;
-            else
-                orderrecords.TicketType = TicketType.Single;
+            order.OrderRecords.Add(orderrecords);            
             Session["Orders"] = order;
 
             viewmodel = FillViewModel();
@@ -64,11 +84,11 @@ namespace HaarlemFilmFestival.Controllers
         }
 
         //hier moet juist cuisine lijst opgehaald worden
-        private IEnumerable<Food> GetPerRestaurant(Restaurant r)
-        {
-            IEnumerable<Food> events = foodRepository.GetPerRestaurant(r);
-            return events;
-        }
+        //private IEnumerable<Food> GetPerRestaurant(Restaurant r)
+        //{
+        //    IEnumerable<Food> events = foodRepository.GetPerRestaurant(r);
+        //    return events;
+        //}
 
         private IEnumerable<Food> getFoodsLeft()
         {

@@ -65,10 +65,10 @@
 
 
     <h2 class="subtitle fancy"><span> Tickets </span></h2>
-    @foreach (var day in Model.dates)
+    @foreach (var day in Model.days)
     {
         <div class="daybuttons">
-            <button class="dayButton" id="@day.DayOfWeek.ToString()">Show tickets for <br /> @day.DayOfWeek.ToString()</button>
+            <button class="dayButton" id="@day.ToString()">Show tickets for <br /> @day.ToString()</button>
         </div>
     }
 

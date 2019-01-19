@@ -20,7 +20,7 @@ namespace HaarlemFilmFestival.Models
         public int Id { get; set; }
         public string PaymentMethod { get; set; }
         public DateTime OrderTime { get; set; }
-        public Boolean Paid { get; set; }
+        public bool Paid { get; set; }
         public int Code { get; set; }
 
         // Koppeling naar Klant

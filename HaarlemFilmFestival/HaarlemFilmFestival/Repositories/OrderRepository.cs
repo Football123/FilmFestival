@@ -1,4 +1,9 @@
-﻿using HaarlemFilmFestival.Models;
+﻿using HaarlemFilmFestival.Repositories.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using HaarlemFilmFestival.Models;
 
 namespace HaarlemFilmFestival.Repositories
 {
@@ -6,9 +11,15 @@ namespace HaarlemFilmFestival.Repositories
     {
         private HaarlemFilmFestivalContext db = HaarlemFilmFestivalContext.getInstance();
 
-        public void AddNewBesteling(Order order)
+        public void AddNewOrder(Order order)
         {
             db.Orders.Add(order);
+            foreach (OrderRecord record in order.OrderRecords)
+            {
+                db.OrderRecords.Add(record);
+                var item = db.Events.Find(record.Event_Id);
+                db.Events.Where(i => i.Id == record.Event_Id).FirstOrDefault().Capacity = item.Capacity.Value - record.RecordAmount;
+            }
             db.SaveChanges();
         }
     }

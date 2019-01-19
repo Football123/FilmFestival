@@ -10,10 +10,11 @@ namespace HaarlemFilmFestival.Repositories
     public class CustomerRepository : ICustomerRepository
     {
         private HaarlemFilmFestivalContext db = HaarlemFilmFestivalContext.getInstance();
-        public void AddCustomer(Customer customer)
+        public int AddCustomer(Customer customer)
         {
             db.Customers.Add(customer);
             db.SaveChanges();
+            return customer.Id;
         }
     }
 }
