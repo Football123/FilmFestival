@@ -14,56 +14,54 @@
             var event = $(this).attr("id");
             $(".orderPopUp").show();
             $(".eventidinput").val(event);
-            alert("Order is placed in the basket!");
         });
     });
 </script>
 <!--#endregion scripts -->
 
-@{
-    <table class="historic-table">
-        <tr>
-            <th>Time</th>
-            <th>Price</th>
-            <th>English tour</th>
-            <th>Dutch tour</th>
-            <th>Chinese tour</th>
-        </tr>
-        @{
-            foreach (DateTime time in Model.times)
+<table class="historic-table">
+    <tr>
+        <th>Time</th>
+        <th>Price</th>
+        <th>English tour</th>
+        <th>Dutch tour</th>
+        <th>Chinese tour</th>
+    </tr>
+    @{
+        foreach (DateTime time in Model.times)
+        {
+            foreach (Historic historic in Model.historicPerDay.Where(a => a.StartTime.Hour == time.Hour && a.StartTime.Minute == time.Minute))
             {
-                foreach (Historic historic in Model.historicPerDay.Where(a => a.StartTime.Hour == time.Hour && a.StartTime.Minute == time.Minute))
-                {
-                    <tr>
-                        <td>@historic.StartTime.ToString("HH:mm")</td>
-                        <td>€@historic.Price.ToString("N2") </td>
+                <tr>
+                    <td>@historic.StartTime.ToString("HH:mm")</td>
+                    <td>€@historic.Price.ToString("N2") </td>
 
-                        <td>
-                            @{if (historic.Languages == Language.English)
-                                { <a class="orderButton" id="@historic.Id"><img src="~/Content/cart.png" /></a> }}
-                        </td>
-                        <td>
-                            @{if (historic.Languages == Language.Dutch)
-                                { <a class="orderButton" id="@historic.Id"><img src="~/Content/cart.png" /></a> }}
-                        </td>
-                        <td>
-                            @{if (historic.Languages == Language.Chinese)
-                                { <a class="orderButton" id="@historic.Id"><img src="~/Content/cart.png" /></a> }}
+                    <td>
+                        @{if (historic.Languages == Language.English)
+                            { <a class="orderButton" id="@historic.Id"><img src="~/Content/cart.png" /></a> }}
+                    </td>
+                    <td>
+                        @{if (historic.Languages == Language.Dutch)
+                            { <a class="orderButton" id="@historic.Id"><img src="~/Content/cart.png" /></a> }}
+                    </td>
+                    <td>
+                        @{if (historic.Languages == Language.Chinese)
+                            { <a class="orderButton" id="@historic.Id"><img src="~/Content/cart.png" /></a> }}
                     </td>
                 </tr>
-                                    }
                                 }
-        }
-        <tr><td colspan="5"> <br /> </td></tr>
-        <tr>
-            <td colspan="3" id="familyticket">
-                Also available, family tickets! For 4 persons
-                <br /> only for English and Dutch
-            </td>
-            <td id="familyticket">Price €60,-</td>
-            <td><a class="orderButton"><img src="~/Content/cart.png" /></a></td>
-        </tr>
-    </table>
+                            }
+    }
+    <tr><td colspan="5"> <br /> </td></tr>
+    <tr>
+        <td colspan="3" id="familyticket">
+            <strong>Also available, family tickets!</strong> For 4 persons
+            <br /> only for English and Dutch
+        </td>
+        <td id="familyticket">Price €60,-</td>
+        <td><a class="orderButton"><img src="~/Content/cart.png" /></a></td>
+    </tr>
+</table>
 }
 
 <div class="orderPopUp">
@@ -71,35 +69,35 @@
         <div class="idtext"></div>
         Amount of tickets:<br />
         <input type="text" class="eventidinput" name="eventid" hidden />
-        <input type="number" name="amountOfTickets" min="1" max="10" required><br />
+        <input type="number" name="amountOfTickets" min="1" max="10" value="1" required><br />
         <br />
-        <input type="submit" value="Add ticket">
+        <input type="submit" id="submit" value="Add ticket">
         <input id="hide" type="button" value="CANCEL">
     </form>
 </div>
 
 @*<div class="orderPopUpFamily">
-    <form class="placeOrderFamily" method="post" action="~/Historics/Index">
-        <div class="idtext"></div>
-        Choose your family ticket<br />
-        @{List<DateTime> times = new List<DateTime>();}
-        @foreach (DateTime time in Model.times)
-        {
-            times.Add(time);
-        }
-        @foreach (Historic item in Model.historicPerDay)
-        {
+        <form class="placeOrderFamily" method="post" action="~/Historics/Index">
+            <div class="idtext"></div>
+            Choose your family ticket<br />
+            @{List<DateTime> times = new List<DateTime>();}
+            @foreach (DateTime time in Model.times)
+            {
+                times.Add(time);
+            }
+            @foreach (Historic item in Model.historicPerDay)
+            {
 
-        }
-        @if (ViewBag.FamilyList != null)
-        {
-            @Html.DropDownListFor(item => item.languages, new SelectList(""), "Select language", new { @class = "form-control" });
-            @Html.DropDownListFor(item => item.dates, ViewBag.FamilyList as SelectList, "Select time", new { @class = "form-control" });
-        }
+            }
+            @if (ViewBag.FamilyList != null)
+            {
+                @Html.DropDownListFor(item => item.languages, new SelectList(""), "Select language", new { @class = "form-control" });
+                @Html.DropDownListFor(item => item.dates, ViewBag.FamilyList as SelectList, "Select time", new { @class = "form-control" });
+            }
 
-        <input type="number" name="amountOfTickets" min="1" max="10" required><br />
-        <br />
-        <input type="submit" value="Add ticket">
-        <input id="hide" type="button" value="CANCEL">
-    </form>
-</div>*@
+            <input type="number" name="amountOfTickets" min="1" max="10" required><br />
+            <br />
+            <input type="submit" value="Add ticket">
+            <input id="hide" type="button" value="CANCEL">
+        </form>
+    </div>*@
