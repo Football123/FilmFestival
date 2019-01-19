@@ -18,9 +18,16 @@ namespace HaarlemFilmFestival.ViewModels
             this.DanceLeft = getDancesLeft();
             this.DanceLocations = danceRepository.GetDanceLocation();
             this.Artists = danceRepository.GetArtist();
-            this.StartTime = getStartTime(eventsLeft);
-            this.EndTime = getEndTime(eventsLeft);
+            //this.StartTime = getStartTime(eventsLeft);
+            //this.EndTime = getEndTime(eventsLeft);
             this.Events = eventRepository.GetAllEvents();
+            List<DayOfWeek> days; // Kayleigh aangepast
+            List<DateTime> starttimes; // Kayleigh aangepast
+            List<DateTime> endtimes; // Kayleigh aangepast
+            this.getStarts(this.DanceLeft, out starttimes, out endtimes, out days); // Kayleigh aangepast
+            this.times = starttimes; // Kayleigh aangepast
+            this.days = days; // Kayleigh aangepast
+            this.EndTime = endtimes; // Kayleigh aangepast
         }
 
         private IEnumerable<Dance> getDancesLeft()

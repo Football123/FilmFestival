@@ -51,7 +51,7 @@ namespace HaarlemFilmFestival.Controllers
             List<DayOfWeek> days;
             List<DateTime> starttimes;
             List<DateTime> endtimes;
-            viewmodel.getStartTime(viewmodel.historicsLeft, out starttimes, out endtimes, out days);
+            viewmodel.getStarts(viewmodel.historicsLeft, out starttimes, out endtimes, out days);
             viewmodel.times = starttimes;
             viewmodel.days = days;
 

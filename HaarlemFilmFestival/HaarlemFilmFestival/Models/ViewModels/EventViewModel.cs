@@ -9,7 +9,7 @@ namespace HaarlemFilmFestival.Models
     {
         private IEventRepository eventrepository = new EventRepository();
 
-        public void getStartTime(IEnumerable<Event> eventsLeft, out List<DateTime> starttimes, out List<DateTime> endtimes, out List<DayOfWeek> days)
+        public void getStarts(IEnumerable<Event> eventsLeft, out List<DateTime> starttimes, out List<DateTime> endtimes, out List<DayOfWeek> days)
         {
             starttimes = new List<DateTime>();
             endtimes = new List<DateTime>();
