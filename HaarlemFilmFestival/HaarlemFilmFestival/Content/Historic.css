@@ -2,6 +2,17 @@
     background-image: url('Images/historic-bg.jpg');
 }
 
+.HistoricInfo {
+    font-family: 'Bahnschrift SemiLight', 'Bahnschrift';
+    font-weight: 300;
+    font-style: normal;
+    font-size: 20px;
+    text-align: center;
+    padding-left: 15%;
+    padding-right: 15%;
+    line-height: 1.6;
+}
+
 /* #region Fonts */
 h1 {
     font-family: 'Bahnschrift SemiLight', 'Bahnschrift Regular', 'Bahnschrift';
@@ -20,7 +31,7 @@ h2 {
 }
 /* #endregion */
 
-/* #region table */
+/* #region Table */
 .daybuttons {
     margin-left: 15%;
 }
@@ -76,17 +87,6 @@ th, td {
     cursor: pointer;
 }
 /* #endregion table */
-
-.HistoricInfo {
-    font-family: 'Bahnschrift SemiLight', 'Bahnschrift';
-    font-weight: 300;
-    font-style: normal;
-    font-size: 20px;
-    text-align: center;
-    padding-left: 15%;
-    padding-right: 15%;
-    line-height: 1.6;
-}
 
 /* #region FancyLineNextToText*/
 /* #region FancyOpmaakTickets */
@@ -269,50 +269,44 @@ ol li .historic-stop-list {
 
 .orderPopUp {
     display: none;
-    z-index: 101;
-    left: 0;
     top: 0;
-    position: fixed;
-    background-color: #fefefe;
-    margin: auto;
-    border: 1px solid black;
+    background-color: rgba(172, 216, 224, 1);
     width: 600px;
-    height: 300px;
-    border-radius: 20px;
+    height: 200px;
     font-size: 20px;
     font-weight: 700;
-    transform: translate(27%, 57%);
+    transform: translate(30%, -222%);
+    box-shadow: 5px 5px 5px rgba(204, 204, 204, 0.349019607843137);
 }
 
     .orderPopUp input {
         font-family: Arial;
         font-size: 13px;
-        width: 300px;
+        width: 16%;
     }
 
     .orderPopUp [type=submit], input[type=button] {
-        background-color: #169BD5;
+        background-color: #169BC0;
         border: none;
         color: white;
-        padding: 5px;
-        text-decoration: none;
+        padding: 3px;
         border-radius: 5px;
-        font-family: phenomena;
         font-size: 20px;
-        font-weight: 800;
+        font-weight: 600;
+    }
+
+    .orderPopUp [type=submit] {
+        transform: translate(89%, 0%);
+        width: 300px;
     }
 
     .orderPopUp [type=button] {
-        width: 150px;
-        right: 0;
-        bottom: -45%;
-        position: fixed;
+        width: 200px;
+        transform: translate(-165%, 0%);
+        background-color: #82c1dd;
     }
 
 .placeOrder {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    text-align: center;
 }
 /* #endregion */

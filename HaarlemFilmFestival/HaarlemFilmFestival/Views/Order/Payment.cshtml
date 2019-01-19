@@ -37,15 +37,15 @@
         @Html.ValidationMessageFor(m => m.PaymentMethod)
         <br /><br />
         <p>
-            We don't want to store top much data about our customers. Once you've filled this form in, there is no way back to change details.<br />
+            We don't want to store too much data about our customers. Once you've filled this form in, there is no way back to change details.<br />
             So we ask you to check this form carefully before submitting. <br />Once submitted, your data will be stored in a secure database.
         </p>
         <input type="submit" value="Register" />
     }
     
-    <form method="post" action="~/Views/Order/Index/">
-        <button class="back2-button" >Go back</button>
-    </form>
+    
+        <button class="back2-button" onclick="history.back()">Go back</button>
+   
     <form method="post" action="~/Views/Order/Final/">
         <button type="submit" class="finalpay-button">Pay your tickets</button>
     </form>

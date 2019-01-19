@@ -1,4 +1,5 @@
-﻿@using HaarlemFilmFestival.Models;
+﻿@using System.Globalization;
+@using HaarlemFilmFestival.Models;
 
 <link href="@Url.Content("~/Content/Order.css")" , rel="stylesheet" type="text/css" />
 <div class="jumbotron">
@@ -10,8 +11,8 @@
         </span>
     </div>
     <form method="post" action="~/Order/Payment/">
-        <div class="ItemList-Cart">
-            <table class="Cart-table">
+        <div class="Order-List">
+            <table class="Order-Table">
                 <tr>
                     <th class="first">Selected Ticket</th>
                     <th class="second">Price</th>
@@ -19,17 +20,20 @@
                     <th class="fourth"></th>
                 </tr>
                 @{
-                    ICollection<OrderRecord> orderrecords = ((Order)Session["Orders"]).OrderRecords;
-                    foreach (OrderRecord order in orderrecords)
-                    {
-                        if (order.Event is Historic)
-                        {
-                            Historic item = (Historic)order.Event;
+                                double totalprice = 0;
+                                ICollection<OrderRecord> orderrecords = ((Order)Session["Orders"]).OrderRecords;
+                                foreach (OrderRecord order in orderrecords)
+                                {
+                                    totalprice = totalprice + (order.Event.Price * order.RecordAmount);
+                                    if (order.Event is Historic)
+                                    {
+                                        Historic item = (Historic)order.Event;
                             <tr>
-                                <td> <p>Historic event || @order.Event.StartTime.DayOfWeek.ToString() @order.Event.StartTime.ToString("MMMM dd") || €@order.Event.Price.ToString("N2") || @item.Languages.ToString() tour</p> </td>
+                                <td> <p>Historic event || @order.Event.StartTime.ToString("dddd, MMMM dd HH:mm", new CultureInfo("en-US")) || €@order.Event.Price.ToString("N2") || @item.Languages.ToString() tour</p> </td>
                                 @{ var total = order.RecordAmount * order.Event.Price; }
                                 <td>@order.RecordAmount x €@order.Event.Price.ToString("N2") = €@total.ToString("N2")</td>
                                 <td>@order.RecordAmount</td>
+                                <td><img src="~/Content/Images/X.png" /></td>
                             </tr>
                                     }
                                     else if (order.Event is Jazz)
@@ -61,10 +65,18 @@
                                                                 </tr>
                                                                             }
                                                                         }
+                                                               <tr>
+                                                                   <td colspan="1">Amount of tickets: @orderrecords.Count()</td>
+                                                                   <td colspan="3">Total price: €@totalprice.ToString("N2")</td>
+                                                               </tr>
                 }
             </table>
             <input type="button" value="Shop more tickets" onclick="history.back()" />
-            <input type="button" value="Pay your tickets" onclick="@("window.location.href='" + @Url.Action("Payment", "Order") + "'");" />
+            <form method="post" action="~/Views/Order/Payment/">
+                <button type="submit" class="finalpay-button">Pay your tickets</button>
+            </form>
+            @*<input type="button" value="Pay your tickets"
+    <input type="button" value="Pay your tickets" onclick="@("window.location.href='" + @Url.Action("Payment", "Order") + "'");*@
         </div>
     </form>
 
