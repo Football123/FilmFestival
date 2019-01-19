@@ -12,8 +12,12 @@
     <link href="@Url.Content("~/Content/Jazz.css")" , rel="stylesheet" type="text/css" />
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script type="text/javascript">
+        //$(document).ready(function () {
+        //    document.getElementById("#Thursday").click();
+        //});
         $(function () {
             $("#Thursday").click(function (data) {
+                //$("#Thursday").addClass('button-clicked');
                 $.get("@Url.Action("ShowPartialView", "Jazzs",  new {  dayOfFestival = DayOfWeek.Thursday})", function (data) {
                     if (data) {
                         $('#divTest').empty();
@@ -22,8 +26,9 @@
                 });
             });
         });
-       $(function () {
-           $("#Friday").click(function (data) {
+        $(function () {
+            $("#Friday").click(function (data) {
+                //$("#Friday").addClass('button-clicked');
                 $.get("@Url.Action("ShowPartialView", "Jazzs",  new {  dayOfFestival = DayOfWeek.Friday})", function (data) {
                     if (data) {
                         $('#divTest').empty();
@@ -34,6 +39,7 @@
         });
         $(function () {
             $("#Saturday").click(function (data) {
+               // $("#Saturday").addClass('button-clicked');
                 $.get("@Url.Action("ShowPartialView", "Jazzs",  new {  dayOfFestival = DayOfWeek.Saturday})", function (data) {
                     if (data) {
                         $('#divTest').empty();
@@ -44,6 +50,7 @@
         });
         $(function () {
             $("#Sunday").click(function (data) {
+               // $("#Sunday").addClass('button-clicked');
                 $.get("@Url.Action("ShowPartialView", "Jazzs",  new {  dayOfFestival = DayOfWeek.Sunday})", function (data) {
                     if (data) {
                         $('#divTest').empty();
@@ -81,7 +88,7 @@
         }
         
         <div id="divTest">
-            @Html.Partial("_JazzPartialView", Model.jazzLeft)
+            @Html.Partial("_JazzPartialView", Model.jazzPerDay)
         </div>
 
         <h1>Line-up</h1>
@@ -92,7 +99,7 @@
             if (item.Id == 1 || item.Id == 4 || item.Id == 7) { id = 1; }
             if (item.Id == 2 || item.Id == 5 || item.Id == 8) { id = 2; }
             if (item.Id == 3 || item.Id == 6 || item.Id == 9) { id = 3; }
-            <div class="jazz-@id">
+            <div class="jazz-@item.Id">
                 <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
                 <h3>@Html.DisplayFor(modelItem => item.ArtistDescription)</h3>
                 <img src="~/Content/Images/Bands/@{ @item.Name }.png" />

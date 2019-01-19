@@ -126,3 +126,5 @@ h1 {
     align-content: center;
     margin: 4%;
 }
+
+.button-clicked {border:3px solid red; background-color: red;color: #FFF; }
