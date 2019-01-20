@@ -12,8 +12,8 @@
     <link href="@Url.Content("~/Content/Jazz.css")" , rel="stylesheet" type="text/css" />
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
-            //document.getElementById("#Thursday")
+        // javascript-functies op de buttonclicks door te sturen naar de controller met de bijbehorende dag om de juiste events te tonen
+        $(function () {
             $("#Thursday").click(function (data) {
                 $.get("@Url.Action("ShowPartialView", "Jazzs",  new {  dayOfFestival = DayOfWeek.Thursday})", function (data) {
                     if (data) {
@@ -86,7 +86,8 @@
         </div>
 
         <h1>Tickets</h1>
-        @foreach (var day in Model.days@*.OrderBy(x => ((int)x + 6) % 7)*@)
+        @*Model.days wordt geladen in het Viewmodel om alle dagen waarop events zijn op te halen*@
+        @foreach (var day in Model.days)
         {
             <input type="button" value="Show Tickets for @day.ToString()" class="dayButton" id="@day.ToString()" />
         }
@@ -98,6 +99,7 @@
         <h1>Line-up</h1>
 
         <div class="jazz-container">
+            @*Met behulp van Artists in het Viewmodel worden alle artiesten, descriptions en plaatjes opgehaald*@
             @foreach (var item in Model.Artists)
             {
                 <div class="jazz-item">

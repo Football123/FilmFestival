@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using HaarlemFilmFestival.Models;
 using HaarlemFilmFestival.Repositories;
@@ -23,7 +18,7 @@ namespace HaarlemFilmFestival.Controllers
             viewmodel = FillViewModel();
             return View(viewmodel);
         }
-
+        // Deze methode wordt aangeroepen nadat je een aantal kaarten besteld en maakt een order aan van het geselecteerde event.
         [HttpPost]
         public ActionResult Index(OrderRecord orderrecords)
         {
@@ -47,15 +42,11 @@ namespace HaarlemFilmFestival.Controllers
             viewmodel = FillViewModel();
             return View(viewmodel);
         }
-
+        // Deze methode vult de ViewModel met de benodigde data voor de views
         public JazzViewModel FillViewModel()
         {
             viewmodel.Jazzs = jazzRepository.GetJazz();
-            viewmodel.JazzLocations = jazzRepository.GetJazzLocation();
-            //viewmodel.eventsLeft = GetAvailableEvents();
             viewmodel.jazzLeft = getJazzLeft();
-            //viewmodel.dates = viewmodel.getDays(viewmodel.eventsLeft);
-            //viewmodel.times = viewmodel.getStartTime(viewmodel.eventsLeft);
             viewmodel.Artists = jazzRepository.GetArtists(viewmodel.Jazzs);
             List<DayOfWeek> days; // Kayleigh aangepast
             List<DateTime> starttimes; // Kayleigh aangepast
@@ -65,6 +56,7 @@ namespace HaarlemFilmFestival.Controllers
             viewmodel.days = days; // Kayleigh aangepast
             return viewmodel;
         }
+        // Deze methode geeft een lijst van alle Jazz-events die nog beschikbaar zijn
         public IEnumerable<Jazz> getJazzLeft()
         {
             List<Jazz> left = new List<Jazz>();
@@ -79,25 +71,11 @@ namespace HaarlemFilmFestival.Controllers
             }
             return left;
         }
-        //public IEnumerable<Event> GetAvailableEvents()
-        //{
-        //    IEnumerable<OrderRecord> ordered;
-        //    ordered = jazzRepository.GetOrderedEvents();
-        //    List<Event> Events = new List<Event>();
-        //    foreach (Event Event in viewmodel.Jazzs)
-        //    {
-        //        int Count = 0;
-        //        foreach (OrderRecord orderrecord in ordered)
-        //            Count = Count + orderrecord.RecordAmount;
-        //        if (Count < Event.Capacity || Event.Capacity == null)
-        //            Events.Add(Event);
-        //    }
-        //    return Events;
-        //}
+
+        // Deze methode geeft de events per datum terug op basis van de geselecteerde datum in de view
         [HttpGet]
         public PartialViewResult ShowPartialView(string dayOfFestival)
         {
-            viewmodel = FillViewModel();
             switch (dayOfFestival)
             {
                 case "Thursday":

@@ -8,6 +8,7 @@
 }
 <link href="@Url.Content("~/Content/Jazz.css")" , rel="stylesheet" type="text/css" />
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+@* Met dit script wordt de popup aangeroepen door in de tabel op het winkelmandje te klikken (via class orderbutton *@
 <script>
     $(document).ready(function () {
         $("#hide").click(function () {
@@ -43,11 +44,12 @@
             Add to cart
         </th>
     </tr>
+    @* Met deze foreach-loop word voor elk Jazz-event de benodigde informatie opgehaald (Start- en eindtijd, Locatie, Artiest en Prijs) *@
     @foreach (Jazz j in Events)
     {
         <tr>
             <td>
-                @j.StartTime.ToString() - @j.EndTime.ToString()
+                @j.StartTime - @j.EndTime
             </td>
             <td>
                 @j.Location.Name
@@ -83,6 +85,8 @@
         <td><a class="orderButton"><img src="~/Content/cart.png" /></a></td>
     </tr>
 </table>
+
+@* Dit is de pop-up voor het invullen van het aantal kaarten, als er op submit (Add ticket) geklikt word ga je naar de Post van de index-methode, daar word de order aangemaakt *@
 <div class="orderPopUp">
     <form class="placeOrder" method="post" action="~/Jazzs/Index">
         <div class="idtext"></div>

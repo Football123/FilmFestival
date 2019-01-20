@@ -13,43 +13,21 @@ namespace HaarlemFilmFestival.Repositories
         private HaarlemFilmFestivalContext db = HaarlemFilmFestivalContext.getInstance();
         private IEventRepository eventRepository = new EventRepository();
 
-        //public IEnumerable<OrderRecord> GetOrderedEvents()
-        //{
-        //    IEnumerable<OrderRecord> ordered = new List<OrderRecord>();
-        //    ordered = db.OrderRecords.ToList();
-        //    foreach (OrderRecord order in ordered)
-        //    {
-        //        Console.WriteLine(order.Event.Id);
-        //    }
-        //    return ordered;
-        //}
-
+        // Deze methode haalt de hele Jazz-tabel op
         public IEnumerable<Jazz> GetJazz()
         {
             IEnumerable<Jazz> Jazzs = db.Jazzs;
             return Jazzs;
         }
-        public IEnumerable<Location> GetJazzLocation()
-        {
-            List<Location> jazzlocations = new List<Location>();
-            IEnumerable<Location> locations = eventRepository.GetLocations();
-            foreach (Location location in locations)
-            {
-                foreach (Jazz jazzevent in db.Jazzs)
-                {
-                    if (jazzevent.Location_Id == location.Id)
-                        jazzlocations.Add(location);
-                }
-            }
-            return jazzlocations;
-        }
 
+        // Deze methode haalt alle Jazz-events op, op basis van de id
         public Jazz GetJazz(int jazzId)
         {
             Jazz jazz = db.Jazzs.Find(jazzId);
             return jazz;
         }
 
+        // Deze methode haalt de bijbehorende artiesten van een jazz-event op, met behulp van het id
         public IEnumerable<Artist> GetArtists(IEnumerable<Jazz> Jazzevents)
         {
             List<Artist> artists = new List<Artist>();
@@ -61,6 +39,8 @@ namespace HaarlemFilmFestival.Repositories
             }
             return artists.Distinct();
         }
+
+        // Deze methode haalt de Jazz-events op per dag op basis van de dag die meegegeven word via de button op de pagina
         public IEnumerable<Jazz> GetJazzPerDay(DateTime day)
         {
             IEnumerable<Jazz> events = db.Jazzs.Where(a => DbFunctions.TruncateTime(a.StartTime) == day.Date);

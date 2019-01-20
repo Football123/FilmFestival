@@ -26,6 +26,7 @@ namespace HaarlemFilmFestival.Controllers
             return View();
         }
 
+        // In deze methode word onder andere een klant aangemaakt met behulp van een RegisterModel, de gegevens worden in de view ingevuld en doorgestuurd via het registermodel
         [HttpPost]
         public ActionResult Payment(RegisterModel model, Order order)
         {
