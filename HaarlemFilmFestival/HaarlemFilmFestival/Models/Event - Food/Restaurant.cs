@@ -14,15 +14,20 @@ namespace HaarlemFilmFestival.Models
         public int Stars { get; set; }
         public string WebsiteLink { get; set; }
 
-        // Koppeling Keuken en dit moet gebruikt worden in de foodcontroller (en foodviewmodel)
+        // ICollection zorgt ervoor dat je een soort lijst of Collectie kan maken van de elementen van de type Cuisine        
         public ICollection<Cuisine> Cuisines { get; set; }
 
+        //NotMapped zorgt dat er geen nieuwe kolommen in de database gemaakt worden 
+
+        //Deze property is gemaakt om de naam van een restaurant aan te passen
         [NotMapped]
         public string FixedImageName { get { return (RestaurantName.Replace("Mr. & Mrs.", "MrenMrs")); }  }
 
+        //Deze property wordt gebruikt in de view om de cuisine namen te tonen
         [NotMapped]
         public string CuisinesString { get { return (GenerateCuisinesString()); } }
 
+        //hier krijg je een lijst van cuisines terug 
         public string GenerateCuisinesString()
         {
             int cuisinesLength = Cuisines.Count;

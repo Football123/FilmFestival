@@ -12,12 +12,10 @@ namespace HaarlemFilmFestival.Models
     {
         [Key]
         [Column("Restaurant_Id", Order = 0)]
-        // public virtual Restaurant Restaurant { get; set; }
         public int resid { get; set; }
 
         [Key]
         [Column("Cuisine_Id", Order = 1)]
-        // public virtual Cuisine Cuisine { get; set; }
         public int cuisid { get; set; }
     }
 }

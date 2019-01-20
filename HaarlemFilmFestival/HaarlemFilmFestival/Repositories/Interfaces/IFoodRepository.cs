@@ -9,20 +9,11 @@ namespace HaarlemFilmFestival.Repositories
 {
     interface IFoodRepository
     {
-        IEnumerable<Cuisine> GetCuisines();
-        IEnumerable<Food> RestaurantCuisines();
-        Cuisine GetCuisine(int cuisineId);
-        RestaurantCuisine GetRestaurantCuisine(int restaurantId);
-        IEnumerable<Location> GetFoodLocation();
-        IEnumerable<OrderRecord> GetOrderedEvents();
-        IEnumerable<Food> GetPerRestaurant(Restaurant r);
-        //IEnumerable<Event> GetAllFood();
+        Cuisine GetCuisine(int cuisineId);        
         IEnumerable<Food> GetFoods();
         IEnumerable<Restaurant> GetRestaurants();
-        // Food GetFood(int foodId);
-
         List<RestaurantCuisine> GetRestaurantCuisinesByRestaurantId(int restaurantId);
-        ICollection<Cuisine> GetCuisinesByRestaurantCuisine(int restaurantCuisineId);
         Food GetFood(int Event_Id);
+        //IEnumerable<OrderRecord> GetOrderedEvents();
     }
 }

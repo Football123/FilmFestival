@@ -11,8 +11,7 @@ namespace HaarlemFilmFestival.Models
     {
         public int Id { get; set; }
         public string CuisineDescription { get; set; }
-
-        // Koppeling naar Restaurants
+                
         public ICollection<Restaurant> Restaurants { get; set; }
     }
 }

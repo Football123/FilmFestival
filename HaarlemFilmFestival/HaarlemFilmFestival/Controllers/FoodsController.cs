@@ -32,13 +32,13 @@ namespace HaarlemFilmFestival.Controllers
             }
             
             int teller = 0;
-            int moneyFix = 12;
+            int restaurantIndexMultiplier = 12;
             foreach (Restaurant r in restaurants)
             {
                 Food food = new Food();
                 food.Restaurant = r;
-                food.Price = foodsFromViewModel[(teller * moneyFix)].Price;
-                food.Discount = foodsFromViewModel[(teller * moneyFix)].Discount;
+                food.Price = foodsFromViewModel[(teller * restaurantIndexMultiplier)].Price;
+                food.Discount = foodsFromViewModel[(teller * restaurantIndexMultiplier)].Discount;
                 foods.Add(food);
                 teller++;
             }
@@ -71,54 +71,41 @@ namespace HaarlemFilmFestival.Controllers
 
         public FoodViewModel FillViewModel()
         {
-            //Restaurant r = new Restaurant();
-            //viewmodel.FoodPerDay = GetPerRestaurant(r);
-            viewmodel.Foods = foodRepository.GetFoods();
-            viewmodel.RestCuis = foodRepository.RestaurantCuisines();
             viewmodel.Restaurants = foodRepository.GetRestaurants();
-            viewmodel.FoodLocations = foodRepository.GetFoodLocation();
-            viewmodel.Cuisines = foodRepository.GetCuisines();
-            viewmodel.FoodLeft = getFoodsLeft();
-            viewmodel.eventsLeft = GetAvailableEvents();
+            //viewmodel.FoodLeft = getFoodsLeft();
+            //viewmodel.eventsLeft = GetAvailableEvents();
             return viewmodel;
         }
-
-        //hier moet juist cuisine lijst opgehaald worden
-        //private IEnumerable<Food> GetPerRestaurant(Restaurant r)
+        
+        //private IEnumerable<Food> getFoodsLeft()
         //{
-        //    IEnumerable<Food> events = foodRepository.GetPerRestaurant(r);
-        //    return events;
+        //    List<Food> left = new List<Food>();
+        //    foreach (Food food in viewmodel.Foods)
+        //    {
+        //        foreach (Event Event in GetAvailableEvents())
+        //        {
+        //            if (food.Id.Equals(Event.Id))
+        //                left.Add(food);
+        //        }
+        //    }
+        //    return left;
         //}
 
-        private IEnumerable<Food> getFoodsLeft()
-        {
-            List<Food> left = new List<Food>();
-            foreach (Food food in viewmodel.Foods)
-            {
-                foreach (Event Event in GetAvailableEvents())
-                {
-                    if (food.Id.Equals(Event.Id))
-                        left.Add(food);
-                }
-            }
-            return left;
-        }
-
-        private IEnumerable<Event> GetAvailableEvents()
-        {
-            IEnumerable<OrderRecord> ordered;            
-            ordered = foodRepository.GetOrderedEvents();
-            List<Event> Events = new List<Event>();
-            foreach (Event Event in viewmodel.Foods)
-            {
-                int Count = 0;
-                foreach (OrderRecord orderrecord in ordered)
-                    Count = Count + orderrecord.RecordAmount;
-                if (Count < Event.Capacity)
-                    Events.Add(Event);
-            }
-            return Events;
-        }
+        //private IEnumerable<Event> GetAvailableEvents()
+        //{
+        //    IEnumerable<OrderRecord> ordered;            
+        //    ordered = foodRepository.GetOrderedEvents();
+        //    List<Event> Events = new List<Event>();
+        //    foreach (Event Event in viewmodel.Foods)
+        //    {
+        //        int Count = 0;
+        //        foreach (OrderRecord orderrecord in ordered)
+        //            Count = Count + orderrecord.RecordAmount;
+        //        if (Count < Event.Capacity)
+        //            Events.Add(Event);
+        //    }
+        //    return Events;
+        //}
 
 
     }

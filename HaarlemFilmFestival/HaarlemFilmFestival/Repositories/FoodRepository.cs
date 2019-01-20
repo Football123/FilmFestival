@@ -12,53 +12,46 @@ namespace HaarlemFilmFestival.Repositories
         private HaarlemFilmFestivalContext db = HaarlemFilmFestivalContext.getInstance();
         private IEventRepository eventrepository = new EventRepository();
 
-        //hier moet de juiste cuisine lijst opgehaald worden
-        public IEnumerable<Restaurant> GetRestaurants()
-        {
-            IEnumerable<Cuisine> cuisines = new List<Cuisine>();
-            cuisines = GetCuisines();
-            IEnumerable<Restaurant> restaurants = db.Restaurants;            
-
-
-            foreach (Restaurant r in restaurants)
-            {
-                List<RestaurantCuisine> restaurantcuisines = GetRestaurantCuisinesByRestaurantId(r.Id);
-                List<Cuisine> cuisinez = new List<Cuisine>();
-
-
-                foreach (RestaurantCuisine c in restaurantcuisines)
-                {
-                    Cuisine kx = GetCuisine(c.cuisid);
-                    
-                    cuisinez.Add(kx);
-                }
-                r.Cuisines = cuisinez;
-                
-            }
-            // vul restaurant
-           
-            return restaurants;
-        }
-
-
+        //geef een lijst terug van alle Restaurant_Ids in RestaurantCuisine
         public List<RestaurantCuisine> GetRestaurantCuisinesByRestaurantId(int restaurantId)
         {
             List<RestaurantCuisine> restaurantCuisines = new List<RestaurantCuisine>();
 
             using (HaarlemFilmFestivalContext db = new HaarlemFilmFestivalContext())
             {
-                restaurantCuisines = db.RestaurantCuisines.Where(xid => xid.resid == restaurantId).ToList();
+                restaurantCuisines = db.RestaurantCuisines.Where(rcid => rcid.resid == restaurantId).ToList();
             }
 
 
             return restaurantCuisines;
         }
 
-        public ICollection<Cuisine> GetCuisinesByRestaurantCuisine(int restaurantCuisineId)
+        //Geef de restaurants terug met de juiste Cuisine_Id
+        public IEnumerable<Restaurant> GetRestaurants()
         {
-            return db.Cuisines.Where(xid => xid.Id == restaurantCuisineId).ToList();
-        }
+            IEnumerable<Restaurant> restaurants = db.Restaurants;            
 
+
+            foreach (Restaurant r in restaurants)
+            {
+                List<RestaurantCuisine> restaurantcuisines = GetRestaurantCuisinesByRestaurantId(r.Id);
+                List<Cuisine> cuisines = new List<Cuisine>();
+
+
+                foreach (RestaurantCuisine rc in restaurantcuisines)
+                {
+                    Cuisine c = GetCuisine(rc.cuisid);
+                    
+                    cuisines.Add(c);
+                }
+                r.Cuisines = cuisines;
+                
+            }
+           
+            return restaurants;
+        }
+        
+        //Haal alles op van de Food tabel
         public IEnumerable<Food> GetFoods()
         {
             IEnumerable<Food> foods = db.Foods;
@@ -66,84 +59,30 @@ namespace HaarlemFilmFestival.Repositories
             return foods;
         }
 
+        //Laad de Food op basis van de Food_Id
         public Food GetFood(int Event_Id)
         {
             Food item = db.Foods.Where(a => a.Id == Event_Id).SingleOrDefault();
             return item;
         }
-
-        public IEnumerable<Food> GetPerRestaurant(Restaurant r)
-        {
-            IEnumerable<Food> events = db.Foods.Where(e => e.Restaurant.Id == r.Id);
-            return events;
-        }
-
-        // deze functie aanpassen, eventueel verwijderen.
-        public IEnumerable<Food> RestaurantCuisines()
-        {
-            IEnumerable<Food> foods = GetFoods();
-
-            foreach (Food f in foods)
-            {
-                RestaurantCuisine resCuisine = new RestaurantCuisine();
-                resCuisine = GetRestaurantCuisine(f.Restaurant.Id);
-                //dit is niet goed want je krijgt elke keer 1 cuisinesoort binnen 
-                //terwijl een restaurant meerdere cuisines kan hebben
-               // f.Cuisine = GetCuisine(resCuisine.cuisid);
-            }
-
-            return foods;
-        }
-
+                
+        //Laad de Cuisine op basis van de Cuisine_Id
         public Cuisine GetCuisine(int cuisineId)
         {
-            Cuisine c = new Cuisine();
-
-            c = db.Cuisines.Where(xid => xid.Id == cuisineId).FirstOrDefault();
+            Cuisine c = db.Cuisines.Where(cid => cid.Id == cuisineId).FirstOrDefault();
 
             return c;
-        }
-
-        public RestaurantCuisine GetRestaurantCuisine(int restaurantId)
-        {
-            RestaurantCuisine res = new RestaurantCuisine();
-
-            res = db.RestaurantCuisines.Where(xd => xd.resid == restaurantId).FirstOrDefault();
-
-            return res;
-        }
-
-        public IEnumerable<Cuisine> GetCuisines()
-        {
-            IEnumerable<Cuisine> cuisines = db.Cuisines;
-
-            return cuisines;
-        }
-
-        public IEnumerable<Location> GetFoodLocation()
-        {
-            List<Location> foodlocations = new List<Location>();
-            IEnumerable<Location> locations = eventrepository.GetLocations();
-            foreach (Location location in locations)
-            {
-                foreach (Food foodevent in db.Foods)
-                {
-                    if (foodevent.Location_Id == location.Id)
-                        foodlocations.Add(location);
-                }
-            }
-            return foodlocations;
-        }
-
-        public IEnumerable<OrderRecord> GetOrderedEvents()
-        {
-            IEnumerable<OrderRecord> ordered = new List<OrderRecord>();
-            ordered = db.OrderRecords.ToList();
-            foreach (OrderRecord order in ordered)
-            {
-                Console.WriteLine(order.Event.Id);
-            }
-            return ordered;
-        }
+        }       
+       
+        //public IEnumerable<OrderRecord> GetOrderedEvents()
+        //{
+        //    IEnumerable<OrderRecord> ordered = new List<OrderRecord>();
+        //    ordered = db.OrderRecords.ToList();
+        //    foreach (OrderRecord order in ordered)
+        //    {
+        //        Console.WriteLine(order.Event.Id);
+        //    }
+        //    return ordered;
+        //}
     }
 }
