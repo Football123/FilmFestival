@@ -38,6 +38,8 @@
 }
 
 .orderPopUp {
+    left: 0;
+    display: none;
     top: -94px;
     position: fixed;
     background-color: #fefefe;
