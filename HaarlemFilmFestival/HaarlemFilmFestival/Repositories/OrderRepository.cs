@@ -1,8 +1,4 @@
-﻿using HaarlemFilmFestival.Repositories.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using HaarlemFilmFestival.Models;
 
 namespace HaarlemFilmFestival.Repositories

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using HaarlemFilmFestival.Models;
 using HaarlemFilmFestival.Repositories;
-using System.Collections;
 
 namespace HaarlemFilmFestival.Controllers
 {
@@ -18,6 +17,8 @@ namespace HaarlemFilmFestival.Controllers
             return View(viewmodel);
         }
 
+        // Dit wordt aangeroepen nadat je een item toevoegt aan het winkelmandje.
+        // Er wordt dan eerst gekeken of er al een bestaande sessie is, zo niet dan maakt het er eentje aan.
         [HttpPost]
         public ActionResult Index(OrderRecord orderrecords)
         {
@@ -25,6 +26,7 @@ namespace HaarlemFilmFestival.Controllers
                 Session["Orders"] = new Order();
             Order order = (Order)Session["Orders"];
             orderrecords = new OrderRecord();
+            // Het orderrecord vullen met de gegevens
             orderrecords.Event_Id = int.Parse(Request.Form["eventid"]);
             orderrecords.RecordAmount = int.Parse(Request.Form["amountOfTickets"]);
             orderrecords.Event = historicrepository.GetHistoricById(orderrecords.Event_Id);
@@ -48,6 +50,7 @@ namespace HaarlemFilmFestival.Controllers
             viewmodel.languages = GetLanguages();
             viewmodel.Stops = historicrepository.GetStops();
             viewmodel.historicsLeft = getHistoricsLeft();
+            // hiermee maak ik drie lege lijstjes aan waarna ik ze vul uit GetStarts()
             List<DayOfWeek> days;
             List<DateTime> starttimes;
             List<DateTime> endtimes;
@@ -99,6 +102,8 @@ namespace HaarlemFilmFestival.Controllers
             return languages;
         }
 
+        // Dit is om te kijken of de events überhaupt wel beschikbaar zijn. 
+        // Hierdoor worden er geen events getoond die niet beschikbaar zijn.
         public IEnumerable<Historic> getHistoricsLeft()
         {
             List<Historic> left = new List<Historic>();

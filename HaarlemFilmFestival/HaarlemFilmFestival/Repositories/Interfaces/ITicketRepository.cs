@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace HaarlemFilmFestival.Repositories.Interfaces
+﻿namespace HaarlemFilmFestival.Repositories.Interfaces
 {
     public class ITicketRepository
     {

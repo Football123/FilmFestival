@@ -3,7 +3,7 @@
 
 .jumbotron h1 {
     font-family: 'Bahnschrift SemiLight', 'Bahnschrift Regular', 'Bahnschrift';
-    font-weight: 350;
+    font-weight: 300;
     font-style: normal;
     font-size: 72px;
     text-align: center;
@@ -14,7 +14,6 @@
     border: solid;
     position: relative;
 }
-
 
 .Order-List {
     width: 100%;
@@ -63,6 +62,59 @@ div.Order-List {
 
 .Order-Table td {
     padding: 5px;
+    border-top: 1px solid black;
+}
+
+.Order-Table img {
+    width: 22px;
+    height: 22px;
+}
+
+.back {
+    width: 541px;
+    height: 65px;
+    background: inherit;
+    background-color: rgba(228, 228, 228, 1);
+    box-sizing: border-box;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(121, 121, 121, 1);
+    border-radius: 5px;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    font-family: 'Bahnschrift SemiLight', 'Bahnschrift Regular', 'Bahnschrift';
+    font-weight: 300;
+    font-style: normal;
+    font-size: 28px;
+    text-decoration: underline;
+}
+
+.finalpay-button {
+    float: right;
+    left: 0px;
+    top: 0px;
+    width: 530px;
+    height: 65px;
+    background: inherit;
+    background-color: rgba(112, 185, 94, 1);
+    box-sizing: border-box;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(121, 121, 121, 1);
+    border-radius: 5px;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    font-family: 'Bahnschrift SemiLight', 'Bahnschrift Regular', 'Bahnschrift';
+    font-weight: 300;
+    font-style: normal;
+    font-size: 28px;
+    text-decoration: underline;
+    color: #FFFFFF;
+}
+.finalpay-button :hover {
+    background-color: rgba(255, 253, 0, 1);
 }
 /* #endregion */
 
@@ -77,7 +129,7 @@ div.Order-List {
     border-color: rgba(121, 121, 121, 1);
     border-radius: 5px;
     font-family: 'Bahnschrift SemiLight', 'Bahnschrift Regular', 'Bahnschrift';
-    font-weight: 350;
+    font-weight: 300;
     font-style: normal;
     font-size: 28px;
     text-decoration: underline;
@@ -93,7 +145,7 @@ div.Order-List {
     border-color: rgba(121, 121, 121, 1);
     border-radius: 5px;
     font-family: 'Bahnschrift SemiLight', 'Bahnschrift Regular', 'Bahnschrift';
-    font-weight: 350;
+    font-weight: 300;
     font-style: normal;
     font-size: 28px;
     color: white;

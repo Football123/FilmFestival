@@ -25,8 +25,9 @@ namespace HaarlemFilmFestival.Controllers
         {
             return View();
         }
-
-        // In deze methode word onder andere een klant aangemaakt met behulp van een RegisterModel, de gegevens worden in de view ingevuld en doorgestuurd via het registermodel
+        
+        // In deze methode wordt onder andere een klant aangemaakt met behulp van een RegisterModel, 
+        // de gegevens worden in de view ingevuld en doorgestuurd via het registermodel
         [HttpPost]
         public ActionResult Payment(RegisterModel model, Order order)
         {
@@ -40,8 +41,7 @@ namespace HaarlemFilmFestival.Controllers
                 order = (Order)Session["Orders"];
                 order.OrderTime = DateTime.Now;
                 order.PaymentMethod = model.PaymentMethod.ToString();
-                order.Code = 11111;
-
+                
                 if (customer != null && order != null)
                 {
                     FormsAuthentication.SetAuthCookie(customer.EmailAddress, false);

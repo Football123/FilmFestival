@@ -11,8 +11,7 @@ namespace HaarlemFilmFestival.Controllers
         
         public ActionResult Index()
         {
-            IEnumerable<Event> allEvents = eventRepository.GetAllEvents();
-            return View(allEvents);
+            return View();
         }
     }
 }
