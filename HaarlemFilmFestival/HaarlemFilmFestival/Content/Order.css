@@ -114,7 +114,6 @@ div.Order-List {
     color: #FFFFFF;
 }
 .finalpay-button :hover {
-    color: rgba(172, 216, 224, 1);
     background-color: rgba(172, 216, 224, 1) !important;
 }
 /* #endregion */
