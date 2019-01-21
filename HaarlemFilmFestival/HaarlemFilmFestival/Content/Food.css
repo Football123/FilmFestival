@@ -38,16 +38,14 @@
 }
 
 .orderPopUp {
-    display: none;
-    z-index: 101;
     left: 0;
-    top: 0;
+    top: -77px;
     position: fixed;
     background-color: #fefefe;
     margin: auto;
     border: 1px solid black;
     width: 700px;
-    height: 470px;
+    height: 450px;
     border-radius: 20px;
     font-size: 10px;
     font-weight: 100;

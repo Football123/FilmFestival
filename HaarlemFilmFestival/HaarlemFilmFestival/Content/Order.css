@@ -62,7 +62,7 @@ div.Order-List {
 
 .Order-Table td {
     padding: 5px;
-    border-top: 1px solid black;
+    border-top: 1px solid rgba(68, 217, 201, 1);
 }
 
 .Order-Table img {
@@ -114,7 +114,8 @@ div.Order-List {
     color: #FFFFFF;
 }
 .finalpay-button :hover {
-    background-color: rgba(255, 253, 0, 1);
+    color: rgba(172, 216, 224, 1);
+    background-color: rgba(172, 216, 224, 1) !important;
 }
 /* #endregion */
 
