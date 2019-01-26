@@ -20,9 +20,11 @@ namespace HaarlemFilmFestival.Controllers
         // GET: Foods
         public ActionResult Index()
         {
+            //haal alle dubele en overbodige code eruit
             List<Food> foods = new List<Food>();
-            IEnumerable<Restaurant> restaurants = foodRepository.GetRestaurants();
 
+            IEnumerable<Restaurant> restaurants = foodRepository.GetRestaurants();
+            //overbodig
             viewmodel = FillViewModel();
             IEnumerable<Food> getFoods = foodRepository.GetFoods() ;
             List<Food> foodsFromViewModel = new List<Food>();
@@ -30,7 +32,9 @@ namespace HaarlemFilmFestival.Controllers
             {
                 foodsFromViewModel.Add(food);
             }
-            
+
+            //let op de namen
+            //probeer restaurantIndexMultiplier op een ander manier op te lossen
             int teller = 0;
             int restaurantIndexMultiplier = 12;
             foreach (Restaurant r in restaurants)
@@ -43,6 +47,7 @@ namespace HaarlemFilmFestival.Controllers
                 teller++;
             }
 
+            //het liefst geen ViewBag gebruiken
             ViewBag.foodz = foods;
 
             
@@ -50,6 +55,7 @@ namespace HaarlemFilmFestival.Controllers
         }
 
         [HttpPost]
+        //deze moet afgemaakt worden voor het winkelmandje
         public ActionResult Index(OrderRecord orderrecords)
         {
             if (Session["Orders"] == null)
