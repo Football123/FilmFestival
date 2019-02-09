@@ -17,7 +17,7 @@ namespace HaarlemFilmFestival.Models
         }               
         
         public IEnumerable<Restaurant> Restaurants { get; set; }
-        //public IEnumerable<Food> Foods { get; set; }
+        public IEnumerable<Food> Foods { get; set; }
         public IEnumerable<Food> FoodLeft { get; set; }
         //public IEnumerable<Food> RestCuis { get; set; }     
     }

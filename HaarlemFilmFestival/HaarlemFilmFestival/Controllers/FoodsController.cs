@@ -78,24 +78,21 @@ namespace HaarlemFilmFestival.Controllers
         public FoodViewModel FillViewModel()
         {
             viewmodel.Restaurants = foodRepository.GetRestaurants();
-            //viewmodel.FoodLeft = getFoodsLeft();
-            //viewmodel.eventsLeft = GetAvailableEvents();
+            viewmodel.FoodLeft = foodRepository.GetAvailableFoods();
+
             return viewmodel;
         }
         
-        //private IEnumerable<Food> getFoodsLeft()
-        //{
-        //    List<Food> left = new List<Food>();
-        //    foreach (Food food in viewmodel.Foods)
-        //    {
-        //        foreach (Event Event in GetAvailableEvents())
-        //        {
-        //            if (food.Id.Equals(Event.Id))
-        //                left.Add(food);
-        //        }
-        //    }
-        //    return left;
-        //}
+        public IEnumerable<Food> GetFoodsLeft()
+        {
+            List<Food> left = new List<Food>();
+            foreach (Food food in viewmodel.Foods)
+            {     
+                    if (food.Capacity > 0)
+                       left.Add(food);
+               }        
+           return left;
+        }
 
         //private IEnumerable<Event> GetAvailableEvents()
         //{

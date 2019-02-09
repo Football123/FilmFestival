@@ -61,5 +61,22 @@ namespace HaarlemFilmFestival.Repositories
             Cuisine c = db.Cuisines.Where(cid => cid.Id == cuisineId).FirstOrDefault();
                         return c;
         }
+
+        public IEnumerable<Food> GetAvailableFoods()
+        {
+            IEnumerable<Food> foodList = new List<Food>();
+            foodList = db.Foods.ToList();
+            foodList = GetOrderedFoods(foodList);
+            return foodList;
+        }
+
+        public IEnumerable<Food> GetOrderedFoods(IEnumerable<Food> foodList)
+        {
+            foreach(Food food in foodList)
+            {
+                food.OrderRecords = db.OrderRecords.Where(fid => fid.Event_Id == food.Id).ToList();
+            }
+            return foodList;
+        }
     }
 }
