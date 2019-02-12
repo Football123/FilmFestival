@@ -114,43 +114,65 @@
         }
     </div>
 
-    <div class="scrollable">
-        <div class="orderPopUp">
-            <form class="placeOrder" method="post" action="~/Foods/Index">
-                <h3>Choose your food ticket please.</h3>
-                <div class="idtext"></div>
-                Date:
-                <br />
-                <input type="text" class="eventidinput" name="eventid1" hidden />
-                <input type="date" name="amountOfTickets1" @*required*@><br />
-                <br />
-                <div class="idtext"></div>
-                Time*:
-                <br />
-                <input type="text" class="eventidinput" name="eventid2" hidden />
-                <input type="datetime" name="amountOfTickets2" @*required*@><br />
-                <br />
-                <div class="idtext"></div>
-                Amount of adults:
-                <br />
-                <input type="text" class="eventidinput" name="eventid" hidden />
-                <input type="number" name="amountOfTickets" min="1" max="10" required><br />
-                <br />
-                <div class="idtext"></div>
-                Amount of children:
-                <input type="text" class="eventidinput" name="eventid4" hidden />
-                <input type="number" name="amountOfTickets4" min="1" max="10" @*required*@><br />
-                <br />
-                <br />
-                <div class="idtext"></div>
-                Special request:
-                <br />
-                <input type="text" class="eventidinput" name="eventid3" hidden />
-                <input type="text" name="amountOfTickets3" @*required*@><br />
-                <br />
-                <input type="submit" value="Add ticket">
-                <input id="hide" type="button" value="CANCEL">
-            </form>
-        </div>
+    <div class="orderPopUp">
+        <form class="placeOrder" method="post" action="~/Foods/Index">
+            <h3>Choose your food ticket please.</h3>
+            <div class="idtext"></div>
+            Date:
+            <br />
+            <input type="text" class="eventidinput" name="eventid1" hidden />
+            <input type="date" name="amountOfTickets4" @*required*@><br />
+            <br />
+            <div class="idtext"></div>
+            Time*:
+            <br />
+            <input type="text" class="eventidinput" name="eventid2" hidden />
+            <input type="datetime" name="amountOfTickets2" @*required*@><br />
+            <br />
+            <div class="idtext"></div>
+            Amount of adults:
+            <br />
+            <input type="text" class="eventidinput" name="eventid" hidden />
+            <input type="number" name="amountOfTickets" min="1" max="10" required><br />
+            <br />
+            <div class="idtext"></div>
+            Amount of children:
+            <input type="text" class="eventidinput" name="eventid4" hidden />
+            <input type="number" name="amountOfTickets1" min="1" max="10" @*required*@><br />
+            <br />
+            <br />
+            <div class="idtext"></div>
+            Special request:
+            <br />
+            <input type="text" class="eventidinput" name="eventid3" hidden />
+            <input type="text" name="amountOfTickets3" @*required*@><br />
+            <br />
+            <input type="submit" value="Add ticket">
+            <input id="hide" type="button" value="CANCEL">
+        </form>
     </div>
-    </div>
+
+    
+    @using (Html.BeginForm("Food", FormMethod.Post))
+    {
+        @Html.TextBoxFor(model => model.StartTime)
+        @Html.ValidationMessage(model => model.StartTime)
+
+        @Html.TextBoxFor(model => model.StartTime)
+        @Html.ValidationMessage(model => model.StartTime)
+
+        @Html.TextBoxFor(model => model.Price)
+        @Html.ValidationMessage(model => model.Price)
+
+        @Html.TextBoxFor(model => model.Discount)
+        @Html.ValidationMessage(model => model.Discount)
+
+        @Html.TextBoxFor(model => model.Description)
+        @Html.ValidationMessage(model => model.Description)
+
+        <input type="submit" value="Add ticket">
+        <input id="hide" type="button" value="CANCEL">
+    }
+
+</div>
+   

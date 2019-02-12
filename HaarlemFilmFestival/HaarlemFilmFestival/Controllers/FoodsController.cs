@@ -64,6 +64,8 @@ namespace HaarlemFilmFestival.Controllers
             orderrecords = new OrderRecord();
             orderrecords.Event_Id = int.Parse(Request.Form["eventid"]);
             orderrecords.RecordAmount = int.Parse(Request.Form["amountOfTickets"]);
+            //orderrecords.RecordAmount = int.Parse(Request.Form["amountOfTickets1"]);
+            //orderrecords.Event.StartTime = int.Parse(Request.Form["startOfTickets"]);
             orderrecords.Order_Id = orderrecords.Event_Id;
             orderrecords.Event = foodRepository.GetFood(orderrecords.Event_Id);
             if (order.OrderRecords == null)
