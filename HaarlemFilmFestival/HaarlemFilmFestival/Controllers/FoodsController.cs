@@ -82,6 +82,7 @@ namespace HaarlemFilmFestival.Controllers
             viewmodel.Restaurants = foodRepository.GetRestaurants();
             viewmodel.FoodLeft = foodRepository.GetAvailableFoods();
 
+
             return viewmodel;
         }
         

@@ -19,7 +19,14 @@ namespace HaarlemFilmFestival.Models
         public IEnumerable<Restaurant> Restaurants { get; set; }
         public IEnumerable<Food> Foods { get; set; }
         public IEnumerable<Food> FoodLeft { get; set; }
-        //public IEnumerable<Food> RestCuis { get; set; }     
+        //public IEnumerable<Food> RestCuis { get; set; }   
+
+        //public DateTime StartTime { get { return (new DateTime(2018, 2, 19)); } set { } }
+        //public double Price { get; set; }
+        //public double? Discount { get; set; }
+        //public string Description { get; set; }
+
+        public OrderRecord OrderRecord { get; set; }
     }
 
 
