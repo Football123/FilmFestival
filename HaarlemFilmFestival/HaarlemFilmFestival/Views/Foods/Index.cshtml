@@ -153,35 +153,46 @@
         </div>*@
 
     @*@{
-        List<Event> timeItems = new List<Event>();
-        timeItems.Add(new Event
-        {
-        ???
-        });
-
-        List<Event> dateItems = new List<Event>();
-        dateItems.Add(new Event
-        {
+            List<Event> timeItems = new List<Event>();
+            timeItems.Add(new Event
+            {
             ???
-        });
+            });
 
-    }*@
+            List<Event> dateItems = new List<Event>();
+            dateItems.Add(new Event
+            {
+                ???
+            });
+
+        }*@
+
+    @Html.DropDownListFor(model => model.Package.State.Id, new SelectList(
+                  new List<Object>{
+                       new { value = 0 , text = "Donderdag"  },
+                       new { value = 1 , text = "Vrijdag" },
+                       new { value = 2 , text = "Zaterdag"},
+                       new { value = 2 , text = "Zondag"}
+                    },
+                  "value",
+                  "text",
+                   2))
 
     <div class="orderPopUp">
         <form class="placeOrder" method="post" action="~/Foods/Index">
             <h3>Choose your food ticket please.</h3>
             @using (Html.BeginForm("Food", "Index", FormMethod.Post))
-             {                           
+            {
 
-            @Html.TextBoxFor(model => model.OrderRecord.Event_Id)  @*Date dagen*@
-            @Html.DropDownListFor(model => model.StartTime)  @*Date uren*@
-            @Html.TextBoxFor(model => model.Price)  @*Prijs voor volwassenen*@
-            @Html.TextBoxFor(model => model.Discount)  @*Prijs voor kinderen*@
-            @Html.TextAreaFor(model => model.Description)  @*SpecialRequest*@
+                @Html.TextBoxFor(model => model.OrderRecord.Event_Id) @*Date dagen*@
+                @Html.DropDownListFor(model => model.StartTime) @*Date uren*@
+                @Html.TextBoxFor(model => model.Price) @*Prijs voor volwassenen*@
+                @Html.TextBoxFor(model => model.Discount) @*Prijs voor kinderen*@
+                @Html.TextAreaFor(model => model.Description) @*SpecialRequest*@
 
-            <input type="submit" value="Add ticket">
-            <input id="hide" type="button" value="CANCEL">
-             }
+                <input type="submit" value="Add ticket">
+                <input id="hide" type="button" value="CANCEL">
+            }
         </form>
     </div>
 
