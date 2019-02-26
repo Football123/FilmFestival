@@ -167,16 +167,26 @@
 
         }*@
 
-    @Html.DropDownListFor(model => model.Package.State.Id, new SelectList(
+    @Html.DropDownListFor(model => model.days, new SelectList(
                   new List<Object>{
                        new { value = 0 , text = "Donderdag"  },
                        new { value = 1 , text = "Vrijdag" },
                        new { value = 2 , text = "Zaterdag"},
-                       new { value = 2 , text = "Zondag"}
+                       new { value = 3 , text = "Zondag"}
                     },
                   "value",
                   "text",
                    2))
+
+    @Html.DropDownListFor(model => model.times, new SelectList(
+                 new List<Object>{
+                      new { value = 0 , text = "17:00"  },
+                      new { value = 1 , text = "19:00" },
+                      new { value = 2 , text = "21:00"}
+                   },
+                 "value",
+                 "text",
+                  2))
 
     <div class="orderPopUp">
         <form class="placeOrder" method="post" action="~/Foods/Index">

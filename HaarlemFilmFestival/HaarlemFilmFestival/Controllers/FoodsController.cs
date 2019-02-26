@@ -97,6 +97,11 @@ namespace HaarlemFilmFestival.Controllers
            return left;
         }
 
+        public IEnumerable<Food> getDropdownList()
+        {
+            return days
+        }
+
         //private IEnumerable<Event> GetAvailableEvents()
         //{
         //    IEnumerable<OrderRecord> ordered;            
