@@ -78,5 +78,10 @@ namespace HaarlemFilmFestival.Repositories
             }
             return foodList;
         }
+
+        public Food GetAvailableFood(FoodViewModel food)
+        {
+            return (db.Foods.Where(x => x.Restaurant.Id == food.Restaurant_Id && x.StartTime.))
+        }
     }
 }

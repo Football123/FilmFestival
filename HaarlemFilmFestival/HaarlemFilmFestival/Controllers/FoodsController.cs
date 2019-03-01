@@ -56,21 +56,16 @@ namespace HaarlemFilmFestival.Controllers
 
         [HttpPost]
         //deze moet afgemaakt worden voor het winkelmandje
-        public ActionResult Index(OrderRecord orderrecords)
+        public ActionResult Index(FoodViewModel foodViewModel)
         {
             if (Session["Orders"] == null)
                 Session["Orders"] = new Order();
             Order order = (Order)Session["Orders"];
-            orderrecords = new OrderRecord();
-            orderrecords.Event_Id = int.Parse(Request.Form["eventid"]);
-            orderrecords.RecordAmount = int.Parse(Request.Form["amountOfTickets"]);
-            //orderrecords.RecordAmount = int.Parse(Request.Form["amountOfTickets1"]);
-            //orderrecords.Event.StartTime = int.Parse(Request.Form["startOfTickets"]);
-            orderrecords.Order_Id = orderrecords.Event_Id;
-            orderrecords.Event = foodRepository.GetFood(orderrecords.Event_Id);
+            OrderRecord orderRecord = new OrderRecord();
             if (order.OrderRecords == null)
                 order.OrderRecords = new List<OrderRecord>();
-            order.OrderRecords.Add(orderrecords);            
+            orderRecord.
+            order.OrderRecords.Add(orderRecord);
             Session["Orders"] = order;
 
             viewmodel = FillViewModel();
@@ -97,10 +92,10 @@ namespace HaarlemFilmFestival.Controllers
            return left;
         }
 
-        public IEnumerable<Food> getDropdownList()
-        {
-            return days
-        }
+        //public IEnumerable<Food> getDropdownList()
+        //{
+        //    return days
+        //}
 
         //private IEnumerable<Event> GetAvailableEvents()
         //{

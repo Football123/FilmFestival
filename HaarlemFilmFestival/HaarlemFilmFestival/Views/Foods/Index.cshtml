@@ -19,7 +19,8 @@
             var event = $(this).attr("id");
             $(".orderPopUp").show();
             $(".eventidinput").val(event);
-        });
+            $("#Restaurant_Id").val(event);
+    });    
     });</script>
 <!--#endregion scripts -->
 
@@ -88,7 +89,7 @@
                     @item.Restaurant.CuisinesString
                 </td>
                 <td>
-                    <a class="orderButton" id="@item.Id"><img src="~/Content/Images/cart.png" /></a>
+                    <a class="orderButton" id="@item.Restaurant.Id"><img src="~/Content/Images/cart.png" /></a>
                 </td>
             </tr>
         }
@@ -166,8 +167,13 @@
             });
 
         }*@
-
-    @Html.DropDownListFor(model => model.days, new SelectList(
+    
+    <div class="orderPopUp">
+        <form class="placeOrder" method="post" action="~/Foods/Index">
+            <h3>Choose your food ticket please.</h3>
+            @using (Html.BeginForm("Food", "Index", FormMethod.Post))
+            {
+                @Html.DropDownListFor(model => model.Days, new SelectList(
                   new List<Object>{
                        new { value = 0 , text = "Donderdag"  },
                        new { value = 1 , text = "Vrijdag" },
@@ -178,26 +184,18 @@
                   "text",
                    2))
 
-    @Html.DropDownListFor(model => model.times, new SelectList(
-                 new List<Object>{
-                      new { value = 0 , text = "17:00"  },
-                      new { value = 1 , text = "19:00" },
-                      new { value = 2 , text = "21:00"}
-                   },
-                 "value",
-                 "text",
-                  2))
+                @Html.DropDownListFor(model => model.Times, new SelectList(
+                             new List<Object>{
+                                  new { value = 0 , text = "17:00"  },
+                                  new { value = 1 , text = "19:00" },
+                                  new { value = 2 , text = "21:00"}
+                               },
+                             "value",
+                             "text",
+                              2))
 
-    <div class="orderPopUp">
-        <form class="placeOrder" method="post" action="~/Foods/Index">
-            <h3>Choose your food ticket please.</h3>
-            @using (Html.BeginForm("Food", "Index", FormMethod.Post))
-            {
-
-                @Html.TextBoxFor(model => model.OrderRecord.Event_Id) @*Date dagen*@
-                @Html.DropDownListFor(model => model.StartTime) @*Date uren*@
-                @Html.TextBoxFor(model => model.Price) @*Prijs voor volwassenen*@
-                @Html.TextBoxFor(model => model.Discount) @*Prijs voor kinderen*@
+                @Html.EditorFor(model => model.Restaurant_Id, new { htmlAttributes = new { @type = "number", @min = "0", @step = "1", @value = "0" } })
+               
                 @Html.TextAreaFor(model => model.Description) @*SpecialRequest*@
 
                 <input type="submit" value="Add ticket">
