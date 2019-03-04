@@ -29,8 +29,8 @@ namespace HaarlemFilmFestival.Models
         public OrderRecord OrderRecord { get; set; }
         public int Restaurant_Id { get; set; } 
         public string Description { get; set; }
-        public int Days { get; set; }
-        public int Times { get; set; }
+        public DateTime Days { get; set; }
+        public DateTime Times { get; set; }
     }
 
 
