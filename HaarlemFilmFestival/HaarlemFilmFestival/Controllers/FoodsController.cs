@@ -58,6 +58,7 @@ namespace HaarlemFilmFestival.Controllers
         //deze moet afgemaakt worden voor het winkelmandje
         public ActionResult Index(FoodViewModel foodViewModel)
         {
+            Food food = new Food
             if (Session["Orders"] == null)
                 Session["Orders"] = new Order();
             Order order = (Order)Session["Orders"];
