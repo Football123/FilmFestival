@@ -14,90 +14,84 @@ namespace HaarlemFilmFestival.Controllers
 {
     public class FoodsController : Controller
     {
-        private FoodViewModel viewmodel = new FoodViewModel();
         private IFoodRepository foodRepository = new FoodRepository();
 
         // GET: Foods
         public ActionResult Index()
         {
-            //haal alle dubele en overbodige code eruit
-            List<Food> foods = new List<Food>();
+            FoodViewModel viewmodel = new FoodViewModel();
 
             IEnumerable<Restaurant> restaurants = foodRepository.GetRestaurants();
-            //overbodig
-            viewmodel = FillViewModel();
-            IEnumerable<Food> getFoods = foodRepository.GetFoods() ;
-            List<Food> foodsFromViewModel = new List<Food>();
-            foreach  (Food food in getFoods)
-            {
-                foodsFromViewModel.Add(food);
-            }
 
-            //let op de namen
-            //probeer restaurantIndexMultiplier op een ander manier op te lossen
-            int teller = 0;
-            int restaurantIndexMultiplier = 12;
+            List<Food> filteredFoods = new List<Food>();
+
             foreach (Restaurant r in restaurants)
             {
-                Food food = new Food();
-                food.Restaurant = r;
-                food.Price = foodsFromViewModel[(teller * restaurantIndexMultiplier)].Price;
-                food.Discount = foodsFromViewModel[(teller * restaurantIndexMultiplier)].Discount;
-                foods.Add(food);
-                teller++;
+                Food food = foodRepository.GetFoodByRestaurant(r);
+                filteredFoods.Add(food);
             }
 
-            //het liefst geen ViewBag gebruiken
-            ViewBag.foodz = foods;
+            viewmodel.Foods = filteredFoods;
+            viewmodel.Restaurants = restaurants;
 
-            
             return View(viewmodel);
         }
 
         [HttpPost]
-        //deze moet afgemaakt worden voor het winkelmandje
         public ActionResult Index(FoodViewModel foodViewModel)
         {
-            Food food = new Food
+            int foodId = foodRepository.GetFoodId(foodViewModel);
+            Food food = foodRepository.GetFood(foodId);
+
             if (Session["Orders"] == null)
                 Session["Orders"] = new Order();
+
             Order order = (Order)Session["Orders"];
             OrderRecord orderRecord = new OrderRecord();
+
             if (order.OrderRecords == null)
                 order.OrderRecords = new List<OrderRecord>();
-            orderRecord.
+
+            orderRecord.Event = food;
+            orderRecord.RecordAmount = foodViewModel.Quantity;
+            orderRecord.RecordAmountForKids = 0;
+
+            if (foodViewModel.QuantityForKids != null)
+                orderRecord.RecordAmountForKids = (int)foodViewModel.QuantityForKids;
+
             order.OrderRecords.Add(orderRecord);
             Session["Orders"] = order;
 
-            viewmodel = FillViewModel();
-            return View(viewmodel);
+            return RedirectToAction("Index", "Order");
         }
+
 
         public FoodViewModel FillViewModel()
         {
+            FoodViewModel viewmodel = new FoodViewModel();
             viewmodel.Restaurants = foodRepository.GetRestaurants();
             viewmodel.FoodLeft = foodRepository.GetAvailableFoods();
+            viewmodel.Foods = foodRepository.GetFoods();
 
 
             return viewmodel;
         }
-        
+
         public IEnumerable<Food> GetFoodsLeft()
         {
+            FoodViewModel viewmodel = new FoodViewModel();
+            viewmodel.Foods = foodRepository.GetFoods();
+
             List<Food> left = new List<Food>();
             foreach (Food food in viewmodel.Foods)
-            {     
-                    if (food.Capacity > 0)
-                       left.Add(food);
-               }        
-           return left;
+            {
+                if (food.Capacity > 0)
+                    left.Add(food);
+            }
+            return left;
         }
 
-        //public IEnumerable<Food> getDropdownList()
-        //{
-        //    return days
-        //}
-
+       
         //private IEnumerable<Event> GetAvailableEvents()
         //{
         //    IEnumerable<OrderRecord> ordered;            
