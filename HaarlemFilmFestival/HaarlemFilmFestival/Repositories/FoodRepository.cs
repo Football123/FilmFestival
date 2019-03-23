@@ -59,7 +59,7 @@ namespace HaarlemFilmFestival.Repositories
         public Cuisine GetCuisine(int cuisineId)
         {
             Cuisine c = db.Cuisines.Where(cid => cid.Id == cuisineId).FirstOrDefault();
-                        return c;
+            return c;
         }
 
         public IEnumerable<Food> GetAvailableFoods()
@@ -72,16 +72,29 @@ namespace HaarlemFilmFestival.Repositories
         
         public IEnumerable<Food> GetOrderedFoods(IEnumerable<Food> foodList)
         {
-            foreach(Food food in foodList)
+            foreach (Food food in foodList)
             {
                 food.OrderRecords = db.OrderRecords.Where(fid => fid.Event_Id == food.Id).ToList();
             }
             return foodList;
         }
 
-        public Food GetAvailableFood(FoodViewModel food)
+        public int GetFoodId(FoodViewModel food)
         {
-            return (db.Foods.Where(x => x.Restaurant.Id == food.Restaurant_Id && x.StartTime.))
+            Food foodEvent = db.Foods.Where(ev => ev.Restaurant.Id == food.Restaurant_Id && ev.StartTime == food.StartTime).FirstOrDefault();
+            int eventId = foodEvent.Id;
+            return eventId;
         }
+
+        public Food GetFoodByRestaurant(Restaurant restaurant)
+        {
+            Food food = db.Foods.Where(x => x.Restaurant.Id == restaurant.Id).FirstOrDefault();
+            return food;
+        }
+
+        //public Food GetAvailableFood(FoodViewModel food)
+        //{
+        //    return (db.Foods.Where(x => x.Restaurant.Id == food.Restaurant_Id && x.StartTime.))
+        //}
     }
 }

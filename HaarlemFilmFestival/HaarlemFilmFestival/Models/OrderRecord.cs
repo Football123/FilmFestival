@@ -12,6 +12,8 @@ namespace HaarlemFilmFestival.Models
         public int Event_Id { get; set; }
 
         public int RecordAmount { get; set; }
+        [NotMapped]
+        public int RecordAmountForKids { get; set; }
         public TicketType TicketType { get; set; }
         public string RecordDescription { get; set; }
         

@@ -48,12 +48,13 @@
                                         </tr>}
                                                 else if (order.Event is Food)
                                                 {
+                                                    totalprice = totalprice + ((double)order.Event.Discount * order.RecordAmountForKids);
                                                     Food item = (Food)order.Event;
                                                     <tr>
-                                                        <td><p>@item.Restaurant.RestaurantName || @order.RecordAmount.ToString() Persons || @item.Restaurant.CuisinesString || @order.Event.StartTime.DayOfWeek.ToString() @order.Event.StartTime.Month @order.Event.StartTime.Day</p></td>
-                                                        @{ var total = order.RecordAmount * order.Event.Price; }
-                                                        <td>@order.RecordAmount x €@order.Event.Price.ToString("N2") = €@total.ToString("N2")</td>
-                                                        <td>@order.RecordAmount</td>
+                                                        <td><p>@item.Restaurant.RestaurantName || @(order.RecordAmount + order.RecordAmountForKids) Persons || @item.Restaurant.CuisinesString || @order.Event.StartTime</p></td>
+                                                        @{ var total =  ((order.Event.Price * order.RecordAmount) + ((double)order.Event.Discount * order.RecordAmountForKids)); }
+                                                        <td>€@total.ToString("N2")</td>
+                                                        <td>@(order.RecordAmount+order.RecordAmountForKids)</td>
                                                         <td><a class="DeleteOrderRecord" id="@order.Event.Id"><img src="~/Content/Images/X.png" /></a></td>
                                                     </tr>}
                                                             else if (order.Event is Dance)

@@ -1,39 +1,38 @@
 ﻿@using HaarlemFilmFestival.Models;
 @using HaarlemFilmFestival.ViewModels;
-
 @model FoodViewModel
-
 @{
     ViewBag.Title = "Food";
 }
 <link href="@Url.Content("~/Content/Food.css")" , rel="stylesheet" type="text/css" />
-
 <!--#region scripts-->
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script>$(document).ready(function () {
+<script>
+    $(document).ready(function () {
         $("#hide").click(function () {
             $(".orderPopUp").hide();
         });
         $(".orderButton").click(function (data) {
-            var id = document.activeElement.id;
             var event = $(this).attr("id");
-            $(".orderPopUp").show();
-            $(".eventidinput").val(event);
+            var price = $(this).parent().parent().find(".restaurant-price").text();
+            var discount = $(this).parent().parent().find(".restaurant-discount").text();
+            
             $("#Restaurant_Id").val(event);
-    });    
+            $(".selected-restaurant-price").text(price);
+            $(".selected-restaurant-discount").text(discount);
+
+            $("#restaurantid-1").show();
+        });
     });</script>
 <!--#endregion scripts -->
-
 <div class="jumbotron">
     <h1>Visit Haarlem Restaurants</h1>
     <p>
         Although Haarlem had not all particular well known culinary tradition there are lots of restaurants that are worth your while. Some of them created a special Haarlem festival menu at a reduced price. It is a great way to enjoy the posibilities of Haarlem.
     </p>
-
     <p class="food1">
         See the restaurants below for locations, prices and the type of food the restaurant serves. A reservation is mandatory.
     </p>
-
     <div class="foodcontainer">
         <div class="column">
             Scroll down to the restaurant section, look at the various restaurants and choose the one that appeals to you the most.
@@ -47,12 +46,9 @@
             <img src="@Url.Content("~/Content/Images/Restaurants/u567aangepast.png")" />
         </div>
     </div>
-
     <br />
     <h7 style="color:white;">Tickets</h7>
-
     <h1>Tickets</h1>
-
     <table class="table">
         <tr>
             <th>
@@ -71,18 +67,16 @@
                 Order a ticket**
             </th>
         </tr>
-
-        @*probeer geen ViewBag te gebruiken (andere oplossing)*@
-        @foreach (var item in ViewBag.foodz)
+        @foreach (var item in Model.Foods)
         {
             <tr>
                 <td>
                     @item.Restaurant.RestaurantName
                 </td>
-                <td>
+                <td class="restaurant-price">
                     @item.Price
                 </td>
-                <td>
+                <td class="restaurant-discount">
                     @item.Discount
                 </td>
                 <td>
@@ -93,15 +87,12 @@
                 </td>
             </tr>
         }
-
     </table>
-
 
     <p>* Reservation is mandatory.  A reservation fee of €10,- per person wil be charged when a reservation is made on the Haarlem Festival site. This fee will be deducted from the final check on visiting the restaurant.</p>
     <p>** When ordering a ticket there will be an option to inform the restaurant for special requests regarding the food or service (allergies, wheelchair etc.)</p>
     <br />
     <h1>Restaurants</h1>
-
     <div class="row">
         @foreach (var item in Model.Restaurants)
         {
@@ -114,77 +105,24 @@
             </div>
         }
     </div>
+   
 
-    @*<div class="orderPopUp">
-            <form class="placeOrder" method="post" action="~/Foods/Index">
-                <h3>Choose your food ticket please.</h3>
-                <div class="idtext"></div>
-                Date:
-                <br />
-                <input type="text" class="eventidinput" name="eventid1" hidden />
-                <input type="date" name="amountOfTickets4" ><br />
-                <br />
-                <div class="idtext"></div>
-                Time*:
-                <br />
-                <input type="text" class="eventidinput" name="eventid2" hidden />
-                <input type="datetime" name="amountOfTickets2" ><br />
-                <br />
-                <div class="idtext"></div>
-                Amount of adults:
-                <br />
-                <input type="text" class="eventidinput" name="eventid" hidden />
-                <input type="number" name="amountOfTickets" min="1" max="10" required><br />
-                <br />
-                <div class="idtext"></div>
-                Amount of children:
-                <input type="text" class="eventidinput" name="eventid4" hidden />
-                <input type="number" name="amountOfTickets1" min="1" max="10" ><br />
-                <br />
-                <br />
-                <div class="idtext"></div>
-                Special request:
-                <br />
-                <input type="text" class="eventidinput" name="eventid3" hidden />
-                <input type="text" name="amountOfTickets3" ><br />
-                <br />
-                <input type="submit" value="Add ticket">
-                <input id="hide" type="button" value="CANCEL">
-            </form>
-        </div>*@
-
-    @*@{
-            List<Event> timeItems = new List<Event>();
-            timeItems.Add(new Event
-            {
-            ???
-            });
-
-            List<Event> dateItems = new List<Event>();
-            dateItems.Add(new Event
-            {
-                ???
-            });
-
-        }*@
-    
-    <div class="orderPopUp">
-        <form class="placeOrder" method="post" action="~/Foods/Index">
-            <h3>Choose your food ticket please.</h3>
-            @using (Html.BeginForm("Food", "Index", FormMethod.Post))
-            {
-                @Html.DropDownListFor(model => model.Days, new SelectList(
+    <div class="orderPopUp" id="restaurantid-1">
+        <h3>Choose your food ticket please.</h3>
+        @using (Html.BeginForm("Index", "Foods", FormMethod.Post))
+        {
+            @Html.DropDownListFor(model => model.Day, new SelectList(
                   new List<Object>{
-                       new { value = 0 , text = "Donderdag"  },
+                       new { value = 0 , text = "Donderdag" },
                        new { value = 1 , text = "Vrijdag" },
                        new { value = 2 , text = "Zaterdag"},
                        new { value = 3 , text = "Zondag"}
                     },
                   "value",
                   "text",
-                   2))
+                   Model.Day))
 
-                @Html.DropDownListFor(model => model.Times, new SelectList(
+            @Html.DropDownListFor(model => model.Time, new SelectList(
                              new List<Object>{
                                   new { value = 0 , text = "17:00"  },
                                   new { value = 1 , text = "19:00" },
@@ -192,17 +130,21 @@
                                },
                              "value",
                              "text",
-                              2))
+                              Model.Time))
 
-                @Html.EditorFor(model => model.Restaurant_Id, new { htmlAttributes = new { @type = "number", @min = "0", @step = "1", @value = "0" } })
-               
-                @Html.TextAreaFor(model => model.Description) @*SpecialRequest*@
+            @Html.HiddenFor(model => model.Restaurant_Id, new { htmlAttributes = new { @type = "number", @min = "0", @step = "1" } })
 
-                <input type="submit" value="Add ticket">
-                <input id="hide" type="button" value="CANCEL">
-            }
-        </form>
+            <label class="selected-restaurant-price"></label>
+            @Html.EditorFor(model => model.Quantity)
+
+            <label class="selected-restaurant-discount"></label>
+            @Html.EditorFor(model => model.QuantityForKids)
+
+            @Html.TextAreaFor(model => model.Description)
+
+            <input type="submit" value="Add to shoppingcart">
+            <input type="button" value="Close">
+        }
     </div>
 
 </div>
-
