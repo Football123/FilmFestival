@@ -69,7 +69,7 @@ namespace HaarlemFilmFestival.Repositories
             foodList = GetOrderedFoods(foodList);
             return foodList;
         }
-
+        
         public IEnumerable<Food> GetOrderedFoods(IEnumerable<Food> foodList)
         {
             foreach(Food food in foodList)
