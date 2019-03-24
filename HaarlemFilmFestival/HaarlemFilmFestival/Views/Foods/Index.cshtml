@@ -121,7 +121,7 @@
                   "value",
                   "text",
                    Model.Day))
-
+            <br />
             @Html.DropDownListFor(model => model.Time, new SelectList(
                              new List<Object>{
                                   new { value = 0 , text = "17:00"  },
@@ -131,18 +131,25 @@
                              "value",
                              "text",
                               Model.Time))
-
+            <br />
             @Html.HiddenFor(model => model.Restaurant_Id, new { htmlAttributes = new { @type = "number", @min = "0", @step = "1" } })
 
-            <label class="selected-restaurant-price"></label>
+            @*<label class="selected-restaurant-price"></label>*@
+            <label>Amount of adults:</label>
             @Html.EditorFor(model => model.Quantity)
-
-            <label class="selected-restaurant-discount"></label>
+            <br />
+            @*<label class="selected-restaurant-discount"></label>*@
+            <label>Amount of children:</label>
             @Html.EditorFor(model => model.QuantityForKids)
-
+            <br />
+            <label>Special request:</label>
+            <br />
             @Html.TextAreaFor(model => model.Description)
 
+            <input type="button" value="Close">
+            <br />
             <input type="submit" value="Add to shoppingcart">
+            <br />
             <input type="button" value="Close">
         }
     </div>
