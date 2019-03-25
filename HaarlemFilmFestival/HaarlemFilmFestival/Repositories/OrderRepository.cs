@@ -10,6 +10,7 @@ namespace HaarlemFilmFestival.Repositories
         public void AddNewOrder(Order order)
         {
             db.Orders.Add(order);
+            //db.SaveChanges(); //tijdelijk 
             foreach (OrderRecord record in order.OrderRecords)
             {
                 db.OrderRecords.Add(record);

@@ -7,13 +7,13 @@ namespace HaarlemFilmFestival.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class restaurant : IMigrationMetadata
+    public sealed partial class orderrecords : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(restaurant));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(orderrecords));
         
         string IMigrationMetadata.Id
         {
-            get { return "201812121226466_restaurant"; }
+            get { return "201903241318225_orderrecords"; }
         }
         
         string IMigrationMetadata.Source

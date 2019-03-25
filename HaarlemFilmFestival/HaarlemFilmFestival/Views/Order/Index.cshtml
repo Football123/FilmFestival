@@ -45,7 +45,7 @@
                                             <td>@order.RecordAmount x €@order.Event.Price.ToString("N2") = €@total.ToString("N2")</td>
                                             <td>@order.RecordAmount</td>
                                             <td><a class="DeleteOrderRecord" id="@order.Event.Id"><img src="~/Content/Images/X.png" /></a></td>
-                                        </tr>}
+                            </tr>}
                                                 else if (order.Event is Food)
                                                 {
                                                     totalprice = totalprice + ((double)order.Event.Discount * order.RecordAmountForKids);
@@ -83,3 +83,16 @@
     </form>
 
 </div>
+
+<script>
+    $(".DeleteOrderRecord").on("click", function () {
+        var id = $(this).attr("id");
+
+        $.post("Order/DeleteSessie", { id: id }, function () {
+            location.reload();
+        });
+
+    });
+
+
+</script>

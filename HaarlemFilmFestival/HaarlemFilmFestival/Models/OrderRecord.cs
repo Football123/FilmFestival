@@ -6,6 +6,7 @@ namespace HaarlemFilmFestival.Models
     [Table("OrderRecords")]
     public class OrderRecord
     {
+        public int Id { get; set; }
         [Key, Column(Order = 0)]
         public int Order_Id { get; set; }
         [Key, Column(Order = 1)]

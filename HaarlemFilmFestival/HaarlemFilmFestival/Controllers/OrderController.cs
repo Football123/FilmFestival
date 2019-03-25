@@ -1,6 +1,7 @@
 ﻿using HaarlemFilmFestival.Models;
 using HaarlemFilmFestival.Repositories;
 using System;
+using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
 
@@ -66,6 +67,25 @@ namespace HaarlemFilmFestival.Controllers
         public ActionResult Finalize(Order order)
         {
             return View("Final");
+        }
+        public void DeleteSessie(int id)
+        {
+            var sessie = (Order)Session["Orders"];
+            var orders = sessie.OrderRecords;
+
+
+            var toDelete = orders.FirstOrDefault(or => or.Event.Id == id);
+            if (toDelete == null) throw new Exception("Geef een Event Id mee anders gaat de delete kapot");
+            orders.Remove(toDelete);
+
+            if (orders.Count > 0)
+            {
+                Session["Orders"] = orders;
+            }
+            else
+            {
+                Session.Remove("Orders");
+            }
         }
     }
 }
