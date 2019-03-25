@@ -27,7 +27,7 @@ namespace HaarlemFilmFestival.Models
         [NotMapped]
         public string CuisinesString { get { return (GenerateCuisinesString()); } }
 
-        //hier krijg je een lijst van cuisines terug 
+        //hier worden alle cuisines aan elkaar geplakt
         public string GenerateCuisinesString()
         {
             int cuisinesLength = Cuisines.Count;

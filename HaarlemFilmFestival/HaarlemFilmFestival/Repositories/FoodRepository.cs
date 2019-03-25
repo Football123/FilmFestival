@@ -9,7 +9,7 @@ namespace HaarlemFilmFestival.Repositories
         private HaarlemFilmFestivalContext db = HaarlemFilmFestivalContext.getInstance();
         private IEventRepository eventrepository = new EventRepository();
 
-        //geef een lijst terug van alle Restaurant_Ids in RestaurantCuisine
+        //geef een lijst terug van RestaurantCuisine waar gefilterd word op restaurant_id met de meegegeven restaurantId
         public List<RestaurantCuisine> GetRestaurantCuisinesByRestaurantId(int restaurantId)
         {
             List<RestaurantCuisine> restaurantCuisines = new List<RestaurantCuisine>();
@@ -86,6 +86,7 @@ namespace HaarlemFilmFestival.Repositories
             return eventId;
         }
 
+        //haal alle Food regels en filter op meegestuurde Restaurant.Id parameter
         public Food GetFoodByRestaurant(Restaurant restaurant)
         {
             Food food = db.Foods.Where(x => x.Restaurant.Id == restaurant.Id).FirstOrDefault();
