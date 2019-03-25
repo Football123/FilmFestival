@@ -66,16 +66,16 @@ namespace HaarlemFilmFestival.Controllers
         }
 
 
-        public FoodViewModel FillViewModel()
-        {
-            FoodViewModel viewmodel = new FoodViewModel();
-            viewmodel.Restaurants = foodRepository.GetRestaurants();
-            viewmodel.FoodLeft = foodRepository.GetAvailableFoods();
-            viewmodel.Foods = foodRepository.GetFoods();
+        //public FoodViewModel FillViewModel()
+        //{
+        //    FoodViewModel viewmodel = new FoodViewModel();
+        //    viewmodel.Restaurants = foodRepository.GetRestaurants();
+        //    viewmodel.FoodLeft = foodRepository.GetAvailableFoods();
+        //    viewmodel.Foods = foodRepository.GetFoods();
 
 
-            return viewmodel;
-        }
+        //    return viewmodel;
+        //}
 
         public IEnumerable<Food> GetFoodsLeft()
         {
