@@ -35,50 +35,59 @@
                                 <td>@order.RecordAmount</td>
                                 <td><a class="DeleteOrderRecord" id="@order.Event.Id"><img src="~/Content/Images/X.png" /></a></td>
                             </tr>
-                                    }
-                                    else if (order.Event is Jazz)
-                                    {
-                                        Jazz item = (Jazz)order.Event;
-                                        <tr>
-                                            <td><p>Jazz ticket || @item.Band.Name || @order.Event.StartTime.DayOfWeek.ToString() @order.Event.StartTime.Month @order.Event.StartTime.Day || @order.Event.Location.Name @order.Event.Location.LocationDescription</p></td>
-                                            @{ var total = order.RecordAmount * order.Event.Price; }
-                                            <td>@order.RecordAmount x €@order.Event.Price.ToString("N2") = €@total.ToString("N2")</td>
-                                            <td>@order.RecordAmount</td>
-                                            <td><a class="DeleteOrderRecord" id="@order.Event.Id"><img src="~/Content/Images/X.png" /></a></td>
+                        }
+                        else if (order.Event is Jazz)
+                        {
+                            Jazz item = (Jazz)order.Event;
+                            <tr>
+                                <td><p>Jazz ticket || @item.Band.Name || @order.Event.StartTime.DayOfWeek.ToString() @order.Event.StartTime.Month @order.Event.StartTime.Day || @order.Event.Location.Name @order.Event.Location.LocationDescription</p></td>
+                                @{ var total = order.RecordAmount * order.Event.Price; }
+                                <td>@order.RecordAmount x €@order.Event.Price.ToString("N2") = €@total.ToString("N2")</td>
+                                <td>@order.RecordAmount</td>
+                                <td><a class="DeleteOrderRecord" id="@order.Event.Id"><img src="~/Content/Images/X.png" /></a></td>
                             </tr>}
-                                                else if (order.Event is Food)
-                                                {
-                                                    totalprice = totalprice + ((double)order.Event.Discount * order.RecordAmountForKids);
-                                                    Food item = (Food)order.Event;
-                                                    <tr>
-                                                        <td><p>@item.Restaurant.RestaurantName || @(order.RecordAmount + order.RecordAmountForKids) Persons || @item.Restaurant.CuisinesString || @order.Event.StartTime</p></td>
-                                                        @{ var total =  ((order.Event.Price * order.RecordAmount) + ((double)order.Event.Discount * order.RecordAmountForKids)); }
-                                                        <td>€@total.ToString("N2")</td>
-                                                        <td>@(order.RecordAmount+order.RecordAmountForKids)</td>
-                                                        <td><a class="DeleteOrderRecord" id="@order.Event.Id"><img src="~/Content/Images/X.png" /></a></td>
-                                                    </tr>}
-                                                            else if (order.Event is Dance)
-                                                            {
-                                                                Dance item = (Dance)order.Event;
-                                                                <tr>
-                                                                    <td><p>Dance ticket || @order.Event.Location.Name || @order.Event.StartTime.DayOfWeek.ToString() @order.Event.StartTime.Month @order.Event.StartTime.Day || @item.Theme.ToString()</p></td>
-                                                                    @{ var total = order.RecordAmount * order.Event.Price; }
-                                                                    <td>@order.RecordAmount x €@order.Event.Price.ToString("N2") = €@total.ToString("N2")</td>
-                                                                    <td>@order.RecordAmount</td>
-                                                                    <td><a class="DeleteOrderRecord" id="@order.Event.Id"><img src="~/Content/Images/X.png" /></a></td>
-                                                                </tr>
-                                                                            }
-                                                                        }
-                                                                        <tr>
-                                                                            <td colspan="1">Amount of tickets: @orderrecords.Count()</td>
-                                                                            <td colspan="3">Total price: €@totalprice.ToString("N2")</td>
-                                                                        </tr>
+                        else if (order.Event is Food)
+                        {
+                            totalprice = totalprice + ((double)order.Event.Discount * order.RecordAmountForKids);
+                            Food item = (Food)order.Event;
+                            <tr>
+                                <td><p>@item.Restaurant.RestaurantName || @(order.RecordAmount + order.RecordAmountForKids) Persons || @item.Restaurant.CuisinesString || @order.Event.StartTime</p></td>
+                                @{ var total = ((order.Event.Price * order.RecordAmount) + ((double)order.Event.Discount * order.RecordAmountForKids)); }
+                                <td>€@total.ToString("N2")</td>
+                                <td>@(order.RecordAmount + order.RecordAmountForKids)</td>
+                                <td><a class="DeleteOrderRecord" id="@order.Event.Id"><img src="~/Content/Images/X.png" /></a></td>
+                            </tr>}
+                        else if (order.Event is Dance)
+                        {
+                            Dance item = (Dance)order.Event;
+                            <tr>
+                                <td><p>Dance ticket || @order.Event.Location.Name || @order.Event.StartTime.DayOfWeek.ToString() @order.Event.StartTime.Month @order.Event.StartTime.Day || @item.Theme.ToString()</p></td>
+                                @{ var total = order.RecordAmount * order.Event.Price; }
+                                <td>@order.RecordAmount x €@order.Event.Price.ToString("N2") = €@total.ToString("N2")</td>
+                                <td>@order.RecordAmount</td>
+                                <td><a class="DeleteOrderRecord" id="@order.Event.Id"><img src="~/Content/Images/X.png" /></a></td>
+                            </tr>
+                        }
+                    }
+                    <tr>
+                        <td colspan="1">Amount of tickets: @orderrecords.Count()</td>
+                        <td colspan="3">Total price: €@totalprice.ToString("N2")</td>
+                    </tr>
                 }
             </table>
             <input type="button" class="back" value="Shop more tickets" onclick="history.back()" />
-            <form method="post" action="~/Views/Order/Payment/">
-                <button type="submit" class="finalpay-button">Pay your tickets</button>
-            </form>
+            @*Nieuw*@
+            @*<form method="post" action="~/Views/Order/Payment/">*@
+            @*<input type="button" value="Pay your tickets" onclick="window.location.href='<%= Url.Action(" Payment", "Order" ) %>';" />*@
+            <button type="submit" class="finalpay-button">@Html.ActionLink("Pay your tickets", "Payment", "Order")</button>
+            @*</form>*@
+
+            @*Oud*@
+            @*<form method="post" action="~/Views/Order/Payment/">*@
+            @*<button type="submit" class="finalpay-button">Pay your tickets</button>*@
+            @*</form>*@
+
+            @*<button onclick="location.href='@Url.Action("Index", "Users")';return false;">Cancel</button>*@
         </div>
     </form>
 

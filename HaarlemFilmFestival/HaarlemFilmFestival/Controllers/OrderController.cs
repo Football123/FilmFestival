@@ -60,6 +60,8 @@ namespace HaarlemFilmFestival.Controllers
 
         public ActionResult Final()
         {
+            // Sessie verwijderen als order in database in opgeslagen
+            Session.Clear();
             return View();
         }
 
