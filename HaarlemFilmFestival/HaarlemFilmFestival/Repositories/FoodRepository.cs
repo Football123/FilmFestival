@@ -62,13 +62,15 @@ namespace HaarlemFilmFestival.Repositories
             return c;
         }
 
-        public IEnumerable<Food> GetAvailableFoods()
-        {
-            IEnumerable<Food> foodList = new List<Food>();
-            foodList = db.Foods.ToList();
-            foodList = GetOrderedFoods(foodList);
-            return foodList;
-        }
+        //public IEnumerable<Food> GetAvailableFoods()
+        //{
+        //    IEnumerable<Food> foodList = new List<Food>();
+        //    //foodList = db.Foods.ToList();
+        //    IEnumerable<Food> etensLijst = new List<Food>();
+        //    etensLijst = db.Foods;
+        //    foodList = GetOrderedFoods(etensLijst);
+        //    return foodList;
+        //}
         
         public IEnumerable<Food> GetOrderedFoods(IEnumerable<Food> foodList)
         {
@@ -86,7 +88,7 @@ namespace HaarlemFilmFestival.Repositories
             return eventId;
         }
 
-        //haal alle Food regels en filter op meegestuurde Restaurant.Id parameter
+        //haal Food object op en filter op meegestuurde Restaurant.Id parameter
         public Food GetFoodByRestaurant(Restaurant restaurant)
         {
             Food food = db.Foods.Where(x => x.Restaurant.Id == restaurant.Id).FirstOrDefault();
