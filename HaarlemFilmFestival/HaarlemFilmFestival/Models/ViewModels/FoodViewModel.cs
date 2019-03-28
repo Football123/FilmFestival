@@ -18,7 +18,7 @@ namespace HaarlemFilmFestival.Models
 
         public IEnumerable<Restaurant> Restaurants { get; set; }
         public IEnumerable<Food> Foods { get; set; }
-        //public IEnumerable<Food> FoodLeft { get; set; }
+        public IEnumerable<Food> FoodLeft { get; set; }
 
         //public OrderRecord OrderRecord { get; set; }
         public int Restaurant_Id { get; set; }
@@ -28,16 +28,7 @@ namespace HaarlemFilmFestival.Models
         public int Day { get; set; }
         public int Time { get; set; }
         public DateTime StartTime { get { return GetStartTime(Day, Time); } }
-
-        //public DateTime FixedStartTime
-        //{
-        //    get
-        //    {
-        //        return (DateTime.ParseExact("2018-07-01 14:40:52,531", "yyyy-MM-dd HH:mm:ss,fff",
-        //System.Globalization.CultureInfo.InvariantCulture));
-        //    }
-        //}
-
+        
         private DateTime GetStartTime(int day, int time)
         {
             day += 26;
