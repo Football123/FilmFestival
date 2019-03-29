@@ -33,6 +33,7 @@ namespace HaarlemFilmFestival.Controllers
 
             viewmodel.Foods = filteredFoods;
             viewmodel.Restaurants = restaurants;
+            viewmodel.FoodLeft = getFoodsLeft();
 
             return View(viewmodel);
         }
@@ -68,16 +69,16 @@ namespace HaarlemFilmFestival.Controllers
 
         //public FoodViewModel FillViewModel()
         //{
-        //    FoodViewModel viewmodel = new FoodViewModel();
-        //    viewmodel.Restaurants = foodRepository.GetRestaurants();
-        //    viewmodel.FoodLeft = foodRepository.GetAvailableFoods();
-        //    viewmodel.Foods = foodRepository.GetFoods();
+            //FoodViewModel viewmodel = new FoodViewModel();
+            //viewmodel.Restaurants = foodRepository.GetRestaurants();
+            //viewmodel.FoodLeft = getFoodsLeft();
+            //viewmodel.Foods = foodRepository.GetFoods();
 
 
-        //    return viewmodel;
+            //return viewmodel;
         //}
 
-        public IEnumerable<Food> GetFoodsLeft()
+        public IEnumerable<Food> getFoodsLeft()
         {
             FoodViewModel viewmodel = new FoodViewModel();
             viewmodel.Foods = foodRepository.GetFoods();
