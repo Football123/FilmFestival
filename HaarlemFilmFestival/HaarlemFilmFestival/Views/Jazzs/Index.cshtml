@@ -24,16 +24,6 @@
             });
         });
         $(function () {
-            $("#Thursday").click(function (data) {
-                $.get("@Url.Action("ShowPartialView", "Jazzs",  new {  dayOfFestival = DayOfWeek.Thursday})", function (data) {
-                    if (data) {
-                        $('#divTest').empty();
-                        $('#divTest').append(data);
-                    }
-                });
-            });
-        });
-        $(function () {
             $("#Friday").click(function (data) {
                 $.get("@Url.Action("ShowPartialView", "Jazzs",  new {  dayOfFestival = DayOfWeek.Friday})", function (data) {
                     if (data) {
