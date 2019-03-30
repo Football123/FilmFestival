@@ -62,6 +62,7 @@ namespace HaarlemFilmFestival.Controllers
         {
             // Sessie verwijderen als order in database in opgeslagen
             Session.Clear();
+
             return View();
         }
 
@@ -70,6 +71,7 @@ namespace HaarlemFilmFestival.Controllers
         //{
         //    return View("Final");
         //}
+
         // Deze methode wordt aangeroepen als er op een kruis wordt geklikt in het winkelmandje via Javascript
         // Deze methode verwijdert het event waarop geklikt wordt door te checken of het id van het orderrecord gelijk is aan het Eventid in de database
         public void DeleteSessie(int id)
