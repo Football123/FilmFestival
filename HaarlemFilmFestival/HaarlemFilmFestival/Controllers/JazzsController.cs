@@ -12,7 +12,7 @@ namespace HaarlemFilmFestival.Controllers
         private JazzViewModel viewmodel = new JazzViewModel();
         private IJazzRepository jazzRepository = new JazzRepository();
 
-        // GET: Jazzs
+        // Deze methode wordt aangeroepen als er op JAZZ in de navigatiebalk geklikt wordt
         public ActionResult Index()
         {
             viewmodel = FillViewModel();
@@ -28,6 +28,7 @@ namespace HaarlemFilmFestival.Controllers
             orderrecords = new OrderRecord();
             orderrecords.Event_Id = int.Parse(Request.Form["eventid"]);
             orderrecords.RecordAmount = int.Parse(Request.Form["amountOfTickets"]);
+            // Order_Id wordt tijdelijk gevuld met Event_Id, Order_id wordt overschreven wanneer de order in de database wordt opgeslagen (auto-increment) 
             orderrecords.Order_Id = orderrecords.Event_Id;
             orderrecords.Event = jazzRepository.GetJazz(orderrecords.Event_Id);
             if (order.OrderRecords == null)
@@ -39,6 +40,7 @@ namespace HaarlemFilmFestival.Controllers
                 orderrecords.TicketType = TicketType.Single;
             Session["Orders"] = order;
 
+            // Refreshen pagina door alle gegevens opnieuw in te laden
             viewmodel = FillViewModel();
             return View(viewmodel);
         }
@@ -56,7 +58,7 @@ namespace HaarlemFilmFestival.Controllers
             viewmodel.days = days; // Kayleigh aangepast
             return viewmodel;
         }
-        // Deze methode geeft een lijst van alle Jazz-events die nog beschikbaar zijn
+        // Deze methode geeft een lijst van alle Jazz-events die nog beschikbaar zijn, staat in de controller omdat er geen database-call nodig is aangezien viewmodel.Jazzs al is gevuld waarmee de nodig beschikbare events opgehaald kunnen worden
         public IEnumerable<Jazz> getJazzLeft()
         {
             List<Jazz> left = new List<Jazz>();

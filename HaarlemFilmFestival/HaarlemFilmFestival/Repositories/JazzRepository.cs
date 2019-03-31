@@ -11,7 +11,7 @@ namespace HaarlemFilmFestival.Repositories
     public class JazzRepository : IJazzRepository
     {
         private HaarlemFilmFestivalContext db = HaarlemFilmFestivalContext.getInstance();
-        private IEventRepository eventRepository = new EventRepository();
+        //private IEventRepository eventRepository = new EventRepository();
 
         // Deze methode haalt de hele Jazz-tabel op
         public IEnumerable<Jazz> GetJazz()

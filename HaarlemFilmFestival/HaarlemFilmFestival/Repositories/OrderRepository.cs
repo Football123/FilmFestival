@@ -7,6 +7,7 @@ namespace HaarlemFilmFestival.Repositories
     {
         private HaarlemFilmFestivalContext db = HaarlemFilmFestivalContext.getInstance();
 
+        // Deze methode zorgt ervoor dat de order en orderrecords worden opgeslagen in de database en de capaciteit van de events in de orderrecords worden aangepast
         public void AddNewOrder(Order order)
         {
             db.Orders.Add(order);

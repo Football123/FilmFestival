@@ -11,8 +11,9 @@ namespace HaarlemFilmFestival.Controllers
     {
         private OrderRepository orderRepository = new OrderRepository();
         private CustomerRepository customerRepository = new CustomerRepository();
-        private IEventRepository eventRepository = new EventRepository();
+        //private IEventRepository eventRepository = new EventRepository();
 
+        // Deze methode wordt aangeroepen als er op TICKETS geklikt word in de database
         public ActionResult Index()
         {
             if (Session["Orders"] == null)
@@ -22,11 +23,13 @@ namespace HaarlemFilmFestival.Controllers
             return View();
         }
 
+        // Deze methode wordt aangeroepen als er op "Pay your tickets" geklikt wordt in de Index-view van Order
         public ActionResult Payment()
         {
             return View();
         }
         
+        // Deze methode wordt aangeroepen als er op "Pay" geklikt word in de Payment-view van Order
         // In deze methode wordt onder andere een klant aangemaakt met behulp van een RegisterModel, 
         // de gegevens worden in de view ingevuld en doorgestuurd via het registermodel
         [HttpPost]
