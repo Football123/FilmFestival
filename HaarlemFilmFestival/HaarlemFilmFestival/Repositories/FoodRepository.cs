@@ -72,14 +72,14 @@ namespace HaarlemFilmFestival.Repositories
         //    return foodList;
         //}
         
-        public IEnumerable<Food> GetOrderedFoods(IEnumerable<Food> foodList)
-        {
-            foreach (Food food in foodList)
-            {
-                food.OrderRecords = db.OrderRecords.Where(fid => fid.Event_Id == food.Id).ToList();
-            }
-            return foodList;
-        }
+        //public IEnumerable<Food> GetOrderedFoods(IEnumerable<Food> foodList)
+        //{
+        //    foreach (Food food in foodList)
+        //    {
+        //        food.OrderRecords = db.OrderRecords.Where(fid => fid.Event_Id == food.Id).ToList();
+        //    }
+        //    return foodList;
+        //}
 
         public int GetFoodId(FoodViewModel food)
         {
