@@ -25,19 +25,23 @@ namespace HaarlemFilmFestival.Controllers
             if (Session["Orders"] == null)
                 Session["Orders"] = new Order();
             Order order = (Order)Session["Orders"];
+
             orderrecords = new OrderRecord();
             orderrecords.Event_Id = int.Parse(Request.Form["eventid"]);
             orderrecords.RecordAmount = int.Parse(Request.Form["amountOfTickets"]);
             // Order_Id wordt tijdelijk gevuld met Event_Id, Order_id wordt overschreven wanneer de order in de database wordt opgeslagen (auto-increment) 
             orderrecords.Order_Id = orderrecords.Event_Id;
             orderrecords.Event = jazzRepository.GetJazz(orderrecords.Event_Id);
+
             if (order.OrderRecords == null)
                 order.OrderRecords = new List<OrderRecord>();
             order.OrderRecords.Add(orderrecords);
+
             if (orderrecords.RecordAmount >= 4)
                 orderrecords.TicketType = TicketType.Family;
             else
                 orderrecords.TicketType = TicketType.Single;
+
             Session["Orders"] = order;
 
             // Refreshen pagina door alle gegevens opnieuw in te laden

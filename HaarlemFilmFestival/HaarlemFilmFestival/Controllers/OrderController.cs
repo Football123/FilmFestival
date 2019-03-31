@@ -13,7 +13,7 @@ namespace HaarlemFilmFestival.Controllers
         private CustomerRepository customerRepository = new CustomerRepository();
         //private IEventRepository eventRepository = new EventRepository();
 
-        // Deze methode wordt aangeroepen als er op TICKETS geklikt word in de database
+        // Deze methode wordt aangeroepen als er op TICKETS geklikt word in de navigatiebalk
         public ActionResult Index()
         {
             if (Session["Orders"] == null)
@@ -81,7 +81,6 @@ namespace HaarlemFilmFestival.Controllers
         {
             var sessie = (Order)Session["Orders"];
             var orders = sessie.OrderRecords;
-
 
             var toDelete = orders.FirstOrDefault(or => or.Event.Id == id);
             if (toDelete == null) throw new Exception("Geef een Event Id mee anders gaat de delete kapot");
