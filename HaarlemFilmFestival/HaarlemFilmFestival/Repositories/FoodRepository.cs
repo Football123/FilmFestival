@@ -62,25 +62,6 @@ namespace HaarlemFilmFestival.Repositories
             return c;
         }
 
-        //public IEnumerable<Food> GetAvailableFoods()
-        //{
-        //    IEnumerable<Food> foodList = new List<Food>();
-        //    //foodList = db.Foods.ToList();
-        //    IEnumerable<Food> etensLijst = new List<Food>();
-        //    etensLijst = db.Foods;
-        //    foodList = GetOrderedFoods(etensLijst);
-        //    return foodList;
-        //}
-        
-        //public IEnumerable<Food> GetOrderedFoods(IEnumerable<Food> foodList)
-        //{
-        //    foreach (Food food in foodList)
-        //    {
-        //        food.OrderRecords = db.OrderRecords.Where(fid => fid.Event_Id == food.Id).ToList();
-        //    }
-        //    return foodList;
-        //}
-
         public int GetFoodId(FoodViewModel food)
         {
             Food foodEvent = db.Foods.Where(ev => ev.Restaurant.Id == food.Restaurant_Id && ev.StartTime == food.StartTime).FirstOrDefault();
@@ -94,10 +75,6 @@ namespace HaarlemFilmFestival.Repositories
             Food food = db.Foods.Where(x => x.Restaurant.Id == restaurant.Id).FirstOrDefault();
             return food;
         }
-
-        //public Food GetAvailableFood(FoodViewModel food)
-        //{
-        //    return (db.Foods.Where(x => x.Restaurant.Id == food.Restaurant_Id && x.StartTime.))
-        //}
+        
     }
 }

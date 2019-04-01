@@ -32,8 +32,7 @@ namespace HaarlemFilmFestival.Controllers
             }
 
             viewmodel.Foods = filteredFoods;
-            viewmodel.Restaurants = restaurants;
-            viewmodel.FoodLeft = getFoodsLeft();
+            viewmodel.Restaurants = restaurants;           
 
             return View(viewmodel);
         }
@@ -65,49 +64,6 @@ namespace HaarlemFilmFestival.Controllers
 
             return RedirectToAction("Index", "Order");
         }
-
-
-        //public FoodViewModel FillViewModel()
-        //{
-            //FoodViewModel viewmodel = new FoodViewModel();
-            //viewmodel.Restaurants = foodRepository.GetRestaurants();
-            //viewmodel.FoodLeft = getFoodsLeft();
-            //viewmodel.Foods = foodRepository.GetFoods();
-
-
-            //return viewmodel;
-        //}
-
-        public IEnumerable<Food> getFoodsLeft()
-        {
-            FoodViewModel viewmodel = new FoodViewModel();
-            viewmodel.Foods = foodRepository.GetFoods();
-
-            List<Food> left = new List<Food>();
-            foreach (Food food in viewmodel.Foods)
-            {
-                if (food.Capacity > 0)
-                    left.Add(food);
-            }
-            return left;
-        }
-
-       
-        //private IEnumerable<Event> GetAvailableEvents()
-        //{
-        //    IEnumerable<OrderRecord> ordered;            
-        //    ordered = foodRepository.GetOrderedEvents();
-        //    List<Event> Events = new List<Event>();
-        //    foreach (Event Event in viewmodel.Foods)
-        //    {
-        //        int Count = 0;
-        //        foreach (OrderRecord orderrecord in ordered)
-        //            Count = Count + orderrecord.RecordAmount;
-        //        if (Count < Event.Capacity)
-        //            Events.Add(Event);
-        //    }
-        //    return Events;
-        //}
 
 
     }
